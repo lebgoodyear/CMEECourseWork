@@ -1,0 +1,5 @@
+#1 count how many line are in each file
+cd ~/Documents/CMEECourseWork/Week1/sandbox/TestFind
+ls | wc -l
+#2 Print everything starting from the second line for the E. coli genome
+cat E.coli.fasta
