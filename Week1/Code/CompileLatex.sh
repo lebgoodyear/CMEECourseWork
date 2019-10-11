@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 pdflatex $1.tex
 pdflatex $1.tex
 bibtex $1
@@ -17,3 +17,4 @@ rm *.snm
 rm *.toc
 rm *.bbl
 rm *.blg
+rm *.fls

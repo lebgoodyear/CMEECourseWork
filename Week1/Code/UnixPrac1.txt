@@ -1,0 +1,14 @@
+#1 Count the number of lines in each .fasta file
+find ../Data/ -type f -name "*.fasta" -exec wc -l {} \;
+
+#2 Print everything starting from the second line for the E. coli genome
+tail -n +2 ../Data/E.coli.fasta
+
+#3 Count the sequence length of the E. coli genome
+tail -n +2 ../Data/E.coli.fasta | tr -d '\n' | wc -m
+
+#4 Count the matches of the "ATGC" sequence in the genome of E. coli
+tail -n +2 ../Data/E.coli.fasta | tr -d '\n' | grep -o "ATGC" | wc -l
+
+#5 Compute the AT/GC ratio
+echo $(tail -n +2 ../Data/E.coli.fasta | tr -d '\n' | grep -o "A\|T" | wc -l) / $(tail -n +2 ../Data/E.coli.fasta | tr -d '\n' | grep -o "G\|C" | wc -l) | bc -l
