@@ -11,7 +11,6 @@ __version__ = '0.0.1'
 import sys # module to interface our program with the operating system
 
 def even_or_odd(x=0): #if not specified, x should take value 0
-
     """Find whether a number x is even or odd."""
     if x % 2 == 0: # the conditional if
         return "%d is even!" % x
@@ -34,8 +33,7 @@ def largest_divisor_five(x=120):
 
 def is_prime(x=70):
     """Find whether an integer is prime."""
-    for i in range(2, x):
-        print(i) # "range" returns a sequence of integers
+    for i in range(2, x): # "range" returns a sequence of integers
         if x % i == 0:
             print ("%d is not a prime: %d is a divisor" % (x, i))
             return False
@@ -52,6 +50,9 @@ def find_all_primes(x=22):
     return allprimes
     
 def main(argv):
+    """The function that is called if this programme is run rather than imported.
+    Prints some examples of the above functions.
+    """
     print(even_or_odd(22))
     print(even_or_odd(33))
     print(largest_divisor_five(120))

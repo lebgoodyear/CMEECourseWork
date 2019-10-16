@@ -5,8 +5,8 @@
 __author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
 __version__ = '0.0.1'
 
-## imports ##
-import sys # module to interface our program with the operating system
+# imports
+# import sys # module to interface our program with the operating system
 import doctest # import the doctest module
 
 def even_or_odd(x=0): #if not specified, x should take value 0
@@ -35,8 +35,7 @@ def even_or_odd(x=0): #if not specified, x should take value 0
         return "%d is even!" % x
     return "%d is odd!" % x
 
-##########
-
+########## option for when programme is run rather than imported as a module
 #def main(argv):
 #       print(even_or_odd(22))
 #       print(even_or_odd(33))

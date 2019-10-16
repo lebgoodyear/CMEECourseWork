@@ -3,7 +3,7 @@
 """Description of this program or application. 
     You can use several lines"""
 
-__appname__ = '[trial python program]'
+__appname__ = '[application name here]'
 __author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
 __version__ = '0.0.1'
 __license__ = 'License for this code/program'

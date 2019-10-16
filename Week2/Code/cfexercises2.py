@@ -1,7 +1,12 @@
-## Combining loops and conditionals
+#!/usr/bin/env python3
+
+"""A script combining loops and conditionals, printing the string 'hello' each time condition is met."""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
 
 # Prints 'hello' for the number of times that 3 goes into 0-11 with no remainder
-for j in range(12):
+for j in range(1):
     if j % 3 == 0:
         print('hello')
 

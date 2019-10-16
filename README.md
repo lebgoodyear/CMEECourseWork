@@ -2,7 +2,7 @@
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 11/10/19*
+*Last updated: 16/10/19*
 
 This repository contains all the coursework for the first term of the CMEE Master's course. 
 
@@ -31,3 +31,13 @@ Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
 * LaTeX exercises
 
 ### Week 2: Python
+
+*  Practice scripts exemplifying:
+    * types of objects
+    * basic functions
+    * loops
+    * list comprehensions
+    * sys.argv
+    * control flows
+* Practical programming exercises and extra credit
+

@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+
+"""Populates a dictionary from a given list of tuples"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
 taxa = [ ('Myotis lucifugus','Chiroptera'),
          ('Gerbillus henleyi','Rodentia',),
          ('Peromyscus crinitus', 'Rodentia'),
@@ -10,14 +17,15 @@ taxa = [ ('Myotis lucifugus','Chiroptera'),
          ('Canis lupus', 'Carnivora'),
         ]
 
-# Write a short python script to populate a dictionary called taxa_dic 
+# write a short python script to populate a dictionary called taxa_dic 
 # derived from  taxa so that it maps order names to sets of taxa. 
-# E.g. 'Chiroptera' : set(['Myotis lucifugus']) etc. 
+# e.g. 'Chiroptera' : set(['Myotis lucifugus']) etc. 
 
-# Create a dictionary of empty sets indexed by the orders 
+# create a dictionary of empty sets indexed by the orders 
 taxa_dic = {order : set() for species, order in taxa}
 
-# Create a for loop over the tuples to find the taxa that are mapped to by the orders and add them to the dictionary as a value
+# create a for loop over the tuples to find the taxa that are mapped to 
+# by the orders and add them to the dictionary as a value
 for taxa_tuple in taxa:
         taxa_dic[taxa_tuple[1]].add(taxa_tuple[0])
 

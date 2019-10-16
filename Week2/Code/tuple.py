@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+
+"""Prints data from a tuple of tuples in a more readable format"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
           ('Junco phaeonotus','Yellow-eyed junco',19.5),
@@ -10,4 +17,4 @@ birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
 # Hints: use the "print" command! You can use list comprehensions!
 
 for i,j,k in birds:
-    print("\n" + "The species is " + str(i) + "\nThe common name is " + str(j) + "\nThe weight is " + str(k))
+    print("\n" + "Species is " + str(i) + "\nCommon name is " + str(j) + "\nWeight is " + str(k))

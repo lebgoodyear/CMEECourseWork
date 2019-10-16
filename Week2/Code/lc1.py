@@ -1,3 +1,13 @@
+#!/usr/bin/env python3
+
+"""
+Some list comprehensions and for loops to print different attributes 
+of birds from a tuple of tuples
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
           ('Junco phaeonotus','Yellow-eyed junco',19.5),

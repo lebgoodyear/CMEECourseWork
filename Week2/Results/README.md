@@ -1,4 +1,4 @@
-# CMEE Coursework Week 1 Results Directory
+# CMEE Coursework Week 2 Results Directory
 
 *Author: Lucy Goodyear*  
 *Created: 11/10/19*

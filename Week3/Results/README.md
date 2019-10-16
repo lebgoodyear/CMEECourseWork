@@ -1,6 +1,6 @@
-# CMEE Coursework Week 1 Results Directory
+# CMEE Coursework Week 3 Results Directory
 
 *Author: Lucy Goodyear*  
-*Created: 11/10/19*
+*Created: 14/10/19*
 
 This is an empty directory to which outputs are sent.

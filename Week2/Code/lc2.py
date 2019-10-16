@@ -1,3 +1,13 @@
+#!/usr/bin/env python3
+
+"""
+Using list comprehensions and loops to identify months with 
+high and low rainfall from a given tuple of tuples
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
 # Average UK Rainfall (mm) for 1910 by month
 # http://www.metoffice.gov.uk/climate/uk/datasets
 rainfall = (('JAN',111.4),
@@ -20,11 +30,11 @@ rainfall = (('JAN',111.4),
 greater_lc = [row for row in rainfall if row[1] > 100.0]
 print(greater_lc)
 
-lower_lc = [row[0] for row in rainfall if row[1] < 50.0]
-print(lower_lc)
-
 # (2) Use a list comprehension to create a list of just month names where the
 # amount of rain was less than 50 mm. 
+
+lower_lc = [row[0] for row in rainfall if row[1] < 50.0]
+print(lower_lc)
 
 # (3) Now do (1) and (2) using conventional loops (you can choose to do 
 # this before 1 and 2 !). 

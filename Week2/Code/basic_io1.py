@@ -1,17 +1,21 @@
-#################
-# FILE INPUT
-#################
-#Open a file for reading
-f = open('../Sandbox/testweek2.txt', 'r') #r for read-only
-#use "implicit" for loop:
-#if the object is a file, python will cycle lines
+#!/usr/bin/env python3
+
+"""A script that uses a for loop to read from a .txt file, printing the content first with and then without blank lines"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+# open a file for reading
+f = open('../Sandbox/testweek2.txt', 'r') # r for read-only
+# use "implicit" for loop:
+# if the object is a file, python will cycle lines
 for line in f:
     print(line)
 
-#close the file
+# close the file
 f.close()
 
-#Same example, skip blank lines
+# same example, skip blank lines
 f = open('../Sandbox/testweek2.txt', 'r')
 for line in f:
     if len(line.strip()) > 0:

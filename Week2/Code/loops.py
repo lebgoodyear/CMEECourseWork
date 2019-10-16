@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+
+"""A script to practice various for and while loops"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
 # FOR loops in Python
 for i in range(5):
     print(i)
