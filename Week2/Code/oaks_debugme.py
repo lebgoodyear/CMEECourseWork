@@ -36,6 +36,12 @@ def is_an_oak(name):
 
     >>> is_an_oak('Querrcus cerris')
     False
+
+    >>> is_an_oak('Qeurcus petraea')
+    False
+
+    >>> is_an_oak('Quercuspetraea')
+    False
     
     """
     # use regular expressions to match genus exactly
