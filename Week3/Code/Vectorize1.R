@@ -1,5 +1,11 @@
+# Two methods of calculating the sum of a matrix.
+# The first uses a for loop and the second the inbuilt 'sum'
+# function. The prints show which method is faster.
+
+# create 1000 by 1000 matrix with random uniform numbers
 M <- matrix(runif(1000000), 1000, 1000)
 
+# calculate sum of matrix using for loop
 SumAllElements <- function(M){
     Dimensions <- dim(M)
     Tot <- 0
