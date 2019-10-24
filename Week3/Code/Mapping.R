@@ -5,6 +5,9 @@
 # from a dataset containing species and corresponding longitudes and 
 # latitudes
 
+# clear workspace
+rm(list=ls())
+
 #imports
 library(maps)
 
@@ -18,6 +21,7 @@ map(database = "world", fill=TRUE, col="darkolivegreen3",
 points(x = gpdd$long, y = gpdd$lat, col = "black", pch = 1, cex = 0.35)        
 
 # Expected biases:
+# Spatial bias!
 # 1) Data points are from temperate regions so no weighting
 # from tripoical species (however analysis may be specifically
 # focussed on species from temperate regions)

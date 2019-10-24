@@ -7,7 +7,10 @@
 MyData <- as.matrix(read.csv("../Data/PoundHillData.csv",header = F)) 
 
 # header = true because we do have metadata headers
-MyMetaData <- read.csv("../Data/PoundHillMetaData.csv",header = T, sep=";", stringsAsFactors = F)
+MyMetaData <- read.csv("../Data/PoundHillMetaData.csv",
+                       header = T, 
+                       sep=";", 
+                       stringsAsFactors = F)
 
 ############# Inspect the dataset ###############
 head(MyData)
@@ -35,7 +38,10 @@ require(reshape2) # load the reshape2 package
 
 ?melt #check out the melt function
 
-MyWrangledData <- melt(TempData, id=c("Cultivation", "Block", "Plot", "Quadrat"), variable.name = "Species", value.name = "Count")
+MyWrangledData <- melt(TempData, 
+                       id=c("Cultivation", "Block", "Plot", "Quadrat"), 
+                       variable.name = "Species", 
+                       value.name = "Count")
 
 MyWrangledData[, "Cultivation"] <- as.factor(MyWrangledData[, "Cultivation"])
 MyWrangledData[, "Block"] <- as.factor(MyWrangledData[, "Block"])

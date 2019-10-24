@@ -3,3 +3,6 @@
 *.DS_Store
 Week2/Code/__pycache__
 Week4
+*.log
+*-concordance.tex
+*.gz

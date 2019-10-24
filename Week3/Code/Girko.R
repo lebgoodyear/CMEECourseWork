@@ -1,5 +1,11 @@
 #################### Plotting Girko's Circular Law #################################
 
+# clear workspace
+rm(list=ls())
+
+# imports
+library(ggplot2)
+
 build_ellipse <- function(hradius, vradius){ # function that returns an ellipse
     npoints = 250
     a <- seq(0, 2 * pi, length = npoints + 1)
@@ -37,7 +43,7 @@ p <- p + geom_polygon(data = ellDF, aes(x = Real, y = Imaginary, alpha = 1/20, f
 
 # print plot to pdf
 pdf("../Results/Girko.pdf")
-p + ggtitle("Girko's circular law")
+p
 dev.off()
 
 

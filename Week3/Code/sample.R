@@ -1,4 +1,4 @@
-# ## run a simulation that involves sampling from a population
+## run a simulation that involves sampling from a population
 
 # a function to take a sample of size n from a population "popn" and return its mean
 myexperiment <- function(popn, n){
@@ -17,7 +17,7 @@ loopy_sample1 <- function(popn, n, num) {
 
 # to run "num" iterations of the experiment using a for loop on a vector with preallocation
 loopy_sample2 <- function(popn, n, num) {
-    result2 <- vector(, num) # preallocate expected size
+    result2 <- vector(,num) # preallocate expected size
     for (i in 1:num) {
         result2[i] <- myexperiment(popn, n)
     }

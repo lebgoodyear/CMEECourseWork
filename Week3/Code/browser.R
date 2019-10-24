@@ -1,3 +1,5 @@
+## inserts a breakpoint into the code and enters browser mode ##
+
 Exponential <- function(N0 = 1, r = 1, generations = 10) {
     # runs a simulation of exponential growth
     # returns a vector of length generations

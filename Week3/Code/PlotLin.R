@@ -1,5 +1,11 @@
 ######## Mathematical notation on an axis and in plot area ##############
 
+# performs a linear regression on some sample data, plots the data with 
+# the regression line and then annotates the plot with a mathematical equation.
+
+# clear workspace
+rm(list=ls())
+
 # imports
 library(ggplot2)
 

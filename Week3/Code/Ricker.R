@@ -1,3 +1,5 @@
+############### A simulation of the Ricker model ################
+
 Ricker <- function(N0 = 1, r = 1, K = 10, generations = 50) {
   
   # runs a simulation of the Ricker model
@@ -12,5 +14,6 @@ Ricker <- function(N0 = 1, r = 1, K = 10, generations = 50) {
   return (N)
 }
 
+# plot a line graph of the Ricker function with 10 generations
 plot(Ricker(generations = 10), type = "l")
   

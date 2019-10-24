@@ -6,6 +6,9 @@
 # Calculates regression results corresponding to the lines fitted in the figure and saves as
 # csv demlimited table.
 
+# clear workspace
+rm(list=ls())
+
 # imports
 library(ggplot2)
 library(dplyr)

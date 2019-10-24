@@ -10,12 +10,15 @@ require(tidyr)
 MyData <- as.matrix(read.csv("../Data/PoundHillData.csv",header = F)) 
 
 # header = true because we do have metadata headers
-MyMetaData <- read.csv("../Data/PoundHillMetaData.csv",header = T, sep=";", stringsAsFactors = F)
+MyMetaData <- read.csv("../Data/PoundHillMetaData.csv",
+                       header = T, 
+                       sep=";", 
+                       stringsAsFactors = F)
 
 ############# Inspect the dataset ###############
 head(MyData)
 dim(MyData)
-glimpse(MyData) # like str() but tidier
+glimpse(MyData) # in dplyr package, like str() but tidier
 #fix(MyData) #you can also do this
 #fix(MyMetaData)
 
@@ -35,7 +38,9 @@ colnames(TempData) <- MyData[1,] # assign column names from original data
 
 ############# Convert from wide to long format  ###############
 
-MyWrangledData <- TempData %>% gather(Species, Count, -Cultivation, -Block, -Plot, -Quadrat)
+# using dplyr
+MyWrangledData <- TempData %>% 
+                  gather(Species, Count, -Cultivation, -Block, -Plot, -Quadrat)
 
 
 MyWrangledData[, "Cultivation"] <- as.factor(MyWrangledData[, "Cultivation"])
@@ -44,7 +49,7 @@ MyWrangledData[, "Plot"] <- as.factor(MyWrangledData[, "Plot"])
 MyWrangledData[, "Quadrat"] <- as.factor(MyWrangledData[, "Quadrat"])
 MyWrangledData[, "Count"] <- as.integer(MyWrangledData[, "Count"])
 
-glimpse(MyData) # like str() but tidier
+glimpse(MyWrangledData) # like str() but tidier
 head(MyWrangledData)
 dim(MyWrangledData)
 

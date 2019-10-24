@@ -1,9 +1,12 @@
-# Runs the stochastic (with gaussian fluctuations) Ricker Eqn.
+###################### Stochastic (with gaussian fluctuations)######################
+################################### Ricker Eqn. ####################################
 
+# clear workspace
 rm(list=ls())
 
 stochrick<-function(p0=runif(1000,.5,1.5),r=1.2,K=1,sigma=0.2,numyears=100) {
-    
+  # runs a simulation of the stochastic Ricker eqn
+  
   #initialize
     N<-matrix(NA,numyears,length(p0))
     N[1,]<-p0
@@ -34,6 +37,7 @@ stochrickvect <- function(p0=runif(1000,.5,1.5),r=1.2,K=1,sigma=0.2,numyears=100
     return(N)
 }
 
+# compare times for the vectorised and non-vectorised functions
 print("Stochastic Ricker without vectorisation takes:")
 print(system.time(res1<-stochrick()))
 

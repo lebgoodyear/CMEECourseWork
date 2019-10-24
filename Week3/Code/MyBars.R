@@ -1,5 +1,11 @@
 ##################### First plot with annotations #######################
 
+# loads data from a .txt file and plots it as three line ranges
+# (using ggplot2) with annotations for particular values.
+
+# clear workspace
+rm(list=ls())
+
 # imports
 library(ggplot2)
 
@@ -32,7 +38,7 @@ p <- p + geom_linerange(data = a, aes(
     alpha = 1/2),
     show.legend = FALSE)
 
-# print the linerange
+# print the third linerange
 p <- p + geom_linerange(data = a, aes(
     x =x,
     ymin = ymin,

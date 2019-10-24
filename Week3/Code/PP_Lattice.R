@@ -1,9 +1,12 @@
 ############################# Plotting lattice graphs ##################################
 ######################## and calculating means and medians ##############################
 
-# Using a dataset containing predator-prey body size information, plots 3 lattice graphs 
-# showing predator and prey masses and the ration between them by types of food interaction.
-# Also calculates mean and median for the above subsets.
+# Using a dataset containing predator-prey body size information to plot 3 lattice graphs 
+# showing predator and prey masses and the ratio between them by types of food interaction.
+# Also calculates mean and median for the above subsets and saves to csv.
+
+# clear workspace
+rm(list=ls())
 
 # imports
 library(lattice)

@@ -17,15 +17,17 @@ Tree_data <- read.csv("../Data/trees.csv")
 TreeHeight <- function(degrees, distance){
     radians <- degrees * pi / 180
     height <- distance * tan(radians)
- 
+    # commented out print function below to improve speed with large datasets
     #print(paste("Tree height is", height))
 
     return(height)
 }
 
-TreeHeight(37, 40)
+TreeHeight(37, 40) # sample values
 
+# add column to Tree_data to include tree heights, calculated by the TreeHeight function
 Tree_data$Tree.Height.m <- TreeHeight(Tree_data$Angle.degrees, Tree_data$Distance.m)
 
-write.csv(TreeDF, "../Results/TreeHts.csv")
+# write data to a csv
+write.csv(Tree_data, "../Results/TreeHts.csv")
 

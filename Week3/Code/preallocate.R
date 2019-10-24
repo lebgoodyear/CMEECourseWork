@@ -1,14 +1,19 @@
 # Two methods of creating a matrix, one without using
 # preallocation (function, f) and one using preallocaiton
-# (function, g)
+# (function, g).  
+# The times taken for each function to run are printed to allow comparison.
 
 a <- NA
 
 f <- function(a) {
     for (i in 1:10000) {
         a <- c(a, i)
-        print(a)
-        print(object.size(a))
+        
+        # in-function print commands have been commented out 
+        # to increase speed
+        
+        #print(a)
+        #print(object.size(a))
     }
 }
 
@@ -17,19 +22,21 @@ a <- rep(NA, 10)
 g <- function(a) {
     for (i in 1:10000) {
         a[i] <- i
-        print(a)
-        print(object.size(a))
+        
+        # in-function print commands have been commented out 
+        # to increase speed
+        
+        #print(a)
+        #print(object.size(a))
     }
 }
 
-# to compare difference in computing times:
-# increase iterations to 10000, comment out in function prints
-# and uncomment the following print commands
+# compare difference in computing times:
 
 # time taken for first function
-# print("Time taken without preallocation:")
-# print(system.time(f(a)))
+print("Time taken without preallocation:")
+print(system.time(f(a)))
 
 # time taken for second function
-# print("Time taken with preallocation:")
-# print(system.time(g(a)))
+print("Time taken with preallocation:")
+print(system.time(g(a)))

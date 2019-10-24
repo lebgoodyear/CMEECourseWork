@@ -2,7 +2,7 @@
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 16/10/19*
+*Last updated: 24/10/19*
 
 This repository contains all the coursework for the first term of the CMEE Master's course. 
 
@@ -18,7 +18,8 @@ Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
 
 ## Table of Contents
 1. [Week 1](#Week-1:-UNIX-and-bash-scripting)
-2. [Week2](#Week-2:-Python)
+2. [Week 2](#Week-2:-Python)
+3. [Week 3](#Week-3:-R)
 
 ### Week 1: UNIX and shell scripting
 
@@ -40,4 +41,16 @@ Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
     * sys.argv
     * control flows
 * Practical programming exercises and extra credit
+
+### Week 3: R
+
+* Practice scripts exemplifying:
+    * control flows
+    * breaks
+    * vectorisation
+    * preallocation
+    * debugging
+    * data wrangling
+    * plotting using base R, qplot and ggplot
+* practical programming exercises
 

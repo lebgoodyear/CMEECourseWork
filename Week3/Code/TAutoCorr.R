@@ -2,6 +2,9 @@
 ##################### Autocorrelation in weather ############################
 #############################################################################
 
+# clear workspace
+rm(list=ls())
+
 # imports
 library(dplyr)
 
@@ -9,12 +12,12 @@ library(dplyr)
 load("../Data/KeyWestAnnualMeanTemperature.Rdata")
 
 # plot tmperatures over time on line graph
+pdf("../Results/KWAMT.pdf")
 plot(ats$Year,
-        ats$Temp, 
-        xlab = "Temp (Degrees Centigrade)",
-        ylab = "Year",
-        main = "Key West Annual Mean Temperature",
-        type = "l")
+     ats$Temp, 
+     xlab = "Temp (Degrees Centigrade)",
+     ylab = "Year",
+     type = "l")
 
 # create two lists of tmperatures, one with the first row deleted and then
 # realigned with the second list so temps between suuccesive years can be
