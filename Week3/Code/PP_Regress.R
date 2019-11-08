@@ -41,7 +41,7 @@ LM <- MyDF %>%
          # because f-statistic can't be calculated on this (and no linear regression line can be drawn)
          filter(Record.number != "30914" & Record.number != "30929") %>%
          # subset only the data needed and group by feeeding type and predator lifestage
-         select(Record.number, Predator.mass, Prey.mass, Predator.lifestage, Type.of.feeding.interaction) %>%
+         dplyr::select(Record.number, Predator.mass, Prey.mass, Predator.lifestage, Type.of.feeding.interaction) %>%
          group_by(Type.of.feeding.interaction, Predator.lifestage) %>%
          # do linear model calculations and store specific values as columns to dataframe
          do(mod=lm(Predator.mass ~ Prey.mass, data = .)) %>%
@@ -50,7 +50,7 @@ LM <- MyDF %>%
                 R.squared = summary(mod)$adj.r.squared,
                 Fstatistic = summary(mod)$fstatistic[1],
                 P.value = summary(mod)$coeff[8]) %>%
-         select(-mod) # remove column created by mod=lm command
+         dplyr::select(-mod) # remove column created by mod=lm command
 
 # save the regression results to a csv delimited table
 write.csv(LM, "../Results/PP_Regress_Results.csv")

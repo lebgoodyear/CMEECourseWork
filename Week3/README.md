@@ -43,7 +43,8 @@ R v.3.6.1
 22. [MyBars](#22.-MyBars)
 23. [PlotLin](#23.-PlotLin)
 24. [PP_Regress](#24.-PP_Regress)
-25. [Mapping](#25.-Mapping)
+25. [PP_Regress_Loc](#25.-PP_Regress_Loc)
+26. [Mapping](#26.-Mapping)
 
 
 ### 1. basic_io
@@ -142,7 +143,9 @@ A .R script that performs a linear regression on some sample data, plots the dat
 
 A .R script that plots graphs from predator and prey size data, including linear regressions, differentiated by predator lifestage, facected by type of feeding interaction and saves to pdf. It also calculates linear regression results corresponding to the lines fitted in the figure and saves as csv demlimited table.
 
-### 25. Mapping
+### 25. PP_Regress_Loc
+
+### 26. Mapping
 
 A .R script that plots a map showing spaital spread of species from a loaded dataset. It plots an empty world map using the maps package and adds data points from the dataset, which contains species and corresponding longitudes and latitudes. it contains comments on possible biases.
 
