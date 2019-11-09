@@ -2,7 +2,7 @@
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 24/10/19*
+*Last updated: 09/11/19*
 
 This repository contains all the coursework for the first term of the CMEE Master's course. 
 
@@ -20,6 +20,7 @@ Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
 1. [Week 1](#Week-1:-UNIX-and-bash-scripting)
 2. [Week 2](#Week-2:-Python)
 3. [Week 3](#Week-3:-R)
+6. [Week 6](#Week6:-Genomics) 
 
 ### Week 1: UNIX and shell scripting
 
@@ -53,4 +54,14 @@ Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
     * data wrangling
     * plotting using base R, qplot and ggplot
 * practical programming exercises
+
+### Week 6: Genomics
+
+* Four scripts: 
+    * practical on allele and genotype frequencies
+    * practical on on genetic drift, mutation and divergence
+    * practical on coalescence theory
+    * practical on population subdivision and demographic inferences
+
+
 

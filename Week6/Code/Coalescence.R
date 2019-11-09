@@ -2,7 +2,7 @@
 
 # Estimate the effective population size for two different populations of killer whales, using both
 # Watterson's and Tajima's estimations of theta. 
-# Calculates the site frequncy spectrum for the two populations
+# Calculates the site frequency spectrum for the two populations
 
 # clear workspace
 rm(ls=(list))

@@ -1,12 +1,12 @@
 ########## Practical on population subdivision and demographic inferences ###############
 
-# Provide evidence for distance by isolation in a turtle species found at 4 different
+# Assesses whether there has been distance by isolation in a turtle species found at 4 different
 # location using 3 methods:
 # 1) calculate F_ST pairwise for the 4 different turtle subpopulations
 # 2) build a tree of all the samples and check for clustering
 # 3) conduct a Principle Component Analysis
 
-# Programme contains one function, calcF_ST, which calculates allele frequencies for each SNP 
+# Script contains one function, calcF_ST, which calculates allele frequencies for each SNP 
 # in 2 populations, then calculates H_T and H_S, which are then used to calculate F_ST
 
 # clear workspace

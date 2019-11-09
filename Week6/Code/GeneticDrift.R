@@ -57,6 +57,8 @@ compare2 <- function(x, y) {
 }
 
 gen_divs <- function(x, y) {
+  # function compares non-heterozygous sites between species, locates those with differences
+  # and calculates the genetics divergence from the number of these sites
   sites <- intersect(count_fixed(x), count_fixed(y)) # only compare non-heterozygous sites in both species
   all_sites <- rbind(x[,sites], y[,sites]) # combine into one dataframe
   for (i in 1:ncol(all_sites)) {
