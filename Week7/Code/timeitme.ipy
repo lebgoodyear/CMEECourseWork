@@ -1,0 +1,45 @@
+#!/usr/local/bin/ipython
+
+""" 
+Compares the speed of for loops and list comprehensions and the join
+method for strings by importing the functions from Profileme.py and
+Profileme2.py and using the ipython timeit function. It also compares 
+this to a simpler approach using time.time().
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+#imports
+import timeit
+from Profileme import my_squares as my_squares_loops
+from Profileme2 import my_squares as my_squares_lc
+from Profileme import my_join as my_join_join
+from Profileme2 import my_join as my_join
+import time
+
+############## loops vs list comprehensions: which is faster? #############
+
+iters = 1000000
+
+# timeit takes a sample of runs and returns an average
+%timeit my_squares_loops(iters)
+%timeit my_squares_lc(iters)
+
+######### loops vs the join method for strings: which is faster? ###########
+
+mystring = "my string"
+
+%timeit my_join_join(iters, mystring)
+%timeit my_join(iters, mystring)
+
+# a simpler approach is to time the functions as below
+# however if you run this multiple times, the time taken changes each time
+
+start = time.time()
+my_squares_loops(iters)
+print("my squares_loops takes %f s to run." % (time.time() - start))
+my_squares_lc(iters)
+print("my squares_lc takes %f s to run." % (time.time() - start))
+

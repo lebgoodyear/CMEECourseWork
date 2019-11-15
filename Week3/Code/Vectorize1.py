@@ -2,20 +2,29 @@
 # The first uses a for loop and the second the inbuilt 'sum'
 # function. The prints show which method is faster.
 
+import scipy as sc
+import scipy.stats as scs
+import time
+
 # create 1000 by 1000 matrix with random uniform numbers
-M = [random.uniform(k = 1000000), * 1000] * 1000
+M = sc.random.normal(size = (1000, 1000))
 
 # calculate sum of matrix using for loop
 def SumAllElements(M):
-    Dimensions = dim(M)
     Tot = 0
-    for i in range(1, Dimensions[1]):
-        for j in range(1, Dimensions[2]):
-            Tot <- Tot + M[i, j]
-    return (Tot)
+    for i in range(0, len(M[0])):
+        for j in range(0, len(M[1])):
+            Tot = Tot + M[i, j]
+    return Tot
 
+start = time.time()
+SumAllElements(M)
+end = time.time()
 print("Using loops, the time taken is:")
-print(system.time(SumAllElements(M)))
+print(end - start)
 
-print("Using the in-built vectorized function, the time taken is:")
-print(system.time(sum(M)))
+start = time.time()
+sc.sum(M)
+end = time.time()
+print("Using in-built scipy sum function, the time taken is:")
+print(end - start)
