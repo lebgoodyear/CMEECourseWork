@@ -17,6 +17,8 @@ This repository contains all the CMEE coursework from Week 7 on Python.
 
 Python v.3.7
 
+IPython 7.8.0
+
 All code has been created for Mac so there may be a few differences in commands with respect to Linux.
 
 ## List of scripts
@@ -41,6 +43,8 @@ A .py script that uses numerical integration to solve the Lotka-Volterra model. 
 
 ### 2. LV2
 
+A .py script that uses numerical integration to solve the Lotka-Volterra model, including carrying capacity K, and allows user inputs for certain parameters. It contains one function that calculates the growth rate of resource and consumer populations at a given time step. Within the main programme, this function is redefined as a partial to allow the fixed parameters to be passed to the function. Initial parameters are inputted by user, otherwise defaults are used, and the scipy integrate subpackage is used to solve the Lotka-Volterra system. The results are plotted in two different graphs, showing the change of the two population densities over time and also the change in the 
+two population densities with respect to each other.
 
 
 ### 3. Profileme
@@ -49,8 +53,7 @@ A .py script that contains three functions for practising profiling. One functio
 
 ### 4. Profileme2
 
-A .py script that contains improved versions of the three functions from 
-Profileme for practising profiling. One function, my_squares, squares the input using a list comprehension (there is also a commented out version that uses preallocation, which is slower than the list comprehension), one, my_join, joins string together using an explicit string concatenation and the third, run_my_funcs, runs the other two functions as before. A sample of run_my_funcs is called at the end to allow profiling from the command line or from within python3/ipython.
+A .py script that contains improved versions of the three functions from Profileme for practising profiling. One function, my_squares, squares the input using a list comprehension (there is also a commented out version that uses preallocation, which is slower than the list comprehension), one, my_join, joins string together using an explicit string concatenation and the third, run_my_funcs, runs the other two functions as before. A sample of run_my_funcs is called at the end to allow profiling from the command line or from within python3/ipython.
 
 ### 5. timeitme
 
@@ -58,20 +61,19 @@ A .ipy script that compares the speed of for loops and list comprehensions and t
 
 ### 6. LV3
 
-
+A .py script that uses a discrete time for loop to solve the Lotka-Volterra model including carrying capacity K, and allows user inputs for certain parameters. It contains one function that calculates population densities of resource and consumer populations at a given time step by running a for loop over the time steps and calculating the populations densities at each step. Initial parameters are inputted by user (otherwise defaults are used) and passed to the function, which solves the Lotka-Volterra system at discrete time intervals. The results are plotted in two different graphs, showing the change of the two population densities over time and also the change in the two population densities with respect to each other.
 
 ### 7. LV4
 
-
+A .py script that uses a discrete time for loop to solve the Lotka-Volterra model including carrying capacity K and Gaussian Fluctuation E, and allows user inputs for certain parameters. Contains one function that calculates population densities of resource and consumer populations at a given time step by running a for loop over the time steps and calculating the populations densities at each step. Initial parameters are inputted by user (otherwise defaults are used) and passed to the function, which solves the Lotka-Volterra system at discrete time intervals. The results are plotted in two different graphs, showing the change of the two population densities over time and also the change in the two population densities with respect to each other.
 
 ### 8. LV_run
 
-
+A .py script that profiles four scripts that solve the Lotka-Volterra model, comparing the time taken for the ten longest calls in each.
 
 ### 9. DrawFW
 
-A .py script that represents a sample food web network as an adjacency list and plots the network using networkx, where the size of the node represents the body mass of the species. It contains one function that generates a random adjacency list, containing the Ids of species that interact (based on comparison to the connectance probability). Body sizes are generated for each species, saved in an array and then visualised using matplotlib. Networkx is then used to plot the food 
-web network.
+A .py script that represents a sample food web network as an adjacency list and plots the network using networkx, where the size of the node represents the body mass of the species. It contains one function that generates a random adjacency list, containing the Ids of species that interact (based on comparison to the connectance probability). Body sizes are generated for each species, saved in an array and then visualised using matplotlib. Networkx is then used to plot the food web network.
 
 ### 10. Nets
 
@@ -92,3 +94,5 @@ A .py script that produces a list of files and directories from your home direct
 
 
 ### 14. run_fmr_R
+
+A .py script that uses the subprocess module to run an R-script that produces a pdf. Prints the R output to screen and includes try and except to kill the process if it takes longer than 30 seconds and also includes an if statement to print whether the R-script ran successfully.

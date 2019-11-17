@@ -35,21 +35,21 @@ import matplotlib.pylab as p
 # define a function that returns the growth rate of consumer and resource populations
 # at any given time step
 
-def dCR_dt(pops, t = 0):
+def dCR_dt(RC0, t = 0):
     """
     Calculates the growth rate of consumer and resource populations
     at a given time, using the Lotka-Volterra model.
 
     Parameters:
-        pops (array) : the numbers of both populations at time t
+        RC0 (array) : the densities of both populations at time t
         t (int) : the given time (t = 0 is the default (optional))
 
     Returns:
         sc.array([dRdt, dCdt]) : an array containing the growth rate of the populations
 
     """
-    R = pops[0]
-    C = pops[1]
+    R = RC0[0]
+    C = RC0[1]
     dRdt = r * R - a * R * C
     dCdt = -z * C + e * a * R * C
 
@@ -73,34 +73,40 @@ C0 = 5
 # convert into an array
 RC0 = sc.array([R0, C0])
 
-# numerically integrate this system forward from the above starting conditions
-pops, infodict = integrate.odeint(dCR_dt, RC0, t, full_output = True)
-# where pops contains the result (the population trajectories)
-# and infodict is a dictionary that contains information on how the integration went
+def main():
 
-# check whether integration was successful
-infodict['message']
+    # numerically integrate this system forward from the above starting conditions
+    pops, infodict = integrate.odeint(dCR_dt, RC0, t, full_output = True)
+    # where pops contains the result (the population trajectories)
+    # and infodict is a dictionary that contains information on how the integration went
+    type(infodict)
+    infodict.keys()
+    # check whether integration was successful
+    infodict['message']
 
-# visualise the results by plotting them using matplotlib
-# first open an empty figure
-f1 = p.figure()
-# add everything (data, axes etc.) to the figure
-p.plot(t, pops[:,0], 'g-', label = 'Resource density') 
-p.plot(t, pops[:,1], 'b-', label = 'Consumer density')
-p.legend(loc = 'best')
-p.xlabel('Time')
-p.ylabel('Population density')
-p.title('Consumer-Resource population dynamics')
-# save figure as pdf
-f1.savefig('../Results/LV1_model1.pdf') 
+    # visualise the results by plotting them using matplotlib
+    # first open an empty figure
+    f1 = p.figure()
+    # add everything (data, axes etc.) to the figure
+    p.plot(t, pops[:,0], 'g-', label = 'Resource density') 
+    p.plot(t, pops[:,1], 'b-', label = 'Consumer density')
+    p.legend(loc = 'best')
+    p.xlabel('Time')
+    p.ylabel('Population density')
+    p.title('Consumer-Resource population dynamics')
+    # save figure as pdf
+    f1.savefig('../Results/LV1_plot1.pdf') 
 
-# visualise the data in terms of resource and consumer density with respect to each other
-f2 = p.figure()
-# add everything (data, axes etc.) to the figure
-p.plot(pops[:,0], pops[:,1], 'r-') 
-p.xlabel('Resource density')
-p.ylabel('Consumer density')
-p.title('Consumer-Resource population dynamics')
-p.grid()
-# save figure as pdf
-f2.savefig('../Results/LV1_model2.pdf') 
+    # visualise the data in terms of resource and consumer density with respect to each other
+    f2 = p.figure()
+    # add everything (data, axes etc.) to the figure
+    p.plot(pops[:,0], pops[:,1], 'r-') 
+    p.xlabel('Resource density')
+    p.ylabel('Consumer density')
+    p.title('Consumer-Resource population dynamics')
+    p.grid()
+    # save figure as pdf
+    f2.savefig('../Results/LV1_plot2.pdf') 
+
+if __name__ == "__main__":
+    main()
