@@ -271,6 +271,7 @@ cat("\nAre the intercepts of one method in the confidence intervals of the other
 
 ### exercise e) investigate allometry between body mass and other linear morphological measurements
 
+
 # first for Anisoptera
 Morph_Data <- Data2Fit[-c(1:6,16)]
 # remove NA in Headlength
@@ -280,7 +281,7 @@ Morph_Data <- Morph_Data[!is.na(Morph_Data$HeadLength),]
 pairs(Morph_Data)
 # we can see that all pairs have a positive scaling relationship
 
-# note that running 
+# run a for loop to do an NLLS model on all the other measurements
 PowFitMM <- list()
 for (i in (2:ncol(Morph_Data))) { # include total length so we can compare to others
   PowFitM <- nlsLM(BodyWeight ~ powMod(Morph_Data[,i], a, b), 
@@ -290,9 +291,11 @@ for (i in (2:ncol(Morph_Data))) { # include total length so we can compare to ot
   PowFitMM[[i]] <- list(coef(PowFitM)[1], coef(PowFitM)[2], RSS)
 }
 
+# set up a dataframe with the parameters for each measurement
 Parameters <- data.frame(matrix(unlist(PowFitMM), ncol = 3, byrow = TRUE))
 colnames(Parameters) = c("a", "b", "RSS")
 
+# plot the values of a, b and RSS
 par(mfrow = c(1, 3))
 barplot(Parameters[,1], 
         names.arg = colnames(Morph_Data)[2:9],
@@ -321,7 +324,7 @@ Morph_DataZ <- Morph_DataZ[!is.na(Morph_DataZ$ForewingLength),]
 pairs(Morph_DataZ)
 # we can see that all pairs have a positive scaling relationship
 
-# note that running 
+# run a for loop to do an NLLS model on all the other measurements
 PowFitMMZ <- list()
 for (i in (2:ncol(Morph_DataZ))) { # include total length so we can compare to others
   PowFitMZ <- nlsLM(BodyWeight ~ powMod(Morph_DataZ[,i], a, b), 
@@ -331,9 +334,11 @@ for (i in (2:ncol(Morph_DataZ))) { # include total length so we can compare to o
   PowFitMMZ[[i]] <- list(coef(PowFitMZ)[1], coef(PowFitMZ)[2], RSS)
 }
 
+# set up a dataframe with the parameters for each measurement
 ParametersZ <- data.frame(matrix(unlist(PowFitMMZ), ncol = 3, byrow = TRUE))
 colnames(ParametersZ) = c("a", "b", "RSS")
 
+# plot the values of a, b and RSS
 par(mfrow = c(1, 3))
 barplot(ParametersZ[,1], 
         names.arg = colnames(Morph_DataZ)[2:9],
@@ -453,6 +458,7 @@ BIC(PowFitZ) - BIC(QuaFitZ)
 
 
 # first for Anisoptera
+# run a for loop to calculate the power law model and quadratic model for the other measurements
 Compare <- as.data.frame(matrix(ncol = 2))
 for (i in (2:ncol(Morph_Data))) { # include total length so we can compare to others
   PowFitM <- nlsLM(BodyWeight ~ powMod(Morph_Data[,i], a, b), 
@@ -465,9 +471,12 @@ for (i in (2:ncol(Morph_Data))) { # include total length so we can compare to ot
 
 print(Compare)
 # Here we can see that for total length, the power law model is better but
-# for all the other models, the quadratic model is a better fit!
+# for all the other models, the quadratic model is a better fit! Head length
+# has the highest delta(AIC) value, implying this could be the best predictor of
+# body weight but all delta(AIC)s are highly significant
 
 # now do the same for Zygoptera
+# run a for loop to calculate the power law model and quadratic model for the other measurements
 CompareZ <- as.data.frame(matrix(ncol = 2))
 for (i in (2:ncol(Morph_DataZ))) { # include total length so we can compare to others
   PowFitM <- nlsLM(BodyWeight ~ powMod(Morph_DataZ[,i], a, b), 
