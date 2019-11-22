@@ -1,0 +1,52 @@
+\documentclass[11pt, a4paper, titlepage]{article}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage[style=authoryear,backend=bibtex]{biblatex}
+\usepackage{graphicx}
+\title{Functional Responses}
+\author{Lucy Goodyear}
+\date{}
+
+\begin{document}
+	\maketitle
+
+\section{Introduction}
+
+The first mechanistic mathematical approach to functional responses was conducted by Holling in 1959 (sawfly paper). The Holling model was then generalised in ... 
+by .... to what is known as the generalised functional response model by including variable q. This variable q gives us the 3 types of functional response: 
+type 1.... type2 (The Holling Model)...type 3. Type 1 is a linear response and is shown by consumer-resource interatcions like .. and ... 
+Type 2 is the classic Holling model and shows a clear handling time. Type 3 is ...
+
+As yet, the biological meaning of q is unknown.
+
+\begin{equation}
+    c = \frac{ax_R}{1 + hax_R}
+\end{equation}
+
+\begin{equation}
+    c = \frac{ax_R^{q + 1}}{1 + hax_R^{q + 1}}
+\end{equation}
+
+By fitting the general functional response model to 308 datasets and comparing it to a polynomial fit, we can categorise the data, noticing the patterns
+that match the different data subsets. 
+
+blady...bla et al have shown that habitat/taxa affect functional responses in ....ways. As such, we are expecting a similar relationship shown by 
+our data models.
+
+\section{Methods}
+
+Data was prepared for fitting using R. Rstudio makes it very easy to view data and i.... First the data was subsetted by the necessary columns and all records with NA trait value were discarded.
+This subset was run through a for loop to check that each ID had more than 5 records (the minimum number required for the fit with the most
+parameters (the cubic). Each ID was then plotted and saved to a single pdf in order to be able to give a quick review of the data. 
+The data preparation script also generates the initial starting values for the general functional response fit, which are saved in the dataframe.
+The new dataframe, included subsetted data and initial starting values for a and h, is saved to csv for python load.
+
+The starting value optimisation and fitting script is done using python. For the polynomial fit, there is an in-built python function, which also finds
+starting values for you. For the general functional response fit, a Gaussian sample of 100 was generated around the estimated starting values and each of these
+sample values was used to fit the model. The starting values for the model with the lowest AIC were chosen as the best fit. This loop is run for every
+ID 
+
+\section{Results}
+
+\section{Discussion}
+
+\end{document}

@@ -9,12 +9,12 @@ crd <- read.csv("../Data/CRat.csv", stringsAsFactors = F)
 crd <- subset(crd, !is.na(crd$N_TraitValue)) # remove any NAs
 
 # subset by relelvant data columns
-crd <- as.data.frame(cbind(crd$ID, log(crd$N_TraitValue), log(crd$ResDensity)))
-names(crd) <- c("ID", "log_N_TraitValue", "log_ResDensity")
+crd <- as.data.frame(cbind(crd$ID, crd$N_TraitValue, crd$ResDensity))
+names(crd) <- c("ID", "N_TraitValue", "ResDensity")
 
 # initial plot of data
-qplot(x = crd$log_ResDensity, y = crd$log_N_TraitValue, colour = crd$ID,
-      xlab = "Log of Resource Density", ylab = "Log of Trait Value") +
+qplot(x = crd$ResDensity, y = crd$N_TraitValue, colour = crd$ID,
+      xlab = "Resource Density", ylab = "Trait Value") +
   geom_point()
 
 # minimum number of values needed for fitting is 4 so check all unique IDs
@@ -41,23 +41,30 @@ pdf(paste("../Results/Explore_Plots/IDs.pdf"),
     8, 4.5, onefile = TRUE) # save all plots to one pdf
 for (i in IDs) {
   p <- subset(crd, crd$ID == i) # subset and plot the data by ID
-  print(qplot(x = p$log_ResDensity, y = p$log_N_TraitValue,
-              xlab = "log of Resource Density", ylab = "Log of Trait Value",
+  print(qplot(x = p$ResDensity, y = p$N_TraitValue,
+              xlab = "Resource Density", ylab = "Trait Value",
               main = paste("ID", i)) +
     geom_point())
 }
 dev.off()
 
+
+a <- rnorm(1, mean = start_a, sd = 1)
 # calculate initial starting value estimates for parameters
-number = c(39835, 39836)
-for (i in crd$ID) {
+for (i in (unique(crd$ID))) {
+  # subset data by ID
   subs <- subset(crd, crd$ID == i)
-  start_h <- max(subs$log_N_TraitValue)
-  find_a <- try(summary(lm(log_N_TraitValue ~ log_ResDensity, data = subs)))
-  start_a <- find_a$coefficients[2]
+  # subset further to find the values lower than mean to estimate slope
+  sub_a <- subset(subs, subs$N_TraitValue < 1.5*(mean(subs$N_TraitValue)))
+  find_a <- try(summary(lm(N_TraitValue ~ ResDensity, data = sub_a)))
+  start_a <- find_a$coefficients[2] 
+  # re-subset to find the values higher than the mean to estimate maximum
+  sub_h <- subset(subs, subs$N_TraitValue > mean(subs$N_TraitValue))
+  start_h <- max(sub_h$N_TraitValue)
+  # add starting values to dataframe
   for (j in (which(crd$ID == i))) {
-    crd$a_initial[j] <- start_a
-    crd$h_initial[j] <- start_h
+    crd$initial_a[j] <- start_a
+    crd$initial_h[j] <- start_h
   }
 }
 
