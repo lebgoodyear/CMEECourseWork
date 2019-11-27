@@ -6,13 +6,15 @@
 
 This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the exact contents and the system requirements to run each script.
 
-Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
+Each week contains a "Code", "Data" and "Results" directory, where:
 
 **Code** contains the scripts/programs.
 
 **Data** is the data needed to run those scripts.
 
 **Results** is where the outpout from those scripts is sent to.
+
+Some weeks also contain a "Sandbox" directory where:
 
 **Sandbox** is a miscellaneous directory containing experimental code and data.
 

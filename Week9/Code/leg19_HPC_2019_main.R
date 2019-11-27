@@ -172,23 +172,41 @@ sum_vect <- function(x, y) {
 }
 
 # Question 16 
-question_16 <- function(community, speciation_rate, burn_duration, eq_duration)  {
+question_16 <- function(community_1, community_2, speciation_rate, burn_duration, eq_duration)  {
   # clear any existing graphs and plot your graph within the R window
   graphics.off()
-  sp_ab_octave <- c()
+  # generate species abundance octaves for community 1
+  sp_ab_octave_c1 <- c()
   for (t in 1:eq_duration){
-    community <- neutral_generation_speciation(community, speciation_rate)
+    community_1 <- neutral_generation_speciation(community_1, speciation_rate)
     if ((t %% 20 == 0) & (t >= burn_duration)) {
-      current_state <- octaves(species_abundance(community))
-      sp_ab_octave <- sum_vect(current_state, sp_ab_octave)
+      current_state <- octaves(species_abundance(community_1))
+      sp_ab_octave_c1 <- sum_vect(current_state, sp_ab_octave_c1)
     }
-  # calculate the mean of each bin and plot bar chart  
-  #par(mfrow=c(1,2))
   }
-  barplot(sp_ab_octave / sum(sp_ab_octave),
+    # generate species abundance octaves for community 2
+  sp_ab_octave_c2 <- c()
+  for (t in 1:eq_duration){
+    community_2 <- neutral_generation_speciation(community_2, speciation_rate)
+    if ((t %% 20 == 0) & (t >= burn_duration)) {
+      current_state <- octaves(species_abundance(community_2))
+      sp_ab_octave_c2 <- sum_vect(current_state, sp_ab_octave_c2)
+    }
+  }
+  # to know how many times this has occured to use to divide by later
+  counts <- (eq_duration - burn_duration) / 20 + 1
+  # calculate the mean of each bin and plot bar chart  
+  par(mfrow=c(2,1))
+  barplot(sp_ab_octave_c1 / counts,
           ylab = "Species abundance",
           xlab = "Octave (log2)",
-          names.arg = 1:length(sp_ab_octave))
+          main = "Maximum Initial Community",
+          names.arg = 1:length(sp_ab_octave_c1))
+  barplot(sp_ab_octave_c2 / counts,
+          ylab = "Species abundance",
+          xlab = "Octave (log2)",
+          main = "Maximum Initial Community",
+          names.arg = 1:length(sp_ab_octave_c2))
       
   return("type your written answer here")
 }

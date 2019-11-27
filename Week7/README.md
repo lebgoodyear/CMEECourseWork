@@ -11,8 +11,6 @@ This repository contains all the CMEE coursework from Week 7 on Python.
 
 **Results** is where the outpout from those scripts is sent to.
 
-**Sandbox** is a miscellaneous directory containing experimental code and data.
-
 ## Requirements
 
 Python v.3.7
