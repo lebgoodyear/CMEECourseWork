@@ -2,9 +2,9 @@
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 09/11/19*
+*Last updated: 27/11/19*
 
-This repository contains all the coursework for the first term of the CMEE Master's course. 
+This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the exact contents and the system requirements to run each script.
 
 Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
 
@@ -18,9 +18,10 @@ Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
 
 ## Table of Contents
 1. [Week 1](#Week-1:-UNIX-and-bash-scripting)
-2. [Week 2](#Week-2:-Python)
+2. [Week 2](#Week-2:-Python-I)
 3. [Week 3](#Week-3:-R)
-6. [Week 6](#Week6:-Genomics) 
+6. [Week 6](#Week-6:-Genomics) 
+7. [Week 7](#Week-7:-Python-II)
 
 ### Week 1: UNIX and shell scripting
 
@@ -32,7 +33,7 @@ Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
     * Converting tab to csv and csv to txt
 * LaTeX exercises
 
-### Week 2: Python
+### Week 2: Python I
 
 *  Practice scripts exemplifying:
     * types of objects
@@ -63,5 +64,16 @@ Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
     * practical on coalescence theory
     * practical on population subdivision and demographic inferences
 
+### Week 7: Python II
+
+* Practice scripts on profiling
+* 4 scripts modeling the Lotka-Voltera system:
+    * numerical integration version
+    * numerical integration version with carrying capacity
+    * discrete time version
+    * discrete time steps version with random gaussian fluctuation
+* Practicals on visualsing networks
+* Practice scripts using regular expressions
+* Practice scripts running R scripts from python and accessing command line functions through python
 
 

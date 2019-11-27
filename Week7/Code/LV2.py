@@ -4,12 +4,12 @@
 capacity K, and allows user inputs for certain parameters.
 
 Contains one function that calculates the growth rate of resource and consumer
-populations at a given time step. Within the main programme, this function is redefined
-as a partial to allow the fixed parameters to be passed to the function.
-Initial parameters are inputted by user, otherwise defaults are used, and the scipy integrate 
-subpackage is used to solve the Lotka-Volterra system. The results are plotted in two different 
-graphs, showing the change of the two population densities over time and also the change in the 
-two population densities with respect to each other.
+populations at a given time step and one main function that contains the rest of the script. 
+Within the main programme, this function is redefined as a partial to allow the fixed parameters 
+to be passed to the function. Initial parameters are inputted by user, otherwise defaults are used, 
+and the scipy integrate subpackage is used to solve the Lotka-Volterra system. The results are 
+plotted in two different graphs, showing the change of the two population densities over time and 
+also the change in the two population densities with respect to each other.
 
 """
 
@@ -71,7 +71,20 @@ type(dCR_dt)
 # so we can see that dCR_dt has been stored as a function object
 
 def main(r = 3.5, a = 0.2, z = 2.9, e = 0.9):
+    '''
+    Solves the Lotka-Voltera system, including carrying capacity, K, by numerical integration and plots 
+    two different graphs, one showing the change of the two population densities over time and the other 
+    showing the change in the two population densities with respect to each other. Both plots are saved 
+    to the Results folder as pdfs.
 
+    Parameters:
+    Initial parameters are inputted by user, otherwise defaults are used.
+    r (float) : intrinsic (per capita) growth rate of the resource population (per time)
+    a (float) : per capita "search rate" for the resource (area per time) multipled by 
+                    its attack success probability
+    z (float) : mortality rate (per time)
+    e (float) : consumer's efficiency (a fraction) in converting resource to consumer biomass
+    '''
     # set intial parameters
     K = 50
 
@@ -105,9 +118,9 @@ def main(r = 3.5, a = 0.2, z = 2.9, e = 0.9):
     p.xlabel('Time')
     p.ylabel('Population density')
     p.suptitle('Consumer-Resource population dynamics')
-    p.title("r = %.2f a = %.2f z = %.2f e = %.2f" %(r, a, z, e), fontsize = 10)
+    p.title("r = %.2f,  a = %.2f,  z = %.2f,  e = %.2f" %(r, a, z, e), fontsize = 10)
     # save figure as pdf
-    f1.savefig('../Results/LV2_plot2.pdf') 
+    f1.savefig('../Results/LV2_plot1.pdf') 
 
     # visualise the data in terms of resource and consumer density with respect to each other
     f2 = p.figure()
@@ -116,7 +129,7 @@ def main(r = 3.5, a = 0.2, z = 2.9, e = 0.9):
     p.xlabel('Resource density')
     p.ylabel('Consumer density')
     p.suptitle('Consumer-Resource population dynamics')
-    p.title("r = %.2f a = %.2f z = %.2f e = %.2f" %(r, a, z, e), fontsize = 10)
+    p.title("r = %.2f,  a = %.2f,  z = %.2f,  e = %.2f" %(r, a, z, e), fontsize = 10)
     p.grid()
     # save figure as pdf
     f2.savefig('../Results/LV2_plot2.pdf') 
@@ -132,7 +145,7 @@ if __name__ == "__main__":
         e = float(sys.argv[4])
         main(r, a, z, e)
     else:
-        print("No arguments provided, defaults used")
+        print("Requires r, a, z, e arguments.\nThese were not provided so defaults used:\nr = 3.5, a = 0.2, z = 2.9, e = 0.9")
         main()
 
 

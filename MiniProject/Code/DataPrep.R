@@ -17,9 +17,9 @@ qplot(x = crd$ResDensity, y = crd$N_TraitValue, colour = crd$ID,
       xlab = "Resource Density", ylab = "Trait Value") +
   geom_point()
 
-# minimum number of values needed for fitting is 4 so check all unique IDs
+# minimum number of values needed for fitting is 5 so check all unique IDs
 # have a minimum of 5 records
-x <- as.data.frame(matrix())
+x <- c()
 IDs_Count <- as.data.frame(table(crd$ID))
 IDs <- as.numeric(levels(IDs_Count$Var1))[IDs_Count$Var1]
 for (i in (1:length(IDs))) {
@@ -28,18 +28,19 @@ for (i in (1:length(IDs))) {
   }
 }
 if (is.null(x)) {
-  print("The following IDs contain fewer than 5 records so are not suitable for modelling", x)
-} else {
   print("There are no IDs with fewer than 5 records so all IDs can be used for modelling")
+} else {
+  print("The following IDs contain fewer than 5 records so are not suitable for modelling") 
+  x
 }
-# we can see there are no IDs with fewer than 5 records so no
-# IDs need to be removed
+# we can see there 13 IDs with fewer than 5 records so these must be removed
+crd <- crd[ ! crd$ID %in% x, ]
 
 ## view all datasets to get a feel for the data
 # open blank pdf page using a relative path
 pdf(paste("../Results/Explore_Plots/IDs.pdf"),
     8, 4.5, onefile = TRUE) # save all plots to one pdf
-for (i in IDs) {
+for (i in (unique(crd$ID))) {
   p <- subset(crd, crd$ID == i) # subset and plot the data by ID
   print(qplot(x = p$ResDensity, y = p$N_TraitValue,
               xlab = "Resource Density", ylab = "Trait Value",
@@ -48,8 +49,6 @@ for (i in IDs) {
 }
 dev.off()
 
-
-a <- rnorm(1, mean = start_a, sd = 1)
 # calculate initial starting value estimates for parameters
 for (i in (unique(crd$ID))) {
   # subset data by ID

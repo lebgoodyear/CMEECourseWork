@@ -5,10 +5,11 @@ and allows user inputs for certain parameters.
 
 Contains one function that calculates population densities of resource and consumer
 populations at a given time step by running a for loop over the time steps and calculating the
-populations densities at each step. Initial parameters are inputted by user (otherwise defaults
-are used) and passed to the function, which solves the Lotka-Volterra system at discrete time intervals. 
-The results are plotted in two different graphs, showing the change of the two population densities 
-over time and also the change in the two population densities with respect to each other.
+populations densities at each step, and one main function that contains the rest of the script. 
+Initial parameters are inputted by user (otherwise defaults are used) and passed to the function, 
+which solves the Lotka-Volterra system at discrete time intervals. The results are plotted in two 
+different graphs, showing the change of the two population densities over time and also the change 
+in the two population densities with respect to each other.
 
 """
 
@@ -39,7 +40,7 @@ import sys
 # define a function that returns the growth rate of consumer and resource populations
 # at discrete time intervals
 def RC_d(R0, C0, t, r, a, z, e, K):
-    """
+    '''
     Calculates the growth rate of consumer and resource populations using a 
     for loop over a given time interval, using the Lotka-Volterra model.
 
@@ -57,7 +58,7 @@ def RC_d(R0, C0, t, r, a, z, e, K):
     Returns:
         RC (array) : an array containing the growth rate of the populations
 
-    """
+    '''
     extinct = False # start with no extinct populations
     # preallocate matrix (faster than adding/appending)
     # note if the loop is broken out of, this still leaves zeros in the matrix
@@ -86,7 +87,20 @@ def RC_d(R0, C0, t, r, a, z, e, K):
     return RC
 
 def main(r = 1., a = 0.1, z = 1.5, e = 0.75):
+    '''
+    Solves the Lotka-Voltera system, including carrying capacity, K, at discrete time intervals and plots 
+    two different graphs, one showing the change of the two population densities over time and the other 
+    showing the change in the two population densities with respect to each other. Both plots are saved 
+    to the Results folder as pdfs.
 
+    Parameters:
+    Initial parameters are inputted by user, otherwise defaults are used.
+    r (float) : intrinsic (per capita) growth rate of the resource population (per time)
+    a (float) : per capita "search rate" for the resource (area per time) multipled by 
+                    its attack success probability
+    z (float) : mortality rate (per time)
+    e (float) : consumer's efficiency (a fraction) in converting resource to consumer biomass
+    '''
     # set intial parameters
     K = 30
 
@@ -114,7 +128,7 @@ def main(r = 1., a = 0.1, z = 1.5, e = 0.75):
     p.xlim(left = 0, right = 2)
     p.ylabel('Population density')
     p.suptitle('Consumer-Resource population dynamics')
-    p.title("r = %.2f a = %.2f z = %.2f e = %.2f" %(r, a, z, e), fontsize = 10)
+    p.title("r = %.2f,  a = %.2f,  z = %.2f,  e = %.2f" %(r, a, z, e), fontsize = 10)
     # save figure as pdf
     f1.savefig('../Results/LV3_plot1.pdf') 
 
@@ -125,7 +139,7 @@ def main(r = 1., a = 0.1, z = 1.5, e = 0.75):
     p.xlabel('Resource density')
     p.ylabel('Consumer density')
     p.suptitle('Consumer-Resource population dynamics')
-    p.title("r = %.2f a = %.2f z = %.2f e = %.2f" %(r, a, z, e), fontsize = 10)
+    p.title("r = %.2f,  a = %.2f,  z = %.2f,  e = %.2f" %(r, a, z, e), fontsize = 10)
     p.grid()
     # save figure as pdf
     f2.savefig('../Results/LV3_plot2.pdf') 
@@ -139,7 +153,7 @@ if __name__ == "__main__":
         e = float(sys.argv[4])
         main(r, a, z, e)
     else:
-        print("No arguments provided, defaults used")
+        print("Requires r, a, z, e arguments.\nThese were not provided so defaults used:\nr = 1., a = 0.1, z = 1.5, e = 0.75")
         main()
 
 

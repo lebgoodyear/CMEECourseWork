@@ -28,8 +28,8 @@ pdf(paste("../Results/ID_Modelled_Plots.pdf"),
 for (i in IDs) {
   p <- subset(fits, fits$ID == i) # subset and plot the data by ID
   x <- seq(min(p$ResDensity), max(p$ResDensity), (max(p$ResDensity) - min(p$ResDensity))/1000) 
-  yPoly <- p$Poly4[1] + p$Poly3[1]*x + 
-    p$Poly2[1]*x^2 + (p$Poly1[1])*x^3
+  yPoly <- p$Poly1[1] + p$Poly2[1]*x + 
+    p$Poly3[1]*x^2 + (p$Poly4[1])*x^3
   yGFR <- GFR(p$Fit_a[1], p$Fit_q[1], p$Fit_h[1], x)
   data_to_plot <- data.frame(x, ypoly, yGFR)
   print(ggplot(aes(x = ResDensity,
@@ -44,7 +44,7 @@ for (i in IDs) {
                     colour = "r") +
           geom_line(data = data_to_plot,
                     mapping = aes(x, yGFR),
-                    colour = "b"))
+                    colour = "blue"))
 }
 dev.off()
 
@@ -52,7 +52,7 @@ dev.off()
 for (i in IDs) {
   subs <- subset(fits, fits$ID == i)
   deltaAIC <- subs$Poly_AIC - subs$GFR_AIC
-  if (deltaAIC < 2) {
+  if (deltaAIC < 2) && (deltaBIC < 2) && (deltaRSS < 0) {
     cat("Polynomial Model is a better fit")
   }
   if (deltaAIC > 2) {

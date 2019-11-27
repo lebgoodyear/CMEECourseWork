@@ -3,10 +3,11 @@
 """ Uses numerical integration to solve the Lotka-Volterra model.
 
 Contains one function that calculates the growth rate of resource and consumer
-populations at a given time step. Initial parameters are then set and the scipy
-integrate subpackage is used to solve the Lotka-Volterra system. The results are 
-plotted in two different graphs, showing the change of the two population densities
-over time and also the change in the two population densities with respect to each other.
+populations at a given time step and one main function that contains the rest of the script. 
+Initial parameters are then set and the scipy integrate subpackage is used to solve the 
+Lotka-Volterra system. The results are plotted in two different graphs, showing the change 
+of the two population densities over time and also the change in the two population densities 
+with respect to each other.
 
 """
 
@@ -74,7 +75,13 @@ C0 = 5
 RC0 = sc.array([R0, C0])
 
 def main():
+    '''
+    Solves the Lotka-Voltera system by numerical integration and plots two different graphs, one showing the change 
+    of the two population densities over time and the other showing the change in the two population densities 
+    with respect to each other. Both plots are saved to the Results folder as pdfs.
 
+    Requires no input parameters.
+    '''
     # numerically integrate this system forward from the above starting conditions
     pops, infodict = integrate.odeint(dCR_dt, RC0, t, full_output = True)
     # where pops contains the result (the population trajectories)

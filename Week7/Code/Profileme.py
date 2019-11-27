@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
 """
- Contains three functions for practising profiling. One function, 
- my_squares, squares the input, one, my_join, joins string together 
- and the third, run_my_funcs, runs the other two functions. A sample
- of run_my_funcs is called at the end to allow profiling from the 
- command line or from within python3/ipython.
+Contains three functions for practising profiling: 
+"my_squares" squares the input;
+"my_join" joins string together;
+"run_my_funcs" runs the other two functions. 
+
+A sample of run_my_funcs is called at the end to allow profiling from the 
+command line or from within python3/ipython.
 
 """
 
@@ -28,7 +30,7 @@ def my_squares(iters):
     return out
 
 def my_join(iters, string):
-      ''' joins strings together in range iters
+    ''' joins strings together in range iters
 
     Parameters:
         iters(int) : range over which squaring takes place
@@ -44,7 +46,7 @@ def my_join(iters, string):
     return out
 
 def run_my_funcs(x, y):
-     '''prints the inputs and runs the my_squares and my_join functions
+    '''prints the inputs and runs the my_squares and my_join functions
 
     Parameters:
         x(int) : range over which squaring takes place

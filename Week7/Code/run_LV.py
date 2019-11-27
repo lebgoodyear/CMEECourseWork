@@ -13,9 +13,9 @@ import LV3
 import LV4
 import io
 
-# profile LV1
-
+# create list of scripts to profile
 LVs = [LV1, LV2, LV3, LV4]
+# run for loop over scripts to profile each of them
 for i in LVs:
     profile = cProfile.Profile()
     profile.enable()

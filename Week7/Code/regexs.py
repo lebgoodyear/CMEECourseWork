@@ -87,7 +87,7 @@ match.group()
 # search for a different pattern in the string
 MyStr = 'Samraat Pawar, s-pawar@imperial.ac.uk, Systems biology and ecological theory'
 match = re.search(r"[\w\s]+,\s[\w\.@]+,\s[\w\s&]+", MyStr)
-match.group() # this didn't find a match
+# match.group() # this won't find a match
 # make email part of regex more robust
 match = re.search(r"[\w\s]+,\s[\w\.-]+@[\w\.-]+,\s[\w\s&]+", MyStr)
 match.group()

@@ -17,6 +17,9 @@ This repository contains all the CMEE coursework from Week 3 on R.
 
 R v.3.6.1
 
+Packages:
+- ggplot2
+
 ## List of scripts
 
 1. [basic_io](#1.-basic_io)
@@ -26,12 +29,15 @@ R v.3.6.1
 5. [boilerplate](#5.-boilerplate)
 6. [TreeHeight](#6.-TreeHeight)
 7. [Vectorize1](#7.-Vectorize1)
+Vectorize1 - python
 8. [preallocate](#8.-preallocate)
 9. [apply1](#9.-apply1)
 10. [apply2](#10.-apply2)
 11. [sample](#11.-sample)
 12. [Ricker](#12.-Ricker)
 13. [Vectorize2](#13.-Vectorize2)
+Vectorize2 - python
+Vectorize_Compare.sh
 14. [try](#14.-try)
 15. [browser](#15.-browser)
 16. [TAutoCorr](#16.-TAutoCorr)

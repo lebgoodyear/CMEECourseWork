@@ -7,8 +7,7 @@ a list comprehension (there is also a commented out version that uses
 preallocation, which is slower than the list comprehension), one, 
 my_join, joins string together using an explicit string concatenation
 and the third, run_my_funcs, runs the other two functions as before. 
-A sample of run_my_funcs is called at the end to allow profiling from 
-the command line or from within python3/ipython.
+A sample of run_my_funcs is called at the end to allow profiling.
 
 """
 
