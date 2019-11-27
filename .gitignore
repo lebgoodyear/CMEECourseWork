@@ -1,10 +1,10 @@
 *~ 
 *.tmp 
 *.DS_Store
-Week2/Code/__pycache__
 Week4
 Week6/Lectures
 SeminarDiary.tex
 *.log
 *-concordance.tex
 *.gz
+.Rhistory
