@@ -1,0 +1,2514 @@
+Starting weekly assessment for Lucy, Week7
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 32.83 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, Week8, Week5, Week2, Week9, Week4, .git, Week3, MiniProject
+
+Found the following files in parent directory: .gitignore, README.md
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+**********************************************************************
+*~ 
+*.tmp 
+*.DS_Store
+Week6/Lectures
+SeminarDiary.tex
+*.log
+*-concordance.tex
+*.gz
+.Rhistory
+**********************************************************************
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+**********************************************************************
+# CMEE Coursework Repository 2019-2020
+
+*Author: Lucy Goodyear*  
+*Created: 10/10/19*  
+*Last updated: 27/11/19*
+
+This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the exact contents and the system requirements to run each script.
+
+Each week contains a "Code", "Data" and "Results" directory, where:
+
+**Code** contains the scripts/programs.
+
+**Data** is the data needed to run those scripts.
+
+**Results** is where the outpout from those scripts is sent to.
+
+Some weeks also contain a "Sandbox" directory where:
+
+**Sandbox** is a miscellaneous directory containing experimental code and data.
+
+## Table of Contents
+1. [Week 1](#Week-1:-UNIX-and-bash-scripting)
+2. [Week 2](#Week-2:-Python-I)
+3. [Week 3](#Week-3:-R)
+6. [Week 6](#Week-6:-Genomics) 
+7. [Week 7](#Week-7:-Python-II)
+
+### Week 1: UNIX and shell scripting
+
+* FASTA exercise called UnixPrac1.txt
+* Simple bash scripts, inlcuding:
+    * Counting lines in a file
+    * Concatenating the contents of two files
+    * Converting tiff to png
+    * Converting tab to csv and csv to txt
+* LaTeX exercises
+
+### Week 2: Python I
+
+*  Practice scripts exemplifying:
+    * types of objects
+    * basic functions
+    * loops
+    * list comprehensions
+    * sys.argv
+    * control flows
+* Practical programming exercises and extra credit
+
+### Week 3: R
+
+* Practice scripts exemplifying:
+    * control flows
+    * breaks
+    * vectorisation
+    * preallocation
+    * debugging
+    * data wrangling
+    * plotting using base R, qplot and ggplot
+* practical programming exercises
+
+### Week 6: Genomics
+
+* Four scripts: 
+    * practical on allele and genotype frequencies
+    * practical on on genetic drift, mutation and divergence
+    * practical on coalescence theory
+    * practical on population subdivision and demographic inferences
+
+### Week 7: Python II
+
+* Practice scripts on profiling
+* 4 scripts modeling the Lotka-Voltera system:
+    * numerical integration version
+    * numerical integration version with carrying capacity
+    * discrete time version
+    * discrete time steps version with random gaussian fluctuation
+* Practicals on visualsing networks
+* Practice scripts using regular expressions
+* Practice scripts running R scripts from python and accessing command line functions through python
+
+
+**********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 9 weekly directories: Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9
+
+The Week7 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK7...
+
+Found the following directories: Code, Data, Results
+
+Found the following files: README.md
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+**********************************************************************
+# CMEE Coursework Week 7 Repository
+
+*Author: Lucy Goodyear*  
+*Created: 13/11/19*
+
+This repository contains all the CMEE coursework from Week 7 on Python.
+
+**Code** contains the scripts/programs.
+
+**Data** is the data needed to run those scripts.
+
+**Results** is where the outpout from those scripts is sent to.
+
+## Requirements
+
+Python v.3.7
+
+Python packages:
+- networkx
+- pandas
+- scipy
+- numpy
+- re
+
+IPython 7.8.0
+
+R v.3.6.1
+
+R packages:
+
+- igraph
+
+All code has been created for Mac so there may be a few differences in commands with respect to Linux.
+
+## List of scripts
+1. [LV1](#1.-LV1)
+2. [LV2](#2.-LV2)
+3. [Profileme](#3.-Profileme)
+4. [Profileme2](#4.-Profileme2)
+5. [timeitme](#5.-timeitme)
+6. [LV3](#6.-LV3)
+7. [LV4](#7.-LV4)
+8. [run_LV](#8.-run_LV)
+9. [DrawFW](#9.-DrawFW)
+10. [Nets(R)](#10.-Nets(R))
+11. [Nets(python)](#10.-Nets(python))
+12. [regexs](#11.-regexs)
+13. [blackbirds](#12.-blackbirds)
+14. [TestR(R)](#14.-TestR(R))
+15. [TestR(python)](#15.TestR(python))
+16. [using_os](#16.-using_os)
+17. [fmr](#17.-fmr)
+18. [run_fmr_R](#18.-run_fmr_R)
+19. [MyFirstJupyterNb](#19.-MyFirstJupyterNb)
+
+### 1. LV1
+
+A .py script that uses numerical integration to solve the Lotka-Volterra model. It contains one function that calculates the growth rate of resource and consumer populations at a given time step one main function that contains the rest of the script. Initial parameters are then set and the scipy integrate subpackage is used to solve the Lotka-Volterra system. The results are plotted in two different graphs, showing the change of the two population densities over time and also the change in the two population densities with respect to each other.
+
+### 2. LV2
+
+A .py script that uses numerical integration to solve the Lotka-Volterra model, including carrying capacity K, and allows user inputs for certain parameters. It contains one function that calculates the growth rate of resource and consumer populations at a given time step and one main function that contains the rest of the script. Within the main programme, this function is redefined as a partial to allow the fixed parameters to be passed to the function. Initial parameters are inputted by user, otherwise defaults are used, and the scipy integrate subpackage is used to solve the Lotka-Volterra system. The results are plotted in two different graphs, showing the change of the two population densities over time and also the change in the 
+two population densities with respect to each other.
+
+
+### 3. Profileme
+
+A .py script that contains three functions for practising profiling. One function, my_squares, squares the input, one, my_join, joins string together and the third, run_my_funcs, runs the other two functions. A sample of run_my_funcs is called at the end to allow profiling.
+
+### 4. Profileme2
+
+A .py script that contains improved versions of the three functions from Profileme for practising profiling. One function, my_squares, squares the input using a list comprehension (there is also a commented out version that uses preallocation, which is slower than the list comprehension), one, my_join, joins string together using an explicit string concatenation and the third, run_my_funcs, runs the other two functions as before. A sample of run_my_funcs is called at the end to allow profiling.
+
+### 5. timeitme
+
+A .ipy script that compares the speed of for loops and list comprehensions and the join method for strings by importing the functions from Profileme.py and Profileme2.py and using the ipython timeit function. It also compares this to a simpler approach using time.time().
+
+### 6. LV3
+
+A .py script that uses a discrete time for loop to solve the Lotka-Volterra model including carrying capacity K, and allows user inputs for certain parameters. It contains one function that calculates population densities of resource and consumer populations at a given time step by running a for loop over the time steps and calculating the populations densities at each step, and one main function that contains the rest of the script. Initial parameters are inputted by user (otherwise defaults are used) and passed to the function, which solves the Lotka-Volterra system at discrete time intervals. The results are plotted in two different graphs, showing the change of the two population densities over time and also the change in the two population densities with respect to each other.
+
+### 7. LV4
+
+A .py script that uses a discrete time for loop to solve the Lotka-Volterra model including carrying capacity K and Gaussian Fluctuation E, and allows user inputs for certain parameters. Contains one function that calculates population densities of resource and consumer populations at a given time step by running a for loop over the time steps and calculating the populations densities at each step, and one main function that contains the rest of the script. Initial parameters are inputted by user (otherwise defaults are used) and passed to the function, which solves the Lotka-Volterra system at discrete time intervals. The results are plotted in two different graphs, showing the change of the two population densities over time and also the change in the two population densities with respect to each other.
+
+### 8. run_LV
+
+A .py script that profiles four scripts that solve the Lotka-Volterra model, comparing the time taken for the ten longest calls in each.
+
+### 9. DrawFW
+
+A .py script that represents a sample food web network as an adjacency list and plots the network using networkx, where the size of the node represents the body mass of the species. It contains one function that generates a random adjacency list, containing the Ids of species that interact (based on comparison to the connectance probability). Body sizes are generated for each species, saved in an array and then visualised using matplotlib. Networkx is then used to plot the food web network.
+
+### 10. Nets(R)
+
+A .R script that visualizes the QMEE CDT collaboration network using igraph, coloring the the nodes by the type of node (organization type: "University","Hosting Partner", "Non-hosting Partner") and weighting the edges by number of PhD students. This was not wriiten by me but used as a basis for the python script of the same name.
+
+### 11. Nets(python)
+
+A .py script that visualizes the QMEE CDT collaboration network using networkx, coloring the the nodes by the type of node (organization type: "University","Hosting Partner", "Non-hosting Partner") and weighting the edges by number of PhD students. This is a python version of the R-script of the same name.
+
+### 12. regexs
+
+A .py script containing various examples using regex to search for matches in strings, text files and also a webpage.
+
+
+### 13. blackbirds
+
+A .py script that uses regex to capture Kingdom, Phylum and Species name from a text file of blackbird taxonomic information. It prepares the data by reading the file, replacing tabs and newlines with spaces and removing any non_ASCII symbols. Regex is then used to print Kingdom, Phylum and Species name in a list of tuples.
+
+### 14. TestR(R)
+
+A simple .R script that prints a string.
+
+### 15. TestR(python)
+
+A .py script that runs the test R script of the same name.
+
+### 16. using_os
+
+A .py script that produces a list of files and directories from your home directory using the subprocess.os module. It creates three separate lists: files and directories starting with an upper case "C"; files and directories starting with an upper case "C" or a lower case "c"; and finally only directories starting with an upper case "C" or a lower case "c".
+
+### 17. fmr
+
+A .R script that plots log(field metabolic rate) against log(body mass) for the Nagy et al 1999 dataset to a file fmr.pdf. This script was not written by me and is only used for practicing running R scripts from python in the python script run_fmr_R.py.
+
+
+### 18. run_fmr_R
+
+A .py script that uses the subprocess module to run an R-script that produces a pdf. Prints the R output to screen and includes try and except to kill the process if it takes longer than 30 seconds and also includes an if statement to print whether the R-script ran successfully.
+
+### 19. MyFirstJupyterNb
+
+A Jupyter Notebook (.ipynb) practising various Jupyter capabilities, including symbolic variables and differentiation.**********************************************************************
+
+Found following files in results directory: TestR.Rout, LV2_plot1.pdf, fmr_plot.pdf, LV2_plot2.pdf, TestR_errfile.Rout, LV4_plot2.pdf, LV3_plot2.pdf, LV1_plot2.pdf, LV1_plot1.pdf, DrawFW.pdf, README.md, LV4_plot1.pdf, LV3_plot1.pdf...
+ideally, Results directory should be empty other than, perhaps, a readme. 
+
+Found 18 code files: TestR.py, regexs.py, LV3.py, blackbirds.py, Nets.py, TestR.R, LV4.py, fmr.R, Profileme.py, MyFirstJupyterNb.ipynb, using_os.py, LV1.py, DrawFW.py, Nets.R, run_fmr_R.py, run_LV.py, LV2.py, Profileme2.py
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file TestR.py...
+
+File contents are:
+**********************************************************************
+import subprocess
+
+subprocess.Popen("Rscript --verbose TestR.R > ../Results/TestR.Rout 2> ../Results/TestR_errfile.Rout", shell = True).wait()
+**********************************************************************
+
+Testing TestR.py...
+
+TestR.py is a Python script file;
+
+checking for docstrings...
+
+No functions, but no script-level docstring either
+2 pts deducted
+
+Current Points = 98
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.12772s
+
+======================================================================
+Inspecting script file regexs.py...
+
+File contents are:
+**********************************************************************
+#!/usr/local/bin/ipython
+
+""" 
+Various examples using regex to search for matches in strings,
+text files and also a webpage.
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+# imports
+import re
+import urllib3
+
+########################### Regex in Python I #############################
+
+# sample string
+my_string = "a given string"
+
+# find a space in the string
+match = re.search(r'\s', my_string)
+
+# pint output
+print(match)
+# note only tells you that a match was found
+
+# see the match
+match.group()
+
+# try another pattern
+match = re.search(r'\d', my_string)
+print(match) # no match found because no numeric characters in our string
+
+# to know whether a pattern was matched, we can use if
+MyStr = 'an example'
+# look for zero or more alphanumeric characters that are followed by a space
+match = re.search(r'\w*\s', MyStr) 
+if match:
+    print('found a match:', match.group())
+else:
+    print('did not match')
+
+# more regexs
+match = re.search(r'2', "it takes 2 to tango")
+match.group()
+
+match = re.search(r'\d', "it takes 2 to tango")
+match.group()
+
+match = re.search(r'\d.*', "it takes 2 to tango")
+match.group()
+
+match = re.search(r'\s\w{1,3}\s', 'once upon a time')
+match.group()
+
+match = re.search(r'\s\w*$', 'once upon a time')
+match.group()
+
+# directly return the matched group by appending .group() to the result
+
+re.search(r'\w*\s\d.*\d', 'take 2 grams of H2O').group()
+
+re.search(r'^\w*.*\s', 'once upon a time').group()
+
+# use ? to terminate at the first found instance of a pattern
+re.search(r'^\w*.*?\s', 'once upon a time').group()
+
+# try matching an HTML tag
+re.search(r'<.+>', 'This is a <EM>first</EM> test').group()
+
+# get just <EM>
+re.search(r'<.+?>', 'This is a <EM>first</EM> test').group()
+
+# different example
+re.search(r'\d*\.?\d*', '1432.75+60.22i').group()
+# note \. enabled us to find literal . rather than use its regex function
+
+re.search(r'[AGTC]+', 'the sequence ATTCGT').group()
+
+re.search(r'\s+[A-Z]\w+\s*\w+', "The bird-shit frog's name is Theloderma asper.").group()
+
+# look for email addresses in a string
+MyStr = 'Samraat Pawar, s.pawar@imperial.ac.uk, Systems biology and ecological theory'
+match = re.search(r"[\w\s]+,\s[\w\.@]+,\s[\w\s]+", MyStr)
+match.group()
+# search for a different pattern in the string
+MyStr = 'Samraat Pawar, s-pawar@imperial.ac.uk, Systems biology and ecological theory'
+match = re.search(r"[\w\s]+,\s[\w\.@]+,\s[\w\s&]+", MyStr)
+# match.group() # this won't find a match
+# make email part of regex more robust
+match = re.search(r"[\w\s]+,\s[\w\.-]+@[\w\.-]+,\s[\w\s&]+", MyStr)
+match.group()
+
+#################### Practicals : some RegExecrises ######################
+
+# 1)
+
+name = "Lu?cy G)oodYear+, l.g@ic.ac.uk"
+match = re.search(r"[\w\W]+?,", name)
+match.group()
+
+# 2)
+
+# a) match 'abc' at the beginning of the string, followed by any
+# combination of a and b (matched one or more times), followed by a space,
+# a tab and then a number
+
+# b) match one or two numbers at the beginning of the string, followed by
+# a forward slash and then one or two more numbers, another foward slash
+# and finally 4 more numbers at the end of the string
+# -> this is the format for a date
+
+# c) match any number of spaces followed by any number of spaces, upper case or
+# lower case characters, followed by any number of spaces
+
+# 3) 
+
+MyDates = "20150915"
+match = re.search(r"^(19[0-9]{2}|20[01][0-9])[01]+?[0-9]+?[0-3]+?[0-9]+?$", MyDates)
+match.group()
+
+#################### Regex in Python II #######################
+
+# you can group regex patterns into meaningful blocks using parentheses
+# revisit email address example
+MyStr = 'Samraat Pawar, s.pawar@imperial.ac.uk, Systems biology and ecological theory'
+match = re.search(r"[\w\s]+,\s[\w\.-]+@[\w\.-]+,\s[\w\s&]+", MyStr)
+match.group()
+# without grouping the regex
+match.group(0)
+# create groups using ()
+match = re.search(r"([\w\s]+),\s([\w\.-]+@[\w\.-]+),\s([\w\s&]+)", MyStr)
+if match:
+    print(match.group(0))
+    print(match.group(1))
+    print(match.group(2))
+    print(match.group(3))
+
+# finding all matches
+# re.findall() returns all matches as a list strings with each string 
+# representing one match
+MyStr = "Samraat Pawar, s.pawar@imperial.ac.uk, Systems biology and ecological theory; Another academic, a-academic@imperial.ac.uk, Some other stuff thats equally boring; Yet another academic, y.a_academic@imperial.ac.uk, Some other stuff thats even more boring"
+emails = re.findall(r'[\w\.-]+@[\w\.-]+', MyStr)
+for email in emails:
+    print(email)
+
+# finding in files
+# re.findall() can return a list of all matches in a file in single step
+# so no need for a for loop
+f = open('../../Week2/Data/TestOaksData.csv', 'r')
+found_oaks = re.findall(r"Q.*", f.read()) # f.read() closes the file after reading
+found_oaks
+
+# groups within multiple matches
+# re.findall() returns a list of tuples if the pattern includes 2 or more groups
+# where each tuple represents one match of the pattern and the groups are inside the tuple
+MyStr = "Samraat Pawar, s.pawar@imperial.ac.uk, Systems biology and ecological theory; Another academic, a.academic@imperial.ac.uk, Some other stuff thats equally boring; Yet another academic, y.a.academic@imperial.ac.uk, Some other stuff thats even more boring"
+found_matches = re.findall(r"([\w\s]+),\s([\w\.-]+@[\w\.-]+)", MyStr)
+found_matches
+
+# extracting text from webpages
+
+conn = urllib3.PoolManager() # open a connection
+r = conn.request('GET', 'https://www.imperial.ac.uk/silwood-park/academic-staff/')
+webpage_html = r.data # read in the webpage's contents
+
+# webpage contents is returned as bytes (not strings)
+type(webpage_html)
+
+# decode webpage contents using default utf-8
+My_Data = webpage_html.decode()
+# print(My_Data)
+
+# extract the names of the academics
+pattern = r"Dr\s+\w+\s+\w+"
+regex = re.compile(pattern) # example use of re.compile(); you can also ignore case with re.IGNORECASE
+for match in regex.finditer(My_Data): # example use of re.finditer()
+    print(match.group())
+
+# improve the matching to:
+# - include Prof names as well
+# - eliminate repeated matches
+# - group to separate title from first and second names
+# - extract names that have unexpected characters
+x = set()
+pattern = r"(Dr\s|Prof\s)+?[\w\-\.\']+?\s+?[\w\-\.\']+?" # '|' means 'or'
+regex = re.compile(pattern) 
+for match in regex.finditer(My_Data):
+    x.add(match.group()) # save as a set to delete duplicates
+print(x)
+
+# replacing text
+New_Data = re.sub(r'\t'," ", My_Data) # replace all tabs with a space
+# print(New_Data)
+**********************************************************************
+
+Testing regexs.py...
+
+regexs.py is a Python script file;
+
+checking for docstrings...
+
+Found no functions, but one docstring for the script, good
+
+Current Points = 98
+
+Output (only first 500 characters): 
+
+**********************************************************************
+<_sre.SRE_Match object; span=(1, 2), match=' '>
+None
+found a match: an 
+Samraat Pawar, s.pawar@imperial.ac.uk, Systems biology and ecological theory
+Samraat Pawar
+s.pawar@imperial.ac.uk
+Systems biology and ecological theory
+s.pawar@imperial.ac.uk
+a-academic@imperial.ac.uk
+y.a_academic@imperial.ac.uk
+Dr Arkhat Abzhanov
+Dr Arkhat Abzhanov
+Dr Cristina Banks
+Dr Martin Bidartondo
+Dr Martin Brazeau
+Dr Lauren Cator
+Dr Rob Ewers
+Dr Rob Ewers
+Dr Rob Ewers
+Dr Matteo Fumagalli
+Dr Richard Gill
+Dr Richard Gil
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.88118s
+
+======================================================================
+Inspecting script file LV3.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+""" Uses a discrete time for loop to solve the Lotka-Volterra model including carrying capacity K, 
+and allows user inputs for certain parameters.
+
+Contains one function that calculates population densities of resource and consumer
+populations at a given time step by running a for loop over the time steps and calculating the
+populations densities at each step, and one main function that contains the rest of the script. 
+Initial parameters are inputted by user (otherwise defaults are used) and passed to the function, 
+which solves the Lotka-Volterra system at discrete time intervals. The results are plotted in two 
+different graphs, showing the change of the two population densities over time and also the change 
+in the two population densities with respect to each other.
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+## Explanation of the Lotka-Volterra model:
+
+## Lotka-Volterra model is for modelling a predator-prey system in 2-D space
+## dR/dt = rR(1-R/K) - aCR
+## dC/dt = -zC + eaCR
+## where C and R are consumer (predator) and resource (prey) population abundance
+# (measured in number per area), 
+## r is the intrinsic (per capita) growth rate of the resource population (per time),
+## a is the per capita "search rate" for the resource (area per time) multipled by 
+# its attack success probability, which determines the encounter and consumption
+# rate of the consumer on the resource
+## z is the mortality rate (per time)
+## e is the consumer's efficiency (a fraction) in converting resource to consumer biomass
+## K is the carrying capacity
+
+# imports
+import scipy as sc
+import scipy.integrate as integrate
+import matplotlib.pylab as p
+import sys
+
+# define a function that returns the growth rate of consumer and resource populations
+# at discrete time intervals
+def RC_d(R0, C0, t, r, a, z, e, K):
+    '''
+    Calculates the growth rate of consumer and resource populations using a 
+    for loop over a given time interval, using the Lotka-Volterra model.
+
+    Parameters:
+        R0 (float) : the population density of resource population at time t
+        C0 (float) : the population density of consumer population at time t
+        t (int) : the given time (units are arbitrary)
+        r (float) : intrinsic (per capita) growth rate of the resource population (per time)
+        a (float) : per capita "search rate" for the resource (area per time) multipled by 
+                    its attack success probability
+        z (float) : mortality rate (per time)
+        e (float) : consumer's efficiency (a fraction) in converting resource to consumer biomass
+        K (int) : carrying capacity
+
+    Returns:
+        RC (array) : an array containing the growth rate of the populations
+
+    '''
+    extinct = False # start with no extinct populations
+    # preallocate matrix (faster than adding/appending)
+    # note if the loop is broken out of, this still leaves zeros in the matrix
+    RC = sc.zeros((len(t),),dtype ='f,f')
+    # set up first row as starting population values
+    RC[0] = R0, C0
+    for i in range(0, len(t)-1):
+        RC[i+1][0] = RC[i][0] * (1 + (r * (1 - RC[i][0] / K)) - a * RC[i][1])
+        RC[i+1][1] = RC[i][1] * (1 - z + e * a * RC[i][0])
+        # ensure population densities never go above K or fall below 0
+        if RC[i+1][0] > K:
+            RC[i+1][0] = K
+        elif RC[i+1][0] < 0.:
+            RC[i+1][0] = 0.
+            extinct = True
+        if RC[i+1][1] > K:
+            RC[i+1][1] = K
+        elif RC[i+1][1] < 0.:
+            RC[i+1][1] = 0.
+            extinct = True
+        # if a popluation density reaches zero, break out of the loop
+        if extinct:
+            print("Extinction occurred")
+            break
+
+    return RC
+
+def main(r = 1., a = 0.1, z = 1.5, e = 0.75):
+    '''
+    Solves the Lotka-Voltera system, including carrying capacity, K, at discrete time intervals and plots 
+    two different graphs, one showing the change of the two population densities over time and the other 
+    showing the change in the two population densities with respect to each other. Both plots are saved 
+    to the Results folder as pdfs.
+
+    Parameters:
+    Initial parameters are inputted by user, otherwise defaults are used.
+    r (float) : intrinsic (per capita) growth rate of the resource population (per time)
+    a (float) : per capita "search rate" for the resource (area per time) multipled by 
+                    its attack success probability
+    z (float) : mortality rate (per time)
+    e (float) : consumer's efficiency (a fraction) in converting resource to consumer biomass
+    '''
+    # set intial parameters
+    K = 30
+
+    # set the initial abundances for the two populations
+    R0 = 10
+    C0 = 5
+
+    # define the time vector (units are arbitrary here)
+    t = sc.linspace(0, 15, 1000)
+
+    # run the function on our initial population densities and
+    # convert output to a list
+    RC = list(RC_d(R0, C0, t, r, a, z, e, K))
+    R = [x[0] for x in RC] # extract resource population densities
+    C = [x[1] for x in RC] # extract consumer population densities
+
+    # visualise the results by plotting them using matplotlib
+    # first open an empty figure
+    f1 = p.figure()
+    # add everything (data, axes etc.) to the figure
+    p.plot(t, R, 'g-', label = 'Resource density') 
+    p.plot(t, C, 'b-', label = 'Consumer density')
+    p.legend(loc = 'best')
+    p.xlabel('Time (arbitrary units)')
+    p.xlim(left = 0, right = 2)
+    p.ylabel('Population density')
+    p.suptitle('Consumer-Resource population dynamics')
+    p.title("r = %.2f,  a = %.2f,  z = %.2f,  e = %.2f" %(r, a, z, e), fontsize = 10)
+    # save figure as pdf
+    f1.savefig('../Results/LV3_plot1.pdf') 
+
+    # visualise the data in terms of resource and consumer density with respect to each other
+    f2 = p.figure()
+    # add everything (data, axes etc.) to the figure
+    p.plot(R, C, 'r-') 
+    p.xlabel('Resource density')
+    p.ylabel('Consumer density')
+    p.suptitle('Consumer-Resource population dynamics')
+    p.title("r = %.2f,  a = %.2f,  z = %.2f,  e = %.2f" %(r, a, z, e), fontsize = 10)
+    p.grid()
+    # save figure as pdf
+    f2.savefig('../Results/LV3_plot2.pdf') 
+
+if __name__ == "__main__":
+    # if user arguments are given, use those, otherwise use the default arguments
+    if len(sys.argv) == 5:
+        r = float(sys.argv[1])
+        a = float(sys.argv[2])
+        z = float(sys.argv[3])
+        e = float(sys.argv[4])
+        main(r, a, z, e)
+    else:
+        print("Requires r, a, z, e arguments.\nThese were not provided so defaults used:\nr = 1., a = 0.1, z = 1.5, e = 0.75")
+        main()
+
+
+
+
+**********************************************************************
+
+Testing LV3.py...
+
+LV3.py is a Python script file;
+
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Missing docstring, either in one or functions and/or at the script level
+
+Current Points = 97.0
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Requires r, a, z, e arguments.
+These were not provided so defaults used:
+r = 1., a = 0.1, z = 1.5, e = 0.75
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.79276s
+
+======================================================================
+Inspecting script file blackbirds.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+"""Uses regex to capture Kingdom, Phylum and Species name from a text file of 
+blackbird taxonomic information.
+
+Prepares data by reading the file, replacing tabs and newlines with spaces and
+removing any non_ASCII symbols. Regex is then used to print Kingdom, Phylum and
+Species name in a list of tuples.
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+# imports
+import re
+
+# Read the file (using a different, more python 3 way, just for fun!)
+with open('../data/blackbirds.txt', 'r') as f:
+    text = f.read()
+
+# replace \t's and \n's with spaces:
+text = text.replace('\t',' ')
+text = text.replace('\n',' ')
+# You may want to make other changes to the text. 
+
+# In particular, note that there are "strange characters" (these are accents and
+# non-ascii symbols) because we don't care for them, first transform to ASCII:
+
+text = text.encode('ascii', 'ignore') # first encode into ascii bytes
+text = text.decode('ascii', 'ignore') # Now decode back to string
+
+# Now extend this script so that it captures the Kingdom, Phylum and Species
+# name for each species and prints it out to screen neatly.
+
+# Hint: you may want to use re.findall(my_reg, text)... Keep in mind that there
+# are multiple ways to skin this cat! Your solution could involve multiple
+# regular expression calls (easier!), or a single one (harder!)
+
+matches = re.findall(r"(Kingdom\s+\w+\s).+?(Phylum\s+\w+\s).+?(Species\s+[A-Z][a-z]+\s+\w+\s)", text)
+print(matches)**********************************************************************
+
+Testing blackbirds.py...
+
+blackbirds.py is a Python script file;
+
+checking for docstrings...
+
+Found no functions, but one docstring for the script, good
+
+Current Points = 97.0
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Traceback (most recent call last):
+  File "blackbirds.py", line 19, in <module>
+    with open('../data/blackbirds.txt', 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '../data/blackbirds.txt'
+
+======================================================================
+Inspecting script file Nets.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+""" 
+Visualizes the QMEE CDT collaboration network using networkx, coloring the the nodes by the type of node 
+(organization type: "University","Hosting Partner", "Non-hosting Partner") and weighting the edges by
+number of PhD students. This is a python version of the R-script of the same name.
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+# imports
+import networkx as nx
+import pandas
+import scipy as sc
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+
+# load csv data using pandas
+links = pandas.read_csv("../Data/QMEE_Net_Mat_edges.csv")
+nodes = pandas.read_csv("../Data/QMEE_Net_Mat_nodes.csv")
+
+# set panda dataframe index to be the same as column headers
+links.index = links.columns
+
+# contruct list of connected institutions by appending the links not equal to zero
+interactions = []
+for i in range(len(links)):
+    for j in range(len(links)):
+        if links.iloc[i,j] > 0 :
+            interactions.append((links.index[i], links.columns[j], links.iloc[i,j]))
+
+# construct list of unique institutions
+nodes_uniq = sc.unique(nodes['id'])
+# create networkx graph object
+G = nx.DiGraph()
+
+# add institutions as nodes
+G.add_nodes_from(nodes_uniq)
+# create list of colours for the type of node to be used in plot
+nodes = nodes.set_index('id') 
+nodes = nodes.reindex(G.nodes()) # make sure nodes are in the same order as in the G.nodes object
+nodes['Type'] = pandas.Categorical(nodes['Type']) # set nodes as categorical (a bit similar to factor in R)
+# run for loop over nodes to allocate colour by type
+colrs = []
+nodetypes = nodes['Type'].to_list()
+for i in range(0,len(nodetypes)):
+    if nodetypes[i] == "Hosting Partner":
+        colrs.append("green")
+    elif nodetypes[i] == "University":
+        colrs.append("blue")
+    else:
+        colrs.append("red")
+
+# add links as weighted edges, setting edge width based on PhD students
+G.add_weighted_edges_from(tuple(interactions))
+weights = [G[u][v]['weight'] for u,v in G.edges()]
+weights[:] = [x / 30 for x in weights] # set weights at a reasonable scale for better visuals
+
+# generate node sizes that are proportional to PIs
+# the following is commented out in the R version so is commented out here
+# Sizs = nodes['Pis'].to_list()
+# NodSizs = [1500 * (i - min(Sizs)) / (max(Sizs) - min(Sizs)) for i in Sizs]
+
+# use one node size for all nodes
+NodSizs = 2000
+
+# define layout
+pos = nx.spring_layout(G)
+
+# plot the network
+nx.draw_networkx(G, pos, node_size = NodSizs, node_color = colrs, edge_color = "grey", width = weights)
+# add legend
+green_label = Line2D([0], [0], marker='o', color='w', label='Hosting Partner',
+                        markerfacecolor='g', markersize=15)
+red_label = Line2D([0], [0], marker='o', color='w', label='Non-Hosting Partner',
+                        markerfacecolor='r', markersize=15)
+blue_label = Line2D([0], [0], marker='o', color='w', label='University',
+                        markerfacecolor='b', markersize=15)
+plt.legend(handles=[green_label, red_label, blue_label])
+
+# save figure as .svg
+plt.savefig('../Results/QMEENetpy.svg') 
+**********************************************************************
+
+Testing Nets.py...
+
+Nets.py is a Python script file;
+
+checking for docstrings...
+
+Found no functions, but one docstring for the script, good
+
+Current Points = 97.0
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Traceback (most recent call last):
+  File "Nets.py", line 47, in <module>
+    nodetypes = nodes['Type'].to_list()
+  File "/usr/lib/python3/dist-packages/pandas/core/generic.py", line 2360, in __getattr__
+    (type(self).__name__, name))
+AttributeError: 'Series' object has no attribute 'to_list'
+
+======================================================================
+Inspecting script file TestR.R...
+
+File contents are:
+**********************************************************************
+print("Hello, this is R!")
+**********************************************************************
+
+Testing TestR.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+[1] "Hello, this is R!"
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.09757s
+
+======================================================================
+Inspecting script file LV4.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+""" Uses a discrete time for loop to solve the Lotka-Volterra model including carrying capacity K and
+Gaussian Fluctuation E, and allows user inputs for certain parameters.
+
+Contains one function that calculates population densities of resource and consumer
+populations at a given time step by running a for loop over the time steps and calculating the
+populations densities at each step, and one main function that contains the rest of the script. 
+Initial parameters are inputted by user (otherwise defaults are used) and passed to the function, 
+which solves the Lotka-Volterra system at discrete time intervals. The results are plotted in two 
+different graphs, showing the change of the two population densities over time and also the change 
+in the two population densities with respect to each other.
+
+"""
+
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+## Explanation of the Lotka-Volterra model:
+
+## Lotka-Volterra model is for modelling a predator-prey system in 2-D space
+## dR/dt = rR(1-R/K) - aCR
+## dC/dt = -zC + eaCR
+## where C and R are consumer (predator) and resource (prey) population abundance
+# (measured in number per area), 
+## r is the intrinsic (per capita) growth rate of the resource population (per time),
+## a is the per capita "search rate" for the resource (area per time) multipled by 
+# its attack success probability, which determines the encounter and consumption
+# rate of the consumer on the resource
+## z is the mortality rate (per time)
+## e is the consumer's efficiency (a fraction) in converting resource to consumer biomass
+## K is the carrying capacity
+
+# imports
+import scipy as sc
+import scipy.integrate as integrate
+import matplotlib.pylab as p
+import sys
+
+# define a function that returns the growth rate of consumer and resource populations
+# at discrete time intervals
+def RC_d(R0, C0, t, r, a, z, e, K, E):
+    """
+    Calculates the growth rate of consumer and resource populations using a 
+    for loop over a given time interval, using the Lotka-Volterra model.
+
+    Parameters:
+        R0 (float) : the population density of resource population at time t
+        C0 (float) : the population density of consumer population at time t
+        t (int) : the given time (units are arbitrary)
+        r (float) : intrinsic (per capita) growth rate of the resource population (per time)
+        a (float) : per capita "search rate" for the resource (area per time) multipled by 
+                    its attack success probability
+        z (float) : mortality rate (per time)
+        e (float) : consumer's efficiency (a fraction) in converting resource to consumer biomass
+        K (int) : carrying capacity
+        E (int) : random gaussian fluctuation in population densities
+
+    Returns:
+        RC (array) : an array containing the growth rate of the populations
+
+    """
+    extinct = False # start with no extinct populations
+    # preallocate matrix (faster than adding/appending)
+    # note if the loop is broken out of, this still leaves zeros in the matrix
+    RC = sc.zeros((len(t),),dtype ='f,f')
+    # set up first row as starting population values
+    RC[0] = R0, C0
+    for i in range(0, len(t)-1):
+        RC[i+1][0] = RC[i][0] * (1 + ((r  + E) * (1 - RC[i][0] / K)) - a * RC[i][1])
+        RC[i+1][1] = RC[i][1] * (1 - z + E + e * a * RC[i][0])
+        # ensure population densities never go above K or fall below 0
+        if RC[i+1][0] > K:
+            RC[i+1][0] = K
+        elif RC[i+1][0] < 0.:
+            RC[i+1][0] = 0.
+            extinct = True
+        if RC[i+1][1] > K:
+            RC[i+1][1] = K
+        elif RC[i+1][1] < 0.:
+            RC[i+1][1] = 0.
+            extinct = True
+        # if a popluation density reaches zero, break out of the loop
+        if extinct:
+            print("Extinction occurred")
+            break
+
+    return RC
+
+def main(r = 1., a = 0.1, z = 1.5, e = 0.75):
+    '''
+    Solves the Lotka-Voltera system, including carrying capacity, K, and Gaussian Fluctuation, E,
+    at discrete time intervals and plots two different graphs, one showing the change of the two population 
+    densities over time and the other showing the change in the two population densities with respect to each other. 
+    Both plots are saved to the Results folder as pdfs.
+
+    Parameters:
+    Initial parameters are inputted by user, otherwise defaults are used.
+    r (float) : intrinsic (per capita) growth rate of the resource population (per time)
+    a (float) : per capita "search rate" for the resource (area per time) multipled by 
+                    its attack success probability
+    z (float) : mortality rate (per time)
+    e (float) : consumer's efficiency (a fraction) in converting resource to consumer biomass
+    '''
+    # set intial parameters
+    K = 30
+    E = sc.random.normal(0, 1)
+
+    # set the initial abundances for the two populations
+    R0 = 10
+    C0 = 5
+
+    # define the time vector (units are arbitrary here)
+    t = sc.linspace(0, 15, 1000)
+
+    # run the function on our initial population densities and
+    # convert output to a list
+    RC = list(RC_d(R0, C0, t, r, a, z, e, K, E))
+    R = [x[0] for x in RC] # extract resource population densities
+    C = [x[1] for x in RC] # extract consumer population densities
+
+    # visualise the results by plotting them using matplotlib
+    # first open an empty figure
+    f1 = p.figure()
+    # add everything (data, axes etc.) to the figure
+    p.plot(t, R, 'g-', label = 'Resource density') 
+    p.plot(t, C, 'b-', label = 'Consumer density')
+    p.legend(loc = 'best')
+    p.xlabel('Time (arbitrary units)')
+    p.xlim(left = 0, right = 2)
+    p.ylabel('Population density')
+    p.suptitle('Consumer-Resource population dynamics')
+    p.title("r = %.2f,  a = %.2f,  z = %.2f,  e = %.2f" %(r, a, z, e), fontsize = 10)
+    # save figure as pdf
+    f1.savefig('../Results/LV4_plot1.pdf') 
+
+    # visualise the data in terms of resource and consumer density with respect to each other
+    f2 = p.figure()
+    # add everything (data, axes etc.) to the figure
+    p.plot(R, C, 'r-') 
+    p.xlabel('Resource density')
+    p.ylabel('Consumer density')
+    p.suptitle('Consumer-Resource population dynamics')
+    p.title("r = %.2f,  a = %.2f,  z = %.2f,  e = %.2f" %(r, a, z, e), fontsize = 10)
+    p.grid()
+    # save figure as pdf
+    f2.savefig('../Results/LV4_plot2.pdf') 
+
+if __name__ == "__main__":
+    # if user arguments are given, use those, otherwise use the default arguments
+    if len(sys.argv) == 5:
+        r = float(sys.argv[1])
+        a = float(sys.argv[2])
+        z = float(sys.argv[3])
+        e = float(sys.argv[4])
+        main(r, a, z, e)
+    else:
+        print("Requires r, a, z, e arguments.\nThese were not provided so defaults used:\nr = 1., a = 0.1, z = 1.5, e = 0.75")
+        main()
+
+
+**********************************************************************
+
+Testing LV4.py...
+
+LV4.py is a Python script file;
+
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Missing docstring, either in one or functions and/or at the script level
+
+Current Points = 96.5
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Requires r, a, z, e arguments.
+These were not provided so defaults used:
+r = 1., a = 0.1, z = 1.5, e = 0.75
+Extinction occurred
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.76454s
+
+======================================================================
+Inspecting script file fmr.R...
+
+File contents are:
+**********************************************************************
+# Plots log(field metabolic rate) against log(body mass) for the Nagy et al 
+# 1999 dataset to a file fmr.pdf
+
+cat("Reading CSV\n")
+
+nagy <- read.csv('../Data/NagyEtAl1999.csv', stringsAsFactors = FALSE)
+
+cat("Creating graph\n")
+pdf('../Results/fmr_plot.pdf', 11, 8.5)
+col <- c(Aves='purple3', Mammalia='red3', Reptilia='green3')
+plot(log10(nagy$M.g), log10(nagy$FMR.kJ.day.1), pch=19, col=col[nagy$Class], 
+     xlab=~log[10](M), ylab=~log[10](FMR))
+for(class in unique(nagy$Class)){
+    model <- lm(log10(FMR.kJ.day.1) ~ log10(M.g), data=nagy[nagy$Class==class,])
+    abline(model, col=col[class])
+}
+dev.off()
+
+cat("Finished in R!\n")
+**********************************************************************
+
+Testing fmr.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Reading CSV
+Creating graph
+null device 
+          1 
+Finished in R!
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.17012s
+
+======================================================================
+Inspecting script file Profileme.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+"""
+Contains three functions for practising profiling: 
+"my_squares" squares the input;
+"my_join" joins string together;
+"run_my_funcs" runs the other two functions. 
+
+A sample of run_my_funcs is called at the end to allow profiling from the 
+command line or from within python3/ipython.
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+def my_squares(iters):
+    ''' squares input using a for loop
+
+    Parameters:
+        iters(int) : range over which squaring takes place
+    
+    Returns:
+        out(list) : list of squared numbers from iters
+
+    '''
+    out = []
+    for i in range(iters):
+        out.append(i ** 2)
+    return out
+
+def my_join(iters, string):
+    ''' joins strings together in range iters
+
+    Parameters:
+        iters(int) : range over which squaring takes place
+        string(str) : specified string
+    
+    Returns:
+        out(str) : concatenated string from string inputs
+        
+    '''
+    out = ''
+    for i in range(iters):
+        out += string.join(", ")
+    return out
+
+def run_my_funcs(x, y):
+    '''prints the inputs and runs the my_squares and my_join functions
+
+    Parameters:
+        x(int) : range over which squaring takes place
+        y(string) : specified string
+    
+    Outputs:
+        print(x ,y)(int, str) : prints the inputs
+        
+    '''
+    print(x, y)
+    my_squares(x)
+    my_join(x, y)
+    return 0
+
+run_my_funcs(10000000, "My String")**********************************************************************
+
+Testing Profileme.py...
+
+Profileme.py is a Python script file;
+
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Missing docstring, either in one or functions and/or at the script level
+
+Current Points = 95.0
+
+Output (only first 500 characters): 
+
+**********************************************************************
+10000000 My String
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 6.47878s
+
+======================================================================
+Inspecting script file MyFirstJupyterNb.ipynb...
+
+File contents are:
+**********************************************************************
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Practice Jupyter Notebook!\n",
+    "\n",
+    "This is an example Jupyter notebook.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Import sympy and scipy and run some commands so the plots appear correctly."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from sympy import *\n",
+    "import scipy as sc\n",
+    "\n",
+    "%matplotlib inline\n",
+    "import matplotlib.pyplot as p\n",
+    "init_printing()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We need to create some symbolic variables that we can manipulate mathematically"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAHgAAAAaCAYAAAB8WJiDAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEc0lEQVRoBe2ai1EbMRCGbYYCDHQAHUBSQXAHgVRA6ADGFTCkA0gFCemApAICHUAHAXdA/k8j3ZxkHdbp7EMw3pm1TjppH9qHVgfD5+fnwQre9g4Mh8ORNJhYLbZteyTbTtfftmor6e0OnMuYx243ZPALPd8Kd4Y5ESwCeMln4VSI93wUnonWndoV9LwDsgdpeKz9/w1ra597Pe7lRvC5Fj+I4DdL8ETtH+EG/RX0vgNE798Y11wDnwXEttR/CMZW3Z52QIF2GbDC4ATg3VrwIqnLQrA2mXRN3i8CbIoqQpZFCNFGH83dFU/ssQfvLAOzEBCxEyGH+UXEi8ycvn+QSTxR8j3BttXrRZ00h9qI43NP9qA+6mZgEeEM/iQcpwgAw2WCZMBztyTXr2Xy6Zu29HHFE/pFwRlXcym2purvmjF1Bl1RHIkYKrndrrRy14s31fxt7vq3sA790DOUVWNE7rUQOzjkyBy1Nq5ZNBg8Qcgx0jMMMPBXN9am1br93LWOj9ajUBZ/R6NNuwiZ2/BjLvoJOQ49u2kMezDBQ+a1PoO1iNz+KKxXzRiI8Z/CHCD6wC5wKNnCarILvXlrFyHzPB7ee6vfoVKvt1ca3xDyTcNDFudekw60diJG/6wEfOioDnY71lsjOXCwusP1xvsVGKHnoTDJmSsDW68gBQAY7EhI6v0iBG7kIaZ4UcsVqX5NMhNe8QeHM4VITIY2usXWL2NMMlHtT4ReNAa8LrXX1SdI+w49x8J2BtaC6numZf5dYxj1VH3ON8rvUqvTD5INGZugKN20n+wlgGNiYALqhxA96BtntYGkrgd8giRjJYE5g8WQyHVM3UJKcmfQzch7N6+Elk2hLpiB0nSTPFS5JnBkQAxJlqRwIiMa4/LcYFxNMXoyLwnMHxtgWieoPiX3psbM15AkSgmTRJcoi3kfDgTEjISyeHojiC5V5IHmzaTprrotS2anjOhfS25SLh+OrtSYP/O592GLPhrjOjgM30X7muiV3PQF/JzE3i1jTLzIFtn8tBYD76fIpnkL0U10Osls9xljXTm59XzvnptazSFAnpreh+Mz1yR5iIswl57xrBEowqUCleVc+QrUjQKKs9cB6XoeoGcs00XXrVnjXdeUN1WbPKF+7ZioP41SKGMQhWc2p2TdkE0yU/t4x0rNDk07y3FWt03TPDNOBBOx4KNlymZVxrQMbzRWMtxJOCrREErWDeNSX1R7rT7P5jwOFan1qYuokZJgXbPwIO5UbAbn8bGMSkRTEPHt81FjVbpmToGAwrFrUsm6YcizYC+9aA7euS52Cm887t1Mm/UvOzNUOg7ImShYtuVI5j9EcsiJBvdDKmmieemwCJnbCimeHENU3Tupa0nRJQCpqZ6qcmTCq8OvPjl0UtcsQuZUXm7eqR6So5dFRUSwk75rKw8nVR/Lw5OLkK48+1pvo5cPIvPOaE+k92bgkbTjXtlqE7wdKbRjnZcjqFWme1cGxjbW0/nokfQxvlB7emJJJ3Odkk6tM9N/c/VI/So4Mh8AAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle x^{3} + \\left(x + \\pi\\right)^{2}$"
+      ],
+      "text/plain": [
+       " 3          2\n",
+       "x  + (x + π) "
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = var('x', real = True)\n",
+    "\n",
+    "MyFun = (pi + x)**2 + x ** 3\n",
+    "\n",
+    "MyFun"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Differentiation using sympy\n",
+    "\n",
+    "We can use diff() function from the sympy package to do differentiation in python. The first variable is the function/equation we want to differentiate and the second variable is the factor we are differentiating by."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAH8AAAAVCAYAAABv0jEvAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEAklEQVRoBe2Zi00jMRCGL1EKCJQAHfDoADrgdBVAOiCiAgQdwFVwgg5CBxx0wJUQ0kHu/3xja9e3eayzmzVSLFm2Z+3xvGec9Obz+be2Wq/XGwr3jeE/sPFSd87aunOHd30JDNbfmrTzTooe+ZMyhgfN39QPPWw3dieBXsueT1g51x0vsCjl4/0f6seCvQPbte4k0G/5arz+d8t37NAnSqBVz49pkuffCXYhr9+F/Vg4HaxDzreQ7PMzhRohmpztQvamtAn/kXBcqB9viiv1vPE4tvMnGqfq46+SghqnX4wjC5T9wNx3ra/U+YinBnjKXDgwpIn6MOV8E2eMhqciLsGIRPB4VoTnOG+DfqdUIb42IQRFa41BIJi3TYSh8yg+CF1zIsBBCk6dO1O/Sjz7pLP/GZ9gn/QUnHXP6J6s6PcFH5U3b2+6a2IszD2s7mhhiufdLWGfrjmphXCb0jBIekpD8J+iIT5PWhsarSl465zJin6X86VoBLBX5ELCID/TUF5q400Pw4yh6T5fWwTYFibweLTEqGOj2AJJta5onH6n/JgEKR4vIR+OJKzH4nfzHOoB2qn6pTqh/Yc67VVnnploLBkUsK6aaPm+4G6iEbSG3x3q8LgAZ+PgmvSTxvlldZlBP5aUL6YRBIpHqQij6o0efrXTfi75qY7Cx1oTJTAap3yNWTfjF8P1LwBP75fgsYp+wZA/DWNH+ejylzqvG9ZEkH/GLqW5oi8e9Z2wX6r2tcbjQ7GmuS8UHUxriqqkgiy+v2ot3NB0XfUtBSZc/NpY9cpphce26Rd+nLdYtKMfrxvmpL2g76U/8siKqISxlj0dmmFpGovhkefbvmCNvt11DxGECBS3fQNUFYzvomNRaI/x8FOzq2V0plR/NMFjl/QXGRUdE/F3DkxzHLP8p5o+8g2LKVmFwVFuyfuB+27fGvNEj3fRqPsa8XzhIYKVPH7JnfDfCI/bpF93odPiE/sj5nEgi8CzXTWuufNwrVc27fWeGfK74cI4ZisRdLRBNGJAh6IxeLxg5H3o/lMkK0cea9APf+R63xyPfsHYN0WhrOcKpZ3Y5hddylt4UhCIE14ksJsKHIai+0G04w2nojEu8DCIae48rqLfSxg+NCe6ueKuAPcO60AD+xALgxyBQEDCc498z5rDVPXAybsYjWuC8e3VltkNog/LJ+9hyC7fG5HUEaS8e8Gz5XEd+o0fBhRPDRT0ozVz8n8wCKd8bXoU8rNIKAgr/Bdvh3jzo2RC5Ej7iQQIkrQxFSykAPZk1lA8PCGYuPkiFsHkyuM69Hu+UPKtX9gYlO7hS6t9vymXUYaGZ/J0uc+Fpjp05EZ/vw7xGewldBVDWQYk1SIhK/r/AtO9eWjgs/0JAAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle 3 x^{2} + 2 x + 2 \\pi$"
+      ],
+      "text/plain": [
+       "   2            \n",
+       "3⋅x  + 2⋅x + 2⋅π"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "diff(MyFun, x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "To double differentiate (or more!), we can do the following:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAFUAAAAVCAYAAAA3raI2AAAACXBIWXMAAA7EAAAOxAGVKw4bAAADsUlEQVRYCeWYi1EbMRBAMeMCIOnAdECgA+gASAWBDpJJCdABpATowHTApwMoAdyB854i3ejudDiGA2zYmbWk1Wq1P610Hkyn05W+YDAYjJB335e8ZZBTsnm1L8UR/hNZm33JWyI5o2h7pXJwqt4GTyPe0I7B/3YQvHtI/EqWXlSS6UBX7nFE5St3J+dZhj46b4J34FpTX2y+lMacPqhgRO/cMpCQ8TFoXdhJtK4WHje6ac5H+mlOh3YIKncvpy9iP+p/TnsK3oDqvdala+QJ8/RXXNhihvYodglJdHjc9DCNUwvNclBzIGMDIK0VhLSuz5Z9PBUt3ebdAxnJlpafkiz3AUMSefzd+LGQ2qb1GnQz+Sk4QPBZgeEW2iRimIbP8VuCQRRfHaIPDvTjkN103uYTBncqhQADUrztkafcdbAC+FPdMbs/IuiLgyHG73dYFy4q5s24LnBtKNRdDIkeA2CtPkJmLbONLnSPj7AN/gA9Id9B4Yo1tUvwH3nhfvXFrse/BRipQzXqV2uyTthieFcn1UfKAq1JR6ABuq5zhNExTjsRGV2Bf0AvSffX4QZjGUBfjDz+JfDyOotGluYTTYMf0qDUIkNHhmzHuR5/n2z70EPm0TdDm06TLwX0S2Ee0kKCvgg1taYdRlrvLjHazJoFGjyZxZTmdSTy5T+nXWds/5o2r8u70G4TjbarPCWxvhHV2freBPVzvmSLe8yU3RQ4Y6wd9Uxl81DX2KykxAx59WlkWUJ8+4YszWY9/jpAvCjMS09ZSnc2dOmLDma8n86WlbeAkGTDtFNUYCNXEFp4TkHLMyktsZVuCagB66T5YDZLUkbWeEoDeHWoUF1KUZbBMasXHbT7IVxUKG5WbaN4M0OMtHWiC5wLjs8ZogN0gpnYdMZW5L3UYWD+6RpOCGvyIP4uyMi3W6S+mXo/xCid4sWkkfn7UQbfr08dHY+2T6ASNAOUvo+Nps+qCfsZtHDc6YcoM66CAM05XwPLAt9QdDzgx2NqppbAYi5jEaLRfpptlBjifH4ZGECfT+FtGx3pzR+eZdBPoOloLyv1eoBWlQLGc0GU9eyaynqTzWB7umw9QSaS7+ZWssGvHbsDJmmfD1GQTyQ3Wyh4qVPnMYa9TJgxfthYnWdhB2/4SuqYe2+ypaQqJ6+sjOUuvLdfnKkqSpTGNNbJ/IJx6lNAzFLLoGVrpS+nWm/8TzYI/RSezIyMSWUJDKeiF6cqP0bL7/XanyXZ3h+yi91+MPkFWp3Sv2T55HxmheSIAAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle 2 \\left(3 x + 1\\right)$"
+      ],
+      "text/plain": [
+       "2⋅(3⋅x + 1)"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "diff(MyFun, x, x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAAoAAAAOCAYAAAAWo42rAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA00lEQVQoFXWSgQ2CQAxF74gDEEfADYwjMAKJG7iKYQRHMIwgK8gGsoHBDfD940oaEpqU9v/+a3sX4jzPwVuMsfWY/IlmCBJmcQX5wWvHdeKECxIzkT1kbwSxxMeEc7cGoB1K67aNNvaNaNoWPT6ktiGciQMXUbziX/yEd4jXVbSHxqrrzXcBT3gjTmZC8PICFqk9cInLAvJHIltut+T21RQ1utjzSGQHTORj5YU6uWejPU+NYndH7ZyEKQnhhbhVnrEmrLeOmUwj8w9hKxwh79QHFf8zQq2xR+TPOQAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle 6$"
+      ],
+      "text/plain": [
+       "6"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "diff(MyFun, x, x, x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Or indicate the number of times to differentiate like so:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAAoAAAAOCAYAAAAWo42rAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA00lEQVQoFXWSgQ2CQAxF74gDEEfADYwjMAKJG7iKYQRHMIwgK8gGsoHBDfD940oaEpqU9v/+a3sX4jzPwVuMsfWY/IlmCBJmcQX5wWvHdeKECxIzkT1kbwSxxMeEc7cGoB1K67aNNvaNaNoWPT6ktiGciQMXUbziX/yEd4jXVbSHxqrrzXcBT3gjTmZC8PICFqk9cInLAvJHIltut+T21RQ1utjzSGQHTORj5YU6uWejPU+NYndH7ZyEKQnhhbhVnrEmrLeOmUwj8w9hKxwh79QHFf8zQq2xR+TPOQAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle 6$"
+      ],
+      "text/plain": [
+       "6"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "diff(MyFun, x, 3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You can also apply multiple operations at the same time, with each operation acting on the result from the previous operation:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAdoAAAAVCAYAAADhLS96AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAKgklEQVR4Ae2diZUUNxCGvfs2gMWOAMgA2AgMGYCJAMgAPyLYBxkAEWDIABwBRwaQgZfJAP+fRqVVX9OtvqZnWvWeRrdU+rtKJamPOfn169dvS6OTk5Ov4uvu0viagx+N/Zb6eSi3kTuXu5C7FB7f5K+OhAcYvPADBxvoifAAn0wtCGT8WgDK2QGBLCsBil6BXfid9Wpxwkpi9rmavzNhF0tv+qUY/CFD8gpGPR7/KniD+ArppbB4ZuMWHq8V/ip329KyvxOBjN9OeHJmhECWlQiMHsFG/E40ifVob5oqmkTvq2V2MO/F18k0vSy7VWHgFhkav9vBKo7hva/4Wnf4COgDjf8TV054sKv9LnfXMCI9Uz0CwivjVw9NTi0hkGWlBEhidBd+i9nRikkMLEbmTeL4jqp4jfHgGBlju1ZiN/tlrYMfYdwZvxFAXEkTWVaGXehG/Bazo5WhfS4j88ob3J8Kr3JHa9cZPBR+LPcOXCx97b5wYdHxUJjko+MewpDx6wHaSqtkWRl24WP8gqFVIkdyWGSI3SVxzpzdkR2JRr4Bov/JMeFR7gcJfUjtsWv7RhsK0/eiDK14Yqf9TPwZPmGYY2MRGlbAY/FewY/qe+/G1uMAPxzbbmJeCSsfmfnbp9+Tf0VcZUd5kKutf9/vrJ7nqSIbSkeOeYgLHflDjji3RCr6pPRZaAn4iYdeMtKE8yzAzdhJ2zXqi1/qENr4SG1vrvJtfO8NPyk+GDAJvCZsTvGncmSye4jTeRAlpClMXe6Z3YrLdQ1TT+6plVeY9hS97nPfYfHD+JgkAw6ERaNiUW7f94GRp7M7dflTp6lfZyDk20NI8HJe7ldpXMcCRoqz+6Q895gL2KXG1Qbtf5Sr9J3a1pjlxU+TbBT0iT5FLFKC7ozJR1tb6nfv+HkeesmI6tbi3DbuQ8jX2BahY4bVEmTFeOniHwJ+bvIToxxTMhOEScAzTxqv2lg5jO93i5uvNCZUdl3Jk6nqYUiob44JnX6JB35S21ZdHqwKBjy1vpVXG2BTUXLaJt3Kma+0IVigcD/lglFVmAkSPHqPRXXHxAJeKsZOaRiRunTGwwlFsmxYHdUvGHHFkZm+C7tRsIA30S7ZqFwvlef6Bn2y8U3tq89F4Cc+esmI6tXiPDVuqe2Lz8Gy5cc6u47ZWNX/aLJibXbxx8COfpaK3ymciTja23hHnEmReJkeKaHuGPCz0u9rW85EkkTqhyNjjhedU2UMFcS7ox+2wV6/8JLMT9yTP4YAB1yZpsCCfjhujY/hUV7S/5HrS+eqiJuS4PNnjQxwVHruj2yS+/f1WHxdcj1wCnOED059aBQsPB9cF1yZuJ2CfOydFoZfsoy04Lx3fEsMjCJbpTbjaDJ+ceW28ASy0tZlnD81dvS1N/zO6F0Gjcmw8J6mQOe+KcQkZwSjdU8F22RDfm/jqD7ZJdoE9VZxHgTq3Z4xPcB/zAJAfFTuzarNqbBg/C/UJ/f2oAu52nuiLnc5P8gQO3GThTJnKFIf4nieuviB1E/dNQn5MwR2yQZH3M91DfEfRZiwiIz1aQY2HW5Lwa+PjOzCeQ78ltRHH/xS+F+qrqWMYVfZveHnDG2ZM00QGBEmBR7ycIZVaV0myt+tLV8ewwlhLJ7IcSzBk7TQZ7VdMKK+rzpDvq0x46/457iqdlKcEgthwIlB3anBjKNP70p82wKpXJkdKIu5MKYU2VC9wgKw3Pg+4rtkw4/1k8og2yxW2eXzgBi7XG6vFGTet/VCebv0643qhYWF6lC2k24tCT/x0llGND77WEutDpIPTY3ftpdl/Kbg1weXrrKSIn/LQG7LxT7xKxhaAcikiJHFMDIxfpEzMiO6sYTIv/LheLLgSWQ3OfiL/lZlMK7sEFEeDHlh0vFt7N0TfywINuI1PsKN+VoNFvGgU8NensDSnkS2Jo5ZNtwYUWqNHxlnwYaPPuEH8vnEMUDoDnr3To4ntomzAi8sUoiLDha/LfvXv00yovQ2HcTIGp4Zv0jHBuByfWF2h45a/qbA7zTGU5MD90tfMUkoHYX/qk7tCDku2hTmNQYUgNW2KYGVpR0zrBiqcr6VW4IfdvIDmDkWLAZA4B5+YTcWXk1ai2xEesNO1h1Zyf+udBay6AiLWrfwFD7kY1h4UhmD7IwsYR9X0paOAD8bivk8IFWQEZ+xUwczfgZfUcf64hJaawkcu/xNhV9hRxtjLAX/oE43Snsvn+M727XGxSxsOzy7r/hF9ePd4AMVdO/JUkF5GPJRSLyxO3aTV6lBx5Pyw5FblA8vtTyoPIuEncdVyl8FFhFeyUF/XT4J5zL+s8jG2HIBAB1lw8pxX93G/kB1WWhiVNCnm8rDoOKM+MykLUgulNh0C+Vg8bOBmu+vUUVGuuC8T/w836PNOYZHql+H3wBcunY/SP6Wgh2DnRM/Z2jVIavruiMqjo4RKN6DxPBSjNV2mSzNGVd/seMytFE+Pozze4fVl01mhTbEKxMbr4DY5FXIr4uoDrsKXlGJFwmVosrfHDsWlUEnJAgbd/+w7tooLTYutDqJbNT1TWd95MLX6yQblBVxWnPThfyP+EF/2N3yqhhjttMdeEL/WNQaNT5Udqj42cDMb5IRpafg7JqbG7+xZcswSfGb8IvbSMElrrcrPFT+loAd45sbvzN1iJF0T3QqfENAxApfxtyOuMrptqN195TiTLXJpALFE4szzC19bWvN+4uSX4hndh4xMRHe8un8sw6LhmPHIh5/57AwYoFzO1YopYErC7nCAkbpRycbGualHIu1ih4xfo0ZPTB9UdARi0Vu1Rg5vCzS5B8YfmEY4rtRRlQoRQetzYxfvY71wsVAbfOPUf5Kc9R4+Klh8OSjAoUvtkTp4eVplWGnUvn4gNI4anUv4svHiPJag/sakHyMlpq7/mCB4txMJ3Eypz5QZr6fPLgPtVPBR2mrwwI85YI8lLFVHguSyrX19ZCLvcuGeBhNLhi/qE42SKv9oIbS0Y2QpzCYFDD18crXtHzZveqWeBiEn+rvlJGyTFlc9So4e/wXg99QbPx4BulYhFdnXKxOm6/xTaa/Y2C3ZPxONUCIHRoKHMivOgGWhxI2ZMjnvtGVzyOJLThl/pLj9R2IXQqOcuRxP9PVl0958j4TPiBiHLhAK8YiYBAHdF3ZibCo4uMUryNHmsnQKmRD4+X+P/diCzKjOIszXvGJd/ak8cxA0BHFCfNcQ5kOGj+Nv4uMlMdscbAs4OkzMn7bEzjTMcMrBRer0+avSf5Gxe8MZDEaUgK+7BQ/BIRShP8Bja4A/4vKBxXIh3hw40+1YffeOFLFIHNRaPuZyn70bXNEfaW0cIxMmaWS5/me5w98WIzEH/hfBRYatzOgGrthwdPoXG+emrV74JRBJhDQMq1KNoQJ79Gy8OSjKyw0jTg1Kt9ewaBeWgHvl8tY9qHrVhcZsbE6X/gxJ5nc1engUeCncY6lY4ZfCi5Wp81frPwtHb/w7z1tCB9avoDniCvpYahDG2NXfjMW10hlLK6x6BPK+DWjlrFpxqYt59ixO20D4IDzOX7DZdrikLHYSkKWi2EakfFrxi9j04xNW85RY/c/gCS82pWhh7gAAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle 30 x^{4} + 40 x^{3} + 12 x^{2} + 48 \\pi x^{2} + 24 \\pi x + 12 \\pi^{2} x + 12 \\pi^{2}$"
+      ],
+      "text/plain": [
+       "    4       3       2         2                2         2\n",
+       "30⋅x  + 40⋅x  + 12⋅x  + 48⋅π⋅x  + 24⋅π⋅x + 12⋅π ⋅x + 12⋅π "
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "expand(diff(MyFun**2, x, 2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Calculate the derivative of a multivariate expression:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x, y, z = var(\"x, y, z\")\n",
+    "\n",
+    "f = sin(x * y) + cos(y * z)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Using the above, calculate\n",
+    "\n",
+    "$$\\frac{d^{3}f}{dxdy^{2}}$$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle - x \\left(x y \\cos{\\left(x y \\right)} + 2 \\sin{\\left(x y \\right)}\\right)$"
+      ],
+      "text/plain": [
+       "-x⋅(x⋅y⋅cos(x⋅y) + 2⋅sin(x⋅y))"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "diff(f, x, 1, y, 2)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
+**********************************************************************
+
+Testing MyFirstJupyterNb.ipynb...
+
+======================================================================
+Inspecting script file using_os.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+"""
+Produces a list of files and directories from your home directory
+using the subprocess.os module. It creates three separate lists: files and
+directories starting with an upper case "C"; files and directories
+starting with an upper case "C" or a lower case "c"; and finally 
+only directories starting with an upper case "C" or a lower case "c".
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'""" This is blah blah"""
+
+# Use the subprocess.os module to get a list of files and directories 
+# in your ubuntu home directory 
+
+# Hint: look in subprocess.os and/or subprocess.os.path and/or 
+# subprocess.os.walk for helpful functions
+
+# imports
+
+import subprocess
+import re
+
+#################################
+#~Get a list of files and 
+#~directories in your home/ that start with an uppercase 'C'
+
+# Type your code here:
+
+# Get the user's home directory.
+home = subprocess.os.path.expanduser("~")
+
+# Create a list to store the results.
+FilesDirsStartingWithC = []
+
+# Use a for loop to walk through the home directory.
+for dir, subdir, files in subprocess.os.walk(home):
+    for x in subdir + files: 
+        if re.match("C", x):
+            FilesDirsStartingWithC.append(x)
+
+print("Number of files or directories starting with C:")
+print(len(FilesDirsStartingWithC))
+FilesDirsStartingWithC
+  
+#################################
+# Get files and directories in your home/ that start with either an 
+# upper or lower case 'C'
+
+# Type your code here:
+
+# Create a list to store the results.
+FilesDirsStartingWithCc = []
+
+# Use a for loop to walk through the home directory.
+for dir, subdir, files in subprocess.os.walk(home):
+    for x in subdir + files:
+        if re.match("C|c", x):
+            FilesDirsStartingWithCc.append(x)
+
+print("Number of files or directories starting with C or c:")
+print(len(FilesDirsStartingWithCc))
+FilesDirsStartingWithCc
+
+#################################
+# Get only directories in your home/ that start with either an upper or 
+#~lower case 'C' 
+
+# Type your code here:
+
+# Create a list to store the results.
+DirsStartingWithCc = []
+
+for dir, subdir, files in subprocess.os.walk(home):
+    for x in subdir: # only look in subdirectories
+        if re.match("C|c", x):
+            DirsStartingWithCc.append(x)
+
+print("Number of directories starting with C or c:")
+print(len(DirsStartingWithCc))
+DirsStartingWithCc**********************************************************************
+
+Testing using_os.py...
+
+using_os.py is a Python script file;
+
+checking for docstrings...
+
+No functions, but no script-level docstring either
+2 pts deducted
+
+Current Points = 93.0
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Number of files or directories starting with C:
+16567
+Number of files or directories starting with C or c:
+38061
+Number of directories starting with C or c:
+4438
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 5.54680s
+
+======================================================================
+Inspecting script file LV1.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+""" Uses numerical integration to solve the Lotka-Volterra model.
+
+Contains one function that calculates the growth rate of resource and consumer
+populations at a given time step and one main function that contains the rest of the script. 
+Initial parameters are then set and the scipy integrate subpackage is used to solve the 
+Lotka-Volterra system. The results are plotted in two different graphs, showing the change 
+of the two population densities over time and also the change in the two population densities 
+with respect to each other.
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+## Explanation of the Lotka-Volterra model:
+
+## Lotka-Volterra model is for modelling a predator-prey system in 2-D space
+## dR/dt = rR - aCR
+## dC/dt = -zC + eaCR
+## where C and R are consumer (predator) and resource (prey) population abundance
+# (measured in number per area), 
+## r is the intrinsic (per capita) growth rate of the resource population (per time),
+## a is the per capita "search rate" for the resource (area per time) multipled by 
+# its attack success probability, which determines the encounter and consumption
+# rate of the consumer on the resource
+## z is the mortality rate (per time)
+## e is the consumer's efficiency (a fraction) in converting resource to consumer biomass
+
+# imports
+import scipy as sc
+import scipy.integrate as integrate
+import matplotlib.pylab as p
+
+# define a function that returns the growth rate of consumer and resource populations
+# at any given time step
+
+def dCR_dt(RC0, t = 0):
+    """
+    Calculates the growth rate of consumer and resource populations
+    at a given time, using the Lotka-Volterra model.
+
+    Parameters:
+        RC0 (array) : the densities of both populations at time t
+        t (int) : the given time (t = 0 is the default (optional))
+
+    Returns:
+        sc.array([dRdt, dCdt]) : an array containing the growth rate of the populations
+
+    """
+    R = RC0[0]
+    C = RC0[1]
+    dRdt = r * R - a * R * C
+    dCdt = -z * C + e * a * R * C
+
+    return sc.array([dRdt, dCdt])
+
+type(dCR_dt)
+# so we can see that dCR_dt has been stored as a function object
+
+# assign some parameter values
+r = 1.
+a = 0.1
+z = 1.5
+e = 0.75
+
+# define the time vector (units are arbitrary here)
+t = sc.linspace(0, 15, 1000)
+
+# set the initial abundances for the two populations
+R0 = 10
+C0 = 5
+# convert into an array
+RC0 = sc.array([R0, C0])
+
+def main():
+    '''
+    Solves the Lotka-Voltera system by numerical integration and plots two different graphs, one showing the change 
+    of the two population densities over time and the other showing the change in the two population densities 
+    with respect to each other. Both plots are saved to the Results folder as pdfs.
+
+    Requires no input parameters.
+    '''
+    # numerically integrate this system forward from the above starting conditions
+    pops, infodict = integrate.odeint(dCR_dt, RC0, t, full_output = True)
+    # where pops contains the result (the population trajectories)
+    # and infodict is a dictionary that contains information on how the integration went
+    type(infodict)
+    infodict.keys()
+    # check whether integration was successful
+    infodict['message']
+
+    # visualise the results by plotting them using matplotlib
+    # first open an empty figure
+    f1 = p.figure()
+    # add everything (data, axes etc.) to the figure
+    p.plot(t, pops[:,0], 'g-', label = 'Resource density') 
+    p.plot(t, pops[:,1], 'b-', label = 'Consumer density')
+    p.legend(loc = 'best')
+    p.xlabel('Time')
+    p.ylabel('Population density')
+    p.title('Consumer-Resource population dynamics')
+    # save figure as pdf
+    f1.savefig('../Results/LV1_plot1.pdf') 
+
+    # visualise the data in terms of resource and consumer density with respect to each other
+    f2 = p.figure()
+    # add everything (data, axes etc.) to the figure
+    p.plot(pops[:,0], pops[:,1], 'r-') 
+    p.xlabel('Resource density')
+    p.ylabel('Consumer density')
+    p.title('Consumer-Resource population dynamics')
+    p.grid()
+    # save figure as pdf
+    f2.savefig('../Results/LV1_plot2.pdf') 
+
+if __name__ == "__main__":
+    main()**********************************************************************
+
+Testing LV1.py...
+
+LV1.py is a Python script file;
+
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Missing docstring, either in one or functions and/or at the script level
+
+Current Points = 92.5
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.81338s
+
+======================================================================
+Inspecting script file DrawFW.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+""" 
+Represents a sample food web network as an adjacency list and plots 
+the network using networkx, where the size of the node represents the 
+body mass of the species.
+
+Contains one function that generates a random adjacency list, containing 
+the Ids of species that interact (based on comparison to the connectance
+probability). Body sizes are generated for each species, saved in an array
+and then visualised using matplotlib. Networkx is then used to plot the food 
+web network.
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+# imports
+import networkx as nx
+import scipy as sc
+import matplotlib.pyplot as p
+
+# generate the adjacency list of who eats whom (consumer name/id and 
+# resource name/id) in the network
+
+def GenRdmAdjList(N = 2, C = 0.5):
+    """ Generates a a random adjacency list, containing the Ids of species that interact 
+    (based on comparison to the connectance probability, C, which is the probability of 
+    having a link between any pair of species in the web)
+
+    Parameters:
+        N(int) : number of species in the network
+        C(float): connectance probability
+
+    Returns:
+        ALst(list) : list containing tuples of linked species' Ids
+    """
+    Ids = range(N)
+    ALst = []
+    for i in Ids:
+        if sc.random.uniform(0, 1, 1) < C: # [0] & [1] is the range, [2] is the number of samples to be taken
+            Lnk = sc.random.choice(Ids, 2).tolist() # picks 2 Ids at random and coerces them into a list
+            if Lnk[0] != Lnk[1]: # avoid self, e.g. cannibalistic, loops (should be there in real life but difficult to plot)
+                ALst.append(Lnk)
+    return ALst
+
+# assign values
+MaxN = 30
+C = 0.75
+
+# generate an adjancency list representing a random food web
+AdjL = sc.array(GenRdmAdjList(MaxN, C))
+AdjL
+
+# generate species(node) data
+Sps = sc.unique(AdjL) # get species Ids
+# generate body sizes for the species
+# use log10 scale to enable proportionate sampling because species body sizes
+# tend to be log-normally distributed
+SizRan = ([-10, 10])
+Sizs = sc.random.uniform(SizRan[0], SizRan[1], MaxN)
+Sizs
+
+# visualise the size distribution we have generated
+p.hist(Sizs) # log10 scale
+p.hist(10 ** Sizs) # raw scale
+# close all open plot objects
+p.close('all')
+
+# use a circular configuration to plot the network
+# calculate the coordinates using networkx
+pos = nx.circular_layout(Sps)
+# generate a networkx graph object
+G = nx.Graph()
+# add the nodes and links(edges)
+G.add_nodes_from(Sps)
+G.add_edges_from(tuple(AdjL))
+# generate node sizes that are proportional to (log) body sizes
+NodSizs = 1000 * (Sizs - min(Sizs)) / (max(Sizs) - min(Sizs))
+# plot the graph
+nx.draw_networkx(G, pos, node_size = NodSizs, node_color = "r")
+# save the graph as a pdf
+p.savefig('../Results/DrawFW.pdf') **********************************************************************
+
+Testing DrawFW.py...
+
+DrawFW.py is a Python script file;
+
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Current Points = 92.5
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+/usr/lib/python3/dist-packages/networkx/drawing/nx_pylab.py:522: MatplotlibDeprecationWarning: The is_string_like function was deprecated in version 2.1.
+  if not cb.is_string_like(edge_color) \
+/usr/lib/python3/dist-packages/networkx/drawing/nx_pylab.py:543: MatplotlibDeprecationWarning: The is_string_like function was deprecated in version 2.1.
+  if cb.is_string_like(edge_color) or len(edge_color) == 1:
+/usr/lib/python3/dist-packages/networkx/drawing/nx_pylab.py:724: MatplotlibDeprecationWarning: The is_string_like function was deprecated in version 2.1.
+  if not cb.is_string_like(label):
+
+======================================================================
+Inspecting script file Nets.R...
+
+File contents are:
+**********************************************************************
+library(igraph) # Load the igraph package
+
+rm(list = ls())
+
+# 	ICL	UoR	CEH	ZSL	CEFAS	Nonacademic/CASE
+# ICL	0	0	10	9	5	70
+# UoR		0	12	0	2	76
+# CEH			0	0	0	6
+# ZSL			       0 	0	28
+# CEFAS			       0	0
+# Nonacademic/CASE                        0
+
+links <- read.csv("../data/QMEE_Net_Mat_edges.csv", header=T, as.is=T)
+nodes <- read.csv("../data/QMEE_Net_Mat_nodes.csv", header=T, row.names = 1)
+
+#Create graph object
+net <- graph.adjacency(as.matrix(links), mode = "directed", weighted=TRUE, diag=F)
+        
+#Test plot
+# plot(net, edge.arrow.size=1, edge.curved=.1,
+#      vertex.color="orange", vertex.frame.color="#555555",
+#      vertex.label=V(net)$Type, vertex.label.color="black",
+#      vertex.label.cex=.7) 
+
+# Generate colors based on partner type:
+colrs <- c("green", "red", "blue")
+V(net)$color <- colrs[nodes$Type]
+
+# Set node size based on Number of PIs:
+# V(net)$size <- V(net)$Pis*0.9
+
+V(net)$size <- 50
+
+# Set edge width based on weight (PhD Students):
+E(net)$width <- E(net)$weight
+
+#change arrow size and edge color:
+E(net)$arrow.size <- 1
+E(net)$edge.color <- "gray80"
+
+E(net)$width <- 1+E(net)$weight/10
+
+graphics.off()
+
+svg("../results/QMEENet.svg",width=7,height=7)
+
+plot(net, edge.curved=0, vertex.label.color="black") 
+
+legend(x=-1.5, y=-0.1, c("Hosting Partner", "Non-hosting Partner", "University"), pch=21,
+       col="#777777", pt.bg=colrs, pt.cex=2, cex=.8, bty="n", ncol=1)
+
+dev.off()
+**********************************************************************
+
+Testing Nets.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Loading required package: methods
+
+Attaching package: ‘igraph’
+
+The following objects are masked from ‘package:stats’:
+
+    decompose, spectrum
+
+The following object is masked from ‘package:base’:
+
+    union
+
+Error in file(file, "rt") : cannot open the connection
+Calls: read.csv -> read.table -> file
+In addition: Warning message:
+In file(file, "rt") :
+  cannot open file '../data/QMEE_Net_Mat_edges.csv': No such file or directory
+Execution halted
+
+======================================================================
+Inspecting script file run_fmr_R.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+""" Uses the subprocess module to run an R-script that produces a pdf. 
+
+Prints the R output to screen and includes try and except to kill the 
+process if it takes longer than 30 seconds and also includes an if statement 
+to print whether the R-script ran successfully.
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+# imports
+import subprocess
+import re
+
+# use Popen to run an Rscript through python
+p = subprocess.Popen("Rscript --verbose fmr.R", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+
+# use try and except to timeout if p.communicate() takes too long
+try:
+    stdout, stderr = p.communicate(timeout = 30)
+except subprocess.TimeoutExpired:
+    print("fmr.R communicate failed in time limit")
+    print("Killing communication...")
+    p.kill()
+    stdout, stderr = p.communicate() # extract outputs from before kill occured
+    print("Communication killed")
+
+print("R output:")    
+print(stdout.decode())
+match =  re.search(r"error", stdout.decode()) # if the output contains an error
+if match: 
+    print("Failure")
+elif stdout.decode() is '': # if the output is empty
+    print("Failure")
+else:
+    print("Success!")
+
+**********************************************************************
+
+Testing run_fmr_R.py...
+
+run_fmr_R.py is a Python script file;
+
+checking for docstrings...
+
+Found no functions, but one docstring for the script, good
+
+Current Points = 92.5
+
+Output (only first 500 characters): 
+
+**********************************************************************
+R output:
+Reading CSV
+Creating graph
+null device 
+          1 
+Finished in R!
+
+Success!
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.20257s
+
+======================================================================
+Inspecting script file run_LV.py...
+
+File contents are:
+**********************************************************************
+#!/usr/local/bin/python3
+
+"""
+Profiles four scripts that solve the Lotka-Volterra model, comparing the time taken for
+the ten longest calls in each.
+"""
+
+import cProfile
+import pstats
+import LV1
+import LV2
+import LV3
+import LV4
+import io
+
+# create list of scripts to profile
+LVs = [LV1, LV2, LV3, LV4]
+# run for loop over scripts to profile each of them
+for i in LVs:
+    profile = cProfile.Profile()
+    profile.enable()
+    i.main()
+    profile.disable()
+
+    s = io.StringIO()
+    stats = pstats.Stats(profile, stream = s).sort_stats('cumulative')
+    stats.print_stats(10)
+
+    print(i, "profile:")
+    print(s.getvalue())
+
+# Note that for all four scripts, all the longest calls (except the actual call of 
+# the main function, which is the duration of the entire programme) are those involved
+# in plotting (matplotlib).
+
+
+**********************************************************************
+
+Testing run_LV.py...
+
+run_LV.py is a Python script file;
+
+checking for docstrings...
+
+Found no functions, but one docstring for the script, good
+
+Current Points = 92.5
+
+Output (only first 500 characters): 
+
+**********************************************************************
+<module 'LV1' from '/home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/LucyGoodyear_LEG19/Week7/Code/LV1.py'> profile:
+         262781 function calls (258164 primitive calls) in 0.414 seconds
+
+   Ordered by: cumulative time
+   List reduced from 1402 to 10 due to restriction <10>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.414    0.414 /home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/LucyGoo
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 1.80348s
+
+======================================================================
+Inspecting script file LV2.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+""" Uses numerical integration to solve the Lotka-Volterra model, including carrying 
+capacity K, and allows user inputs for certain parameters.
+
+Contains one function that calculates the growth rate of resource and consumer
+populations at a given time step and one main function that contains the rest of the script. 
+Within the main programme, this function is redefined as a partial to allow the fixed parameters 
+to be passed to the function. Initial parameters are inputted by user, otherwise defaults are used, 
+and the scipy integrate subpackage is used to solve the Lotka-Volterra system. The results are 
+plotted in two different graphs, showing the change of the two population densities over time and 
+also the change in the two population densities with respect to each other.
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+## Explanation of the Lotka-Volterra model:
+
+## Lotka-Volterra model is for modelling a predator-prey system in 2-D space
+## dR/dt = rR(1-R/K) - aCR
+## dC/dt = -zC + eaCR
+## where C and R are consumer (predator) and resource (prey) population abundance
+# (measured in number per area), 
+## r is the intrinsic (per capita) growth rate of the resource population (per time),
+## a is the per capita "search rate" for the resource (area per time) multipled by 
+# its attack success probability, which determines the encounter and consumption
+# rate of the consumer on the resource
+## z is the mortality rate (per time)
+## e is the consumer's efficiency (a fraction) in converting resource to consumer biomass
+## K is the carrying capacity
+
+# imports
+import scipy as sc
+import scipy.integrate as integrate
+import matplotlib.pylab as p
+import sys
+import functools
+
+# define a function that returns the growth rate of consumer and resource populations
+# at any given time step
+
+def dCR_dt(RC0, t, r, a, z, e, K):
+    """
+    Calculates the growth rate of consumer and resource populations
+    at a given time, using the Lotka-Volterra model.
+
+    Parameters:
+        RC0 (array) : the densities of both populations at time t
+        t (int) : the given time (units are arbitrary)
+        r (float) : intrinsic (per capita) growth rate of the resource population (per time)
+        a (float) : per capita "search rate" for the resource (area per time) multipled by 
+                    its attack success probability
+        z (float) : mortality rate (per time)
+        e (float) : consumer's efficiency (a fraction) in converting resource to consumer biomass
+        K (int) : carrying capacity
+
+    Returns:
+        sc.array([dRdt, dCdt]) : an array containing the growth rate of the populations
+
+    """
+    R = RC0[0]
+    C = RC0[1]
+    dRdt = r * R * (1 - R / K) - a * R * C
+    dCdt = -z * C + e * a * R * C
+
+    return sc.array([dRdt, dCdt])
+
+type(dCR_dt)
+# so we can see that dCR_dt has been stored as a function object
+
+def main(r = 3.5, a = 0.2, z = 2.9, e = 0.9):
+    '''
+    Solves the Lotka-Voltera system, including carrying capacity, K, by numerical integration and plots 
+    two different graphs, one showing the change of the two population densities over time and the other 
+    showing the change in the two population densities with respect to each other. Both plots are saved 
+    to the Results folder as pdfs.
+
+    Parameters:
+    Initial parameters are inputted by user, otherwise defaults are used.
+    r (float) : intrinsic (per capita) growth rate of the resource population (per time)
+    a (float) : per capita "search rate" for the resource (area per time) multipled by 
+                    its attack success probability
+    z (float) : mortality rate (per time)
+    e (float) : consumer's efficiency (a fraction) in converting resource to consumer biomass
+    '''
+    # set intial parameters
+    K = 50
+
+    # define the time vector (units are arbitrary here)
+    t = sc.linspace(0, 15, 1000)
+
+    # set the initial abundances for the two populations
+    R0 = 7
+    C0 = 10
+    # convert into an array
+    RC0 = sc.array([R0, C0])
+
+    # define a partial function to enable r, a, z, e, K to be passed to dCR_dt
+    dCR_dt_partial = functools.partial(dCR_dt, r = r, a = a, z = z, e = e, K = K)
+
+    # numerically integrate this system forward from the above starting conditions
+    pops, infodict = integrate.odeint(dCR_dt_partial, RC0, t, full_output = True)
+    # where pops contains the result (the population trajectories)
+    # and infodict is a dictionary that contains information on how the integration went
+
+    # check whether integration was successful
+    infodict['message']
+
+    # visualise the results by plotting them using matplotlib
+    # first open an empty figure
+    f1 = p.figure()
+    # add everything (data, axes etc.) to the figure
+    p.plot(t, pops[:,0], 'g-', label = 'Resource density') 
+    p.plot(t, pops[:,1], 'b-', label = 'Consumer density')
+    p.legend(loc = 'best')
+    p.xlabel('Time')
+    p.ylabel('Population density')
+    p.suptitle('Consumer-Resource population dynamics')
+    p.title("r = %.2f,  a = %.2f,  z = %.2f,  e = %.2f" %(r, a, z, e), fontsize = 10)
+    # save figure as pdf
+    f1.savefig('../Results/LV2_plot1.pdf') 
+
+    # visualise the data in terms of resource and consumer density with respect to each other
+    f2 = p.figure()
+    # add everything (data, axes etc.) to the figure
+    p.plot(pops[:,0], pops[:,1], 'r-') 
+    p.xlabel('Resource density')
+    p.ylabel('Consumer density')
+    p.suptitle('Consumer-Resource population dynamics')
+    p.title("r = %.2f,  a = %.2f,  z = %.2f,  e = %.2f" %(r, a, z, e), fontsize = 10)
+    p.grid()
+    # save figure as pdf
+    f2.savefig('../Results/LV2_plot2.pdf') 
+    print("Stabilised prey population density: ", pops[-1, 0])
+    print("Stabilised predator population density: ", pops[-1, 1])
+
+if __name__ == "__main__":
+    # if user arguments are given, use those, otherwise use the default arguments
+    if len(sys.argv) == 5:
+        r = float(sys.argv[1])
+        a = float(sys.argv[2])
+        z = float(sys.argv[3])
+        e = float(sys.argv[4])
+        main(r, a, z, e)
+    else:
+        print("Requires r, a, z, e arguments.\nThese were not provided so defaults used:\nr = 3.5, a = 0.2, z = 2.9, e = 0.9")
+        main()
+
+
+
+**********************************************************************
+
+Testing LV2.py...
+
+LV2.py is a Python script file;
+
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Missing docstring, either in one or functions and/or at the script level
+
+Current Points = 92.0
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Requires r, a, z, e arguments.
+These were not provided so defaults used:
+r = 3.5, a = 0.2, z = 2.9, e = 0.9
+Stabilised prey population density:  16.1089090707
+Stabilised predator population density:  11.8601601584
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.80834s
+
+======================================================================
+Inspecting script file Profileme2.py...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env python3
+
+""" 
+Contains improved versions of the three functions from Profileme for 
+practising profiling. One function, my_squares, squares the input using 
+a list comprehension (there is also a commented out version that uses 
+preallocation, which is slower than the list comprehension), one, 
+my_join, joins string together using an explicit string concatenation
+and the third, run_my_funcs, runs the other two functions as before. 
+A sample of run_my_funcs is called at the end to allow profiling.
+
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+import scipy as sc
+
+def my_squares(iters):
+    ''' squares input using a list comprehension
+
+    Parameters:
+        iters(int) : range over which squaring takes place
+    
+    Returns:
+        out(list) : list of squared numbers from iters
+
+    '''
+
+    out = [i ** 2 for i in range(iters)] # using list comprehension
+    return out
+
+#def my_squares(iters):
+#    ''' squares input using a preallocation
+#
+#    Parameters:
+#        iters(int) : range over which squaring takes place
+#    
+#    Returns:
+#        out(list) : list of squared numbers from iters
+#        
+#    '''
+#    out = sc.zeros(iters) # using preallocation
+#    for i in range(iters):
+#        out[i] = (i ** 2)
+#    return out 
+
+def my_join(iters, string):
+    ''' joins strings together in range iters
+
+    Parameters:
+        iters(int) : range over which squaring takes place
+        string(str) : specified string
+    
+    Returns:
+        out(str) : concatenated string from string inputs
+        
+    '''
+    out = ''
+    for i in range(iters):
+        out += ", " + string
+    return out
+
+def run_my_funcs(x, y):
+    '''prints the inputs and runs the my_squares and my_join functions
+
+    Parameters:
+        x(int) : range over which squaring takes place
+        y(string) : specified string
+    
+    Outputs:
+        print(x ,y)(int, str) : prints the inputs
+        
+    '''
+    print(x, y)
+    my_squares(x)
+    my_join(x, y)
+    return 0
+
+run_my_funcs(10000000, "My string")**********************************************************************
+
+Testing Profileme2.py...
+
+Profileme2.py is a Python script file;
+
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Missing docstring, either in one or functions and/or at the script level
+
+Current Points = 90.0
+
+Output (only first 500 characters): 
+
+**********************************************************************
+10000000 My string
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 3.80422s
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 4 errors
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 90.0
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!
