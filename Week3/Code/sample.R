@@ -1,4 +1,17 @@
-## run a simulation that involves sampling from a population
+######### run a simulation that involves sampling from a population #########
+
+# Contains 6 functions to test the speed of 5 different methods of calculating 
+# means. The first function, myexperiment, samples the data and calculates
+# the mean of that sample, the other functions run "num" iterations over 
+# myexperiment to generate the means of "num" samples. The functions are then
+# run on identical parameters and timed, with the time taken for each being 
+# printed to screen.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
 
 # a function to take a sample of size n from a population "popn" and return its mean
 myexperiment <- function(popn, n){
@@ -52,6 +65,7 @@ hist(popn)
 n <- 20 # sample size for each experiment
 num <- 1000 # number of times to rerun the experiment
 
+# time each function and print time to screen
 print("The loopy, non-preallocation approach takes:")
 print(system.time(loopy_sample1(popn, n, num)))
 

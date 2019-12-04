@@ -1,5 +1,15 @@
 #################### Plotting Girko's Circular Law #################################
 
+# Plots Girko's circular law and saves figure as a pdf. It first builds a function
+# that returns an ellipse then and produces a N by N matrix containing randomly 
+# normally distributed values. The eigenvalues are calulcated for this matrix and 
+# then plotted on an Argand diagram (real numbers on the x-axis and imaginary 
+# numbers on the y-axis). Onto this Argand diagram, adds an ellipe with a radius of 
+# square root of N to show how the points fit into the shape of this ellipse.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
 # clear workspace
 rm(list=ls())
 

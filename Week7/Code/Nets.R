@@ -10,8 +10,8 @@ rm(list = ls())
 # CEFAS			       0	0
 # Nonacademic/CASE                        0
 
-links <- read.csv("../data/QMEE_Net_Mat_edges.csv", header=T, as.is=T)
-nodes <- read.csv("../data/QMEE_Net_Mat_nodes.csv", header=T, row.names = 1)
+links <- read.csv("../Data/QMEE_Net_Mat_edges.csv", header=T, as.is=T)
+nodes <- read.csv("../Data/QMEE_Net_Mat_nodes.csv", header=T, row.names = 1)
 
 #Create graph object
 net <- graph.adjacency(as.matrix(links), mode = "directed", weighted=TRUE, diag=F)

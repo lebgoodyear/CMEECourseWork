@@ -1,4 +1,12 @@
-# A boilerplate R script
+################## boilerplate R script ######################
+
+# Contains an example function and test print outs.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
 
 MyFunction <- function(Arg1, Arg2){
 
@@ -11,3 +19,4 @@ MyFunction <- function(Arg1, Arg2){
 
 MyFunction(1, 2) # test the function
 MyFunction("Riki", "Tiki") # a different test
+

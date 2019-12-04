@@ -1,4 +1,10 @@
-# This function calculates heights of trees given the distance
+################## Calculate tree heights #####################
+
+# Contains a function that calculates heights of trees, which 
+# is called on a sample pair of parameters and then on a 
+# loaded data set of trees, the results of which are saved into a csv.
+
+# The function calculates heights of trees given the distance
 # of each tree from its base and angle to its top, using the 
 # trigonometric formula
 
@@ -10,6 +16,12 @@
 
 # Output:
 # the heights of the trees, same units as "distance"
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
 
 # loads data from a csv
 Tree_data <- read.csv("../Data/trees.csv")

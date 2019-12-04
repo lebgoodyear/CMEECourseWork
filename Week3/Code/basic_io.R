@@ -1,3 +1,14 @@
+############## R input-output ####################
+
+# illustrates R input-output: loads data from a csv, 
+# writes data to a csv and then makes changes to that csv
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
+
 # A simple script to illustrate R input-output.
 # Run line by line and check inputs outputs to understand what is happening.
 

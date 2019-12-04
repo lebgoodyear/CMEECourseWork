@@ -3,6 +3,9 @@
 # performs a linear regression on some sample data, plots the data with 
 # the regression line and then annotates the plot with a mathematical equation.
 
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
 # clear workspace
 rm(list=ls())
 

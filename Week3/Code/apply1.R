@@ -1,5 +1,13 @@
-# Practice script looking at using apply on some of R's
-# inbuilt functions
+######## Practice script looking at using apply on some of R's inbuilt functions ########
+
+# Uses the apply function to calculate the means and variance of each row and the means
+# of each column of a random matrix.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
 
 # build a random matrix
 M <- matrix(rnorm(100), 10, 10)

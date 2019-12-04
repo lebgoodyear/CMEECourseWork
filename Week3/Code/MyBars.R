@@ -3,6 +3,9 @@
 # loads data from a .txt file and plots it as three line ranges
 # (using ggplot2) with annotations for particular values.
 
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
 # clear workspace
 rm(list=ls())
 

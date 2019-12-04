@@ -5,6 +5,9 @@
 # from a dataset containing species and corresponding longitudes and 
 # latitudes
 
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
 # clear workspace
 rm(list=ls())
 
@@ -23,8 +26,8 @@ points(x = gpdd$long, y = gpdd$lat, col = "black", pch = 1, cex = 0.35)
 # Expected biases:
 # Spatial bias!
 # 1) Data points are from temperate regions so no weighting
-# from tripoical species (however analysis may be specifically
-# focussed on species from temperate regions)
+# from tropical species (however analysis may be specifically
+# focused on species from temperate regions)
 # 2) Most data is from UK or the west coast of USA, not representative
 # of actual biodiversity of species across temperate regions
 

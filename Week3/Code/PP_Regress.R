@@ -6,6 +6,9 @@
 # Calculates regression results corresponding to the lines fitted in the figure and saves as
 # csv demlimited table.
 
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
 # clear workspace
 rm(list=ls())
 
@@ -16,6 +19,14 @@ library(dplyr)
 # load the data
 MyDF <- read.csv("../Data/EcolArchives-E089-51-D1.csv")
 dim(MyDF) # check the size of the data frame you loaded
+
+# convert masses in mg to g
+for (i in 1:nrow(MyDF)){
+  if (MyDF$Prey.mass.unit[i] == "mg"){
+    MyDF$Prey.mass.unit[i] = "g"
+    MyDF$Prey.mass[i] = MyDF$Prey.mass[i] / 1000
+  }
+}
 
 pdf("../Results/PP_Regress.pdf", # open blank pdf page using a relative path
     8.3, 11.7)  # page dimensions in inches

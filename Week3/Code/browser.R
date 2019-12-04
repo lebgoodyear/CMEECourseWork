@@ -1,4 +1,10 @@
-## inserts a breakpoint into the code and enters browser mode ##
+######### inserts a breakpoint into the code and enters browser mode #########
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
 
 Exponential <- function(N0 = 1, r = 1, generations = 10) {
     # runs a simulation of exponential growth
@@ -14,4 +20,5 @@ Exponential <- function(N0 = 1, r = 1, generations = 10) {
     return(N)
 }
 
+# plots the exponential growth
 plot(Exponential(), type="1", main="Exponential growth")

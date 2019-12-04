@@ -7,7 +7,7 @@ name <- "Lucy Goodyear"
 preferred_name <- "Lucy"
 email <- "leg19@imperial.ac.uk"
 username <- "leg19"
-personal_speciation_rate <- 0.002 # will be assigned to each person individually in class and should be between 0.002 and 0.007
+personal_speciation_rate <- 0.002216 # will be assigned to each person individually in class and should be between 0.002 and 0.007
 
 # Question 1
 # calculates speices richness (number of unique species) in a system
@@ -82,7 +82,9 @@ question_8 <- function(community, duration) {
        type = "l",
        ylab = "Species Richness (by generation)",
        xlab = "Time (in generations)")
-  return("The system will always converge to species richness of 1")
+  return("The system will always converge to species richness of 1 because you are always 
+         replacing the individual that died with an inidividual from one of the other species, 
+         with no new species ever being added.")
 }
 
 # Question 9
@@ -147,7 +149,8 @@ question_12 <- function(community_1, community_2, speciation_rate, duration)  {
   legend("topright", 
          c("Maximum Initial Conditions", "Minimum Initial Conidtions"),
          fill = c("Red", "Blue"))
-  return("type your written answer here")
+  return("Regardless of initial conditions, the system will always converge to the same
+         equilibrium because speciation rate and time step is the same.")
 }
 
 # Question 13
@@ -198,67 +201,183 @@ question_16 <- function(community_1, community_2, speciation_rate, burn_duration
   # calculate the mean of each bin and plot bar chart  
   par(mfrow=c(2,1))
   barplot(sp_ab_octave_c1 / counts,
-          ylab = "Species abundance",
+          ylab = "Mean species abundance",
           xlab = "Octave (log2)",
           main = "Maximum Initial Community",
           names.arg = 1:length(sp_ab_octave_c1))
   barplot(sp_ab_octave_c2 / counts,
-          ylab = "Species abundance",
+          ylab = "Mean species abundance",
           xlab = "Octave (log2)",
           main = "Maximum Initial Community",
           names.arg = 1:length(sp_ab_octave_c2))
       
-  return("type your written answer here")
+  return("The initial conditions do not matter because speciation rate is constant.")
 }
 
 # Question 17
 cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, output_file_name)  {
-  
+  community <- init_community_min(size)
+  species_richness_vector <- c(species_richness(community))
+  octaves_list <- list(octaves(species_abundance(community)))
+  # start timer
+  timer <- proc.time()
+  t <- 1
+  while ((proc.time()[3] - timer[3]) < (wall_time)*60){
+    community <- neutral_generation_speciation(community, speciation_rate)
+    if ((t <= burn_in_generations) & (t %% interval_rich == 0)){
+      species_richness_vector <- c(species_richness_vector, species_richness(community))
+    }
+    if (t %% interval_oct == 0){
+      octaves_list[[length(octaves_list)+1]] = octaves(species_abundance(community))
+    }
+    t <- t + 1
+  }
+  time_taken = proc.time()[3] - timer[3]
+  save(species_richness_vector,
+       octaves_list, 
+       community, 
+       time_taken, 
+       speciation_rate, 
+       size, 
+       wall_time, 
+       interval_rich, 
+       interval_oct, 
+       burn_in_generations,
+       file = output_file_name)
 }
 
 # Questions 18 and 19 involve writing code elsewhere to run your simulations on the cluster
 
 # Question 20 
-process_cluster_results <- function()  {
+process_cluster_results <- function(){
+  # initialise empty vectors to store total octave data for each size
+  octaves_500 <- c()
+  octaves_1000 <- c()
+  octaves_2500 <- c()
+  octaves_5000 <- c()
+  # set counters to count each octave per size
+  counter_500 <- 0
+  counter_1000 <- 0
+  counter_2500 <- 0
+  counter_5000 <- 0
+  # generate list of results files
+  files <- list.files(path = "../Results/", pattern = "*.rda")
+  # set for loop over files to extract octave information
+  for (i in files){
+    load(paste0("..//Results/",i)) # load each file
+    octaves_tot <- c() # initliase empty octave vector for i file ocatve sum
+    counter <- 0 # reset counter to 0
+    # loop over each octave in file i
+    for (j in length(octaves_list)){
+      # sum all octaves in file i
+      octaves_tot <- sum_vect(octaves_tot, octaves_list[[j]])
+      # count all octaves in file i
+      counter <- counter + 1
+    }
+    # set if statements to sum octaves over each size
+    if (size == 500){
+      octaves_500 <- sum_vect(octaves_500, octaves_tot)
+      # add file i count to total count for that size
+      counter_500 <- counter_500 + counter
+    }
+    if (size == 1000){
+      octaves_1000 <- sum_vect(octaves_1000, octaves_tot)
+      counter_1000 <- counter_1000 + counter
+    }
+    if (size == 2500){
+      octaves_2500 <- sum_vect(octaves_2500, octaves_tot)
+      counter_2500 <- counter_2500 + counter
+    }
+    if (size == 5000){
+      octaves_5000 <- sum_vect(octaves_5000, octaves_tot)
+      counter_5000 <- counter_5000 + counter
+    }
+  }
   # clear any existing graphs and plot your graph within the R window
-  combined_results <- list() #create your list output here to return
+  graphics.off()
+  par(mfrow = c(2, 2))
+  barplot(octaves_500 / counter_500,
+          ylab = "Mean species abundance",
+          xlab = "Species abundance octaves (log2)",
+          main = "Initial community of size 500",
+          names.arg = 1:length(octaves_500))
+  barplot(octaves_1000)
+  barplot(octaves_2500)
+  barplot(octaves_5000)
+
+  combined_results <- list(octaves_500, octaves_1000, octaves_2500, octaves_5000) #create your list output here to return
   return(combined_results)
 }
 
 # Question 21
 question_21 <- function()  {
-  return("type your written answer here")
+  # by eye we can see that to triple the object's area, we need 8 of them.
+  # use the equation N(delta) = K * delta^(-D)
+  # set K = 1
+  # log(8) = -D*log(3)
+  # where fractional dimension = -1 * gradient
+  D <- log(8)/log(3)
+  return(list("Scaling one side of the object by 3 scales the area by 8, which is 3 to the power of", D))
 }
 
 # Question 22
 question_22 <- function()  {
-  return("type your written answer here")
+  D <- log(20)/log(3)
+  return(list("Scaling one side of the object by 3 scales the volume by 20, which is 3 to the power of", D))
 }
 
 # Question 23
 chaos_game <- function()  {
+  plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5))
+  store <- list(A = c(0,0), B = c(3,4), C = c(4,1))
+  x <- c(0,0)
+  for (i in 1:5000){
+    # choose one of A, B, C at random
+    chosen_point <- sample(store, 1)
+    # assign new point
+    x[1] <- x[1] + (unlist(chosen_point)[1] - x[1])/2
+    x[2] <- x[2] + (unlist(chosen_point)[2] - x[2])/2
+    # plot new point
+    points(x[1],
+           x[2],
+           cex = 0.05)
+  }
   # clear any existing graphs and plot your graph within the R window
-  return("type your written answer here")
+  return("A fractal emerges")
 }
 
+# open plot to test turtle function
+plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5))
 # Question 24
 turtle <- function(start_position, direction, length)  {
-
-  return() # you should return your endpoint here.
+  x0 <- start_position[1]
+  y0 <- start_position[2]
+  x <- length * cos(direction) + x0
+  y <- length * sin(direction) + y0
+  segments(x0, y0, x1 = x, y1 = y)
+  endpoint <- c(x,y)
+  return(endpoint) # you should return your endpoint here.
 }
 
 # Question 25
 elbow <- function(start_position, direction, length)  {
-  
+  new_points <- turtle(start_position, direction, length)
+  turtle(c(new_points[1],new_points[2]), direction - pi/4, length*0.95)
 }
 
 # Question 26
 spiral <- function(start_position, direction, length)  {
+  new_points <- turtle(start_position, direction, length)
+  while ((length*0.95)  > 0.1) {
+    spiral(c(new_points[1], new_points[2]), direction - pi/4, length*0.95)
+  }
   return("type your written answer here")
 }
 
 # Question 27
 draw_spiral <- function()  {
+  plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5))
+  return(spiral(c(1,2), pi/4, 0.5))
   # clear any existing graphs and plot your graph within the R window
   
 }

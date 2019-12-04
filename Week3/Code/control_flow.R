@@ -1,4 +1,12 @@
-# practise different control flow tools.
+####### Practice using different control flow tools ########
+
+# illustrates different control flow tools.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
 
 # if statement
 a <- TRUE

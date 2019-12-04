@@ -33,7 +33,7 @@ for i in range(len(links)):
 
 # construct list of unique institutions
 nodes_uniq = sc.unique(nodes['id'])
-# create networkx graph object
+# create networkx graph object with directional edges
 G = nx.DiGraph()
 
 # add institutions as nodes

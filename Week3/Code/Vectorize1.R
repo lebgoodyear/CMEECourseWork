@@ -1,6 +1,14 @@
-# Two methods of calculating the sum of a matrix.
-# The first uses a for loop and the second the inbuilt 'sum'
-# function. The prints show which method is faster.
+############## Speed of loops vs in-built functions ###############
+
+# Contains two methods for calculating the sum of a matrix. 
+# The first is a function, SumAllElements, containing a for loop and the second 
+# is the inbuilt 'sum' function. The prints show which method is faster.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
 
 # create 1000 by 1000 matrix with random uniform numbers
 M <- matrix(runif(1000000), 1000, 1000)
@@ -17,8 +25,10 @@ SumAllElements <- function(M){
     return (Tot)
 }
 
-print("Using loops, the time taken is:")
-print(system.time(SumAllElements(M)))
+# call the SumAllElements function on matrix M and time it
+print(paste("Using loops, the time taken is:", system.time(SumAllElements(M))[3]))
 
-print("Using the in-built vectorized function, the time taken is:")
-print(system.time(sum(M)))
+# sum all elements of matrix M using the in-built function "sum" and time it
+print(paste("Using the in-built vectorized function, the time taken is:", system.time(sum(M))[3]))
+            
+            

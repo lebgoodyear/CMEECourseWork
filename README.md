@@ -2,7 +2,7 @@
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 27/11/19*
+*Last updated: 03/12/19*
 
 This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the exact contents and the system requirements to run each script.
 
@@ -22,8 +22,15 @@ Some weeks also contain a "Sandbox" directory where:
 1. [Week 1](#Week-1:-UNIX-and-bash-scripting)
 2. [Week 2](#Week-2:-Python-I)
 3. [Week 3](#Week-3:-R)
+4. [Week 4](#Week-4:-Stats)
+5. [Week 5](#Week-5:-Modelling-and-GIS)
 6. [Week 6](#Week-6:-Genomics) 
 7. [Week 7](#Week-7:-Python-II)
+8. [Week 8](#Week-8:-MiniProject)
+9. [Week 9](#Week-9:-HPC)
+10. [Week 10](#Week-10:-C)
+11. [MiniProject](#Miniproject)
+12. [Project](#Project)
 
 ### Week 1: UNIX and shell scripting
 
@@ -58,6 +65,15 @@ Some weeks also contain a "Sandbox" directory where:
     * plotting using base R, qplot and ggplot
 * practical programming exercises
 
+### Week 4: Stats
+
+This directory is empty, created for file structure continuity.
+
+### Week 5: Modelling and GIS
+
+* Four modelling scripts focusing on non-linear least squares
+* One GIS script containing all the GIS practical work
+
 ### Week 6: Genomics
 
 * Four scripts: 
@@ -78,4 +94,21 @@ Some weeks also contain a "Sandbox" directory where:
 * Practice scripts using regular expressions
 * Practice scripts running R scripts from python and accessing command line functions through python
 
+### Week 8: MiniProject
 
+This directory is empty, created for file structure continuity. See MiniProject folder for work done during this week.
+
+### Week 9: HPC
+
+* Main .R script containing all HPC functions on neutral theory and fracals
+* Test .R script, which sources the main script and contains suitable parameters to test the functions.
+* Cluster .R script which contains the code to be run on the cluster
+* A bash script to manage the cluster queue
+
+### Week 10: C
+
+Work-in-progress scripts from C week.
+
+### MiniProject
+
+## Project

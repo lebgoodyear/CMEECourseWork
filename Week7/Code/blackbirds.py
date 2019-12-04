@@ -16,7 +16,7 @@ __version__ = '0.0.1'
 import re
 
 # Read the file (using a different, more python 3 way, just for fun!)
-with open('../data/blackbirds.txt', 'r') as f:
+with open('../Data/blackbirds.txt', 'r') as f:
     text = f.read()
 
 # replace \t's and \n's with spaces:

@@ -1,4 +1,10 @@
-# Practise catching errors and debugging
+############ Practise catching errors and debugging ##############
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
 
 # create a funtion with a custom made error
 doit <- function(x){

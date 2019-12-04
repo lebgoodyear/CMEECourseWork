@@ -1,6 +1,9 @@
-################################################################
-################## Wrangling the Pound Hill Dataset ############
-################################################################
+##################################################################
+################## Wrangling the Pound Hill Dataset ##############
+##################################################################
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
 
 require(dplyr)
 require(tidyr)
@@ -22,7 +25,7 @@ glimpse(MyData) # in dplyr package, like str() but tidier
 #fix(MyData) #you can also do this
 #fix(MyMetaData)
 
-############# Transpose ###############
+######################## Transpose #######################
 # To get those species into columns and treatments into rows 
 MyData <- t(MyData) 
 head(MyData)
@@ -42,12 +45,13 @@ colnames(TempData) <- MyData[1,] # assign column names from original data
 MyWrangledData <- TempData %>% 
                   gather(Species, Count, -Cultivation, -Block, -Plot, -Quadrat)
 
-
-MyWrangledData[, "Cultivation"] <- as.factor(MyWrangledData[, "Cultivation"])
-MyWrangledData[, "Block"] <- as.factor(MyWrangledData[, "Block"])
-MyWrangledData[, "Plot"] <- as.factor(MyWrangledData[, "Plot"])
-MyWrangledData[, "Quadrat"] <- as.factor(MyWrangledData[, "Quadrat"])
-MyWrangledData[, "Count"] <- as.integer(MyWrangledData[, "Count"])
+# set the location columns as factors and set count as numeric
+MyWrangledData <- MyWrangledData %>%
+                  mutate(Cultivation = factor(Cultivation),
+                         Block = factor(Block),
+                         Plot = factor(Plot),
+                         Quadrat = factor(Quadrat),
+                         Count = as.integer(Count))
 
 glimpse(MyWrangledData) # like str() but tidier
 head(MyWrangledData)

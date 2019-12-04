@@ -2,6 +2,9 @@
 ################## Wrangling the Pound Hill Dataset ############
 ################################################################
 
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
 ############# Load the dataset ###############
 # header = false because the raw data don't have real headers
 MyData <- as.matrix(read.csv("../Data/PoundHillData.csv",header = F)) 
@@ -36,7 +39,7 @@ colnames(TempData) <- MyData[1,] # assign column names from original data
 ############# Convert from wide to long format  ###############
 require(reshape2) # load the reshape2 package
 
-?melt #check out the melt function
+# ?melt #check out the melt function
 
 MyWrangledData <- melt(TempData, 
                        id=c("Cultivation", "Block", "Plot", "Quadrat"), 
