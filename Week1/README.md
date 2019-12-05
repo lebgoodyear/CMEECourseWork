@@ -32,6 +32,7 @@ All code has been created for Mac so there may be a few differences in commands 
 11. [FirstBiblio](#11.-FirstBiblio)
 12. [CompileLaTeX](#12.-CompileLaTeX)
 
+
 ### 1. UnixPrac1
 
 A .txt containing a collection of single line commands to perform different counts on a set of .fasta files containing genetic code.
@@ -50,32 +51,32 @@ This .sh script assigns values to variables and shows how these values can be re
 
 ### 5. MyExampleScript
 
-This .sh script shows two more ways of assigning variables.
+This .sh script shows two ways of assigning variables, printing both to screen.
 
 ### 6. CountLines
 
-This .sh script counts lines in a given file.
+This .sh script counts lines in a file (provided as a command line argument).
 
 ### 7. ConcatenateTwoFiles
 
-This .sh script combines two files into a third.
+This .sh script combines two files into a third. It requires three arguments: 1) first file (and realtive path) to be merged, 2) second file (and relative path) to be merged and 3) name and relative path of file to be created from merged files
 
 ### 8. tiff2png
 
-This .sh script converts a given .tiff to a .png, saving the png in the **Results** directory.
+This .sh script converts a given .tiff (provided as a command line argument) to a .png, saving the png in the **Results** directory.
 
 ### 9. csvtospace
 
-This .sh script converts given .csv files to .txt files (without changing the original file) and saves the result in the **Results** folder.
+This .sh script converts a given .csv file (provided as a command line argument) to a space delimited .txt file (without changing the original file) and saves the result in the **Results** folder.
 
 ### 10. FirstExample
 
-This .tex file contains my first LaTeX code for a simple document with title, abstract, 2 sections, equations and one pulled bibliography reference using BibTeX.
+This .tex file contains my first LaTeX code for a simple document with title, abstract, 2 sections, equations and one bibliography reference using BibTeX.
 
 ### 11. FirstBiblio
 
-This .bib file contains a BibTeX reference taken from Google Scholar.
+This .bib file contains a BibTeX reference taken from Google Scholar for use in FirstExample.tex.
 
 ### 12. CompileLaTeX
 
-This .sh script compiles LaTeX .tex files with BibTeX and creates a pdf. It also removes all the unnecessary files that are created at the same time.
+This .sh script compiles a LaTeX .tex file (provided as a command line argument) with BibTeX and creates a pdf. It also removes all the unnecessary files that are created at the same time. If a path, such as ../Results/, is provided as a second command line argument, the resulting pdf will be moved to that directory. Note that this second argument is optional.

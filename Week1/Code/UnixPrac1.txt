@@ -1,3 +1,9 @@
+# Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+# Desc: Conatains a collection of single line commands 
+#       to perform different counts on a set of .fasta 
+#       files containing genetic code.
+# Date: Oct 2019
+
 #1 Count the number of lines in each .fasta file
 find ../Data/ -type f -name "*.fasta" -exec wc -l {} \;
 
