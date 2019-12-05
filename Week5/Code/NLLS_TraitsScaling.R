@@ -1,5 +1,14 @@
 ########## Model fitting example using Non-Linear Least Squares ############
 
+# fits models to trait data using non-linear least squares. It includes one 
+# function containing the power law equation and uses many of R's in-built 
+# functions, including AIC and BIC. A power law model, quadratic model and 
+# a straight line are fitted to two subsets of the data (subsetted by genus) 
+# and these models are then compared. It also contains plots of the data and 
+# the fits.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
 
 # clear workspace
 rm(list = ls())

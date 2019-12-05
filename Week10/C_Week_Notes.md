@@ -193,6 +193,26 @@ e.g. '''int *intptrs[]''' this is an array of pointers pointing to integers
      '''int(*arrayptrs)[]''' this is a pointer to an array of integers
 
 
+--------------------------------------------------------------------------------------------------------
+
+A struct is a structure containing different attributes of soemthing as one object (a way of grouping data).
+Void is undefinied type (undefined about of memory).
+Pointer to void (void*) means pointed to an undefined type.
+void *malloc(size_t s) gives you the s bytes of data you asked for.
+
+An array in c is not very flexible. You always need to specify the size and you cannot add data (you need a new array for this).
+We can use a variable to deterine the size of the data thta we need.
+
+A size_t data type is a unsignde long integer really.
+
+Malloc doesn't clear the memory before it allocates it but calloc does.
+
+Encapsulation is an object oriented programming idea where you hide a lot of the background code form the external user. All you need to do is export the function names in a header file and a indication of the existence of the struct and then just include that header file (get rid of main function). This is how you create a library in C.
+
+when running code ```-c``` says skip the linking page (e.g. if you don't have a main function)
+e.g. gcc -c tree.c
+
+
 
 
 

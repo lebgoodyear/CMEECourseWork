@@ -1,6 +1,14 @@
 ########## Model fitting example using Non-Linear Least Squares ############
 ######################### Population growth rate ###########################
 
+# fits three models to generated "data" on the number of bacterial cells as a 
+# function of time. It contains three functions, each representing the Baranyi, 
+# Buchanan and the modified Gompertz growth model respectively, which are then 
+# fitted to the data and plotted. It also generates some starting values for the
+# NLLS fittings, derived from the data.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
 
 # clear workspace
 rm(list = ls())

@@ -21,6 +21,13 @@ Packages required:
 - minpack.lm
 - ggplot2
 - repr
+- raster
+- sf
+- viridis
+- units
+- rgeos
+- lwgeom
+
 
 ## List of scripts
 1. [NLLS_TraitsScaling](#1.NLLS_TraitsScaling)
@@ -28,6 +35,7 @@ Packages required:
 3. [NLLS_Fecundity](#3.-NLLS_Fecundity)
 4. [NLLS_PopGrowthRate](#4.-NLLS_PopGrowthRate)
 5. [GIS](#5.-GIS)
+
 
 ### 1. NLLS_TraitsScaling
 
@@ -46,4 +54,6 @@ A .R script that fits models to data that measures the reponse of Aedes aegypti 
 A .R script that fits three models to generated "data" on the number of bacterial cells as a function of time. It contains three functions, each representing the Baranyi, Buchanan and the modified Gompertz growth model respectively, which are then fitted to the data and plotted. It also generates some starting values for the NLLS fittings, derived from the data.
 
 ### 5. GIS
+
+A.R script that creates maps from GIS data using different methods. It covers both rastas and vectors and converting between the two.
 

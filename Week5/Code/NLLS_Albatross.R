@@ -1,6 +1,15 @@
 ########## Model fitting example using Non-Linear Least Squares ############
 ######################## Albatross chick growth ############################
 
+# fits models to albatross chick growth data. It includes two functions, one 
+# for the logistic growth equation and one for the Von Bertalanffy model. 
+# These models, and a straight line, are fitted to the data and both AIC and
+# BIC are used to compare the three models. It also contains plots of the 
+# data and the fits.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
 # clear workspace
 rm(list = ls())
 graphics.off()

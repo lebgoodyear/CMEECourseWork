@@ -1,6 +1,15 @@
 ########## Model fitting example using Non-Linear Least Squares ############
 ####################### Aedes aegypti fecundity ############################
 
+# fits models to data that measures the reponse of Aedes aegypti fecundity 
+# to temperature. It includes two functions, one for a quadratic model and 
+# the other for the Briere model, which are then, along with a straight line, 
+# fitted to the data. These models are then plotted (with the data) and 
+# compared using AIC.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
 # clear workspace
 rm(list = ls())
 graphics.off()

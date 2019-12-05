@@ -2,10 +2,14 @@
 ##################### Using GIS data in R ####################
 ##############################################################
 
-# Creates maps from GIS data using different methods
+# Creates maps from GIS data using different methods. Covers
+# both rastas and vectors and converting between the two.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
 
 # clear workspace
-rm(ls=(list))
+rm(list=ls())
 graphics.off()
 
 # load packages
@@ -759,7 +763,14 @@ africa <- st_join(africa, mosquito_points_agg)
 africa$area <- as.numeric(st_area(africa))
 
 # plot the combined data
-par(mfrow = c(1, 2), mar = c)
-
-
-
+par(mfrow = c(1, 2), mar = c(3, 3, 1, 1), mgp=c(2, 1 ,0))
+plot(n_outbreaks ~ POP_EST, 
+     data=africa, 
+     log = 'xy',
+     ylab = 'Number of outbreaks',
+     xlab = 'Population size')
+     plot(n_outbreaks ~ area, 
+          data = africa,
+          log = 'xy',
+          ylab = 'Number of outbreaks',
+          xlab = 'Area (m2)')
