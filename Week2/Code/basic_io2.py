@@ -8,7 +8,7 @@ __version__ = '0.0.1'
 # create the list of numbers 0-99
 list_to_save = range(100)
 
-f = open('../Sandbox/testout.txt','w')
+f = open('../Results/testout.txt','w')
 # save the elements of the list to the file above
 for i in list_to_save:
     f.write(str(i) + '\n') # add a new line at the end

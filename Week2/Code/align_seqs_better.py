@@ -43,6 +43,7 @@ f = [i.strip() for i in f]
 s1 = "".join(f)
 
 l1 = len(s1)
+print("Length of longer sequence:")
 print(l1)
 
 g = g[1:]
@@ -50,6 +51,7 @@ g = [i.strip() for i in g]
 s2 = "".join(g)
     
 l2 = len(s2)
+print("Length of shorter sequence:")
 print(l2)
 
 if l1 >= l2:
@@ -90,11 +92,12 @@ def calculate_score(s1, s2, l1, l2, startpoint):
                 matched = matched + "-"
 
     # some formatted output to line up the sequences for easy viewing
-    print("." * startpoint + matched)           
-    print("." * startpoint + str(s2))
-    print(s1)
-    print(score) 
-    print(" ")
+    # commented out because it is very slow for long sequences
+    #print("." * startpoint + matched)           
+    #print("." * startpoint + str(s2))
+    #print(s1)
+    #print(score) 
+    #print(" ")
 
     return score
     return matched
@@ -138,6 +141,9 @@ for i in range(l1): # Note that you just take the last alignment with the highes
 pickle.dump(scores, pf)
 
 pf.close()
+
+# print results to screen
+print("Best alignment is:")
 print(my_best_align)
 print(s1)
 print("Best score:", my_best_score)

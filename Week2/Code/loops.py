@@ -7,23 +7,23 @@ __version__ = '0.0.1'
 
 # FOR loops in Python
 for i in range(5):
-    print(i)
+    print(i) # print the numbers 0-4
 
 my_list = [0, 2, "geronimo!", 3.0, True, False]
 for k in my_list:
-    print(k)
+    print(k) # print each item in the list
 
 total = 0
 summands = [0, 1, 11, 111, 1111]
 for s in summands:
-    total = total + s
+    total = total + s # sums by adding each element to the total
     print(total)
 
 # WHILE loops in Python
 z = 0
 while z < 100:
     z = z + 1
-    print(z)
+    print(z) # prints the numbers 1-100
 
 b = True
 while b:

@@ -348,6 +348,7 @@ chaos_game <- function()  {
 
 # open plot to test turtle function
 plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5))
+
 # Question 24
 turtle <- function(start_position, direction, length)  {
   x0 <- start_position[1]

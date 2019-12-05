@@ -2,7 +2,7 @@
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 03/12/19*
+*Last updated: 04/12/19*
 
 This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the exact contents and the system requirements to run each script.
 
@@ -19,16 +19,16 @@ Some weeks also contain a "Sandbox" directory where:
 **Sandbox** is a miscellaneous directory containing experimental code and data.
 
 ## Table of Contents
-1. [Week 1](#Week-1:-UNIX-and-bash-scripting)
-2. [Week 2](#Week-2:-Python-I)
-3. [Week 3](#Week-3:-R)
-4. [Week 4](#Week-4:-Stats)
-5. [Week 5](#Week-5:-Modelling-and-GIS)
-6. [Week 6](#Week-6:-Genomics) 
-7. [Week 7](#Week-7:-Python-II)
-8. [Week 8](#Week-8:-MiniProject)
-9. [Week 9](#Week-9:-HPC)
-10. [Week 10](#Week-10:-C)
+1. [Week 1: UNIX and shell scripting](#Week-1:-UNIX-and-bash-scripting)
+2. [Week 2: Python I](#Week-2:-Python-I)
+3. [Week 3: R](#Week-3:-R)
+4. [Week 4: Stats](#Week-4:-Stats)
+5. [Week 5: Modelling and GIS](#Week-5:-Modelling-and-GIS)
+6. [Week 6: Genomics](#Week-6:-Genomics) 
+7. [Week 7: Python II](#Week-7:-Python-II)
+8. [Week 8: MiniProject](#Week-8:-MiniProject)
+9. [Week 9: HPC](#Week-9:-HPC)
+10. [Week 10: C](#Week-10:-C)
 11. [MiniProject](#Miniproject)
 12. [Project](#Project)
 
@@ -111,4 +111,4 @@ Work-in-progress scripts from C week.
 
 ### MiniProject
 
-## Project
+### Project

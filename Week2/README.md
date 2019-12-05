@@ -17,6 +17,11 @@ This repository contains all the CMEE coursework from Week 2 on Python.
 
 Python v.3.7
 
+Packages:
+
+- re
+- pickle
+
 All code has been created for Mac so there may be a few differences in commands with respect to Linux.
 
 ## List of scripts
@@ -46,11 +51,11 @@ All code has been created for Mac so there may be a few differences in commands 
 
 ### 1. basic_io1
 
-A .py script that uses a for loop to read from a .txt file, printing the content first with and then without blank lines. Requires testweek2.txt from the directory **Sandbox**.
+A .py script that uses a for loop to read from a .txt file, printing the content first with and then without blank lines. Requires testweek2.txt from the directory **Data**.
 
 ### 2. basic_io2
 
-A script that uses a for loop to write the numbers 0-99 into a .txt file with a new line between each number. This .txt file is saved in **Sandbox**.
+A .py script that uses a for loop to write the numbers 0-99 into a .txt file with a new line between each number. This .txt file is saved in **Results**.
 
 ### 3. basic_io3
 
@@ -58,11 +63,11 @@ A .py script to store a dictionary for later use using the pickle package.
 
 ### 4. basic_csv
 
-A .py script that reads and writes .csv files. The script reads a csv (using the csv package) and then prints it as a list, explicitly stating the species name after each row (on a new line). The script then writes a subset of each row from the first csv into a different csv. Requires testcsv.csv. from the directory **Data** and saves the new .csv file (bodymass.csv) into the **Results** directory.
+A .py script that reads and writes .csv files. The script reads a csv (using the csv package) and then prints it as a list, explicitly stating the species name after each row (on a new line). The script then writes a subset of each row from the first csv into a different csv. Requires testcsv.csv from the directory **Data** and saves the new .csv file (bodymass.csv) into the **Results** directory.
 
 ### 5. cfexercises1
 
-Some mathematical functions showing different conditionals, with doctests for each function and examples to be run as part of the main programme.
+A .py script that contains six mathematical functions showing different conditionals, including doctests for each function. Main function calls all six mathematical functions on sample parameters.
 
 ### 6. loops
 
@@ -74,11 +79,11 @@ A .py script combining loops and conditionals, printing the string 'hello' each 
 
 ### 8. oaks
 
-A .py script that finds the taxa of oak trees from a list of species. It contains one function (is_an_oak) that returns `True` if `name` parameter starts with 'quercus '. This function is then used by for loops and list comprehensions to add oaks to sets.
+A .py script that contains one function, is_an_oak, which finds the taxa of oak trees from a list of species by returning `True` if `name` parameter starts with 'quercus '. Oaks are saved to two sets (as written and all in capitals) using both for loops and list comprehensions with the is_an_oak function. In all, four sets are printed.
 
 ### 9. scope
 
-A .py containing 5 separate scripts exemplifying variable scope. Global variables are printed at various stages, inside and outside of functions.
+A .py containing five separate scripts exemplifying variable scope. Global variables are printed at various stages, inside and outside of functions.
 
 ### 10. boilerplate
 
@@ -134,4 +139,4 @@ A .py that calculates the best alignment of any two DNA sequences, with defaults
 
 ### 23. oaks_debugme
 
-A .py programme that locates oaks by genus from given data in a .csv file. It contains two functions: one (is_an_oak) that returns `True` if the genus is exactly 'quercus' and another (main) that prints all taxa and searches for oaks, printing 'FOUND AN OAK!' when one is located and printing them into a new .csv file (with the species, genus headers) called JustOaksData.csv, saved in the Results directory. It requires the TestOaksData.csv located in the Data directory of Week2.
+A .py programme that locates oaks by genus from given data in a csv file. It contains two functions: one (is_an_oak) that returns `True` if the genus is exactly 'quercus' and another (main) that prints all taxa and searches for oaks, printing 'FOUND AN OAK!' when one is located and printing them into a new .csv file (with the species, genus headers) called JustOaksData.csv, saved in the Results directory. It requires the TestOaksData.csv located in the Data directory of Week2.

@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
-"""Practice example for using the debugger"""
+"""
+Practice example for using the debugger.
+
+Contains one function with a written-in error for the debugger to detect.
+"""
 
 __author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
 __version__ = '0.0.1'
@@ -12,5 +16,6 @@ def makeabug(x):
     y = y/z
     return y
 
+# call makeabug function to view error/debug
 makeabug(25)
 

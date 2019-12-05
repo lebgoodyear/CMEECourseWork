@@ -19,29 +19,33 @@ birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
 # lists containing the latin names, common names and mean body masses for
 # each species in birds, respectively. 
 
+print("Using list comprehensions:")
+
 latin_lc = [species[0] for species in birds]
-print(latin_lc)
+print("Latin names:", latin_lc)
 
 common_name_lc = [species[1] for species in birds]
-print(common_name_lc)
+print("Common names:", common_name_lc)
 
 mass_lc = [species[2] for species in birds]
-print(mass_lc)
+print("Masses:", mass_lc)
 
 # (2) Now do the same using conventional loops (you can choose to do this 
 # before 1 !). 
 
+print("Using conventional loops:")
+
 latin_loop = []
 for species in birds:
     latin_loop.append(species[0])
-print(latin_loop)
+print("Latin names:", latin_loop)
 
 common_name_loop = []
 for species in birds:
    common_name_loop.append(species[1])
-print(common_name_loop)
+print("Common names:", common_name_loop)
 
 mass_loop = []
 for species in birds:
     mass_loop.append(species[2])
-print(mass_loop)
+print("Masses:", mass_loop)

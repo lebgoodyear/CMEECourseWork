@@ -11,13 +11,13 @@ import pickle
 # create a dictionary
 my_dictionary = {"a key": 10, "another key": 11}
 
-f = open('../Sandbox/testp.p','wb') # note the b: accept binary
+f = open('../Results/testp.p','wb') # note the b: accept binary
 # save my_dictionary into file f using pickle
 pickle.dump(my_dictionary, f) # note: pickle can be used to save objects other than dictionaries
 f.close()
 
 # load the data again
-f = open('../Sandbox/testp.p','rb')
+f = open('../Results/testp.p','rb')
 another_dictionary = pickle.load(f)
 f.close()
 

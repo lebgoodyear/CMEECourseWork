@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 
-"""Some mathematical functions showing different conditionals"""
+"""
+Contains six mathematical functions showing different conditionals,
+including doctests for each function. Main function calls all six
+mathematical functions on sample parameters.
+"""
 
 __author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
 __version__ = '0.0.1'
 
-# Imports
+# imports
 import sys
 import doctest
 
@@ -116,7 +120,7 @@ def foo_6(x):
 doctest.testmod()
 
 def main(argv):
-    """Some examples using the functions above"""
+    """Some examples using the 6 foo functions"""
     print(foo_1(5))
     print(foo_1(25))
     print(foo_2(8, 23))
@@ -134,4 +138,4 @@ def main(argv):
 if __name__ == "__main__":
     """Makes sure the "main" function is called from the command line"""
     status = main(sys.argv)
-    sys.exit(status)
+    #sys.exit(status)

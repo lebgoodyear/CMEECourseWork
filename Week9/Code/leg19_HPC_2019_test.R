@@ -8,8 +8,10 @@ source("leg19_HPC_2019_main.R")
 
 # do what you like here to test your functions (this won't be marked)
 # for example
-species_richness(c(1,4,4,5,1,6,1))
+#species_richness(c(1,4,4,5,1,6,1))
 # should return 4 when you've written the function correctly for question 1
 
 # you may also like to use this file for playing around and debugging
 # but please make sure it's all tidied up by the time it's made its way into the main.R file or other files.
+
+process_cluster_results()
