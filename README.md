@@ -4,23 +4,9 @@
 *Created: 10/10/19*  
 *Last updated: 06/12/19*
 
-This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the exact contents and the system requirements to run each script.
+This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the subdirectories, the system requirements to run each script and a description of the contents of each script.
 
-Each **Week** directory, and the **MiniProject** directory, contains a "Code", "Data" and "Results" directory, where:
-
-**Code** contains the scripts/programs.
-
-**Data** is the data needed to run those scripts.
-
-**Results** is where the outpout from those scripts is sent to.
-
-Note that **Week9** does not contain a data directory because data is generated in the cluster.
-
-Some weeks also contain a "Sandbox" directory where:
-
-**Sandbox** is a miscellaneous directory containing experimental code and data.
-
-The **Project** directory currently only contains my project proposal, in the **Proposal** directory, but will later contain all project files.
+Note that the **C(Week10)** directory does not have the same nomenclature as the other teaching weeks because it is a non-compulsory course for MRes students.
 
 ## Table of Contents
 1. [Week 1: UNIX and shell scripting](#Week-1:-UNIX-and-bash-scripting)
@@ -109,7 +95,7 @@ This directory is empty, created for file structure continuity. See MiniProject 
 * Cluster .R script which contains the code to be run on the cluster
 * A bash script to manage the cluster queue
 
-### Week 10: C
+### C (Week 10)
 
 Work-in-progress scripts from C week.
 
