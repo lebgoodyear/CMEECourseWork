@@ -1,3 +1,9 @@
+/* Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+ * Script: pointers_to_arrays.c
+ * Desc: using pointers to point tp arrays
+ * Date: Dec 2019
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 

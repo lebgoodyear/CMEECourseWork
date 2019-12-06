@@ -1,3 +1,9 @@
+/* Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+ * Script: safearray.c
+ * Desc: allocating and freeing memory and using structs
+ * Date: Dec 2019
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 

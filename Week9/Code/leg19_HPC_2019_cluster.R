@@ -26,8 +26,7 @@ if ((iter >= 75) & (iter <= 100)){
 # save output into separate files named after the iteration
 output_file_name <- paste0("Results", iter, ".rda")
 # call cluster_run function with personal speciation_rate = 0.002216
-cluster_run(speciation_rate = 0.002216, size = size, wall_time = 10, interval_rich = 1, interval_oct = as.numeric(size/10), burn_in_generations = 8*size, output_file_name = output_file_name)
+cluster_run(speciation_rate = 0.002216, size = size, wall_time = 11.5*60, interval_rich = 1, interval_oct = as.numeric(size/10), burn_in_generations = 8*size, output_file_name = output_file_name)
 
-#11.5*60
 
 

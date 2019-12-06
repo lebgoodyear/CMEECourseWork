@@ -1,3 +1,9 @@
+/* Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+ * Script: operators.c
+ * Desc: using basic numeric operators
+ * Date: Dec 2019
+ */
+
 #include <stdio.h>
 
 int main (void) 

@@ -1,3 +1,9 @@
+/* Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+ * Script: dna.c
+ * Desc: turning ACGT into binary
+ * Date: Dec 2019
+ */
+
 #include <stdio.h>
 
 /*

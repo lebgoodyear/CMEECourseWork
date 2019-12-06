@@ -1,3 +1,9 @@
+/* Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+ * Script: malloc_calloc.c
+ * Desc: using malloc and calloc
+ * Date: Dec 2019
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 

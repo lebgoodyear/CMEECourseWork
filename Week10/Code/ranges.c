@@ -1,3 +1,10 @@
+/* Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+ * Script: ranges.c
+ * Desc: transfer numbers between data types to understand
+ *       how data is stored
+ * Date: Dec 2019
+ */
+
 #include <stdio.h>
 
 int main (void) 

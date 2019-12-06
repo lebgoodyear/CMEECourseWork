@@ -1,3 +1,10 @@
+/* Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+ * Script: bitwise.c
+ * Desc: using bitwise operations
+ * Date: Dec 2019
+ */
+
+
 #include <stdio.h>
 #include <limits.h>
 

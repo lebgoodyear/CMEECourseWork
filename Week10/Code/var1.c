@@ -1,3 +1,9 @@
+/* Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+ * Script: var1.c
+ * Desc: how to assign variables
+ * Date: Dec 2019
+ */
+
 #include <stdio.h>
 
 int main (void)

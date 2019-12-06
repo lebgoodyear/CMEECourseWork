@@ -1,3 +1,9 @@
+/* Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+ * Script: vars2.c
+ * Desc: using variables of different data types
+ * Date: Dec 2019
+ */
+
 #include <stdio.h>
 
 int main (void) {

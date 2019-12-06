@@ -1,3 +1,9 @@
+/* Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+ * Script: hello.c
+ * Desc: creating a main function that prints a statement
+ * Date: Dec 2019
+ */
+
 #include <stdio.h>
 
 int main (void) // void is a special keyword in C that means nothing so it is an empty placeholder here. Some compilers require this, you can leave it blank for others.

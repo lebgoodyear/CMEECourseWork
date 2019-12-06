@@ -22,23 +22,31 @@ A compiler for the C programming language.
 All code has been created for Mac so there may be a few differences in commands with respect to Linux.
 
 ## List of scripts
-1. [hello](#1.-hello)
-2. [var1](#2.-var1)
-3. [vars2](#3.-vars2)
-4. [ranges](#4.-ranges)
-5. [operators](#5.-operators)
-6. [bitwise](#6.-bitwise)
-7. [dna](#7.-dna)
-8. [pointers](#8.-pointers)
-9. [pointers_to_arrays](#9.-pointers_to_arrays)
-10. [pointers_ret](#10.-pointers_ret)
-11. [composite_data_types](#11.-composite_data_types)
-12. [safearray](#12.-safearray)
-13. [malloc_calloc](#13.-malloc_calloc)
+1. hello
+2. var1
+3. vars2
+4. ranges
+5. operators
+6. bitwise
+7. dna
+8. pointers
+9. pointers_to_arrays
+10. pointers_ret
+11. composite_data_types
+12. safearray
+13. malloc_calloc
 
+## Script content
 
-
-### 1. hello
-
-A .c script that
+The above C scripts ecover the following C concepts:
+- basic C structure
+- data types
+- variables
+- operators
+- bitwise operations
+- loops and functions
+- pointers
+- using structs
+- safe programming
+- assigning and freeing memory
 

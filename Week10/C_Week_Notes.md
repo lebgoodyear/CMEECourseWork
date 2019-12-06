@@ -1,5 +1,6 @@
 # C Week Notes
 
+## Basics 
 /# are included at start of programme at top of file and refer to the standard library
 define macros or tell it to find files
 in this case, standard input-output header file, standrad functions such as printf
@@ -48,7 +49,7 @@ Our C script (hello.c) used up 3 files:
 
 linker sets up address to get printf function when called
 
-## Data. Memory and Variables
+## Data, Memory and Variables
 Main basic data types:
 
 Integral type:
@@ -144,20 +145,25 @@ Sankoff method
 - score a tree by considering all possible reconstructions at every single node
 - can have unordered or ordered parsimony (Fitch or Wagner)
 
-# Bit-wise operations
+## Bit-wise operations
 
 A bit is set when it's equal to 1, unset equal to 0 (which is empty)
 
 | bitwise OR (creates union of the two sets), only one has to be set for result to be set
+
 & bit-wise AND (creates intersection of two sets), both have to be set for result to be set
+
 ^ exclusive or (XOR) sets a bit only when 1 bit is set to 1 (0,1 or 1,0)
->> right shift (shifts values one place to the right)
+
+\>> right shift (shifts values one place to the right)
+
 << left shift (shifts values one place to the left)
+
 ~ one's complement, sets all unset, unsets all set (does opposite)
 
 see bitwise.c for examples using these operations
 
-# Pointers
+## Pointers
 
 Stack is CPU's operational structure for running a programme.
 A stack is a general data structure , it is the first in and the last out (filo)
@@ -194,6 +200,8 @@ e.g. '''int *intptrs[]''' this is an array of pointers pointing to integers
 
 
 --------------------------------------------------------------------------------------------------------
+
+## Structs
 
 A struct is a structure containing different attributes of soemthing as one object (a way of grouping data).
 Void is undefinied type (undefined about of memory).
