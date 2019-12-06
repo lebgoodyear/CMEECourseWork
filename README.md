@@ -9,16 +9,16 @@ This repository contains all the coursework for the first term of the CMEE Maste
 Note that the **C(Week10)** directory does not have the same nomenclature as the other teaching weeks because it is a non-compulsory course for MRes students.
 
 ## Table of Contents
-1. [Week 1: UNIX and shell scripting](#1.Week-1:-UNIX-and-bash-scripting)
-2. [Week 2: Python I](#2.Week-2:-Python-I)
-3. [Week 3: R](#3.Week-3:-R)
-4. [Week 4: Stats](#4.Week-4:-Stats)
-5. [Week 5: Modelling and GIS](#5.Week-5:-Modelling-and-GIS)
-6. [Week 6: Genomics](#6.Week-6:-Genomics) 
-7. [Week 7: Python II](#7.Week-7:-Python-II)
-8. [Week 8: MiniProject](#8.Week-8:-MiniProject)
-9. [Week 9: HPC](#9.Week-9:-HPC)
-10. [Week 10: C](#10.Week-10:-C)
+1. [Week 1 UNIX and shell scripting](#1.Week-1-UNIX-and-bash-scripting)
+2. [Week 2 Python I](#2.Week-2-Python-I)
+3. [Week 3 R](#3.Week-3-R)
+4. [Week 4 Stats](#4.Week-4-Stats)
+5. [Week 5 Modelling and GIS](#5.Week-5-Modelling-and-GIS)
+6. [Week 6 Genomics](#6.Week-6-Genomics) 
+7. [Week 7 Python II](#7.Week-7-Python-II)
+8. [Week 8 MiniProject](#8.Week-8-MiniProject)
+9. [Week 9 HPC](#9.Week-9-HPC)
+10. [C (Week 10)](#10.C-(Week-10))
 11. [MiniProject](#11.Miniproject)
 12. [Project](#12.Project)
 
