@@ -36,6 +36,10 @@ All code has been created for Mac so there may be a few differences in commands 
 12. safearray
 13. malloc_calloc
 14. test_tree
+15. countprimes
+16. countprimes (header file)
+17. Rcprimes
+
 
 ## Script content
 
@@ -50,5 +54,7 @@ The above C scripts ecover the following C concepts:
 - using structs
 - safe programming
 - assigning and freeing memory
+- header files
 - script to test files in the TreeLib subdirectory
+- R wrappers
 

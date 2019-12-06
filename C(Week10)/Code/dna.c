@@ -21,13 +21,13 @@ unsigned char pack_dna(char in)
         return  (unsigned char)1;
     }
     else if (in == 'C') {
-        return (unsigned char)(1 << 1)
+        return (unsigned char)(1 << 1);
     }
     else if (in == 'G') {
-        return (unsigned char)(1 << 2)
+        return (unsigned char)(1 << 2);
     }
     else if (in == 'T') {
-        return (unsigned char)(1 << 3)
+        return (unsigned char)(1 << 3);
     }
     else if (in == '?') {
         return (unsigned char)~0;

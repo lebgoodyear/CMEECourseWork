@@ -222,6 +222,11 @@ e.g. gcc -c tree.c
 
 -I flag tells the compiler where the include files live, e.g. gcc -I./treelib testree.c
 
+We can inlcude source files by putting them into the input command line, e.g. gcc -I./treelib testree.c ./treelib/tree.c
+
+We can add to this and produce an executable output file called test_tree:
+```gcc -I./treelib test_tree.c ./treelib/*.c -o test_tree```
+
 pre-order goes up the tree, post-order goes down the tree (same as up pass and down pass)
 
 In a tree, taxa are always the tips and number of nodes is always number of taxa times 2 take 1 (num_taxa * 2 - 1)
@@ -229,3 +234,29 @@ In a tree, taxa are always the tips and number of nodes is always number of taxa
 If you pass a pointer to a struct into a function, it actually rewrites the data, whereas if you passed the actual struct, the memory would be wiped after the function has finished. Also, performance issue, it takes much longer to pass an actual struct than just an integer (the pointer).
 
 It would be a good idea to check that the last element in the anctable is the root of the tree. The best thing would be to create an anctable object or create a new function to check this (with a Boolean return).
+
+A union is another type and is created like a struct. The difference is that when you define a union you only get the memory to hold the largest type so it can only hold one variable at a time. E.g. a struct can store a float and an int but a union could only store one of these (you list both but only one can be in memory at a time).
+
+R's C compiler is R CMD SHLIB, e.g. ```R CMD SHLIB Rcprimes.c countprimes.c```
+
+SHLIB stands for shared library.
+
+Example of using C in R:
+
+```
+> dyn.load("Rcprimes.so")
+> .Call("count_primes_C_wrap", limit = as.integer(10))
+[1] 5
+> .Call("count_primes_C_wrap", limit = as.integer(100000))
+[1] 9593
+```
+
+Much faster than writing and running the code in just in R and actually also faster than running the C code in terminal.
+
+To reduce the code if we are calling this function frequently in R we can make an R function:
+```
+count.primes.C <- function(limits)
+{
+    .Call("count_primes_C_wrap", limit = as.integer)limit))
+}
+```

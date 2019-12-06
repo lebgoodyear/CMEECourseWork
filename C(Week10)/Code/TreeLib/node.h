@@ -1,5 +1,5 @@
-#ifndef _NODE_H // avoids multiple inclusions
-#define _NODE_H
+#ifndef _NODE_H_ // avoids multiple inclusions
+#define _NODE_H_
 
 // type def to save keystrokes
 // typedef <known type> <new alias>

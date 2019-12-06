@@ -31,12 +31,6 @@ void traverse_list(struct listobj* lobj)
 
 int main (void)
 {
-    struct listobj { // a structure to store an integer and a pointer to another listobj
-
-        int data;
-        struct listobj* next; // same as struct listobj *next;
-
-    };
 
     // create 3 instances of listobj
     struct listobj l1;
