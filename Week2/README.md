@@ -33,7 +33,7 @@ All code has been created for Mac so there may be a few differences in commands 
 6. [loops](#6.-loops)
 7. [cfexercises2](#7.-cfexercises2)
 8. [oaks](#8.-oaks)
-9. [scope](#9.-scope)
+9. [Scope](#9.-Scope)
 10. [boilerplate](#10.-boilerplate)
 11. [using_name](#11.-using_name)
 12. [sysargv](#12.-sysargv)
@@ -81,7 +81,7 @@ A .py script combining loops and conditionals, printing the string 'hello' each 
 
 A .py script that contains one function, is_an_oak, which finds the taxa of oak trees from a list of species by returning `True` if `name` parameter starts with 'quercus '. Oaks are saved to two sets (as written and all in capitals) using both for loops and list comprehensions with the is_an_oak function. In all, four sets are printed.
 
-### 9. scope
+### 9. Scope
 
 A .py containing five separate scripts exemplifying variable scope. Global variables are printed at various stages, inside and outside of functions.
 
