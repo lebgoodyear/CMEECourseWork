@@ -1,6 +1,6 @@
-# CMEE Coursework Week 7 Results Directory
+# CMEE Coursework Week 9 Results Directory
 
 *Author: Lucy Goodyear*  
-*Created: 27/11/19*
+*Created: 06/12/19*
 
-This is an empty directory to which outputs are sent.
+This directory contains sample data from trial local and cluster runs. After full cluster run is complete, it will contain all results from the cluster run on neutral theory.
