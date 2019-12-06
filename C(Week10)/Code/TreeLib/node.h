@@ -1,4 +1,4 @@
-#ifndef _NODE_H // avoids mulitple inclusions
+#ifndef _NODE_H // avoids multiple inclusions
 #define _NODE_H
 
 // type def to save keystrokes
@@ -14,5 +14,7 @@ typedef struct _node {
     char   *label; // e.g. the species name
 
 } node_t;
+
+void node_traverse(node_t* n);
 
 #endif

@@ -264,15 +264,17 @@ process_cluster_results <- function(){
   files <- list.files(path = "../Results/", pattern = "*.rda")
   # set for loop over files to extract octave information
   for (i in files){
-    load(paste0("..//Results/",i)) # load each file
+    load(paste0("../Results/",i)) # load each file
     octaves_tot <- c() # initliase empty octave vector for i file ocatve sum
     counter <- 0 # reset counter to 0
     # loop over each octave in file i
     for (j in length(octaves_list)){
+      if (j > (burn_in_generations/interval_oct)){
       # sum all octaves in file i
       octaves_tot <- sum_vect(octaves_tot, octaves_list[[j]])
       # count all octaves in file i
       counter <- counter + 1
+      }
     }
     # set if statements to sum octaves over each size
     if (size == 500){
@@ -297,6 +299,7 @@ process_cluster_results <- function(){
   graphics.off()
   par(mfrow = c(2, 2))
   barplot(octaves_500 / counter_500,
+          #ylim = max(octaves_500)/counter_500,
           ylab = "Mean species abundance",
           xlab = "Species abundance octaves (log2)",
           main = "Initial community of size 500",

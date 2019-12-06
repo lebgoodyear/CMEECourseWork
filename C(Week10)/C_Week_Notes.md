@@ -211,7 +211,7 @@ void *malloc(size_t s) gives you the s bytes of data you asked for.
 An array in c is not very flexible. You always need to specify the size and you cannot add data (you need a new array for this).
 We can use a variable to deterine the size of the data thta we need.
 
-A size_t data type is a unsignde long integer really.
+A size_t data type is a unsigned long integer really.
 
 Malloc doesn't clear the memory before it allocates it but calloc does.
 
@@ -220,7 +220,12 @@ Encapsulation is an object oriented programming idea where you hide a lot of the
 when running code ```-c``` says skip the linking page (e.g. if you don't have a main function)
 e.g. gcc -c tree.c
 
+-I flag tells the compiler where the include files live, e.g. gcc -I./treelib testree.c
 
+pre-order goes up the tree, post-order goes down the tree (same as up pass and down pass)
 
+In a tree, taxa are always the tips and number of nodes is always number of taxa times 2 take 1 (num_taxa * 2 - 1)
 
+If you pass a pointer to a struct into a function, it actually rewrites the data, whereas if you passed the actual struct, the memory would be wiped after the function has finished. Also, performance issue, it takes much longer to pass an actual struct than just an integer (the pointer).
 
+It would be a good idea to check that the last element in the anctable is the root of the tree. The best thing would be to create an anctable object or create a new function to check this (with a Boolean return).

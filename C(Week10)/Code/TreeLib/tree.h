@@ -15,5 +15,6 @@ typedef struct _tree {
 tree_t* new_tree(int num_taxa);
 void    delete_tree(tree_t* tree);
 void    tree_read_anc_table(int *anctable, tree_t* t);
+void    tree_traverse(tree_t* t);
 
 #endif
