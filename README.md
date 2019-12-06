@@ -21,6 +21,7 @@ Note that the **C(Week10)** directory does not have the same nomenclature as the
 10. [C (Week 10)](#10.C-(Week-10))
 11. [MiniProject](#11.Miniproject)
 12. [Project](#12.Project)
+13. [Assessment](#13.Assessment)
 
 ### 1. Week 1: UNIX and shell scripting
 
@@ -106,3 +107,7 @@ Work-in-progress scripts for my MiniProject.
 ### 12. Project
 
 Directory for MRes project. Currently only contains the proposal.
+
+### 13. Assessment
+
+Directory for Course Director to push assessment results.
