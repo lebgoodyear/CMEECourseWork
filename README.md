@@ -2,11 +2,11 @@
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 04/12/19*
+*Last updated: 06/12/19*
 
 This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the exact contents and the system requirements to run each script.
 
-Each week contains a "Code", "Data" and "Results" directory, where:
+Each **Week** directory, and the **MiniProject** directory, contains a "Code", "Data" and "Results" directory, where:
 
 **Code** contains the scripts/programs.
 
@@ -14,9 +14,13 @@ Each week contains a "Code", "Data" and "Results" directory, where:
 
 **Results** is where the outpout from those scripts is sent to.
 
+Note that **Week9** does not contain a data directory because data is generated in the cluster.
+
 Some weeks also contain a "Sandbox" directory where:
 
 **Sandbox** is a miscellaneous directory containing experimental code and data.
+
+The **Project** directory currently only contains my project proposal, in the **Proposal** directory, but will later contain all project files.
 
 ## Table of Contents
 1. [Week 1: UNIX and shell scripting](#Week-1:-UNIX-and-bash-scripting)
@@ -72,7 +76,7 @@ This directory is empty, created for file structure continuity.
 ### Week 5: Modelling and GIS
 
 * Four modelling scripts focusing on non-linear least squares
-* One GIS script containing all the GIS practical work
+* One GIS script containing GIS practical work
 
 ### Week 6: Genomics
 
@@ -111,4 +115,8 @@ Work-in-progress scripts from C week.
 
 ### MiniProject
 
+Work-in-progress scripts for my MiniProject.
+
 ### Project
+
+Directory for MRes project. Currently only contains the proposal.
