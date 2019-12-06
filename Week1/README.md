@@ -19,7 +19,7 @@ All code has been created for Mac so there may be a few differences in commands 
 
 
 ## List of scripts
-1. [UnixPrac1](#1.UnixPrac1)
+1. [UnixPrac1](#1.-UnixPrac1)
 2. [boilerplate](#2.-boilerplate)
 3. [tabtocsv](#3.-tabtocsv)
 4. [variables](#4.-variables)
