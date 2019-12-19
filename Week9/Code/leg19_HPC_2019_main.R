@@ -780,7 +780,7 @@ Challenge_C <- function() {
   segments(300, -2, x1 = 300, y1 = 40, col = "#56B4E9", lwd = 1, lty = 2)
   segments(650, -2, x1 = 650, y1 = 70, col = "#D55E00", lwd = 1, lty = 2)
   # add legend, including dotted lines
-  legend("bottom", inset=c(0.5,-0.5),
+  legend("bottom", inset=c(0.5,-0.8),
          legend = c("Community size = 500", "Community size = 1000", "Community size = 2500", "Community size = 5000", "",
                     "Estimated number of generations \nneeded for system to reach \ndynamic equilibrium for each size"),
          col = c("#009E73", "#000000", "#56B4E9", "#D55E00", "", "#000000"),
@@ -791,7 +791,7 @@ Challenge_C <- function() {
          x.intersp = 1,
          y.intersp = 0.001,
          ncol = 2,
-         text.width = 250)
+         text.width = 300)
 }
 
 # Challenge question D

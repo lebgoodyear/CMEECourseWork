@@ -2,7 +2,7 @@
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 06/12/19*
+*Last updated: 19/12/19*
 
 This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the subdirectories, the system requirements to run each script and a description of the contents of each script.
 
@@ -95,10 +95,11 @@ This directory is empty, created for file structure continuity. See MiniProject 
 * Test .R script, which sources the main script and contains suitable parameters to test the functions.
 * Cluster .R script which contains the code to be run on the cluster
 * A bash script to manage the cluster queue
+* Self-sufficient R script containing the answer to question 30 in as few characters as possible
 
 ### 10. C (Week 10)
 
-Work-in-progress scripts from C week.
+All scripts from C week.
 
 ### 11. MiniProject
 
