@@ -1,0 +1,64 @@
+R is about to run
+
+R version 3.6.1 (2019-07-05) -- "Action of the Toes"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-conda_cos6-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # CMEE 2019 HPC excercises R code HPC run code proforma
+> # clear workspace
+> rm(list=ls())
+> 
+> # source R file containing all functions
+> source("/rds/general/user/leg19/home/Week9HPC/leg19_HPC_2019_main.R")
+> 
+> # read in the job number from the cluster
+> iter <- as.numeric(Sys.getenv("PBS_ARRAY_INDEX"))
+> # test on my machine
+> #iter <- 76
+> 
+> set.seed(iter)
+> if ((iter >= 1) & (iter <= 25)){
++   size = 500
++ }
+> if ((iter > 25) & (iter <= 50)){
++   size = 1000
++ }
+> if ((iter > 50) & (iter <= 75)){
++   size = 2500
++ }
+> if ((iter > 75) & (iter <= 100)){
++   size = 5000
++ }
+> # save output into separate files named after the iteration
+> output_file_name <- paste0("Results", iter, ".rda")
+> # call cluster_run function with personal speciation_rate = 0.002216
+> cluster_run(speciation_rate = 0.002216, size = size, wall_time = 11.5*60, interval_rich = 1, interval_oct = as.numeric(size/10), burn_in_generations = 8*size, output_file_name = output_file_name)
+> 
+> 
+> 
+> 
+R has finished running
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :         1             1
+ Used       :         0 (peak)   0.98 (ave)
+
+============================================

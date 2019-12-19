@@ -91,14 +91,14 @@ question_8 <- function() {
        type = "l",
        ylab = "Species Richness (by generation)",
        xlab = "Time (in generations)")
-  return("The system will always converge to a species richness of 1 because you are always 
-         replacing the individual that died with an individual from one of the other species, 
-         with no new species ever being added. This decreases the species richness because we
-         are starting with a community of maximum diversity (one of each species). 
-         Over time the species richness will continue decreasing as more species are lost and 
-         replaced by existing species, with the probability of the most common species replacing
-         a lost individual of another species gradually increasing, eventually converging to a 
-         species richness of 1.")
+  return(paste("The system will always converge to a species richness of 1 because you are always",
+         "replacing the individual that died with an individual from one of the other species,",
+         "with no new species ever being added. This decreases the species richness because we",
+         "are starting with a community of maximum diversity (one of each species).",
+         "Over time the species richness will continue decreasing as more species are lost and",
+         "replaced by existing species, with the probability of the most common species replacing",
+         "a lost individual of another species gradually increasing, eventually converging to a",
+         "species richness of 1."))
 }
 
 # Question 9
@@ -176,10 +176,10 @@ question_12 <- function()  {
          legend = c("Maximum Initial Conditions", "Minimum Initial Conditions"),
          col = c("#D55E00", "#56B4E9"),
          lty = 1, bty = "n")
-  return("Regardless of initial conditions, the system will always converge to the same
-         equilibrium because speciation rate and length of generation is the same. The system
-         reaches a rough equilibrium rather than dropping to a species richness of 1 because of
-         the introduction of the speciation rate.")
+  return(paste("Regardless of initial conditions, the system will always converge to the same",
+         "equilibrium because speciation rate and length of generation is the same. The system",
+         "reaches a rough equilibrium rather than dropping to a species richness of 1 because of",
+         "the introduction of the speciation rate."))
 }
 
 # Question 13
@@ -271,8 +271,8 @@ question_16 <- function()  {
           cex.main = 0.75, cex.lab = 0.75, cex.names = 0.75, cex.axis = 0.75)
   title(main = "Mean species abundances by octave after 2000 generations\n at equilibrium for two different initial species richnesses", cex.main = 0.95, outer=TRUE)     
   
-  return("The initial conditions do not matter because speciation rate is constant so the system
-         will always reach the same equilibrium point in terms of species richness.")
+  return(paste("The initial conditions do not matter because speciation rate is constant so the system",
+         "will always reach the same equilibrium point in terms of species richness."))
 }
 
 # Question 17
@@ -461,10 +461,10 @@ chaos_game <- function()  {
            x[2],
            cex = 0.05)
   }
-  return("A Sierpinski Gasket emerges but of a scalene triangle rather than an equiliateral triangle. 
-         This is a fractal object that is created with three stationary points and an initial start point, which
-         was the origin in this case. The initial start point is moved half way towards one of the stationary points,
-         which then becomes the new start point for the next iterations. This fractal was created with 15,000 iterations.")
+  return(paste("A Sierpinski Gasket emerges but of a scalene triangle rather than an equiliateral triangle.", 
+         "This is a fractal object that is created with three stationary points and an initial start point, which",
+         "was the origin in this case. The initial start point is moved half way towards one of the stationary points,",
+         "which then becomes the new start point for the next iterations. This fractal was created with 15,000 iterations."))
 }
 
 # open plot to test turtle function
@@ -503,11 +503,11 @@ spiral <- function(start_position, direction, length)  {
     # call spiral recursively to draw subsequent segments
     spiral(c(new_points[1], new_points[2]), direction - pi/4, length*0.95)
   }
-  return("An error message occurs: 'Error: C stack usage  7970112 is too close to the limit.'
-         This happens because there is no end point to the recursive function so it will keep calling
-         itself infinitely many times, which the computer cannot handle becuase it cannot allocate memory
-         for inifinitely many lines. To solve this include an if statement to set a limit, e.g. stop 
-         when the length reaches a certain threshold.")
+  return(paste("An error message occurs: 'Error: C stack usage  7970112 is too close to the limit.",
+         "This happens because there is no end point to the recursive function so it will keep calling",
+         "itself infinitely many times, which the computer cannot handle becuase it cannot allocate memory",
+         "for inifinitely many lines. To solve this, include an if statement to set a limit, e.g. stop",
+         "when the length reaches a certain threshold."))
 }
 
 # Question 27
@@ -892,7 +892,7 @@ Challenge_E <- function() {
   par(mfrow = c(2,2), mar=c(3,3,3,3), oma = c(0,0,2,0)) # edit margins for neater fit
   # create first plot
   plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5),
-       main = "Starting point outside fractal area", cex.main = 0.8)
+       main = "1) Starting point outside fractal area", cex.main = 0.8)
   # store the stationary points as a list
   store <- list(A = c(0,0), B = c(3,4), C = c(4,1))
   # set starting point outside area framed by stationary points
@@ -926,7 +926,7 @@ Challenge_E <- function() {
 
   # create second plot
   plot(1, type="n", xlab="", ylab="", xlim=c(0, 4), ylim=c(0, 4),
-       main = "Classical Sierpinski Gasket", cex.main = 0.8)
+       main = "2) Classical Sierpinski Gasket", cex.main = 0.8)
   # store the stationary points as a list of vertices of an equilateral triangle
   store <- list(A = c(0,0), B = c(3,0), C = c(3*sin(pi/6), 3*tan(pi/3)/2))
   # set starting point
@@ -945,7 +945,7 @@ Challenge_E <- function() {
   
   # create third plot
   plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5),
-       main = "Four stationary points", cex.main = 0.8)
+       main = "3) Four stationary points", cex.main = 0.8)
   # store the stationary points as a list, this time 4 forming a square
   store <- list(A = c(0,0), B = c(4,0), C = c(0,4), D = c(4,4))
   # set starting point
@@ -964,7 +964,7 @@ Challenge_E <- function() {
   
   # create fourth plot
   plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5),
-       main = "Move 1/3 distance", cex.main = 0.8)
+       main = "4) Move 1/3 distance", cex.main = 0.8)
   # store the stationary points as a list
   store <- list(A = c(0,0), B = c(3,4), C = c(4,1))
   # create starting point
@@ -981,13 +981,13 @@ Challenge_E <- function() {
            cex = 0.05)
   }
   title(main = "Chaos game simulations with different parameters/initial conditions", outer=TRUE)
-  return("1) Starting with an initial position outside the stationary points still ends up with a
-         scalene Sierpinski triangle but the first few points (coloured in red) are located outside of the fractal pattern.
-         2) The classical Sierpinski gasket made from 3 points corresponding to the vertices of an
-         equilateral triangle.
-         3) The same algorithm but with 4 stationary points rather than 3 does not create a fractal.
-         4) The save algorithm but moving 1/3 of the distance towards the stationary points rather
-         than 1/2 does not create a fractal.")
+  return(list(paste0("1) Starting with an initial position outside the stationary points still ends up with a ",
+         "scalene Sierpinski triangle but the first few points (coloured in red) are located outside of the fractal pattern. "),
+         paste0("2) The classical Sierpinski gasket made from 3 points corresponding to the vertices of an ",
+         "equilateral triangle."),
+         paste0("3) The same algorithm but with 4 stationary points rather than 3 does not create a fractal."),
+         paste0("4) The save algorithm but moving 1/3 of the distance towards the stationary points rather ",
+         "than 1/2 does not create a fractal."))) # use list and paste0 for clarity
 }
 
 # Challenge question F
@@ -1036,7 +1036,8 @@ Challenge_F <- function() {
   # add baubles and star at the top of tree using points()
   points(c(2.5,2.75,3.5,3.5,2.7,3.9,3.2,3.3,2.9), c(2.7,6,5,4,4.2,2.1,4.5,7,7.9), pch = 19, col = rainbow(9), cex = 1)
   points(3,9, pch = 8, cex = 2, col = "#CFB53B", lwd = 2)
-  return(0)
+  return(paste("As the line threshold is decreased, the plot becomes more detailed as more",
+         "lines are drawn and the time taken to plot increases."))
 }
 
 # Challenge question G should be written in a separate file that has no dependencies on any functions here.
