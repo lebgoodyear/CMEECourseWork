@@ -2,7 +2,7 @@
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 19/12/19*
+*Last updated: 04/02/20*
 
 This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the subdirectories, the system requirements to run each script and a description of the contents of each script.
 
@@ -20,8 +20,7 @@ Note that the **C(Week10)** directory does not have the same nomenclature as the
 9. [Week 9 HPC](#9.Week-9-HPC)
 10. [C (Week 10)](#10.C-(Week-10))
 11. [MiniProject](#11.Miniproject)
-12. [Project](#12.Project)
-13. [Assessment](#13.Assessment)
+12. [Assessment](#12.Assessment)
 
 ### 1. Week 1: UNIX and shell scripting
 
@@ -105,10 +104,6 @@ All scripts from C week.
 
 Work-in-progress scripts for my MiniProject.
 
-### 12. Project
-
-Directory for MRes project. Currently only contains the proposal.
-
-### 13. Assessment
+### 12. Assessment
 
 Directory for Course Director to push assessment results.
