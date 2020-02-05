@@ -18,7 +18,7 @@ library(ggplot2)
 fits <- read.csv("../Data/CRfits")
 
 
-########################### functions ############################
+######################### initial plots ##########################
 
 
 # define Holling function to plotting
@@ -64,6 +64,10 @@ for (i in IDs) {
                     colour = "blue"))
 }
 dev.off()
+
+
+############################ analysis ###############################
+
 
 # compare AICs to work out which model is best for each ID dataset
 for (i in IDs) {

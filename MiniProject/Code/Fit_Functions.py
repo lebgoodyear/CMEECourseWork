@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 
 """ 
-Fits NLLS model to consumer resource data.
+Three functions to fit NLLS models to consumer resource data:
+
+1) sample_starts calculates starting values for each dataset by sampling from a Gaussian distribution based on on intial input values.
+AIC is caluclated for each possible value and the one with the lowest AIC is selected. It takes two inputs, df (the dataframe containing the 
+datasets that are to be modeled) and maxiters (the number of samples to be taken from the Gaussian distribution).
+
+2) GFR is the General Functional Response function and simply contains that equation. It returns the difference between the actual value
+and the model value.
+
+3) poly_fit tries to fit a polynomial to each dataset.
 
 """
 
 __author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
 __version__ = '0.0.1'
 
-# define generalised functional response equation
-# where a is equivalent to the gradient of the initial part of the slope
-# h is handling time, which is the maximum y-value
-def GFR(GFR_params, x, y):
-    a = GFR_params["a"]
-    q = GFR_params["q"]
-    h = GFR_params["h"]
-    model = (a * (x ** (q + 1))) / (1 + h * a * (x ** (q + 1)))
-    return y - model
 
 def sample_starts(df, maxiters):
     # initialise empty data frame to store possible starting values
@@ -42,6 +42,18 @@ def sample_starts(df, maxiters):
         test = test.append({"Trial_a" : GFR_fit.params["a"].value, "Trial_q" : GFR_fit.params["q"].value, "Trial_h" : GFR_fit.params["h"].value, "RSS": GFR_fit.residual,  "AIC": GFR_fit.aic, "BIC": GFR_fit.bic}, ignore_index = True)
     test = test[test.AIC == min(test.AIC)] # choose lowest AIC as starting values for model
     return test
+
+
+# define generalised functional response equation
+# where a is equivalent to the gradient of the initial part of the slope
+# h is handling time, which is the maximum y-value
+def GFR(GFR_params, x, y):
+    a = GFR_params["a"]
+    q = GFR_params["q"]
+    h = GFR_params["h"]
+    model = (a * (x ** (q + 1))) / (1 + h * a * (x ** (q + 1)))
+    return y - model
+
 
 def poly_fit(crd_sub):
     try:
