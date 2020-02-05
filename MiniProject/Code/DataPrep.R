@@ -1,18 +1,36 @@
-################### Data Preparation ###################
+##################################################################
+####################### Data Preparation #########################
+##################################################################
+
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
+
+
+########### initial set up, package and data loading #############
+
 
 # load packages
 library(ggplot2)
 
-# read csv (more easily viewed in rstudio)
+# read csv
 crd <- read.csv("../Data/CRat.csv", stringsAsFactors = F)
 
-crd <- subset(crd, !is.na(crd$N_TraitValue)) # remove any NAs
 
-# subset by relelvant data columns
+##################### subset and filter data #####################
+
+
+# subset to remove any NAs in trait value
+crd <- subset(crd, !is.na(crd$N_TraitValue))
+
+# subset by relelvant data columns: ID, trait value and resource density
 crd <- as.data.frame(cbind(crd$ID, crd$N_TraitValue, crd$ResDensity))
 names(crd) <- c("ID", "N_TraitValue", "ResDensity")
 
-# initial plot of data
+# initial plot of data for quick viewing
 qplot(x = crd$ResDensity, y = crd$N_TraitValue, colour = crd$ID,
       xlab = "Resource Density", ylab = "Trait Value") +
   geom_point()
@@ -33,10 +51,14 @@ if (is.null(x)) {
   print("The following IDs contain fewer than 5 records so are not suitable for modelling") 
   x
 }
-# we can see there 13 IDs with fewer than 5 records so these must be removed
+# remove any IDs with fewer than 5 records
 crd <- crd[ ! crd$ID %in% x, ]
 
-## view all datasets to get a feel for the data
+
+#################### plot filtered IDs ###########################
+
+
+# view all datasets to get a feel for the data
 # open blank pdf page using a relative path
 pdf(paste("../Results/Explore_Plots/IDs.pdf"),
     8, 4.5, onefile = TRUE) # save all plots to one pdf
@@ -48,6 +70,10 @@ for (i in (unique(crd$ID))) {
     geom_point())
 }
 dev.off()
+
+
+###################### starting value estimates ####################
+
 
 # calculate initial starting value estimates for parameters
 for (i in (unique(crd$ID))) {
@@ -66,6 +92,10 @@ for (i in (unique(crd$ID))) {
     crd$initial_h[j] <- start_h
   }
 }
+
+
+###################### save subsetted dataframe #####################
+
 
 # save subsetted data to new csv to be imported by python
 write.csv(crd, "../Data/CRatMod.csv")

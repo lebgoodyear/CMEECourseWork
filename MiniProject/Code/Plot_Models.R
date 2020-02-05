@@ -1,14 +1,31 @@
-################# PLotting Data and Fits ####################
+##################################################################
+################### PLotting Data and Fits #######################
+##################################################################
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
+
+
+########### initial set up, package and data loading #############
+
 
 # load packages
 library(ggplot2)
+
+fits <- read.csv("../Data/CRfits")
+
+
+########################### functions ############################
+
 
 # define Holling function to plotting
 GFR <- function (a, q, h, x) {
   return (a * (x ^ (q + 1)) / (1 + h * a * (x) ^ (q + 1)))
 }
 
-fits <- read.csv("../Data/crd_fits")
 fits <- subset(fits, !is.na(fits$Poly1))
 # check which datasets had no model fitted
 #nofits <- subset(fits, is.na(fits$Poly1))
@@ -52,7 +69,7 @@ dev.off()
 for (i in IDs) {
   subs <- subset(fits, fits$ID == i)
   deltaAIC <- subs$Poly_AIC - subs$GFR_AIC
-  if (deltaAIC < 2) && (deltaBIC < 2) && (deltaRSS < 0) {
+  if ((deltaAIC < 2) && (deltaBIC < 2) && (deltaRSS < 0)) {
     cat("Polynomial Model is a better fit")
   }
   if (deltaAIC > 2) {
