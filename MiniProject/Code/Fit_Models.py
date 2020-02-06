@@ -12,19 +12,21 @@ __version__ = '0.0.1'
 import lmfit
 import pandas
 import numpy
-import Fit_Functions
+import Fit_Functions # import my functions for fitting
 
 # load the data
 crd = pandas.read_csv("../Data/CRatMod.csv", index_col = 0)
 
+# set gloabl variable for use within and without functions
 global nofitIDs
-nofitIDs = []
 # create empty list for any IDs it was not possible to fit to
+nofitIDs = []
 
 # create a list of IDs
 IDs = [39836, 39835] #crd['ID']
 
 # insert new columns into the dataframe for the final estimate of each parameter
+# as well as AIC, BIC and Residual Sums of Squares
 crd.insert(5, "Fit_a", "")
 crd.insert(6, "Fit_q", "")
 crd.insert(7, "Fit_h", "")
@@ -39,17 +41,20 @@ crd.insert(15, "Poly_RSS", "")
 crd.insert(16, "Poly_AIC", "")
 crd.insert(17, "Poly_BIC", "")
 
-# create for loop to fit Holling for all data subsets
+# create for loop to fit both a GFR and a polynomial to all data subsets
 fits = pandas.DataFrame() # initilise empty dataframe to save fitting data for each record
 for i in numpy.unique(IDs):
-    maxiters = 3
+    maxiters = 3 # set max iterations for finding starting values
     crd_sub = crd[crd.ID == i] # subset by each ID
     crd_sub = crd_sub.reset_index(drop=True) # reset index so can easily loop over just these elements
-    # run function to find best starting values and keep the fit with the lowest AIC
+    # run sample_starts function to find best starting values for GFR and keep the fit with the lowest AIC
     GFRfit = sample_starts(crd_sub, maxiters)
+    # run polynomial function to find best fitting polynomial
     PolynomialFit = poly_fit(crd_sub)
+    # calulcate residuals sums of squares for both fits
     GFR_RSS = numpy.sum(GFRfit.iloc[0,5] ** 2)
     PolyRSS = PolynomialFit[1][0]
+    # calculate AIC and BIC for polynomial fits
     PolyAIC = len(crd_sub) + 2 + len(crd_sub) * numpy.log((2 * numpy.pi) / len(crd_sub)) + len(crd_sub) * numpy.log(PolyRSS) + 2 * (len(crd_sub) - len(PolynomialFit[0]))
     PolyBIC = len(crd_sub) + 2 + len(crd_sub) * numpy.log((2 * numpy.pi) / len(crd_sub)) + len(crd_sub) * numpy.log(PolyRSS) + numpy.log(len(crd_sub)) * (len(crd_sub) - len(PolynomialFit[0]) + 1)
     # extract final fit parameters for plotting in R
@@ -67,12 +72,13 @@ for i in numpy.unique(IDs):
     crd_sub.iloc[0,15] = PolyRSS
     crd_sub.iloc[0,16] = PolyAIC
     crd_sub.iloc[0,17] = PolyBIC
-
+    # create a new dataframe with only fthe irst row of each ID since fit parameters are the same within each ID
     fits = fits.append(crd_sub.iloc[0]) # add the first row of each ID to data frame
     fits = fits.reindex(crd_sub.columns, axis=1) # put the columns back to the original order
         
-fits = fits.reset_index(drop=True)
-fits['ID'] = fits['ID'].astype(numpy.int64)
+fits = fits.reset_index(drop=True) # reset index
+fits['ID'] = fits['ID'].astype(numpy.int64) # set data type
+# print any IDs with no model fitted - these will be removed in following script
 print("Errors occurred at these IDs:", nofitIDs)
 
 #GFR_fit.params.pretty_print()
