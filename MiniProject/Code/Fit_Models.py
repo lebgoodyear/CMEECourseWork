@@ -12,7 +12,7 @@ __version__ = '0.0.1'
 import lmfit
 import pandas
 import numpy
-import Fit_Functions # import my functions for fitting
+import fit_functions as ff # import my functions for fitting
 
 # load the data
 crd = pandas.read_csv("../Data/CRatMod.csv", index_col = 0)
@@ -23,7 +23,7 @@ global nofitIDs
 nofitIDs = []
 
 # create a list of IDs
-IDs = [39836, 39835] #crd['ID']
+IDs = crd['ID']
 
 # insert new columns into the dataframe for the final estimate of each parameter
 # as well as AIC, BIC and Residual Sums of Squares
@@ -48,9 +48,9 @@ for i in numpy.unique(IDs):
     crd_sub = crd[crd.ID == i] # subset by each ID
     crd_sub = crd_sub.reset_index(drop=True) # reset index so can easily loop over just these elements
     # run sample_starts function to find best starting values for GFR and keep the fit with the lowest AIC
-    GFRfit = sample_starts(crd_sub, maxiters)
+    GFRfit = ff.sample_starts(crd_sub, maxiters)
     # run polynomial function to find best fitting polynomial
-    PolynomialFit = poly_fit(crd_sub)
+    PolynomialFit = ff.poly_fit(crd_sub)
     # calulcate residuals sums of squares for both fits
     GFR_RSS = numpy.sum(GFRfit.iloc[0,5] ** 2)
     PolyRSS = PolynomialFit[1][0]
@@ -72,13 +72,13 @@ for i in numpy.unique(IDs):
     crd_sub.iloc[0,15] = PolyRSS
     crd_sub.iloc[0,16] = PolyAIC
     crd_sub.iloc[0,17] = PolyBIC
-    # create a new dataframe with only fthe irst row of each ID since fit parameters are the same within each ID
+    # create a new dataframe with only the first row of each ID since fit parameters are the same within each ID
     fits = fits.append(crd_sub.iloc[0]) # add the first row of each ID to data frame
     fits = fits.reindex(crd_sub.columns, axis=1) # put the columns back to the original order
         
 fits = fits.reset_index(drop=True) # reset index
 fits['ID'] = fits['ID'].astype(numpy.int64) # set data type
-# print any IDs with no model fitted - these will be removed in following script
+# print any IDs with no model fitted - these will be removed in the following script
 print("Errors occurred at these IDs:", nofitIDs)
 
 #GFR_fit.params.pretty_print()

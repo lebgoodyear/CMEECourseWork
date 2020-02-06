@@ -4,15 +4,18 @@
 """ 
 Three functions to fit NLLS models to consumer resource data:
 
-1) GFR contains the General Functional Response equation. It takes General Functional Response parameters (3: a,q,h) and x and y vectors
+1) GFR 
+Contains the General Functional Response equation. It takes General Functional Response parameters (3: a,q,h) and x and y vectors
 and returns vector containing the difference between the actual value and the model value. It is used within the sample_starts function.
 
-2) sample_starts calculates starting values for each dataset by sampling from a Gaussian distribution with a mean of the intial input values. 
+2) sample_starts
+Calculates starting values for each dataset by sampling from a Gaussian distribution with a mean of the intial input values. 
 These are then modeled using the GFR function and AIC is caluclated for each set of sample values and the one with the lowest AIC is 
 selected. It takes two inputs, df (the dataframe containing the datasets that are to be modeled) and maxiters (the number of samples 
 to be taken from the Gaussian distribution). Output is a dataframe containing the selected starting paramenters.
 
-3) poly_fit tries to fit a polynomial to each dataset, saving any IDs that cannot be fitted to a separate vector. It takes a dataframe
+3) poly_fit
+Tries to fit a polynomial to each dataset, saving any IDs that cannot be fitted to a separate vector. It takes a dataframe
 as input and returns a dataframe of fitting parameters as output.
 
 """
@@ -20,6 +23,12 @@ as input and returns a dataframe of fitting parameters as output.
 
 __author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
 __version__ = '0.0.1'
+
+
+# imports
+import lmfit
+import pandas
+import numpy
 
 
 # function for Generalised Functional Response
