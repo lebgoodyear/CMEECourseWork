@@ -36,9 +36,10 @@ All code has been created for Mac so there may be a few differences in commands 
 ## List of scripts
 1. [Data_Exploration](#1.-Data_Exploration)
 2. [DataPrep](#2.-DataPrep)
-3. [Fit_Models](#3.-Fit_Models)
-4. [Plot_Models](#4.-Plot_Models)
-5. [MiniProjectFinal](#5.-MiniProjectFinal)
+3. [fit_functions](£3.-fit_functions)
+3. [Fit_Models](#4.-Fit_Models)
+4. [Plot_Models](#5.-Plot_Models)
+5. [MiniProjectFinal](#6.-MiniProjectFinal)
 
 ### 1. Data_Exploration
 
@@ -48,15 +49,19 @@ A Jupyter Notebook to explore the datset.
 
 A .R script to do intial plotting and prepare the data for fitting.
 
-### 3. Fit_Models
+### 3. fit_functions
 
-A .py script to fit a polynomial model and the general functional response model to the data. NOT YET COMPLETE.
+A .py module that contains all the necessary functions for Fit_Models to run.
 
-### 4. Plot_Models
+### 4. Fit_Models
+
+A .py script to fit a polynomial model and the general functional response model to the data. It imports fit_functions.
+
+### 5. Plot_Models
 
 A .R script to plot the models with the data. NOT YET COMPLETE.
 
-### 5. MiniProjectFinal
+### 6. MiniProjectFinal
 
 A .tex file with the final report. NOT YET COMPLETE.
 

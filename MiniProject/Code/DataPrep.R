@@ -30,8 +30,8 @@ crd <- read.csv("../Data/CRat.csv", stringsAsFactors = F)
 crd <- subset(crd, !is.na(crd$N_TraitValue))
 
 # subset by relelvant data columns: ID, trait value and resource density
-crd <- as.data.frame(cbind(crd$ID, crd$N_TraitValue, crd$ResDensity))
-names(crd) <- c("ID", "N_TraitValue", "ResDensity")
+crd <- as.data.frame(cbind(crd$ID, crd$ResDensity, crd$N_TraitValue))
+names(crd) <- c("ID", "ResDensity", "N_TraitValue")
 
 # initial plot of data for quick visualisation
 # data is logged for initial viewing since many points are very small and 
