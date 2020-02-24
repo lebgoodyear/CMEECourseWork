@@ -23,8 +23,7 @@ nofitIDs_poly = []
 nofitIDs_GFR = []
 
 # create a list of IDs
-#IDs = crd['ID']
-IDs = [39835, 39836]
+IDs = crd['ID']
 
 # insert new columns into the dataframe for the final estimate of each parameter
 # as well as AIC, BIC and Residual Sums of Squares
@@ -50,7 +49,7 @@ for i in numpy.unique(IDs):
     crd_sub = crd.loc[crd.ID == i].copy()
     crd_sub = crd_sub.reset_index(drop=True) # reset index so can easily loop over just these elements
     # run GFR_fit function to find best starting values for GFR and keep the fit with the lowest AIC
-    GFRfit = ff.GFR_fit(crd_sub, maxiters)
+    GFRfit = ff.FR_fit(ff.GFR_fit, crd_sub, maxiters)
     if GFRfit is None:
         print("Errored at ID", i, " - no Generalised Functional Response fit possible")
         nofitIDs_GFR.append(i)
@@ -77,7 +76,6 @@ for i in numpy.unique(IDs):
         PolyAIC = len(crd_sub) + 2 + len(crd_sub) * numpy.log((2 * numpy.pi) / len(crd_sub)) + len(crd_sub) * numpy.log(PolyRSS) + 2 * (len(crd_sub) - len(PolynomialFit[0]))
         PolyBIC = len(crd_sub) + 2 + len(crd_sub) * numpy.log((2 * numpy.pi) / len(crd_sub)) + len(crd_sub) * numpy.log(PolyRSS) + numpy.log(len(crd_sub)) * (len(crd_sub) - len(PolynomialFit[0]) + 1)
         # extract final fit parameters for plotting in R
-        crd_sub.drop(['ResDensity', 'N_TraitValue', 'initial_a', 'initial_h'], axis = 1) # remove all rows that no longer needed
         crd_sub.iloc[0,11] = PolynomialFit[0][0]
         crd_sub.iloc[0,12] = PolynomialFit[0][1]
         crd_sub.iloc[0,13] = PolynomialFit[0][2]
@@ -85,6 +83,8 @@ for i in numpy.unique(IDs):
         crd_sub.iloc[0,15] = PolyRSS
         crd_sub.iloc[0,16] = PolyAIC
         crd_sub.iloc[0,17] = PolyBIC
+    # remove all rows that no longer needed
+    crd_sub.drop(['ResDensity', 'N_TraitValue', 'initial_a', 'initial_h'], axis = 1)
     # create a new dataframe with only the first row of each ID since fit parameters have only been inserted into first row
     # (fit parameters are the same within each ID)
     fits = fits.append(crd_sub.iloc[0]) # add the first row of each ID to data frame
@@ -100,10 +100,17 @@ print("Errors occurred at these IDs in fitting a GFR model:", nofitIDs_GFR, "\n"
 #print(lmfit.fit_report(GFR_fit))
 
 # save final dataframe with all initial data and fits to a csv for R to import for plotting
-fits.to_csv("../Data/CRfits")    
+fits.to_csv("../Data/CRfits.csv")    
 # save all errored IDs to csv
-nofitIDs_GFR.to_csv("../Data/nofit_GFR")  
-nofitIDs_poly.csv("../Data/nofit_poly")  
+#nofitIDs_GFR.to_csv("../Data/nofit_GFR")  
+#nofitIDs_poly.csv("../Data/nofit_poly")  
+
+##### output
+# Errored at ID 39835  - no polynomial fit possible
+# Errored at ID 39949  - no Generalised Functional Response fit possible
+# Errors occurred at these IDs in fitting a GFR model: [39949] 
+# Errors occurred at these IDs in fitting a polynomial: [39835]
+
 
 
 

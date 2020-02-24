@@ -82,16 +82,16 @@ def GFR_fit(df, maxiters):
     for k in range(0, maxiters):
         GFR_params = lmfit.Parameters()
         GFR_params.add("a", value = a[k])
-        GFR_params.add("q", value = 0, min=-2, max = 2)
-        GFR_params.add("h", value = h[k])
+        GFR_params.add("q", value = 0)
+        GFR_params.add("h", value = h[k], min=0)
         # try to fit the general functional response model to starting value set k
         try:
-            GFR_fit = lmfit.minimize(GFR, GFR_params, args = (df.iloc[:,1], df.iloc[:,2]))
+            fit = lmfit.minimize(GFR, GFR_params, args = (df.iloc[:,1], df.iloc[:,2]))
         # catch any IDs fail and save them to a list
         except ValueError:
             return None # we can pass safely after failing IDs have been caught
         # append all test starting parameters to a data frame, inlcuding AIC, BIC and RSS
-        test = test.append({"Trial_a" : GFR_fit.params["a"].value, "Trial_q" : GFR_fit.params["q"].value, "Trial_h" : GFR_fit.params["h"].value, "RSS": GFR_fit.residual,  "AIC": GFR_fit.aic, "BIC": GFR_fit.bic}, ignore_index = True)
+        test = test.append({"Trial_a" : fit.params["a"].value, "Trial_q" : fit.params["q"].value, "Trial_h" : fit.params["h"].value, "RSS": fit.residual,  "AIC": fit.aic, "BIC": fit.bic}, ignore_index = True)
     best_fit = test[test.AIC == min(test.AIC)] # choose lowest AIC as starting values for model
     return best_fit
 

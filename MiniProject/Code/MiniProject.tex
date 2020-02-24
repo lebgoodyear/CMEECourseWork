@@ -1,0 +1,143 @@
+\documentclass[11pt, a4paper, titlepage]{article}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage[style=authoryear,backend=bibtex]{biblatex}
+\bibliography{MiniProject}
+\usepackage{graphicx}
+
+\begin{document}
+	
+\begin{titlepage} % Suppresses headers and footers on the title page
+	
+	\centering % Centre everything on the title page
+	
+	\scshape % Use small caps for all text on the title page
+	
+	\vspace*{\baselineskip} % White space at the top of the page
+	
+	%------------------------------------------------
+	
+	%	Title
+	
+	%------------------------------------------------
+	
+	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+	
+	\rule{\textwidth}{0.4pt} % Thin horizontal rule
+	
+	\vspace{0.75\baselineskip} % Whitespace above the title
+	
+	{\LARGE A comparison of phenomological and mechanistic models of functional responses \\} % Title
+	
+	\vspace{0.75\baselineskip} % Whitespace below the title
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	
+	\rule{\textwidth}{1.6pt} % Thick horizontal rule
+	
+	\vspace{2\baselineskip} % Whitespace after the title block
+	
+	%------------------------------------------------
+	
+	%	Subtitle
+	
+	%------------------------------------------------
+	
+	Computational Methods in Ecology and Evolution MRes
+	\vspace{0.5\baselineskip}
+	
+	 MiniProject % Subtitle or further description
+	
+	\vspace*{3\baselineskip} % Whitespace under the subtitle
+	
+	%------------------------------------------------
+	
+	%	Editor(s)
+	
+	%------------------------------------------------
+	
+	\vspace{0.5\baselineskip} % Whitespace before the editors
+	
+	{\scshape\Large Lucy Goodyear\\
+		Department of life Sceinces \\
+		Imperial College London\\} % Editor list
+	
+	\textit{lucy.goodyear19@imperial.ac.uk}
+	\date{}
+	
+	\vspace*{3\baselineskip} % Whitespace under the subtitle
+	
+	Word Count:
+	
+\end{titlepage}
+	
+\section*{Abstract}
+
+\newpage
+
+\section{Introduction}
+
+The term functional response refers to the relationship between a consumer's consumption rate and the density of its prey (Solomon1949). 
+
+The first mechanistic mathematical approach to functional responses was conducted by Holling in 1959 \parencite{Holling1959b}. Holling constructed an artifical functional response experiment whereby a "predator" selected discs. He discovered that the funtional response was related to prey terms in terms of two constants, instantaneous rate of discovery and handling time. The instaneous rate of discovery is the likelihood of a predator finding an indidual prey, which is sometimes contstant and sometimes relayes to the equation:
+\begin{equation}
+a = \frac{a'}{1 + ca'x}
+\end{equation}
+The handling time is the time required for a predator to attack and eat it's prey, i.e. any time not spent in activly searching for prey.
+
+The basic functional response model described in this paper is then extended in...with the basic functional response becoming classed as a type II.
+Holling also discusses other attempts at modelling functional responses, remakring on the lack of biological context in most of the other options.
+
+The Type III functional response was modeled using computer simulations and labeled as the generalised functional response by Holling 1965? with Types I and II being limiting conditions. However, Type III was not described mathematically until 1977 by Real, who derived it using Holling's Type II functional response equation and first-order kinetic interations \parencite{Real1977}
+ 
+The Generalised Functional Response equation is written below, where $c$ is the consumer response, $a$ is the instaneous rate of discovery, $x$ is the resource density, $h$ is the handling time and $q$ is a varibale with as yet unknown biological meaning. It has been hyptohesised that q could be related to predator learning and is "the number of encounters...a predator must have with a prey item before becoming maximally efficient at utilizing the prey item as a resource" \parencite{Real1977}. In his paper, Real mathemaitcally derives the Type III (or generalised) functional response from looking at the kinetics \parencite{Real1977}.
+
+\begin{equation}
+c = \frac{ax_R^{q + 1}}{1 + hax_R^{q + 1}}
+\end{equation}
+
+It can been shown that the Type II functional response is a special case of the Generalised Functional Response by setting $q = 0$. In terms of Real's interpretation of $q$, the predator is "is always maximally efficient on the prey item"  \parencite{Real1977} in a Type II response.
+
+\begin{equation}
+c = \frac{ax_R}{1 + hax_R}
+\end{equation}
+
+ In Type I, the handling time is negligble, reducing the second term in the denominator to almost zero, leaving us with a linear relationship:
+
+\begin{equation}
+c = ax_R
+\end{equation}
+
+This is the assumption in the first Lotka-Volterra model and is found to best fit filter feeders, where the predation rate is directly  proportional to the prey density due to ... \parencite{Jescke2004}.
+
+The Holling model was then generalised in ... 
+by .... to what is known as the generalised functional response model by including variable q. . 
+
+This paper aims to look at the difference of fit between one such phenomological model (a polyomial) with the generalised functional response equation, a mechanistic model. The polynomial has no biological meaning so the comparison is effectly one of phenomological vs mechanistic models. 
+
+By fitting the general functional response model to 308 datasets and comparing it to a polynomial fit, we can categorise the data, noticing the patterns
+that match the different data subsets. We can also compare fucntional response types by subsetting by limiting conditions of $h$ and $q$ respectively.
+
+blady...bla et al have shown that habitat/taxa affect functional responses in ....ways. As such, we are expecting a similar relationship shown by 
+our data models.
+
+\section{Methods}
+
+\subsection{Computing Tools}
+
+Data was prepared for fitting using R. Rstudio makes it very easy to view data and i.... First the data was subsetted by the necessary columns and all records with NA trait value were discarded. This subset was run through a for loop to check that each ID had more than 5 records (the minimum number required for the fit with the most parameters (the cubic). Each ID was then plotted and saved to a single pdf in order to be able to give a quick review of the data. The data preparation script also generates the initial starting values for the general functional response fit, which are saved in the dataframe. The new dataframe, included subsetted data and initial starting values for a and h, is saved to csv for python load.
+
+The starting value optimisation and fitting script is done using python. For the polynomial fit, there is an in-built python function, which also finds starting values for you. For the general functional response fit, a Gaussian sample of 100 was generated around the estimated starting values and each of these sample values was used to fit the model. The AIC, BIC and residual sums of sqaures (RSS) were calculated for each ID and the starting values for the model with the lowest AIC were chosen as the best fit. AIC was chosen over BIC because.....and when the number of estimated parameters is the same for each model (such as with GFR), choosing AIC is the equivalent of choosing RSS ...reference here. This loop is run for every ID.
+
+Functions are saved in a separate python script and have been generalised to allow importation into future programmes. In python, the packages \textit{lmfit}, \textit{numpy} and \textit{pandas} were used. numpy contains the polynomial fitting function as well as the different mathematical values, such as pi. lmfit allows the use of parameters when fitting a model and pandas is a dataframe tool.
+
+The best fit parameters and measured for all IDs are stored in a separate data frame and saved as a csv to be imported by the analsysi script, which has been done R due to the ease of data and graphical representation in R-studio. The analysis script plots each ID's datapoints, polynomial and generalised functional response fits. It compares RSS, AIC and BIC for each model within each ID. Based on the chosen best model for each ID, the IDs are then grouped and compared using the metadata.
+
+\section{Results}
+
+\section{Discussion}
+
+\newpage
+\printbibliography
+\newpage
+
+\end{document}
