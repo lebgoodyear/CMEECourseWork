@@ -49,7 +49,7 @@ for i in numpy.unique(IDs):
     crd_sub = crd.loc[crd.ID == i].copy()
     crd_sub = crd_sub.reset_index(drop=True) # reset index so can easily loop over just these elements
     # run GFR_fit function to find best starting values for GFR and keep the fit with the lowest AIC
-    GFRfit = ff.FR_fit(ff.GFR_fit, crd_sub, maxiters)
+    GFRfit = ff.GFR_fit(crd_sub, maxiters)
     if GFRfit is None:
         print("Errored at ID", i, " - no Generalised Functional Response fit possible")
         nofitIDs_GFR.append(i)
@@ -109,6 +109,9 @@ fits.to_csv("../Data/CRfits.csv")
 # Errored at ID 39835  - no polynomial fit possible
 # Errored at ID 39949  - no Generalised Functional Response fit possible
 # Errors occurred at these IDs in fitting a GFR model: [39949] 
+# Errors occurred at these IDs in fitting a polynomial: [39835]
+
+# Errors occurred at these IDs in fitting a GFR model: [351, 39914, 39925, 39949, 39973, 39974, 39987, 40005, 40035, 40036, 40037, 40038, 40046, 40050, 40051, 40079, 40080, 40102, 40117, 40129] 
 # Errors occurred at these IDs in fitting a polynomial: [39835]
 
 

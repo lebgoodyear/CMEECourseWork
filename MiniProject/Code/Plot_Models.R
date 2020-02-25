@@ -20,15 +20,6 @@ library(tidyr)
 # load data
 metadata_full <-read.csv("../Data/CRat.csv", stringsAsFactors = F)
 crd <- read.csv("../Data/CRatMod.csv", stringsAsFactors = F)
-# fitting data for GFR and Poly 
-#fits <- read.csv("../Data/CRfits1", stringsAsFactors = F)
-# fitting data for GFR, Typei and Poly
-#fitsh <- read.csv("../Data/CRfits_h0.csv", stringsAsFactors = F)
-# fitting data with h >0 for GFR, TypeI and Poly
-#fitsh0 <- read.csv("../Data/CRfits_h0.csv", stringsAsFactors = F)
-# fitting data with no limit to q
-#fitsq <- read.csv("../Data/CRfits_qfree.csv", stringsAsFactors = F)
-# fitting data for GRF and Poly (h > 0, q unlimited)
 fits <- read.csv("../Data/CRfits.csv", stringsAsFactors = F)
 
 # remove any irrelevant columns from metadata
@@ -48,41 +39,13 @@ metadata$Con_ForagingMovement[which(metadata$Con_ForagingMovement == "Sessile")]
 
 # merge fitting data and metadata into one data frame
 meta_fits <- merge(metadata, fits, by = "ID")
-#meta_fitsh <- merge(metadata, fitsh, by = "ID")
-#meta_fitsh0 <- merge(metadata, fitsh0, by = "ID")
-#meta_fitsq <- merge(metadata, fitsq, by = "ID")
 
-# create a list of unique IDs
-IDs <- c(unique(meta_fits$ID))
-
-# only keep IDs which had both models fitted (for now)
-#na.rm = T
-
+# only keep IDs which had both models fitted
 meta_fits <- subset(meta_fits, !is.na(meta_fits$Poly1))
 meta_fits <- subset(meta_fits, !is.na(meta_fits$Fit_a))
 
 # create a list of unique IDs
 IDs <- c(unique(meta_fits$ID))
-
-#meta_fitsh <- subset(meta_fitsh, !is.na(meta_fitsh$Fit_a))
-#meta_fitsh <- subset(meta_fitsh, !is.na(meta_fitsh$Poly1))
-#meta_fitsh <- subset(meta_fitsh, !is.na(meta_fitsh$TypeI_a))
-
-#meta_fitsh0 <- subset(meta_fitsh0, !is.na(meta_fitsh0$Poly1))
-#meta_fitsh0 <- subset(meta_fitsh0, !is.na(meta_fitsh0$Fit_a))
-#meta_fitsh0 <- subset(meta_fitsh0, !is.na(meta_fitsh0$TypeI_a))
-
-# check to see if any datasets had no model fitted and view data points
-#nofits <- subset(fits, is.na(fits$Poly1) & !is.na(fits$Fit_a))
-#dropd_IDs <- c(unique(nofits$ID))
-#for (i in dropd_IDs) {
-#  p <- subset(nofits, nofits$ID == i) # subset and plot the data by ID
-#  print(qplot(x = p$log_ResDensity, y = p$log_N_TraitValue,
-#              xlab = "log of Resource Density", ylab = "Log of Trait Value",
-#              main = paste("ID", i)) +
-#        geom_point())
-#}
-# commented out because, in this data, no points had no model fitted
 
 
 ###################### initial plotting of all curves ######################
@@ -127,72 +90,56 @@ dev.off()
 #################### analysis: GFR vs Poly ###########################
 
 
+# initialise empty columns
 meta_fits$Best_fit_AIC <- NA
 meta_fits$Best_fit_BIC <- NA
 meta_fits$Best_fit_RSS <- NA
 meta_fits$Best_fit <- NA
 
-
 # set polynomial fit to 1 and GFR fit to 2 to enable faster comparison
-# also set Type 1 for later comparison
+# also set Types 1 and 2 for later comparison
 Poly <- 1
 GFR <- 2
-Type1 <- 3
+HollingType1 <- 3
+HollingType2 <- 4
 
 # compare AIC and BIC over for each ID to choose best model
 for (i in IDs) {
-  subs <- subset(meta_fits, meta_fits$ID == i)
-  # define differences between best fit parameters
-  #if (is.na(subs$Poly1)){
-  #  meta_fits$Best_fit[meta_fits$ID == i] = meta_fits$Best_fit_AIC[meta_fits$ID == i] = meta_fits$Best_fit_BIC[meta_fits$ID == i] = meta_fits$Best_fit_RSS[meta_fits$ID == i]<- GFR
-  #}
-  #  else if (is.na(subs$Fit_a)){
-  #  meta_fits$Best_fit[meta_fits$ID == i] = meta_fits$Best_fit_AIC[meta_fits$ID == i] = meta_fits$Best_fit_BIC[meta_fits$ID == i] = meta_fits$Best_fit_RSS[meta_fits$ID == i] <- Poly
-  #  }
-  #  else {
-      deltaAIC <- abs(subs$Poly_AIC - subs$GFR_AIC)
-      deltaBIC <- abs(subs$Poly_BIC - subs$GFR_BIC)
-      deltaRSS <- abs(subs$Poly_RSS - subs$GFR_RSS)
-      
-      # if statements to set best fit model for ID i depending on test
-      # AIC
-      if (deltaAIC < 2) {
-        meta_fits$Best_fit_AIC[meta_fits$ID == i] <- Poly 
-      } else {
-        meta_fits$Best_fit_AIC[meta_fits$ID == i] <- GFR
-      }
-      # BIC
-      if (deltaBIC < 2) {
-        meta_fits$Best_fit_BIC[meta_fits$ID == i] <- Poly
-      }
-      else {
-        meta_fits$Best_fit_BIC[meta_fits$ID == i] <- GFR 
-      }
-      # RSS
-      if (deltaRSS < 0) {
-        meta_fits$Best_fit_RSS[meta_fits$ID == i] <- Poly
-      }
-      else {
-        meta_fits$Best_fit_RSS[meta_fits$ID == i] <- GFR
-      }
-    
-    # run to see which IDs had all 3 fit tests in agreement
-    # overall
-    #if ((meta_fits$Best_fit_RSS[IDs == i] == meta_fits$Best_fit_BIC[IDs == i]) & (meta_fits$Best_fit_RSS[IDs == i] == meta_fits$Best_fit_AIC[IDs == i])) {
-      #meta_fits$Best_fit[IDs == i] <- meta_fits$Best_fit_RSS[IDs == i]
-    #}
-    #else {
-      #meta_fits$Best_fit[IDs == i] <- "unconfirmed"
-    #}
-    
-    # set which fit is best overall
-      if (meta_fits$Best_fit_AIC[meta_fits$ID == i] + meta_fits$Best_fit_BIC[meta_fits$ID == i] + meta_fits$Best_fit_RSS[IDs == i] <= 4) {
-        meta_fits$Best_fit[meta_fits$ID == i] <- Poly
-      }
-      else {
-        meta_fits$Best_fit[meta_fits$ID == i] <- GFR
-      }
-    #}
+  subs <- subset(meta_fits, meta_fits$ID == i) # subset data
+  # define differences between AIC, BIC and RSS
+  deltaAIC <- abs(subs$Poly_AIC - subs$GFR_AIC)
+  deltaBIC <- abs(subs$Poly_BIC - subs$GFR_BIC)
+  deltaRSS <- abs(subs$Poly_RSS - subs$GFR_RSS)
+  
+  # if statements to set best fit model for ID i depending on test
+  # AIC
+  if (deltaAIC < 2) {
+    meta_fits$Best_fit_AIC[meta_fits$ID == i] <- Poly 
+  } else {
+    meta_fits$Best_fit_AIC[meta_fits$ID == i] <- GFR
+  }
+  # BIC
+  if (deltaBIC < 2) {
+    meta_fits$Best_fit_BIC[meta_fits$ID == i] <- Poly
+  }
+  else {
+    meta_fits$Best_fit_BIC[meta_fits$ID == i] <- GFR 
+  }
+  # RSS
+  if (deltaRSS < 0) {
+    meta_fits$Best_fit_RSS[meta_fits$ID == i] <- Poly
+  }
+  else {
+    meta_fits$Best_fit_RSS[meta_fits$ID == i] <- GFR
+  }
+  
+  # set which fit is best overall
+  if (meta_fits$Best_fit_AIC[meta_fits$ID == i] + meta_fits$Best_fit_BIC[meta_fits$ID == i] + meta_fits$Best_fit_RSS[IDs == i] <= 4) {
+    meta_fits$Best_fit[meta_fits$ID == i] <- Poly
+  }
+  else {
+    meta_fits$Best_fit[meta_fits$ID == i] <- GFR
+  }
 }
 
 table(meta_fits$Best_fit)
@@ -205,107 +152,8 @@ abs(polyfits$GFR_AIC - polyfits$Poly_AIC)
 abs(polyfits$GFR_BIC - polyfits$Poly_BIC)
 
 
-######################## comparison plotting #########################
-
-
-compare <- meta_fits[,-c(14:34)]
-compare$Best_fit <- as.factor(compare$Best_fit)
-
-# Habitat
-ggplot(data = compare, aes(Habitat, fill = Best_fit)) +
-        geom_bar()
-
-# LabField
-#ggplot(data = compare, aes(LabField, fill = Best_fit)) +
-  #geom_bar()
-
-# ResTaxon
-#ggplot(data = compare, aes(ResTaxon, fill = Best_fit)) +
-  #geom_bar()
-
-# ConTaxon
-#ggplot(data = compare, aes(ConTaxon, fill = Best_fit)) +
-  #geom_bar()
-
-# ResStage
-#ggplot(data = compare, aes(ResStage, fill = Best_fit)) +
-  #geom_bar()
-
-# ConStage
-#ggplot(data = compare, aes(ConStage, fill = Best_fit)) +
-  #geom_bar()
-
-# Res_Thermy
-#ggplot(data = compare, aes(Res_Thermy, fill = Best_fit)) +
-  #geom_bar()
-
-# Con_Thermy
-#ggplot(data = compare, aes(Con_Thermy, fill = Best_fit)) +
-  #geom_bar()
-
-# Res_MovementDimensionality
-#ggplot(data = compare, aes(Res_MovementDimensionality, fill = Best_fit)) +
-  #geom_bar()
-
-# Con_MovementDimensionality
-#ggplot(data = compare, aes(Con_MovementDimensionality, fill = Best_fit)) +
-  #geom_bar()
-
-# Con_ForagingMovement
-#ggplot(data = compare, aes(Con_ForagingMovement, fill = Best_fit)) +
-  #geom_bar()
-
-# Res_ForagingMovement
-#ggplot(data = compare, aes(Res_ForagingMovement, fill = Best_fit)) +
-  #geom_bar()
-
-####################### attempts at comparing multiple factors at once
-
-#compare[which(#compare$LabField == "Laboratory"),] &
-#              #compare$Habitat == "Freshwater"),] # &
- #             compare$Res_MovementDimensionality == "sessile"),]
-##              #compare$ResStage == "adult"),]
-
-#dir_compare <- compare[!duplicated(compare[c(2,8:9,12:13)]),c(2,8:9,12:13)]
-#dir_compare[!duplicated(dir_compare[c(2:5)]),]
-
-#compare_unique <- as.data.frame(dir_compare %>% group_by(LabField, Habitat) %>%
-#                              filter(n() == 1))
-
-
-#as.data.frame(compare %>% select(Best_fit, Habitat, LabField,Res_MovementDimensionality) %>%
-#                          group_by(Best_fit) %>%
-#                          group_by(Habitat, LabField, Res_MovementDimensionality) %>%
-#                          filter(n() == 1))
-
-#as.data.frame(compare %>% select(Best_fit, Res_MovementDimensionality) %>%
-#                group_by(Best_fit) %>%
- #               filter(n() == 1))
-##                group_by(Res_MovementDimensionality) %>%
-
-
 ################### comparison of Holling types ##################
 
-
-# Holling type 1
-holling1 <- meta_fits[(meta_fits$Fit_q >= -0.3) & (meta_fits$Fit_q <= 0.3),]
-holling1 <- holling1[holling1$Fit_h <= 0.1,]
-Holling1 <- 3
-meta_fits$Best_fit[meta_fits$ID %in% holling1$ID] <- Holling1
-
-holling1 <- holling1 %>% drop_na(ID)
-IDs_holling1 <- holling1$ID
-
-ggplot(data = meta_fits, aes(Best_fit)) +
-  geom_bar()
-
-unique(holling1$Con_ForagingMovement)  
-
-table(holling1$Con_ForagingMovement)
-
-table(meta_fits$Con_ForagingMovement, meta_fits$Best_fit)
-
-nrow(polyfits)
 
 # define Holling function for plotting
 GFR <- function (a, q, h, x) {
@@ -347,46 +195,163 @@ dev.off()
 
 # define Holling Type II as interval where q ~ 0
 holling2 <- meta_fits[(meta_fits$Fit_q >= -0.3) & (meta_fits$Fit_q <= 0.3),]
-Holling2 <- 4
-meta_fits$Best_fit[meta_fits$ID %in% holling2$ID] <- Holling2
+meta_fits$Best_fit[meta_fits$ID %in% holling2$ID] <- HollingType2
 holling2 <- holling2 %>% drop_na(ID)
 IDs_holling2 <- holling2$ID
 
+# Holling type 1
+holling1 <- meta_fits[(meta_fits$Fit_q >= -0.3) & (meta_fits$Fit_q <= 0.3),]
+holling1 <- holling1[holling1$Fit_h <= 0.1,]
+meta_fits$Best_fit[meta_fits$ID %in% holling1$ID] <- HollingType1
+holling1 <- holling1 %>% drop_na(ID)
+IDs_holling1 <- holling1$ID
 
-slices <- table(meta_fits$Best_fit)
-labls <- c("Poly", "GFR", "Holling1", "Holling2")
-pie(slices, labels = labls, 
-    #main = "Sessile Consumer Foraging Movement",
-    radius = 0.8,
-    col = c("red", "blue", "green", "pink"))
+meta_fits$Best_fit <- as.factor(meta_fits$Best_fit)
 
-par(mfrow = c(2,1), mar = c(0.5,0.5,1,0.5))
-sessile <- subset(meta_fits, meta_fits$Con_ForagingMovement == "sessile")
-slices <- table(sessile$Best_fit)
-labls <- c("GFR", "Holling1", "Holling2")
-pie(slices, labels = labls, 
-    main = "Sessile Consumer Foraging Movement",
-    radius = 0.8,
-    col = c("blue", "green", "pink"))
-active <- subset(meta_fits, meta_fits$Con_ForagingMovement == "active")
-slices <- table(active$Best_fit)
-labls <- c("Poly", "GFR", "Holling1", "Holling2")
-pie(slices, labels = labls, 
-    main = "Active Consumer Foraging Movement",
-    radius = 0.8,
-    col = c("red", "blue", "green", "pink"))
+table(holling1$Con_ForagingMovement)
+table(meta_fits$Con_ForagingMovement, meta_fits$Best_fit)
+
+# plot pie chart
+# pdf(paste("../Results/Model_Comparison_Piechart.pdf"),
+#     4.5, 4.5)
+# par(mar=c(1,0,1,0))
+# cols <- c("black","grey70","grey50", "grey30")
+# slices <- as.vector(table(meta_fits$Best_fit))
+# percentlabels<- round(100*slices/sum(slices), 1)
+# pielabels<- paste(percentlabels, "%", sep="")
+# pie(slices, labels = pielabels, 
+#     radius = 0.8,
+#     col = cols)
+# legend("topright", bty = "n",c("Poly", "GFR", "Holling1", "Holling2"), cex=0.8, fill=cols)
+# 
+# dev.off()
+
+# bar chart comparing the different best fits overall
+pdf(paste("../Results/Model_Comparison_Barchart.pdf"),
+    8, 5)
+ggplot(data = meta_fits, aes(Best_fit), col = "grey70") +
+geom_bar() +
+labs(x = "Fit type", y = "Count") +
+scale_x_discrete(labels = c("1" = "Polynomial", "2" = "Generalised \nFunctional \nResponse", "3" = "Holling Type 1", "4" = "Holling Type 2")) +
+theme_bw() +
+theme(plot.margin = margin(10,10,10,10,"pt")) +
+geom_text(stat = 'count', aes(label=paste0('(',round(stat(prop)*100, digits = 1),'%)'), group=1), 
+          vjust = -0.6, cex = 3.2, nudge_x = 0.12) +
+geom_text(stat = 'count', aes(label=stat(count)), 
+          vjust = -0.6, cex = 3.2, nudge_x = -0.12) +
+expand_limits(y = 190)
+dev.off()
+
+table(meta_fits$Best_fit)
 
 # compare Holling II factors
 unique(holling2$Habitat)
-unique(holling2$ResTaxa)
-unique(holling2$ConTaxa)
-unique(holling2$ResTaxa)
 unique(holling2$LabField)
-unique(holling2$ResStage)
-unique(holling2$ConStage)
+
+# Fisher Exact Test to compare phenomenological and mechanistic models
+for (i in IDs){
+  if (meta_fits$Best_fit[meta_fits$ID == i] == Poly){
+    meta_fits$Pheno_Mech[meta_fits$ID == i] <- "Phenomenological"
+  }
+  else {
+    meta_fits$Pheno_Mech[meta_fits$ID == i] <- "Mechanistic"
+  }
+}
+
+# G-test
+observed <- as.vector(table(meta_fits$Pheno_Mech))
+expected <- c(0.5,0.5)
+library(DescTools)
+GTest(x=observed,
+      p=expected,
+      correct="none") 
+
+# Chi-sqaure test
+chisq.test(x = observed,
+           p = expected)
+
+# Fisher Exact test
+fisher_data <- as.vector(table(meta_fits$Pheno_Mech))
+fisher_data2 <- cbind(observed, c((observed[1]+observed[2])/2,(observed[1]+observed[2])/2))
+fisher.test(fisher_data2, alternative = "two.sided")
+
+binom.test(2,274)
+
+######################## comparison plotting #########################
+
+
+compare <- meta_fits[,-c(14:34)]
+compare$Best_fit <- as.factor(compare$Best_fit)
+
+# Habitat
+#ggplot(data = compare, aes(Habitat, fill = Best_fit)) +
+#  geom_bar()
+
+# LabField
+#ggplot(data = compare, aes(LabField, fill = Best_fit)) +
+#geom_bar()
+
+# Con_ForagingMovement
+ggplot(data = compare, aes(Con_ForagingMovement, fill = Best_fit)) +
+labs(x = "Consumer Foraging Movement", y = "Count") +
+scale_fill_manual(name = "Best Fit", 
+                  labels = c("Polynomial", "Generalised Functional Response", "Holling Type 1", "Holling Type 2"), 
+                  values = c("black","grey70","grey50", "grey30")) +
+geom_bar() +
+theme_bw() +
+theme(legend.position="bottom") +
+guides(fill=guide_legend(nrow=2,byrow=TRUE)) # put legend on two lines
+
+
+pdf(paste("../Results/ConForaging_Comparison_Barchart.pdf"),
+    5, 8)
+ggplot(data = compare, aes(Con_ForagingMovement, fill = Best_fit)) +
+labs(x = "Consumer Foraging Movement", y = "Count") +
+scale_fill_manual(name = "Best Fit", 
+                  labels = c("Polynomial", "Generalised Functional Response", "Holling Type 1", "Holling Type 2"), 
+                  values = c("black","grey70","grey50", "grey30")) +
+geom_bar() +
+theme_bw() +
+theme(plot.margin = margin(10,10,10,10,"pt")) +
+#geom_text(stat = 'count', aes(label=paste0('(',round(stat(prop)*100, digits = 1),'%)'), group=1), 
+#          vjust = -0.6, cex = 3.2, nudge_x = 0.12) +
+#geom_text(aes(y = (stat(count))/sum(stat(count)), 
+#                label = paste0(prop.table(stat(count)) * 100, '%'))) +
+geom_text(stat = 'count', aes(label=stat(count))) +
+            #vjust = -0.6, cex = 3.2) #nudge_x = -0.12) +
+expand_limits(y = 190) +
+theme(legend.position="bottom") +
+guides(fill=guide_legend(nrow=2,byrow=TRUE)) # put legend on two lines
+dev.off()
+
+
+# G-test
+observed <- c(18,6)
+expected <- c(0,1)
+library(DescTools)
+GTest(x=observed,
+      p=expected,
+      correct="none") 
+
+# Fisher Exact Test to compare phenomenological and mechanistic models
+table(holling1$Con_ForagingMovement)
+fisher_data_mvmnt <- table(meta_fits$Con_ForagingMovement, meta_fits$Best_fit)
+fisher_data_mvmnt <- as.data.frame(fisher_data_mvmnt)
+fisher_data_mvmnt <- as.matrix(cbind(fisher_data_mvmnt$Var2, fisher_data_mvmnt$Freq))
+
+a <- c(2,147,18,54)
+b <- c(0,31,6,16)
+c <- rbind(a, b)
+
+#fisher_data <- matrix(unlist(data.frame(fisher_data_mvmnt)),2) 
+fisher.test(c, alternative = "two.sided")
+
+# see which IDs are non-filter feeders but Holling Type 1 is best fit
+# see whether they are classed as filter feeders by Jescke
+meta_fits$ID[which(meta_fits$Best_fit == HollingType1 & meta_fits$Con_ForagingMovement == "active")]
+
+holling1_active <- holling1[(which(holling1$Con_ForagingMovement == "active")),]
+holling1_active$ID
 
 
 
-
-
-  

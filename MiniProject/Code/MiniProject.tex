@@ -26,7 +26,7 @@
 	
 	\vspace{0.75\baselineskip} % Whitespace above the title
 	
-	{\LARGE A comparison of phenomological and mechanistic models of functional responses \\} % Title
+	{\LARGE A comparison of a phenomenological model with the Holling mechanistic models of functional responses, focusing on consumer foraging movement\\} % Title
 	
 	\vspace{0.75\baselineskip} % Whitespace below the title
 	
@@ -76,20 +76,19 @@
 
 \section{Introduction}
 
-The term functional response refers to the relationship between a consumer's consumption rate and the density of its prey (Solomon1949). 
+The term functional response refers to the relationship between a consumer's consumption rate and the density of its prey \parencite{Solomon1949}. 
 
-The first mechanistic mathematical approach to functional responses was conducted by Holling in 1959 \parencite{Holling1959b}. Holling constructed an artifical functional response experiment whereby a "predator" selected discs. He discovered that the funtional response was related to prey terms in terms of two constants, instantaneous rate of discovery and handling time. The instaneous rate of discovery is the likelihood of a predator finding an indidual prey, which is sometimes contstant and sometimes relayes to the equation:
+The first mechanistic mathematical approach to functional responses was conducted by Holling in 1959 \parencite{Holling1959b}. Holling constructed an artifical functional response experiment whereby a "predator" selected discs. He discovered that the funtional response was related to prey terms in terms of two constants, instantaneous rate of discovery and handling time. The instaneous rate of discovery is the likelihood of a predator finding an indidual prey, which can be contstant or relate to the following equation, where $c$ and $a'$ are two constants that explain ...\parencite{Holling1959b}
 \begin{equation}
 a = \frac{a'}{1 + ca'x}
 \end{equation}
-The handling time is the time required for a predator to attack and eat it's prey, i.e. any time not spent in activly searching for prey.
+The handling time is the time required for a predator to attack and eat its prey, i.e. any time not spent in activly searching for prey. There have been discussions on the different physical activites that handling time includes, such as digestion. \parencite{something!, something else!}
 
-The basic functional response model described in this paper is then extended in...with the basic functional response becoming classed as a type II.
-Holling also discusses other attempts at modelling functional responses, remakring on the lack of biological context in most of the other options.
+The basic functional response model described in Holling's 1959  paper is then extended in...\parencite{something} with the basic functional response becoming classed as a type II.
 
-The Type III functional response was modeled using computer simulations and labeled as the generalised functional response by Holling 1965? with Types I and II being limiting conditions. However, Type III was not described mathematically until 1977 by Real, who derived it using Holling's Type II functional response equation and first-order kinetic interations \parencite{Real1977}
+The Type III functional response was modeled using computer simulations and labeled as the generalised functional response by Holling 1965? \parencite{Holling1965} with Types I and II being limiting conditions. However, Type III was not described mathematically until 1977 by Real, who derived it using Holling's Type II functional response equation and first-order kinetic interations \parencite{Real1977}
  
-The Generalised Functional Response equation is written below, where $c$ is the consumer response, $a$ is the instaneous rate of discovery, $x$ is the resource density, $h$ is the handling time and $q$ is a varibale with as yet unknown biological meaning. It has been hyptohesised that q could be related to predator learning and is "the number of encounters...a predator must have with a prey item before becoming maximally efficient at utilizing the prey item as a resource" \parencite{Real1977}. In his paper, Real mathemaitcally derives the Type III (or generalised) functional response from looking at the kinetics \parencite{Real1977}.
+The Generalised Functional Response equation is written below, where $c$ is the consumer response, $a$ is the instaneous rate of discovery, $x$ is the resource density, $h$ is the handling time and $q$ is a variable with as yet unknown biological meaning. It has been hyptohesised that q could be related to predator learning and is "the number of encounters...a predator must have with a prey item before becoming maximally efficient at utilizing the prey item as a resource" \parencite{Real1977}. In his paper, Real mathemaitcally derives the Type III (or generalised) functional response from looking at the kinetics \parencite{Real1977}.
 
 \begin{equation}
 c = \frac{ax_R^{q + 1}}{1 + hax_R^{q + 1}}
@@ -107,18 +106,17 @@ c = \frac{ax_R}{1 + hax_R}
 c = ax_R
 \end{equation}
 
-This is the assumption in the first Lotka-Volterra model and is found to best fit filter feeders, where the predation rate is directly  proportional to the prey density due to ... \parencite{Jescke2004}.
+This is the assumption in the first Lotka-Volterra model and is found to best fit filter feeders, where the predation rate is directly  proportional to the prey density due to ... \parencite{Jeschke2004}.
 
 The Holling model was then generalised in ... 
 by .... to what is known as the generalised functional response model by including variable q. . 
 
 This paper aims to look at the difference of fit between one such phenomological model (a polyomial) with the generalised functional response equation, a mechanistic model. The polynomial has no biological meaning so the comparison is effectly one of phenomological vs mechanistic models. 
+Holling also discusses other attempts at modelling functional responses, remarking on the lack of biological context in most of the other options. \parencite{Holling1965}
 
-By fitting the general functional response model to 308 datasets and comparing it to a polynomial fit, we can categorise the data, noticing the patterns
-that match the different data subsets. We can also compare fucntional response types by subsetting by limiting conditions of $h$ and $q$ respectively.
+By fitting the general functional response model to 308 datasets and comparing it to a polynomial fit, we can categorise the data, noticing the patterns that match the different data subsets. We can also compare functional response types by subsetting by limiting conditions of $h$ and $q$ respectively, gaining information on Type 1 and Type 2 Holling functional responses.
 
-blady...bla et al have shown that habitat/taxa affect functional responses in ....ways. As such, we are expecting a similar relationship shown by 
-our data models.
+The second part of this paper will focus on comparing filter feeders and non-filter feeders. In pervious work, filter feeders have been shown to be more likely to show a Type 1 functional response. Jeschke et al showed that the Type 1 reponse was in fact exclusive to filter feeders \parencite{Jeschke2004}. In this paper, functional responses that show a Type 1 respnse are characterised by 2 main confidtions: handling time must be negligible and satiation. Many filter feeders have a negligible handing time because they are able to ctach prey at the same time as other activies so can effectlively spend all their time forgaing. SOme filter feeders also adhere to the satiation condition but many don't, which is why the majority of all fucntional respnses, incuding filter feeders, do not show a type 1 response. \parencite{Jeschke2004}. Our data set explores this in terms of Real's kinetic paper, looking at the responses when q is given no limit. \parencite{Real1977}
 
 \section{Methods}
 
@@ -132,9 +130,35 @@ Functions are saved in a separate python script and have been generalised to all
 
 The best fit parameters and measured for all IDs are stored in a separate data frame and saved as a csv to be imported by the analsysi script, which has been done R due to the ease of data and graphical representation in R-studio. The analysis script plots each ID's datapoints, polynomial and generalised functional response fits. It compares RSS, AIC and BIC for each model within each ID. Based on the chosen best model for each ID, the IDs are then grouped and compared using the metadata.
 
+\subsection{Statistics}
+
+To obtain a measure of the significance of the results, both a G-test of goodness of fit and chi-square test of goodness of fit were performed.
+
 \section{Results}
 
+The findings of a comparison between the mechanistic model and the phenomenological models are shown in figure 1. It is clear that the mechanistic models are a much better fit. Only 0.7\% of the data was best fitted by phenomenological model, which accounts for 2 of 274 IDs. The superiority of the mechanistic models is highly signifctant ($p < 2.2\times10^{-16}$ for both chi-sqaure goodness of fit and G goodness of fit tests). 
+
+Filter feeders and non-filter feeders are compared in figure 2. The ratio between the different best fits is similar to that of the whole dataset. It can also be seen that a small percentage non-filter feeder fucntional responses are best described by the Holling Type 1 functional response. Based on the paper of Jescke et al \parencite{Jeschke2004}, the expected proportions of Holling Type 1 response as best fit is 1 for filter feeders and 0 for non-filter feeders. These results are not insignifcant ($p < 2.2\times10^{-16}$ for both chi-sqaure goodness of fit and G goodness of fit tests). 
+
+\begin{figure}[h!]
+	\centering\includegraphics[width=1\textwidth]{../Results/Model_Comparison_Barchart.pdf}
+	\caption{ID count by best fit type}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering\includegraphics[width=0.6\textwidth]{../Results/ConForaging_Comparison_Barchart.pdf}
+	\caption{ID count by best fit type}
+\end{figure}
+
 \section{Discussion}
+
+As expected, the Holling mechanistic model much better explains fucntional response data than a polynomial. This is not to say that another mechanistic model would not describe the functional response with even more accuracy, however it does show the value of having models with biological basis.
+
+The discrepancy between the expected number of non-filter feeders with a type 1 functional response could be explained in two ways:
+
+1) Jeschke et al have a very broad definition of filter feeder, including that only filter feed at certain stages in their life cycle. It could be that the authors of the data used a different defintion of filter feeder when classifying the consumer forgaing type.
+
+2) Both Holling Type 2 and 3 functional response are linear far from the limits. It is possible that not enough data has been collected at the limits to display a Type 2 or Type 3 functional response, which is why they have been interpretted as Type 1.
 
 \newpage
 \printbibliography
