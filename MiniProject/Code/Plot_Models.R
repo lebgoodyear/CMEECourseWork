@@ -16,6 +16,7 @@ rm(list=ls())
 # load packages
 library(ggplot2)
 library(tidyr)
+library(dplyr)
 
 # load data
 metadata_full <-read.csv("../Data/CRat.csv", stringsAsFactors = F)
@@ -23,24 +24,18 @@ crd <- read.csv("../Data/CRatMod.csv", stringsAsFactors = F)
 fits <- read.csv("../Data/CRfits.csv", stringsAsFactors = F)
 
 # remove any irrelevant columns from metadata
-metadata_sub <- metadata_full[,c("ID", "ResTaxon","ConTaxon", 
-            "ResStage", "ConStage", "Res_Thermy",
-            "Con_Thermy", "Res_MovementDimensionality",
-            "Con_MovementDimensionality", "Habitat", "LabField", 
-            "Res_ForagingMovement", "Con_ForagingMovement")]
+metadata_sub <- metadata_full[,c("ID", "Con_ForagingMovement")]
 
 # given metadata is the same for each ID, subset by first line of each ID
-metadata <- metadata_sub[!duplicated(metadata_full[,1]),]
+metadata_sub <- metadata_sub[!duplicated(metadata_full[,1]),]
 # fix multiple names for same factors in metadata
-metadata$LabField[which(metadata$LabField == "lab" | metadata$LabField == "Lab")] <- "Laboratory"
-metadata$LabField[which(metadata$LabField == "enclosure")] <- "Enclosure"
-metadata$Res_ForagingMovement[which(metadata$Res_ForagingMovement == "Sessile")] <- "sessile"
-metadata$Con_ForagingMovement[which(metadata$Con_ForagingMovement == "Sessile")] <- "sessile"
+metadata_sub$Con_ForagingMovement[which(metadata_sub$Con_ForagingMovement == "Sessile")] <- "sessile"
 
 # merge fitting data and metadata into one data frame
-meta_fits <- merge(metadata, fits, by = "ID")
+meta_fits <- merge(metadata_sub, fits, by = "ID")
 
-# only keep IDs which had both models fitted
+# only keep IDs which had both models fitted because these data sets 
+# all have a range of y-values per x-value so cannot be fitted properly
 meta_fits <- subset(meta_fits, !is.na(meta_fits$Poly1))
 meta_fits <- subset(meta_fits, !is.na(meta_fits$Fit_a))
 
@@ -109,7 +104,7 @@ for (i in IDs) {
   # define differences between AIC, BIC and RSS
   deltaAIC <- abs(subs$Poly_AIC - subs$GFR_AIC)
   deltaBIC <- abs(subs$Poly_BIC - subs$GFR_BIC)
-  deltaRSS <- abs(subs$Poly_RSS - subs$GFR_RSS)
+  deltaRSS <- subs$Poly_RSS - subs$GFR_RSS
   
   # if statements to set best fit model for ID i depending on test
   # AIC
@@ -152,13 +147,23 @@ abs(polyfits$GFR_AIC - polyfits$Poly_AIC)
 abs(polyfits$GFR_BIC - polyfits$Poly_BIC)
 
 
-################### comparison of Holling types ##################
+######################## filter data into Holling types #######################
 
+meta_fits_GFR <- meta_fits[meta_fits$Best_fit == GFR,]
+# define Holling Type II as interval where q ~ 0
+holling2 <- meta_fits_GFR[(meta_fits_GFR$Fit_q >= -0.3) & (meta_fits_GFR$Fit_q <= 0.3),]
+meta_fits$Best_fit[meta_fits$ID %in% holling2$ID] <- HollingType2
+holling2 <- holling2 %>% drop_na(ID)
+IDs_holling2 <- holling2$ID
 
-# define Holling function for plotting
-GFR <- function (a, q, h, x) {
-  return (a * (x ^ (q + 1)) / (1 + h * a * (x) ^ (q + 1)))
-}
+# define Holling type 1 as intervale where q ~ 0 and h < 0.1
+holling1 <- meta_fits_GFR[(meta_fits_GFR$Fit_q >= -0.3) & (meta_fits_GFR$Fit_q <= 0.3),]
+holling1 <- holling1[holling1$Fit_h <= 0.1,]
+meta_fits$Best_fit[meta_fits$ID %in% holling1$ID] <- HollingType1
+holling1 <- holling1 %>% drop_na(ID)
+IDs_holling1 <- holling1$ID
+
+# plot Holling Type I
 
 # plot all datastes with both GFR and polynomial curves
 pdf(paste("../Results/ID_Modelled_Plots_Holling1.pdf"),
@@ -191,64 +196,30 @@ for (i in IDs_holling1) {
 dev.off()
 
 
-# Holling type 2
+##################### Plot overall best fits as frequencies ######################
 
-# define Holling Type II as interval where q ~ 0
-holling2 <- meta_fits[(meta_fits$Fit_q >= -0.3) & (meta_fits$Fit_q <= 0.3),]
-meta_fits$Best_fit[meta_fits$ID %in% holling2$ID] <- HollingType2
-holling2 <- holling2 %>% drop_na(ID)
-IDs_holling2 <- holling2$ID
-
-# Holling type 1
-holling1 <- meta_fits[(meta_fits$Fit_q >= -0.3) & (meta_fits$Fit_q <= 0.3),]
-holling1 <- holling1[holling1$Fit_h <= 0.1,]
-meta_fits$Best_fit[meta_fits$ID %in% holling1$ID] <- HollingType1
-holling1 <- holling1 %>% drop_na(ID)
-IDs_holling1 <- holling1$ID
-
-meta_fits$Best_fit <- as.factor(meta_fits$Best_fit)
-
-table(holling1$Con_ForagingMovement)
-table(meta_fits$Con_ForagingMovement, meta_fits$Best_fit)
-
-# plot pie chart
-# pdf(paste("../Results/Model_Comparison_Piechart.pdf"),
-#     4.5, 4.5)
-# par(mar=c(1,0,1,0))
-# cols <- c("black","grey70","grey50", "grey30")
-# slices <- as.vector(table(meta_fits$Best_fit))
-# percentlabels<- round(100*slices/sum(slices), 1)
-# pielabels<- paste(percentlabels, "%", sep="")
-# pie(slices, labels = pielabels, 
-#     radius = 0.8,
-#     col = cols)
-# legend("topright", bty = "n",c("Poly", "GFR", "Holling1", "Holling2"), cex=0.8, fill=cols)
-# 
-# dev.off()
 
 # bar chart comparing the different best fits overall
 pdf(paste("../Results/Model_Comparison_Barchart.pdf"),
     8, 5)
-ggplot(data = meta_fits, aes(Best_fit), col = "grey70") +
+ggplot(data = meta_fits, aes(factor(Best_fit)), col = "grey70") +
 geom_bar() +
 labs(x = "Fit type", y = "Count") +
 scale_x_discrete(labels = c("1" = "Polynomial", "2" = "Generalised \nFunctional \nResponse", "3" = "Holling Type 1", "4" = "Holling Type 2")) +
 theme_bw() +
 theme(plot.margin = margin(10,10,10,10,"pt")) +
-geom_text(stat = 'count', aes(label=paste0('(',round(stat(prop)*100, digits = 1),'%)'), group=1), 
-          vjust = -0.6, cex = 3.2, nudge_x = 0.12) +
-geom_text(stat = 'count', aes(label=stat(count)), 
-          vjust = -0.6, cex = 3.2, nudge_x = -0.12) +
+geom_text(stat = 'count', aes(label=paste0(label=stat(count),' (',round(stat(prop)*100, digits = 1),'%)'), group=1), 
+          vjust = -0.6, cex = 3.2) +
 expand_limits(y = 190)
 dev.off()
 
 table(meta_fits$Best_fit)
 
-# compare Holling II factors
-unique(holling2$Habitat)
-unique(holling2$LabField)
 
-# Fisher Exact Test to compare phenomenological and mechanistic models
+##################### Compare phenomenological and mechanistic models ################
+
+
+# Create new column and define each ID as Phenomenological or Mechanistic
 for (i in IDs){
   if (meta_fits$Best_fit[meta_fits$ID == i] == Poly){
     meta_fits$Pheno_Mech[meta_fits$ID == i] <- "Phenomenological"
@@ -275,55 +246,78 @@ fisher_data <- as.vector(table(meta_fits$Pheno_Mech))
 fisher_data2 <- cbind(observed, c((observed[1]+observed[2])/2,(observed[1]+observed[2])/2))
 fisher.test(fisher_data2, alternative = "two.sided")
 
-binom.test(2,274)
 
-######################## comparison plotting #########################
+############### Compare consumer foraging movement for Holling Type I #################
+
+meta_fits$Best_fit <- as.factor(meta_fits$Best_fit)
+
+table(holling1$Con_ForagingMovement)
+t <- as.data.frame.matrix(table(meta_fits$Con_ForagingMovement, meta_fits$Best_fit))
+names(t) <- c("Polynomial", "Generalised Functional Response","Holling Type 1", "Holling Type 2")
+t <- rbind(t, prop.table(t))
+write.csv(t, "../Results/sessile_vs_active_table.csv", quote = F)
+
+require(janitor)
+sess_vs_act <- meta_fits %>%
+                           tabyl(Con_ForagingMovement, Best_fit) %>%
+                           adorn_totals("row") %>%
+                           adorn_percentages("row") %>% 
+                           adorn_pct_formatting(rounding = "half up", digits = 0) %>%
+                           adorn_ns() %>%
+                           rename("Consumer Foraging Movement" = "Con_ForagingMovement", 
+                                  "Poly" = "1", 
+                                  "GFR" = "2",
+                                  "Holling 1" = "3", 
+                                  "Holling 2" = "4")
+write.csv(sess_vs_act, "../Results/sessilevsactivetable.csv", quote = F)
 
 
-compare <- meta_fits[,-c(14:34)]
-compare$Best_fit <- as.factor(compare$Best_fit)
-
-# Habitat
-#ggplot(data = compare, aes(Habitat, fill = Best_fit)) +
-#  geom_bar()
-
-# LabField
-#ggplot(data = compare, aes(LabField, fill = Best_fit)) +
-#geom_bar()
-
-# Con_ForagingMovement
-ggplot(data = compare, aes(Con_ForagingMovement, fill = Best_fit)) +
-labs(x = "Consumer Foraging Movement", y = "Count") +
-scale_fill_manual(name = "Best Fit", 
-                  labels = c("Polynomial", "Generalised Functional Response", "Holling Type 1", "Holling Type 2"), 
-                  values = c("black","grey70","grey50", "grey30")) +
-geom_bar() +
-theme_bw() +
-theme(legend.position="bottom") +
-guides(fill=guide_legend(nrow=2,byrow=TRUE)) # put legend on two lines
-
+# Plot comparison of best fits for Consumer Foraging Movement
 
 pdf(paste("../Results/ConForaging_Comparison_Barchart.pdf"),
-    5, 8)
-ggplot(data = compare, aes(Con_ForagingMovement, fill = Best_fit)) +
+    6, 4)
+ggplot(data = meta_fits, aes(factor(Con_ForagingMovement), fill = factor(Best_fit))) +
 labs(x = "Consumer Foraging Movement", y = "Count") +
 scale_fill_manual(name = "Best Fit", 
-                  labels = c("Polynomial", "Generalised Functional Response", "Holling Type 1", "Holling Type 2"), 
+                  labels = c("Polynomial", "Generalised Functional Response","Holling Type 1", "Holling Type 2"), 
                   values = c("black","grey70","grey50", "grey30")) +
 geom_bar() +
+coord_flip() +
 theme_bw() +
 theme(plot.margin = margin(10,10,10,10,"pt")) +
-#geom_text(stat = 'count', aes(label=paste0('(',round(stat(prop)*100, digits = 1),'%)'), group=1), 
-#          vjust = -0.6, cex = 3.2, nudge_x = 0.12) +
-#geom_text(aes(y = (stat(count))/sum(stat(count)), 
-#                label = paste0(prop.table(stat(count)) * 100, '%'))) +
-geom_text(stat = 'count', aes(label=stat(count))) +
-            #vjust = -0.6, cex = 3.2) #nudge_x = -0.12) +
 expand_limits(y = 190) +
 theme(legend.position="bottom") +
 guides(fill=guide_legend(nrow=2,byrow=TRUE)) # put legend on two lines
 dev.off()
 
+par(mfrow = c(1,2))
+sessile = meta_fits[which(meta_fits$Con_ForagingMovement == "sessile"),]
+ggplot(data = sessile, aes(factor(Best_fit)), col = "grey70") +
+  geom_bar() +
+  labs(x = "Fit type", y = "Count") +
+  scale_x_discrete(labels = c("1" = "Polynomial", "2" = "Generalised \nFunctional \nResponse", "3" = "Holling Type 1", "4" = "Holling Type 2")) +
+  theme_bw() +
+  theme(plot.margin = margin(10,10,10,10,"pt")) +
+  geom_text(stat = 'count', aes(label=stat(count)), 
+            vjust = -0.6, cex = 3.2, nudge_x = -0.22) +
+  geom_text(stat = 'count', aes(label=paste0('(',round(stat(prop)*100, digits = 1),'%)'), group=1), 
+            vjust = -0.6, cex = 3.2, nudge_x = 0.22) +
+  expand_limits(y = 35)
+
+active = meta_fits[which(meta_fits$Con_ForagingMovement == "active"),]
+ggplot(data = active, aes(factor(Best_fit)), col = "grey70") +
+  geom_bar() +
+  labs(x = "Fit type", y = "Count") +
+  scale_x_discrete(labels = c("1" = "Polynomial", "2" = "Generalised \nFunctional \nResponse", "3" = "Holling Type 1", "4" = "Holling Type 2")) +
+  theme_bw() +
+  theme(plot.margin = margin(10,10,10,10,"pt")) +
+  geom_text(stat = 'count', aes(label=stat(count)), 
+            vjust = -0.6, cex = 3.2, nudge_x = -0.22) +
+  geom_text(stat = 'count', aes(label=paste0('(',round(stat(prop)*100, digits = 1),'%)'), group=1), 
+            vjust = -0.6, cex = 3.2, nudge_x = 0.22) +
+  expand_limits(y = 150)
+
+# perform statistical tests
 
 # G-test
 observed <- c(18,6)
@@ -332,6 +326,10 @@ library(DescTools)
 GTest(x=observed,
       p=expected,
       correct="none") 
+
+# Chi-sqaure test
+chisq.test(x = observed,
+           p = expected)
 
 # Fisher Exact Test to compare phenomenological and mechanistic models
 table(holling1$Con_ForagingMovement)
