@@ -13,6 +13,7 @@ import lmfit
 import pandas
 import numpy
 import fit_functions as ff # import my functions for fitting
+from multiprocessing import Process # for parallelisation
 
 # load the data
 crd = pandas.read_csv("../Data/CRatMod.csv", index_col = 0)
@@ -49,9 +50,12 @@ for i in numpy.unique(IDs):
     crd_sub = crd.loc[crd.ID == i].copy()
     crd_sub = crd_sub.reset_index(drop=True) # reset index so can easily loop over just these elements
     # run GFR_fit function to find best starting values for GFR and keep the fit with the lowest AIC
+    #if __name__ == '__main__':
+    #    p = Process(target= ff.GFR_fit,args=(crd_sub, maxiters,))
+    #    p.start()
+    #    p.join()
     GFRfit = ff.GFR_fit(crd_sub, maxiters)
     if GFRfit is None:
-        print("Errored at ID", i, " - no Generalised Functional Response fit possible")
         nofitIDs_GFR.append(i)
     else:
         # calulcate residuals sums of squares for GFR fit
@@ -67,7 +71,6 @@ for i in numpy.unique(IDs):
     PolynomialFit = ff.poly_fit(crd_sub["ResDensity"], crd_sub["N_TraitValue"])
     # note any IDs where a polynomial could not be fitted
     if PolynomialFit is None:
-        print("Errored at ID", i, " - no polynomial fit possible")
         nofitIDs_poly.append(i)
     else:
         # calulcate residuals sums of squares for both fits

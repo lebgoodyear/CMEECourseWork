@@ -29,7 +29,8 @@ metadata_sub <- metadata_full[,c("ID", "Con_ForagingMovement")]
 # given metadata is the same for each ID, subset by first line of each ID
 metadata_sub <- metadata_sub[!duplicated(metadata_full[,1]),]
 # fix multiple names for same factors in metadata
-metadata_sub$Con_ForagingMovement[which(metadata_sub$Con_ForagingMovement == "Sessile")] <- "sessile"
+metadata_sub$Con_ForagingMovement[which(metadata_sub$Con_ForagingMovement == "sessile")] <- "Sessile"
+metadata_sub$Con_ForagingMovement[which(metadata_sub$Con_ForagingMovement == "active")] <- "Active"
 
 # merge fitting data and metadata into one data frame
 meta_fits <- merge(metadata_sub, fits, by = "ID")
@@ -47,42 +48,43 @@ IDs <- c(unique(meta_fits$ID))
 
 
 # define Holling function for plotting
-GFR <- function (a, q, h, x) {
+GFR_model <- function (a, q, h, x) {
   return (a * (x ^ (q + 1)) / (1 + h * a * (x) ^ (q + 1)))
 }
 
 # plot all datastes with both GFR and polynomial curves
-pdf(paste("../Results/ID_Modelled_Plots.pdf"),
-    8, 4.5, onefile = TRUE) # save all plots to one pdf
-for (i in IDs) {
-  params <- subset(fits, fits$ID == i) # subset and plot the data by ID
-  subdata <- subset(crd, crd$ID == i)
-  x <- seq(min(subdata$ResDensity), max(subdata$ResDensity), (max(subdata$ResDensity) - min(subdata$ResDensity))/1000) 
-  yPoly <- params$Poly1 + params$Poly2*x + 
-    params$Poly3*x^2 + (params$Poly4)*x^3
-  yGFR <- GFR(params$Fit_a, params$Fit_q, params$Fit_h, x)
-  data_to_plot <- data.frame(x, yPoly, yGFR)
-  print(ggplot(aes(x = ResDensity,
-                   y = N_TraitValue),
-               data = subdata) +
-          ggtitle(paste("ID", i)) +
-          xlab("Resource Density") + 
-          ylab("Trait Value") +
-          geom_point() +
-          geom_line(data = data_to_plot, 
-                    mapping = aes(x, y = yPoly, colour = "Polynomial")) +
-          geom_line(data = data_to_plot,
-                    mapping = aes(x, y = yGFR, colour = "Generalised Functional Response")) +
-          scale_colour_manual("", 
-                    breaks = c("Polynomial", "Generalised Functional Response"),
-                    values = c("red", "blue")) +
-          theme(legend.position="bottom"))
-          
-}
-dev.off()
+# pdf(paste("../Results/ID_Modelled_Plots.pdf"),
+#     8, 4.5, onefile = TRUE) # save all plots to one pdf
+# for (i in IDs) {
+#   params <- subset(fits, fits$ID == i) # subset and plot the data by ID
+#   subdata <- subset(crd, crd$ID == i)
+#   x <- seq(min(subdata$ResDensity), max(subdata$ResDensity), (max(subdata$ResDensity) - min(subdata$ResDensity))/1000) 
+#   yPoly <- params$Poly1 + params$Poly2*x + 
+#     params$Poly3*x^2 + (params$Poly4)*x^3
+#   yGFR <- GFR_model(params$Fit_a, params$Fit_q, params$Fit_h, x)
+#   data_to_plot <- data.frame(x, yPoly, yGFR)
+#   print(ggplot(aes(x = ResDensity,
+#                    y = N_TraitValue),
+#                data = subdata) +
+#           ggtitle(paste("ID", i)) +
+#           xlab("Resource Density") + 
+#           ylab("Trait Value") +
+#           geom_point() +
+#           geom_line(data = data_to_plot, 
+#                     mapping = aes(x, y = yPoly, colour = "Polynomial")) +
+#           geom_line(data = data_to_plot,
+#                     mapping = aes(x, y = yGFR, colour = "Generalised Functional Response")) +
+#           scale_colour_manual("", 
+#                     breaks = c("Polynomial", "Generalised Functional Response"),
+#                     values = c("red", "blue")) +
+#           theme(legend.position="bottom"))
+#           
+# }
+# dev.off()
+# this is not needed for report so has been commented out
 
 
-#################### analysis: GFR vs Poly ###########################
+#################### Compare AIC, BIC and RSS ###########################
 
 
 # initialise empty columns
@@ -163,37 +165,39 @@ meta_fits$Best_fit[meta_fits$ID %in% holling1$ID] <- HollingType1
 holling1 <- holling1 %>% drop_na(ID)
 IDs_holling1 <- holling1$ID
 
+table(meta_fits$Best_fit)
 # plot Holling Type I
 
 # plot all datastes with both GFR and polynomial curves
-pdf(paste("../Results/ID_Modelled_Plots_Holling1.pdf"),
-    8, 4.5, onefile = TRUE) # save all plots to one pdf
-for (i in IDs_holling1) {
-  params <- subset(fits, fits$ID == i) # subset and plot the data by ID
-  subdata <- subset(crd, crd$ID == i)
-  x <- seq(min(subdata$ResDensity), max(subdata$ResDensity), (max(subdata$ResDensity) - min(subdata$ResDensity))/1000) 
-  yPoly <- params$Poly1 + params$Poly2*x + 
-    params$Poly3*x^2 + (params$Poly4)*x^3
-  yGFR <- GFR(params$Fit_a, params$Fit_q, params$Fit_h, x)
-  data_to_plot <- data.frame(x, yPoly, yGFR)
-  print(ggplot(aes(x = ResDensity,
-                   y = N_TraitValue),
-               data = subdata) +
-          ggtitle(paste("ID", i)) +
-          xlab("Resource Density") + 
-          ylab("Trait Value") +
-          geom_point() +
-          geom_line(data = data_to_plot, 
-                    mapping = aes(x, y = yPoly, colour = "Polynomial")) +
-          geom_line(data = data_to_plot,
-                    mapping = aes(x, y = yGFR, colour = "Generalised Functional Response")) +
-          scale_colour_manual("", 
-                              breaks = c("Polynomial", "Generalised Functional Response"),
-                              values = c("red", "blue")) +
-          theme(legend.position="bottom"))
-  
-}
-dev.off()
+# pdf(paste("../Results/ID_Modelled_Plots_Holling1.pdf"),
+#     8, 4.5, onefile = TRUE) # save all plots to one pdf
+# for (i in IDs_holling1) {
+#   params <- subset(fits, fits$ID == i) # subset and plot the data by ID
+#   subdata <- subset(crd, crd$ID == i)
+#   x <- seq(min(subdata$ResDensity), max(subdata$ResDensity), (max(subdata$ResDensity) - min(subdata$ResDensity))/1000) 
+#   yPoly <- params$Poly1 + params$Poly2*x + 
+#     params$Poly3*x^2 + (params$Poly4)*x^3
+#   yGFR <- GFR_model(params$Fit_a, params$Fit_q, params$Fit_h, x)
+#   data_to_plot <- data.frame(x, yPoly, yGFR)
+#   print(ggplot(aes(x = ResDensity,
+#                    y = N_TraitValue),
+#                data = subdata) +
+#           ggtitle(paste("ID", i)) +
+#           xlab("Resource Density") + 
+#           ylab("Trait Value") +
+#           geom_point() +
+#           geom_line(data = data_to_plot, 
+#                     mapping = aes(x, y = yPoly, colour = "Polynomial")) +
+#           geom_line(data = data_to_plot,
+#                     mapping = aes(x, y = yGFR, colour = "Generalised Functional Response")) +
+#           scale_colour_manual("", 
+#                               breaks = c("Polynomial", "Generalised Functional Response"),
+#                               values = c("red", "blue")) +
+#           theme(legend.position="bottom"))
+#   
+# }
+# dev.off()
+# this is not needed for report so has been commented out
 
 
 ##################### Plot overall best fits as frequencies ######################
@@ -216,7 +220,7 @@ dev.off()
 table(meta_fits$Best_fit)
 
 
-##################### Compare phenomenological and mechanistic models ################
+#################### Compare phenomenological and mechanistic models ################
 
 
 # Create new column and define each ID as Phenomenological or Mechanistic
@@ -290,32 +294,32 @@ theme(legend.position="bottom") +
 guides(fill=guide_legend(nrow=2,byrow=TRUE)) # put legend on two lines
 dev.off()
 
-par(mfrow = c(1,2))
-sessile = meta_fits[which(meta_fits$Con_ForagingMovement == "sessile"),]
-ggplot(data = sessile, aes(factor(Best_fit)), col = "grey70") +
-  geom_bar() +
-  labs(x = "Fit type", y = "Count") +
-  scale_x_discrete(labels = c("1" = "Polynomial", "2" = "Generalised \nFunctional \nResponse", "3" = "Holling Type 1", "4" = "Holling Type 2")) +
-  theme_bw() +
-  theme(plot.margin = margin(10,10,10,10,"pt")) +
-  geom_text(stat = 'count', aes(label=stat(count)), 
-            vjust = -0.6, cex = 3.2, nudge_x = -0.22) +
-  geom_text(stat = 'count', aes(label=paste0('(',round(stat(prop)*100, digits = 1),'%)'), group=1), 
-            vjust = -0.6, cex = 3.2, nudge_x = 0.22) +
-  expand_limits(y = 35)
-
-active = meta_fits[which(meta_fits$Con_ForagingMovement == "active"),]
-ggplot(data = active, aes(factor(Best_fit)), col = "grey70") +
-  geom_bar() +
-  labs(x = "Fit type", y = "Count") +
-  scale_x_discrete(labels = c("1" = "Polynomial", "2" = "Generalised \nFunctional \nResponse", "3" = "Holling Type 1", "4" = "Holling Type 2")) +
-  theme_bw() +
-  theme(plot.margin = margin(10,10,10,10,"pt")) +
-  geom_text(stat = 'count', aes(label=stat(count)), 
-            vjust = -0.6, cex = 3.2, nudge_x = -0.22) +
-  geom_text(stat = 'count', aes(label=paste0('(',round(stat(prop)*100, digits = 1),'%)'), group=1), 
-            vjust = -0.6, cex = 3.2, nudge_x = 0.22) +
-  expand_limits(y = 150)
+# par(mfrow = c(1,2))
+# sessile = meta_fits[which(meta_fits$Con_ForagingMovement == "sessile"),]
+# ggplot(data = sessile, aes(factor(Best_fit)), col = "grey70") +
+#   geom_bar() +
+#   labs(x = "Fit type", y = "Count") +
+#   scale_x_discrete(labels = c("1" = "Polynomial", "2" = "Generalised \nFunctional \nResponse", "3" = "Holling Type 1", "4" = "Holling Type 2")) +
+#   theme_bw() +
+#   theme(plot.margin = margin(10,10,10,10,"pt")) +
+#   geom_text(stat = 'count', aes(label=stat(count)), 
+#             vjust = -0.6, cex = 3.2, nudge_x = -0.22) +
+#   geom_text(stat = 'count', aes(label=paste0('(',round(stat(prop)*100, digits = 1),'%)'), group=1), 
+#             vjust = -0.6, cex = 3.2, nudge_x = 0.22) +
+#   expand_limits(y = 35)
+# 
+# active = meta_fits[which(meta_fits$Con_ForagingMovement == "active"),]
+# ggplot(data = active, aes(factor(Best_fit)), col = "grey70") +
+#   geom_bar() +
+#   labs(x = "Fit type", y = "Count") +
+#   scale_x_discrete(labels = c("1" = "Polynomial", "2" = "Generalised \nFunctional \nResponse", "3" = "Holling Type 1", "4" = "Holling Type 2")) +
+#   theme_bw() +
+#   theme(plot.margin = margin(10,10,10,10,"pt")) +
+#   geom_text(stat = 'count', aes(label=stat(count)), 
+#             vjust = -0.6, cex = 3.2, nudge_x = -0.22) +
+#   geom_text(stat = 'count', aes(label=paste0('(',round(stat(prop)*100, digits = 1),'%)'), group=1), 
+#             vjust = -0.6, cex = 3.2, nudge_x = 0.22) +
+#   expand_limits(y = 150)
 
 # perform statistical tests
 
@@ -351,5 +355,67 @@ meta_fits$ID[which(meta_fits$Best_fit == HollingType1 & meta_fits$Con_ForagingMo
 holling1_active <- holling1[(which(holling1$Con_ForagingMovement == "active")),]
 holling1_active$ID
 
+############################### Plot example curves ###############################
 
+# example of Holling1 active
+i <- 40010
+params <- subset(fits, fits$ID == i) # subset and plot the data by ID
+subdata <- subset(crd, crd$ID == i)
+x <- seq(min(subdata$ResDensity), 
+         max(subdata$ResDensity), 
+         (max(subdata$ResDensity) - min(subdata$ResDensity))/1000) 
+yPoly <- params$Poly1 + params$Poly2*x + 
+         params$Poly3*x^2 + (params$Poly4)*x^3
+yGFR <- GFR_model(params$Fit_a, params$Fit_q, params$Fit_h, x)
+data_to_plot <- data.frame(x, yPoly, yGFR)
+# plot
+pdf(paste("../Results/Holling1_example.pdf"),
+    8, 5)
+ggplot(aes(x = ResDensity,
+                 y = N_TraitValue),
+             data = subdata) +
+        ggtitle(paste("ID", i)) +
+        xlab("Resource Density") + 
+        ylab("Trait Value") +
+        geom_point() +
+        geom_line(data = data_to_plot, 
+                  mapping = aes(x, y = yPoly, colour = "Polynomial")) +
+        geom_line(data = data_to_plot,
+                  mapping = aes(x, y = yGFR, colour = "Generalised Functional Response")) +
+        scale_colour_manual("", 
+                            breaks = c("Polynomial", "Generalised Functional Response"),
+                            values = c("red", "blue")) +
+        theme(legend.position="bottom")
+dev.off()
+
+# example of GFR where looks like Holling 2
+i <- 39864
+params <- subset(fits, fits$ID == i) # subset and plot the data by ID
+subdata <- subset(crd, crd$ID == i)
+x <- seq(min(subdata$ResDensity), 
+         max(subdata$ResDensity), 
+         (max(subdata$ResDensity) - min(subdata$ResDensity))/1000) 
+yPoly <- params$Poly1 + params$Poly2*x + 
+         params$Poly3*x^2 + (params$Poly4)*x^3
+yGFR <- GFR_model(params$Fit_a, params$Fit_q, params$Fit_h, x)
+data_to_plot <- data.frame(x, yPoly, yGFR)
+# plot
+pdf(paste("../Results/GFR_Holling2_example.pdf"),
+    8, 5)
+ggplot(aes(x = ResDensity,
+           y = N_TraitValue),
+       data = subdata) +
+  ggtitle(paste("ID", i)) +
+  xlab("Resource Density") + 
+  ylab("Trait Value") +
+  geom_point() +
+  geom_line(data = data_to_plot, 
+            mapping = aes(x, y = yPoly, colour = "Polynomial")) +
+  geom_line(data = data_to_plot,
+            mapping = aes(x, y = yGFR, colour = "Generalised Functional Response")) +
+  scale_colour_manual("", 
+                      breaks = c("Polynomial", "Generalised Functional Response"),
+                      values = c("red", "blue")) +
+  theme(legend.position="bottom")
+dev.off()
 

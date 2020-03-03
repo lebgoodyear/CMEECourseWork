@@ -36,30 +36,31 @@ names(crd) <- c("ID", "ResDensity", "N_TraitValue")
 # initial plot of data for quick visualisation
 # data is logged for initial viewing since many points are very small and 
 # there are a few very large points
-qplot(x = log(crd$ResDensity), y = log(crd$N_TraitValue), colour = crd$ID,
-      xlab = "Resource Density", ylab = "Trait Value") +
-  geom_point()
+#qplot(x = log(crd$ResDensity), y = log(crd$N_TraitValue), colour = crd$ID,
+#      xlab = "Resource Density", ylab = "Trait Value") +
+#geom_point()
+# in this instance, this plot doesn't tell us much so commented out
 
-# minimum number of values needed for fitting is 5 so check all unique IDs
+# hosen minimum number of values needed for fitting is 5 so check all unique IDs
 # have a minimum of 5 records
-x <- c()
+less_than_5 <- c()
 IDs_Count <- as.data.frame(table(crd$ID)) # tally of IDs
-IDs <- as.numeric(levels(IDs_Count$Var1))[IDs_Count$Var1] # list of IDs
+IDs <- as.numeric(levels(IDs_Count$Var1)) # list of IDs
 # for loop to extract IDs with fewer than 5 records
 for (i in (1:length(IDs))) {
   if (IDs_Count[i,2] < 5) {
-    x <- rbind(x, IDs[i])
+    less_than_5 <- rbind(less_than_5, IDs[i])
   }
 }
 # print statement to detail if any IDs with fewer than 5 records were found
-if (is.null(x)) {
+if (is.null(less_than_5)) {
   print("There are no IDs with fewer than 5 records so all IDs can be used for modelling")
 } else {
-  print("The following IDs contain fewer than 5 records so are not suitable for modelling") 
-  x
+  print("The following IDs contain fewer than 5 records so are not suitable for modelling and will be removed") 
+  as.vector(less_than_5)
 }
 # remove any IDs with fewer than 5 records from dataframe
-crd <- crd[ ! crd$ID %in% x, ]
+crd <- crd[ ! crd$ID %in% less_than_5, ]
 
 
 #################### plot filtered IDs ###########################
@@ -67,18 +68,19 @@ crd <- crd[ ! crd$ID %in% x, ]
 
 # plot all datasets separately to get a feel for the data
 # open blank pdf page using a relative path
-pdf(paste("../Results/Explore_Plots/IDs.pdf"),
-    8, 4.5, onefile = TRUE) # save all plots to one pdf
+#pdf(paste("../Results/Explore_Plots/IDs.pdf"),
+#    8, 4.5, onefile = TRUE) # save all plots to one pdf
 # for loop to plot one dataset per page
 # now datasets are separated, no need to log data
-for (i in (unique(crd$ID))) {
-  p <- subset(crd, crd$ID == i) # subset and plot the data by ID
-  print(qplot(x = p$ResDensity, y = p$N_TraitValue,
-              xlab = "Resource Density", ylab = "Trait Value",
-              main = paste("ID", i)) +
-    geom_point())
-}
-dev.off()
+#for (i in (unique(crd$ID))) {
+#  p <- subset(crd, crd$ID == i) # subset and plot the data by ID
+#  print(qplot(x = p$ResDensity, y = p$N_TraitValue,
+#              xlab = "Resource Density", ylab = "Trait Value",
+#              main = paste("ID", i)) +
+#    geom_point())
+#}
+#dev.off()
+# plots not needed for report so above has been commented out
 
 
 ###################### starting value estimates ####################

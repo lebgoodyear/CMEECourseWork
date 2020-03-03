@@ -80,26 +80,33 @@
 
 \linenumbers
 \section{Introduction}
-The term functional response refers to the relationship between a consumer's consumption rate and the density of its prey \parencite{Solomon1949}. 
+The term functional response refers to the relationship between a consumer's consumption rate and the density of its prey \parencite{Solomon1949}.  The first mechanistic mathematical approach to functional responses was conducted by Holling in 1959 \parencite{Holling1959b}. Holling constructed an artifical functional response experiment and discovered that the funtional response is related to prey in terms of two constants, instantaneous rate of discovery and handling time. The instaneous rate of discovery is the likelihood of a predator finding an individual prey, equivalent to the volume or area searched per unit of time.
+The handling time is any time not spent in actively searching for prey. There have been discussions on the different physical activites that handling time includes, such as digestion,time spent consuming prey, time spent hunting prey etc. \parencite{Jeschke2002, Holling1966} but for the purposes of this paper, we are assuming handling time is time spent on any non-foraging activties.
+This functional response is the most common in nature and is known as the basic functional response \parencite{Holling1959b}.
 
-The first mechanistic mathematical approach to functional responses was conducted by Holling in 1959 \parencite{Holling1959b}. Holling constructed an artifical functional response experiment and discovered that the funtional response was related to prey in terms of two constants, instantaneous rate of discovery and handling time. The instaneous rate of discovery is the likelihood of a predator finding an individual prey, equivalent to the volume or area searched per unit of time.
-The handling time is any time not spent in actively searching for prey. There have been discussions on the different physical activites that handling time includes, such as digestion,time spent consuming prey, time spent hunting prey etc. \parencite{Jeschke2002, Holling1966}.
+In an earlier paper of the same year, Holling describes the shapes of the three functional response \parencite{Holling1959a} where his experiment basic functional response can be seen to be classed as a type II.
 
-Holling desribed the three functional response...\parencite{Holling1959a} with the basic functional response becoming classed as a type II.
+Other attempts at modelling functional responses have been made using different assumptions and mathematics; these are discussed by Holling in a later paper, who remarks on the lack of biological context in most of the other options \parencite{Holling1965}. Since then, further models have been formalised and changes made to the original Holling equations but these were not used in this paper's hypothesis and so will only be considered in the discussion. 
 
-The Type III functional response was modeled using computer simulations and labeled as the generalised functional response by Holling 1965? \parencite{Holling1965} with Types I and II being limiting conditions. However, Type III was not described mathematically until 1977 by Real, who derived it using Holling's Type II functional response equation and first-order kinetic interations \parencite{Real1977}
+\bigskip
+
+The Type III functional response was modeled using computer simulations and labeled as the generalised functional response by Holling in a later paper \parencite{Holling1965} with Types I and II being limiting conditions. However, Type III was not described mathematically until 1977 by Real, who derived it using Holling's Type II functional response equation and first-order kinetic interations \parencite{Real1977}.
  
-The Generalised Functional Response equation is written below, where $c$ is the consumer response, $a$ is the instaneous rate of discovery, $x$ is the resource density, $h$ is the handling time and $q$ is a variable with as yet unknown biological meaning. It has been hyptohesised that q could be related to predator learning and is "the number of encounters...a predator must have with a prey item before becoming maximally efficient at utilizing the prey item as a resource" \parencite{Real1977}. In his paper, Real mathemaitcally derives the Type III (or generalised) functional response from looking at the kinetics \parencite{Real1977}.
+The Generalised Functional Response equation is written below, where $c$ is the consumer consumption rate, $a$ is the instaneous rate of discovery, $x$ is the resource density, $h$ is the handling time and $q$ is a variable with as yet unknown biological meaning. It has been hyptohesised that q could be related to predator learning and is `the number of encounters...a predator must have with a prey item before becoming maximally efficient at utilizing the prey item as a resource' \parencite{Real1977}.
 
 \begin{equation}
 c = \frac{ax_R^{q + 1}}{1 + hax_R^{q + 1}}
 \end{equation}
 
-It can been shown that the Type II functional response is a special case of the Generalised Functional Response by setting $q = 0$. In terms of Real's interpretation of $q$, the predator is "is always maximally efficient on the prey item"  \parencite{Real1977} in a Type II response.
+\bigskip
+
+It can been shown that the Type II functional response is a special case of the Generalised Functional Response by setting $q = 0$. In terms of Real's interpretation of $q$, this means that the predator `is always maximally efficient on the prey item'  \parencite{Real1977} in a Type II response.
 
 \begin{equation}
 c = \frac{ax_R}{1 + hax_R}
 \end{equation}
+
+\bigskip
 
  In Type I, the handling time is negligble, reducing the second term in the denominator to almost zero, leaving us with a linear relationship:
 
@@ -107,17 +114,13 @@ c = \frac{ax_R}{1 + hax_R}
 c = ax_R
 \end{equation}
 
-Type I responses are to be found in filter feeders, where the predation rate is directly  proportional to the prey density \parencite{Jeschke2004}. There is normally a hard cut off at very high prey densities. This because filter feeders are able to do activites simultaneous so can effectively spend all their time foraging.
+Type I responses are to be found in filter feeders, where the predation rate is directly  proportional to the prey density \parencite{Jeschke2004}. This because filter feeders are able to do activites simultaneously so can effectively spend all their time foraging. There is normally a hard cut off at very high prey densities \parencite{Jeschke2004}. 
 
-The Holling model was then generalised in ... 
-by .... to what is known as the generalised functional response model by including variable q. . 
+This paper aims to look at whether the generalised functional response equation (a mechanistic model) or a polynomial (a phenomological model) fit best to empirical functional response data. The polynomial has no biological meaning so the comparison is effectly one of phenomological vs mechanistic models. 
 
-This paper aims to look at the difference of fit between one such phenomological model (a polyomial) with the generalised functional response equation, a mechanistic model. The polynomial has no biological meaning so the comparison is effectly one of phenomological vs mechanistic models. 
-Holling also discusses other attempts at modelling functional responses, remarking on the lack of biological context in most of the other options. \parencite{Holling1965}
+By fitting the general functional response model to 308 empirical datasets and comparing it to a polynomial model, the data can be categorised and the patterns that match the different data subsets analysed. We can also compare functional response types by subsetting by the limiting conditions of Type I and Type II functional responses, i.e. filtering by the values of $h$ and $q$ respectively, gaining information on the split between the three types.
 
-By fitting the general functional response model to 308 datasets and comparing it to a polynomial fit, we can categorise the data, noticing the patterns that match the different data subsets. We can also compare functional response types by subsetting by limiting conditions of $h$ and $q$ respectively, gaining information on Type 1 and Type 2 Holling functional responses.
-
-The second part of this paper will focus on comparing filter feeders and non-filter feeders. In pervious work, filter feeders have been shown to be more likely to show a Type 1 functional response. Jeschke et al showed that the Type 1 reponse was in fact exclusive to filter feeders \parencite{Jeschke2004}.  Functional responses that show a Type 1 respnse are characterised by 2 main confidtions: handling time must be negligible and satiation \parencite{Jeschke2002}. Many filter feeders have a negligible handing time because they are able to ctach prey at the same time as other activies so can effectlively spend all their time forgaing. Some filter feeders also adhere to the satiation condition but many don't, which is why the majority of all fucntional respnses, incuding filter feeders, do not show a type 1 response \parencite{Jeschke2004, Deville2013, Porter1983}. Our data set explores this in terms of Real's kinetic paper, looking at the responses when q is given no limit. \parencite{Real1977}
+The second part of this paper focuses on the functional response of  filter feeders. In previous work, it has been shown that, although the majority of filter feeders do not show a Type I response, the Type 1 reponse is only possible for filter feeders \parencite{Jeschke2004}.  Type I functional responses are characterised by two main conditions: handling time must be negligible and the consumer must always spend the maximal time and effort foraging, the only exception being once the gut is full (satiation condition) \parencite{Jeschke2002}. Many filter feeders have a negligible handing time because they are able to catch prey at the same time as other activies, resulting in effectively all of their time being spent in forgaing. Some filter feeders also adhere to the satiation condition but not many. Both conditions must be met in order for the functional response to be Type I, but both conditions could also be met and the resulting functional reponse be of a different type. This is why it is proposed that the majority of filter feeders (and all non-filter feeders) do not show a type 1 response \parencite{Jeschke2004, Deville2013, Porter1983}. Here, the exclusivity of a Type I response to filter feeders is explored in terms of Real's definition of $q$ and derivation of the Type III functional response, looking at functional responses when $q$ is not confined to any limits \parencite{Real1977}.
 
 \section{Methods}
 
@@ -159,19 +162,33 @@ autotabular
 	\caption{ID count by best fit type}
 \end{figure}
 
+\begin{figure}[ht!]
+	\centering\includegraphics[width=1\textwidth]{../Results/Holling1_example.pdf}
+	\caption{Holling I active foraging movement example}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering\includegraphics[width=1\textwidth]{../Results/GFR_Holling2_example.pdf}
+	\caption{Holling 2 shape for GFR fit example}
+\end{figure}
+
 \section{Discussion}
 
 As expected, the Holling mechanistic model much better explains fucntional response data than a polynomial. This is not to say that another mechanistic model would not describe the functional response with even more accuracy, however it does show the value of having models with biological basis.
 
 The discrepancy between the expected number of non-filter feeders with a type 1 functional response could be explained in two ways:
 
-1) Jeschke et al have a very broad definition of filter feeder, including that only filter feed at certain stages in their life cycle \parencite{Jeschke2004}. It could be that the authors of the data used a different defintion of filter feeder when classifying the consumer foraging type. However, this seems unlikely given that consumers have also been categorised by the lifestage in the dataset.
+1) Jeschke et al have a very broad definition of filter feeder, including suspension feeders, trap builders, sediment filter feeders, those that only filter feed at certain stages in their life cycle snd also those that change feeding strategies according to prey abundance \parencite{Jeschke2004}. It could be that the authors of the empirical data used in this paper used a different defintion of filter feeder when classifying the consumer foraging type.
 
 2) Both Holling Type 2 and 3 functional response are linear far from the limits. It is possible that not enough data has been collected at the limits to display a Type 2 or Type 3 functional response, which is why they have been interpretted as Type 1.
 
 There is also work suggesting that functional response types change over spatial scales, which was not considered in the data analysed and could have impacted the results \parencite{Rincon2017}.
 
-Further work has been done to refine the Holling models \parencite{Pawar2012, Seo2011, Aljetlawi2004} with modifications to account for both predator and prey size \parencite{Aljetlawi2004} and foraging dimensionality \parencite{Pawar2012}... and the work by Seo and DeAngelis in describing the Type I response shows a much more complicated dynamical system than once thought \parencite{Seo2011}
+The large  number of models best fitted by the generalised functional response, when the type II should have been the most common fit is most likely explained by the strict boundaries set between the two. The fitting and tests done in this paper do not reflect the complexities of the two types or the overlaps that commonly seen. If the plots of those IDs classed as type III are viewed, it can be seen that many better resemble a type II curve, suggesting further differentiation is needed than just $q~0$.
+
+Although not an nterest of this paper, it is worth noting the high proportion of IDs with a Type III response as best fit. This could because this work has not taken into account intermediate functional responses, which may better explain much of the dataset than the pure repsonses. \parencite{Jeschke2004}.
+
+Many more different models have now been produced \parencite{Jeschke2002} and  further work has been done to refine the Holling models \parencite{Pawar2012, Seo2011, Aljetlawi2004} with modifications to account for both predator and prey size \parencite{Aljetlawi2004} and foraging dimensionality \parencite{Pawar2012}. The work by Seo and DeAngelis in describing the Type I response shows a much more complicated dynamical system than once thought \parencite{Seo2011} and so many different models could further be applied to the empirical dataset to better understand the functional responses of both filter and non-filter feeders.
 
 \newpage
 \printbibliography
