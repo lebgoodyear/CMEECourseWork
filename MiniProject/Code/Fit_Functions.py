@@ -15,8 +15,7 @@ selected. It takes two inputs, df (the dataframe containing the datasets that ar
 to be taken from the Gaussian distribution). Output is a dataframe containing the selected starting paramenters.
 
 3) poly_fit
-Tries to fit a polynomial to each dataset, saving any IDs that cannot be fitted to a separate vector. It takes a dataframe
-as input and returns a dataframe of fitting parameters as output.
+Fits a polynomial to a inputted dataset returns a dataframe containing the best fitting parameters as output.
 
 """
 
@@ -29,6 +28,7 @@ __version__ = '0.0.1'
 import lmfit
 import pandas
 import numpy
+import itertools
 
 
 # function for Generalised Functional Response
@@ -67,7 +67,7 @@ def GFR_fit(df, maxiters):
                                 initial estimates for a and h, which must contained in the second,
                                 third, fourth and fifith colunns respectively (assumption is that 
                                 first column contains an ID)
-    maxiters (numierc) :        number of samples drawn from distribution
+    maxiters (numeric) :        number of samples drawn from distribution
 
     Returns:
     test (pandas dataframe) :   pandas dataframe containing most suitable starting values
@@ -76,22 +76,25 @@ def GFR_fit(df, maxiters):
     # initialise empty data frame to store possible starting values
     test = pandas.DataFrame(columns = ["Trial_a", "Trial_q", "Trial_h", "RSS", "AIC", "BIC"])
     # find starting values for parameters from Gaussian distribution with initial estimates as mean
+    numpy.random.seed(26) # set seed so that the same random numbers are chosen each time the programme is run
     a = numpy.random.normal(df.iloc[1,3], 1, maxiters)
     h = numpy.random.normal(df.iloc[1,4], 1, maxiters)
     # test sample input parameters with for loop by applying GFR model to find most appropriate starting values (lowest AIC)
-    for k in range(0, maxiters):
+    for p in itertools.product(a, h): # use itertools.product to try all combinations of starting values
         GFR_params = lmfit.Parameters()
-        GFR_params.add("a", value = a[k])
+        GFR_params.add("a", value = p[0])
         GFR_params.add("q", value = 0)
-        GFR_params.add("h", value = h[k], min=0)
-        # try to fit the general functional response model to starting value set k
+        GFR_params.add("h", value = p[1], min=0)
+        # try to fit the general functional response model to starting value set a, h
         try:
             fit = lmfit.minimize(GFR, GFR_params, args = (df.iloc[:,1], df.iloc[:,2]))
         # catch any IDs fail and save them to a list
         except ValueError:
-            return None # we can pass safely after failing IDs have been caught
+            continue # continue to next set of starting values
         # append all test starting parameters to a data frame, inlcuding AIC, BIC and RSS
         test = test.append({"Trial_a" : fit.params["a"].value, "Trial_q" : fit.params["q"].value, "Trial_h" : fit.params["h"].value, "RSS": fit.residual,  "AIC": fit.aic, "BIC": fit.bic}, ignore_index = True)
+    if len(test) == 0:
+        return None # any IDs that have not been fitted return none    
     best_fit = test[test.AIC == min(test.AIC)] # choose lowest AIC as starting values for model
     return best_fit
 
@@ -118,3 +121,5 @@ def poly_fit(x, y):
     except ValueError:
         return None # we can pass safely after failing IDs have been caught
     return None if fit[1][0].size == 0 else fit
+
+# end of script

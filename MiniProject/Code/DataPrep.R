@@ -36,12 +36,15 @@ names(crd) <- c("ID", "ResDensity", "N_TraitValue")
 # initial plot of data for quick visualisation
 # data is logged for initial viewing since many points are very small and 
 # there are a few very large points
-#qplot(x = log(crd$ResDensity), y = log(crd$N_TraitValue), colour = crd$ID,
-#      xlab = "Resource Density", ylab = "Trait Value") +
-#geom_point()
+# pdf(paste("../Results/Explore_Plots/IDs.pdf"),
+#     8, 4.5)
+# qplot(x = log(crd$ResDensity), y = log(crd$N_TraitValue), colour = crd$ID,
+#       xlab = "Resource Density", ylab = "Trait Value") +
+# geom_point()
+# dev.off()
 # in this instance, this plot doesn't tell us much so commented out
 
-# hosen minimum number of values needed for fitting is 5 so check all unique IDs
+# chosen minimum number of values needed for fitting is 5 so check all unique IDs
 # have a minimum of 5 records
 less_than_5 <- c()
 IDs_Count <- as.data.frame(table(crd$ID)) # tally of IDs
@@ -68,16 +71,16 @@ crd <- crd[ ! crd$ID %in% less_than_5, ]
 
 # plot all datasets separately to get a feel for the data
 # open blank pdf page using a relative path
-#pdf(paste("../Results/Explore_Plots/IDs.pdf"),
-#    8, 4.5, onefile = TRUE) # save all plots to one pdf
+#pdf(paste("../Results/Explore_Plots/Datapoints_ID.pdf"),
+#   8, 4.5, onefile = TRUE) # save all plots to one pdf
 # for loop to plot one dataset per page
 # now datasets are separated, no need to log data
 #for (i in (unique(crd$ID))) {
-#  p <- subset(crd, crd$ID == i) # subset and plot the data by ID
-#  print(qplot(x = p$ResDensity, y = p$N_TraitValue,
-#              xlab = "Resource Density", ylab = "Trait Value",
-#              main = paste("ID", i)) +
-#    geom_point())
+# p <- subset(crd, crd$ID == i) # subset and plot the data by ID
+# print(qplot(x = p$ResDensity, y = p$N_TraitValue,
+#             xlab = "Resource Density", ylab = "Trait Value",
+#             main = paste("ID", i)) +
+#   geom_point())
 #}
 #dev.off()
 # plots not needed for report so above has been commented out
@@ -113,6 +116,5 @@ for (i in (unique(crd$ID))) {
 # save newly prepared data to new csv to be imported by python
 write.csv(crd, "../Data/CRatMod.csv")
 
-
-## end of script
+# end of script
   
