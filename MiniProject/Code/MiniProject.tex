@@ -8,6 +8,8 @@
 \usepackage{datatool}
 \linespread{1.5}
 
+\newcommand\wordcount{\input{MiniProject.sum}}
+
 \begin{document}
 
 \begin{titlepage} % Suppresses headers and footers on the title page
@@ -70,29 +72,35 @@
 	
 	\vspace*{3\baselineskip} % Whitespace under the subtitle
 	
-	Word Count:
+	Word Count: \wordcount
 	
 \end{titlepage}
 	
 \section*{Abstract}
+Functional responses, the relationship between a consumption rate and resource density, can be categorised into three types. The first, the type I response, is a linear relationship, shown by some filter feeders. The second, the type II response, also known as the Holling Model or the basic fucntional response, is the most common and represents a response with a non-zero handling time. The third, the type III response, is the generalised functional response, from which the other two can be produced, and is linked to predator switching and learning. All three are examples of a mechanistic model, which is a model based on biological principles. In this paper the type III response (the generalised functional response), and by extension the other two types, was compared against a phenomenological model, a polynomial, and shown to be a significantly better fit to empirical data, providing evidence for the outperformance of mechanstic models over phenomenological models. Those datasets were fitted best by the generalised functional response were then subsetted into the three different functional response types in order to extract those best fitted by the Holling Type I model. By reviewing these datasets in terms of feeding mode, the claim by Jescke et al in their 2004 paper that the Holling Type I response is exclusive to filter feeders was tested and contradicting data was found. This does not conclusively reject the claim as there are many other factors that could have influenced this result, but rather suggests further study should be done in this area.
 
 \newpage
 
 \linenumbers
+
+
+%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%
+
+
 \section{Introduction}
 The term functional response refers to the relationship between a consumer's consumption rate and the density of its prey \parencite{Solomon1949}.  The first mechanistic mathematical approach to functional responses was conducted by Holling in 1959 \parencite{Holling1959b}. Holling constructed an artifical functional response experiment and discovered that the funtional response is related to prey in terms of two constants, instantaneous rate of discovery and handling time. The instaneous rate of discovery is the likelihood of a predator finding an individual prey, equivalent to the volume or area searched per unit of time.
 The handling time is any time not spent in actively searching for prey. There have been discussions on the different physical activites that handling time includes, such as digestion,time spent consuming prey, time spent hunting prey etc. \parencite{Jeschke2002, Holling1966} but for the purposes of this paper, we are assuming handling time is time spent on any non-foraging activties.
 This functional response is the most common in nature and is known as the basic functional response \parencite{Holling1959b}.
 
-In an earlier paper of the same year, Holling describes the shapes of the three functional response \parencite{Holling1959a} where his experiment basic functional response can be seen to be classed as a type II.
+In an earlier paper of the same year, Holling describes the shapes of the three functional responses \parencite{Holling1959a} where his experimental dervied basic functional response can be seen to describe a type II functional response.
 
-Other attempts at modelling functional responses have been made using different assumptions and mathematics; these are discussed by Holling in a later paper, who remarks on the lack of biological context in most of the other options \parencite{Holling1965}. Since then, further models have been formalised and changes made to the original Holling equations but these were not used in this paper's hypothesis and so will only be considered in the discussion. 
+Other attempts at modelling functional responses have been made using different assumptions and mathematics; these are discussed by Holling in a later paper, who remarks on the lack of biological context in most of the other options \parencite{Holling1965}. Since then, further models have been formalised and changes made to the original Holling equations but these were not used in this paper's hypothesis and  will only be considered in the discussion. 
 
 \bigskip
 
 The Type III functional response was modeled using computer simulations and labeled as the generalised functional response by Holling in a later paper \parencite{Holling1965} with Types I and II being limiting conditions. However, Type III was not described mathematically until 1977 by Real, who derived it using Holling's Type II functional response equation and first-order kinetic interations \parencite{Real1977}.
  
-The Generalised Functional Response equation is written below, where $c$ is the consumer consumption rate, $a$ is the instaneous rate of discovery, $x$ is the resource density, $h$ is the handling time and $q$ is a variable with as yet unknown biological meaning. It has been hyptohesised that q could be related to predator learning and is `the number of encounters...a predator must have with a prey item before becoming maximally efficient at utilizing the prey item as a resource' \parencite{Real1977}.
+The generalised functional response equation is written below, where $c$ is the consumer consumption rate, $a$ is the instaneous rate of discovery, $x$ is the resource density, $h$ is the handling time and $q$ is a variable with as yet unknown biological meaning. It has been hyptohesised that $q$ could be related to predator learning and is `the number of encounters...a predator must have with a prey item before becoming maximally efficient at utilizing the prey item as a resource' \parencite{Real1977}.
 
 \begin{equation}
 c = \frac{ax_R^{q + 1}}{1 + hax_R^{q + 1}}
@@ -114,81 +122,172 @@ c = \frac{ax_R}{1 + hax_R}
 c = ax_R
 \end{equation}
 
-Type I responses are to be found in filter feeders, where the predation rate is directly  proportional to the prey density \parencite{Jeschke2004}. This because filter feeders are able to do activites simultaneously so can effectively spend all their time foraging. There is normally a hard cut off at very high prey densities \parencite{Jeschke2004}. 
+Type I responses are to be found in filter feeders, where the predation rate is directly  proportional to the prey density \parencite{Jeschke2004}. This is because filter feeders are able to do activites simultaneously so can effectively spend all their time foraging. There is normally a hard cut off at very high prey densities, indicating a maximum number of prey that can be caught. \parencite{Jeschke2004}. 
 
-This paper aims to look at whether the generalised functional response equation (a mechanistic model) or a polynomial (a phenomological model) fit best to empirical functional response data. The polynomial has no biological meaning so the comparison is effectly one of phenomological vs mechanistic models. 
+This paper aims to look at whether the generalised functional response equation (a mechanistic model) or a polynomial (a phenomological model) fits best to empirical functional response data. The polynomial has no biological meaning so the comparison is effectly one of phenomological vs mechanistic models. The null hypothesis is that the mechanistic model is no better than a phenomenological model and so the data will be best fit by each model roughly half the time.
 
-By fitting the general functional response model to 308 empirical datasets and comparing it to a polynomial model, the data can be categorised and the patterns that match the different data subsets analysed. We can also compare functional response types by subsetting by the limiting conditions of Type I and Type II functional responses, i.e. filtering by the values of $h$ and $q$ respectively, gaining information on the split between the three types.
+By fitting both the general functional response model and a polynomial to 295 empirical datasets, the proprotion of best fits by model can be compared.  We can also compare functional response types by subsetting by the limiting conditions of Type I and Type II functional responses, i.e. filtering by the values of $h$ and $q$ respectively, gaining information on the split between the three types.  The data can then be subsetted by different metadata fields, such as habitat, in order to look for model fitting trends.
 
-The second part of this paper focuses on the functional response of  filter feeders. In previous work, it has been shown that, although the majority of filter feeders do not show a Type I response, the Type 1 reponse is only possible for filter feeders \parencite{Jeschke2004}.  Type I functional responses are characterised by two main conditions: handling time must be negligible and the consumer must always spend the maximal time and effort foraging, the only exception being once the gut is full (satiation condition) \parencite{Jeschke2002}. Many filter feeders have a negligible handing time because they are able to catch prey at the same time as other activies, resulting in effectively all of their time being spent in forgaing. Some filter feeders also adhere to the satiation condition but not many. Both conditions must be met in order for the functional response to be Type I, but both conditions could also be met and the resulting functional reponse be of a different type. This is why it is proposed that the majority of filter feeders (and all non-filter feeders) do not show a type 1 response \parencite{Jeschke2004, Deville2013, Porter1983}. Here, the exclusivity of a Type I response to filter feeders is explored in terms of Real's definition of $q$ and derivation of the Type III functional response, looking at functional responses when $q$ is not confined to any limits \parencite{Real1977}.
+The second part of this paper focuses on the functional response of  filter feeders. In previous work, it has been shown that, although the majority of filter feeders do not show a Type I response, the Type 1 reponse is only possible for filter feeders \parencite{Jeschke2004}.  Type I functional responses are characterised by two main conditions: handling time must be negligible and the consumer must always spend the maximal time and effort foraging, the only exception being once the gut is full (satiation condition) \parencite{Jeschke2002}. Many filter feeders have a negligible handing time because they are able to catch prey at the same time as other activies, resulting in effectively all of their time being spent in foraging. Some filter feeders also adhere to the satiation condition but not many. Both conditions must be met in order for the functional response to be Type I, but both conditions could also be met and the resulting functional reponse be of a different type. This is why it is claimed that the majority of filter feeders (and all non-filter feeders) do not show a type 1 response \parencite{Jeschke2004, Deville2013, Porter1983}. Here, the exclusivity of a Type I response to filter feeders is explored in terms of Real's definition of $q$ and derivation of the Type III functional response, looking at functional responses when $q$ is not confined to any limits \parencite{Real1977}. We are expecting full adherence to the paper of Jeschke et al and so no Holling Type I responses are expected to best fit any non-filter feeders.
+
+
+%%%%%%%%%%%%%%%%%% METHODS %%%%%%%%%%%%%%%%%%%
+
 
 \section{Methods}
 
+\subsection{Data}
+
+The dataset used is a collection of 4507 records, grouped into 308 IDs, each of which responds to a different functional response. They have been collected from various lab and field experiments, conducted globally, and measure the rate of consumption of a single resource by a consumer, along with various metadata, such as habitat and taxa. There are 68 fields but only 11  have been used in this paper: ID, consumption rate, resource denisity for fitting the models and consumer foraging movement, resource foraging movement, habitat, experimental conditions (lab/field/enclosure), resource movement dimensionality, consumer movement dimensionality, resource thermal type, consumer thermal type for subsetting the data and looking for trends.
+
 \subsection{Computing Tools}
 
-Data was prepared for fitting using R. Rstudio makes it very easy to view data and i.... First the data was subsetted by the necessary columns and all records with NA trait value were discarded. This subset was run through a for loop to check that each ID had more than 5 records (the minimum number required for the fit with the most parameters (the cubic). Each ID was then plotted and saved to a single pdf in order to be able to give a quick review of the data. The data preparation script also generates the initial starting values for the general functional response fit, which are saved in the dataframe. The new dataframe, included subsetted data and initial starting values for a and h, is saved to csv for python load.
+\subsubsection{Data preparation — R}
 
-The starting value optimisation and fitting script is done using python. For the polynomial fit, there is an in-built python function, which also finds starting values for you. For the general functional response fit, a Gaussian sample of 100 was generated around the estimated starting values and each of these sample values was used to fit the model. The AIC, BIC and residual sums of sqaures (RSS) were calculated for each ID and the starting values for the model with the lowest AIC were chosen as the best fit. AIC was chosen over BIC because.....and when the number of estimated parameters is the same for each model (such as with GFR), choosing AIC is the equivalent of choosing RSS ...reference here. This loop is run for every ID.
+Data was prepared for fitting using R v.3.6.1 \parencite{R} because of the ease of viewing data and of accessing and manipulating data frames. First, the data is subsetted by the necessary columns, all records with NA consumption rate and all IDs with fewer than 5 records are removed (to reduce the possibility of overfitting), which leaves 295 IDs remaining. The data preparation script then generates initial starting values for $a$ and $h$ for the general functional response fit. A new dataframe, including subsetted data and initial starting values for $a$ and $h$, is saved to csv for the next script to load.
 
-Functions are saved in a separate python script and have been generalised to allow importation into future programmes. In python, the packages \textit{lmfit}, \textit{numpy} and \textit{pandas} were used. numpy contains the polynomial fitting function as well as the different mathematical values, such as pi. lmfit allows the use of parameters when fitting a model and pandas is a dataframe tool.
+\subsubsection{Model Fitting — Python}
+The starting value optimisation and fitting script is done using Python v.3.7.4 \parencite{Python}. For the polynomial fit, there is an in-built Python function, which also calculates starting values and fit statistics. For the general functional response fit, a Gaussian sample of 3 (chosen for speed of programming) is generated around the estimated starting values and each of these sample values is used to fit a model to the dataset. The AIC, BIC and residual sums of sqaures (RSS) are calculated for each ID and the starting values for the model with the lowest AIC are chosen as the best fit. \parencite{Johnson2004}.  These calculations are perfomed for each ID and the best fit parameters and statsitics are stored in a new dataframe and then saved as a csv for exporting into R for the plotting and analysis script.
 
-The best fit parameters and measured for all IDs are stored in a separate data frame and saved as a csv to be imported by the analsysi script, which has been done R due to the ease of data and graphical representation in R-studio. The analysis script plots each ID's datapoints, polynomial and generalised functional response fits. It compares RSS, AIC and BIC for each model within each ID. Based on the chosen best model for each ID, the IDs are then grouped and compared using the metadata.
+Functions are saved in a separate python script and have been generalised to allow importation into future programmes. The packages lmfit \parencite{lmfit} v.0.9.14, NumPy \parencite{NumPy} v.1.18.1 and pandas \parencite{pandas} v.0.24.2 were used. NumPy contains the polynomial fitting function as well as the different mathematical values, such as $\pi$. The package lmfit allows the use of parameters when fitting a model and pandas is a dataframe tool.
 
-\subsection{Statistics}
+\subsubsection{Plotting and Analysis — R}
+The plotting and analysis script has been written in R due to the ease of graphical representation in R-studio and the statistical functionality. Four packages are used: ggplot2 \parencite{ggplot2} for visualisation; tidyverse \parencite{tidyverse} for easy data manipulation; DescTools {\parencite{DescTools}}  for stastical tests; and janitor \parencite{janitor} to create flexible tables. After reviewing the datasets, those IDs where only one model has been fitted are discarded because those datasets have multiple x-values for one y-value and so cannot have been fitted properly.
 
-Three fit statistics were calculated to ensure each ID had a best fit model with two out of three agreements. AIC, BIC and RSS were calculated per each model for each ID. RSS was used as is rather than to calculate $R^{2}$ due to the new numerous pitfalls in calculating this statistic for non-linear regressions \parencite{kvalseth1985}. These were compared and the model with 2 or more out 3 agreements between the statistics was chosen as the best fit for that ID. AIC and BIXC were chosen because they are the best fitting statsitics \parencite{Johnson2004}.To obtain a measure of the significance of the results, both a G-test of goodness of fit and chi-square test of goodness of fit were performed.
+The script compares RSS, AIC and BIC for each model within each ID and chooses the best fit model based on at least two out of three agreements between these statstics. RSS is used as is rather than to calculate $R^{2}$ due to the new numerous pitfalls in calculating this statistic for non-linear regressions \parencite{kvalseth1985}.
+AIC and BIC were chosen because they are the currently viewed as the most appropriate best fitting statsitics \parencite{Johnson2004}. The spread of best fits was compared graphically and
+a measure of the significance of the resulting proportion of fits between the phenomenological and the mechanistic model was obtained by performing both a G-test of goodness-of-fit and chi-square goodness-of-fit test. 
+
+The data is then subsetted into the three Holling types by setting any ID with the generalised fucntional response as best fit and $-0.3<q<0.3$ as Holling Type II and any Holling Type II with $h<0.1$ as Holling Type I. Given $q$ had no limits in the fitting script, $0.3$ was chosen as the limiting boundary for $q$ by eye, based on the whether the plots encompassed looked to be Holling II/Holling I shape.
+Plots and tables of eight different metadata fields and a table showing the proportion of best fit models in terms of feeding mode are then generated and a G-test of goodness-of-fit and chi-square goodness-of-fit test are performed to test the significance of the proportion of non-filter feeders best fit by a Holling Type I response.
+
+\subsubsection{Run Script — Bash}
+
+Bash was chosen to join the above scripts into a clear reproducible workflow because it can run R and Python scripts simply and easily, as well as compile latex files with references.
+
+
+%%%%%%%%%%%%%%%%% RESULTS %%%%%%%%%%%%%%%%%%%
+
 
 \section{Results}
 
-The findings of a comparison between the mechanistic model and the phenomenological models are shown in figure 1. It is clear that the mechanistic models are a much better fit. Only 0.7\% of the data was best fitted by phenomenological model, which accounts for 2 of 274 IDs. The superiority of the mechanistic models is highly signifctant ($p < 2.2\times10^{-16}$ for both chi-sqaure goodness of fit and G goodness of fit tests). 
+\subsection{Mechanistic vs Phenomenological Models}
 
-Filter feeders and non-filter feeders are compared in figure 2. The ratio between the different best fits is similar to that of the whole dataset. It can also be seen that a small percentage non-filter feeder fucntional responses are best described by the Holling Type 1 functional response. Based on the paper of Jescke et al \parencite{Jeschke2004}, the expected proportions of Holling Type 1 response as best fit is 1 for filter feeders and 0 for non-filter feeders. These results are not insignifcant ($p < 2.2\times10^{-16}$ for both chi-sqaure goodness of fit and G goodness of fit tests). 
+The findings of a comparison between the mechanistic model and the phenomenological models are shown in Figure 1. It is clear that the mechanistic models are a much better fit. Only 5.1\% of the data was best fitted by phenomenological model, which accounts for 14 of 277 IDs. This is highly significtant ($p < 2.2\times10^{-16}$ for both G-test of goodness-of-fit and chi-square goodness-of-fit test), showing that the Holling mechanstic models fit empirical data much better than a polynomial.
 
 \begin{figure}[ht!]
 	\centering\includegraphics[width=1\textwidth]{../Results/Model_Comparison_Barchart.pdf}
-	\caption{ID count by best fit type}
+	\caption{ID count by best fit model type}
 \end{figure}
+
+\subsection{Data subsets}
+
+The dataset was preliminarily plotted in terms of eight factors: habitat, expermental conditions (lab/field/enclosure), consumer and rescoure thermal type, consumer and resource foraging movement and consumer and resource movement dimensionalty. All of these had a very similar ratio between the different best fits to that of the whole dataset, as can be seen from the four examples in Table 1. No particular trait was best fit by a particular model, which is why the second focus of this paper became filter feeders. 
 
 \begin{table}[ht!]
-\centering\csvreader[
-respect all,
-autotabular
-]{../Results/sessilevsactivetable.csv}{}{\csvlinetotablerow}
-\caption{Different fits by consumer foraging movement}
+	\centering\csvreader[
+	respect all,
+	autotabular
+	]{../Results/habitat_table.csv}{}{\csvlinetotablerow}
 \end{table}
 
-\begin{figure}[ht!]
-	\centering\includegraphics[width=0.9\textwidth]{../Results/ConForaging_Comparison_Barchart.pdf}
-	\caption{ID count by best fit type}
-\end{figure}
+\begin{table}[ht!]
+	\centering\csvreader[
+	respect all,
+	autotabular,
+	]{../Results/labfield_table.csv}{}{\csvlinetotablerow}
+\end{table}
+
+\begin{table}[ht!]
+	\centering\csvreader[
+	respect all,
+	autotabular
+	]{../Results/res_movement_table.csv}{}{\csvlinetotablerow}
+\end{table}
+
+\begin{table}[ht!]
+	\centering\csvreader[
+	respect all,
+	autotabular
+	]{../Results/con_movement_table.csv}{}{\csvlinetotablerow}
+	\caption{Different fit proportions in terms of various factors. The fit proportions shown by the overall data are shown at the bottom of each table.}
+\end{table}
+
+Each of the IDs best fit by a Holling Type I response was allocated a feeding mode (either filter feeder or non-filter feeder), with the aim of exploring the claim by Jeskhe et al that only filter feeders can display a Holling Type I functional response. This allocation, along with the reference, can be seen in Table 2 and has been done according the defintion of a filter feeder in the paper by Jeschke et al. This is a very broad definition that includes suspension feeders, trap builders, sediment filter feeders, those that only filter feed at certain stages in their life cycle snd also those that change feeding strategies according to prey abundance \parencite{Jeschke2004}.
+Looking at Table 3, we can see that ... of the IDs best fit by a Holling Type I functional response are classed as non-filter feeders.
+This result is not insignifcant ($p < 2.2\times10^{-16}$ for both chi-sqaure goodness of fit and G goodness of fit tests). Figure 2 shows an example of a clearly linear functional response for a non-filter feeder consumer that is best fitted by the Holling Type I equation.
+
+%I think 39993 is a filter feeder (krill).
+%sessile:
+%39890 is damselfy nymph and not a filter feeder.
+%39896, 39905?? glassworm
+%39920 water stick insect, maybe filter feeder
+
+\begin{table}[h!]
+	\small
+	\begin{tabular} {| l | l | l |}  \hline
+		\textbf{ID} & \textbf{Taxa} & \textbf{Feeding Mode with Reference} \\ \hline
+		400121 & Aurelia aurita & Filter Feeder \parencite{Aurelia} \\ \hline
+		40019 & Parabroteas sarsi & Filter Feeder \parencite{Copepod}  \\ \hline
+		40010 & Nereis (Hediste) diversicolor & Filter Feeder \parencite{Nereis}  \\ \hline
+		40026 &  Cyclops kolensis & Non-Filter Feeder \parencite{Cyclops}  \\ \hline
+		40066 & Praunus flexuosus & Filter Feeder \parencite{Praunus}  \\ \hline
+		695 & Stethorus punctum &  Non-Filter Feeder \parencite{Stethorus}  \\ \hline
+		39839 & Rhyacophila dorsalis &  Non-Filter Feeder \parencite{Rhyacophila}  \\ \hline
+		40089, 40094, 40097 & Sander vitreus &  Non-Filter Feeder \parencite{Sander}  \\ \hline
+		40109 & Crangon crangon &  Non-Filter Feeder \parencite{Crangon}  \\ \hline
+		39866 & Notonecta maculata &  Non-Filter Feeder \parencite{Notonecta}  \\ \hline
+		39890 & Anomalagrion hastatum &  Non-Filter Feeder \parencite{}  \\ \hline
+	\end{tabular}
+	\caption{The consumers of functional responses best fit by a Holling Type I fit. Feeding mode has been based on the defintion used by Jeschke et al \parencite{Jeschke2004}}
+\end{table}
+
+%\begin{figure}[ht!]
+	%\centering\includegraphics[width=0.9\textwidth]{../Results/ConForaging_Comparison_Barchart.pdf}
+	%\caption{ID count by best fit type}
+%\end{figure}
 
 \begin{figure}[ht!]
 	\centering\includegraphics[width=1\textwidth]{../Results/Holling1_example.pdf}
-	\caption{Holling I active foraging movement example}
+	\caption{Holling I active foraging movement example (ID = 39920)}
 \end{figure}
 
-\begin{figure}[ht!]
-	\centering\includegraphics[width=1\textwidth]{../Results/GFR_Holling2_example.pdf}
-	\caption{Holling 2 shape for GFR fit example}
-\end{figure}
+
+%%%%%%%%%%%%%%%% DISCUSSION %%%%%%%%%%%%%%%%
+
 
 \section{Discussion}
 
-As expected, the Holling mechanistic model much better explains fucntional response data than a polynomial. This is not to say that another mechanistic model would not describe the functional response with even more accuracy, however it does show the value of having models with biological basis.
+\subsection{Mechanistic vs Phenomenological Models}
 
-The discrepancy between the expected number of non-filter feeders with a type 1 functional response could be explained in two ways:
+The Holling mechanistic models much better explains fucntional response data than a polynomial. This is what was expected since the parameters in a polynomial have no biological meaning and so no underpinning scientific reasoning, meaning it is likely they will not fit biological datasets as well as mechansitic models.
+This is not to say that another mechanistic model would not describe the functional response with even more accuracy, however it does show the value of having models with biological basis and provide evidence for their outperformance of mechanistic models.
 
-1) Jeschke et al have a very broad definition of filter feeder, including suspension feeders, trap builders, sediment filter feeders, those that only filter feed at certain stages in their life cycle snd also those that change feeding strategies according to prey abundance \parencite{Jeschke2004}. It could be that the authors of the empirical data used in this paper used a different defintion of filter feeder when classifying the consumer foraging type.
+\subsubsection{The Holling Type I response}
 
-2) Both Holling Type 2 and 3 functional response are linear far from the limits. It is possible that not enough data has been collected at the limits to display a Type 2 or Type 3 functional response, which is why they have been interpretted as Type 1.
+The discrepancy between the expected number of non-filter feeders with a type I functional response could be explained in two ways:
 
-There is also work suggesting that functional response types change over spatial scales, which was not considered in the data analysed and could have impacted the results \parencite{Rincon2017}.
+1) The limiting values of $a$ and $h$ used to subset the Holling Type I response from the generalised functional response could have been inadequate as they were not chosen using a mathematical method. As well as some functional responses being mis-classified as Type I, some functional responses that should have been Type I may have been missed.
 
-The large  number of models best fitted by the generalised functional response, when the type II should have been the most common fit is most likely explained by the strict boundaries set between the two. The fitting and tests done in this paper do not reflect the complexities of the two types or the overlaps that commonly seen. If the plots of those IDs classed as type III are viewed, it can be seen that many better resemble a type II curve, suggesting further differentiation is needed than just $q~0$.
+2) Both Holling Type II and III functional response are linear far from the limits. It is possible that not enough data was collected at very low and very high prey densities to display a Type II or Type III functional response, which is why they have been interpretted as Type I.
 
-Although not an nterest of this paper, it is worth noting the high proportion of IDs with a Type III response as best fit. This could because this work has not taken into account intermediate functional responses, which may better explain much of the dataset than the pure repsonses. \parencite{Jeschke2004}.
+Many more different models have now been produced and  further work has been done to refine the Holling models, with modifications to account for both predator and prey size \parencite{Aljetlawi2004}, foraging dimensionality \parencite{Pawar2012} and changes over sptial scales  \parencite{Rincon2017}, among others, all of which could impact the results of this study. The work by Seo and DeAngelis in describing the Type I response shows a much more complicated dynamical system than once thought \parencite{Seo2011}, which, if included in this report, could have provided evidence for the Type I exclusivity to filter feeders. Many different models could further be applied to the empirical dataset to better understand the functional responses of both filter and non-filter feeders.
 
-Many more different models have now been produced \parencite{Jeschke2002} and  further work has been done to refine the Holling models \parencite{Pawar2012, Seo2011, Aljetlawi2004} with modifications to account for both predator and prey size \parencite{Aljetlawi2004} and foraging dimensionality \parencite{Pawar2012}. The work by Seo and DeAngelis in describing the Type I response shows a much more complicated dynamical system than once thought \parencite{Seo2011} and so many different models could further be applied to the empirical dataset to better understand the functional responses of both filter and non-filter feeders.
+\subsubsection{The Holling Type II and Type III responses}
+
+Although not an interest of this paper, it is worth noting the high proportion of IDs with a Type III response as best fit when Type II is consdiered to be the most common \parencite{Holling1959b}. This is most likely explained by the strict boundaries imposed between the two types. The fitting and tests done in this paper do not reflect the complexities of the two types or the overlaps that are commonly seen. If the plots of those IDs classed as type III are viewed, it can be seen that many better resemble a type II curve ( an example ID is shown in figure 3), suggesting further differentiation is needed than just setting $q\approx0$. This could because this work has not taken into account intermediate functional responses, which may better explain much of the dataset than the pure repsonses. \parencite{Jeschke2004}.
+
+\begin{figure}[ht!]
+	\centering\includegraphics[width=1\textwidth]{../Results/GFR_Holling2_example.pdf}
+	\caption{Holling Type II shape for a functional respnse best fit by a general functional response equation}
+\end{figure}
+
+\section{Conclusion}
+
+In the case of the Holling models and a polynomial, mechanistic models fit significantly better to an empirical dataset than phenomenological models. 
+
+In the limits of the data provided, a Holling Type I response is not exclusive to filter feeders as has been previsouly suggested. However this may be due to a number of factors and so further research is required , perhaps using more sophistocated versions of Holling's models to gain a more accurate picture.
+
 
 \newpage
 \printbibliography
