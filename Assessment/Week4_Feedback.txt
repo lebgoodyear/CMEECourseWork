@@ -1,0 +1,198 @@
+Starting weekly assessment for Lucy, Week4
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 87.70 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, C(Week10), Week8, Week5, Week2, Week9, Week4, .git, Week3, MiniProject
+
+Found the following files in parent directory: .gitignore, README.md
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+**********************************************************************
+*~ 
+*.tmp 
+*.DS_Store
+Week6/Lectures
+MiniProject/References
+Ecological_Modelling
+SeminarDiary.tex
+*.log
+*-concordance.tex
+*.gz
+.Rhistory
+**********************************************************************
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+**********************************************************************
+# CMEE Coursework Repository 2019-2020
+
+*Author: Lucy Goodyear*  
+*Created: 10/10/19*  
+*Last updated: 04/02/20*
+
+This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the subdirectories, the system requirements to run each script and a description of the contents of each script.
+
+Note that the **C(Week10)** directory does not have the same nomenclature as the other teaching weeks because it is a non-compulsory course for MRes students.
+
+## Table of Contents
+1. [Week 1 UNIX and shell scripting](#1.Week-1-UNIX-and-bash-scripting)
+2. [Week 2 Python I](#2.Week-2-Python-I)
+3. [Week 3 R](#3.Week-3-R)
+4. [Week 4 Stats](#4.Week-4-Stats)
+5. [Week 5 Modelling and GIS](#5.Week-5-Modelling-and-GIS)
+6. [Week 6 Genomics](#6.Week-6-Genomics) 
+7. [Week 7 Python II](#7.Week-7-Python-II)
+8. [Week 8 MiniProject](#8.Week-8-MiniProject)
+9. [Week 9 HPC](#9.Week-9-HPC)
+10. [C (Week 10)](#10.C-(Week-10))
+11. [MiniProject](#11.Miniproject)
+12. [Assessment](#12.Assessment)
+
+### 1. Week 1: UNIX and shell scripting
+
+* FASTA exercise called UnixPrac1.txt
+* Simple bash scripts, inlcuding:
+    * Counting lines in a file
+    * Concatenating the contents of two files
+    * Converting tiff to png
+    * Converting tab to csv and csv to txt
+* LaTeX exercises
+
+### 2. Week 2: Python I
+
+*  Practice scripts exemplifying:
+    * types of objects
+    * basic functions
+    * loops
+    * list comprehensions
+    * sys.argv
+    * control flows
+* Practical programming exercises and extra credit
+
+### 3. Week 3: R
+
+* Practice scripts exemplifying:
+    * control flows
+    * breaks
+    * vectorisation
+    * preallocation
+    * debugging
+    * data wrangling
+    * plotting using base R, qplot and ggplot
+* practical programming exercises
+
+### 4. Week 4: Stats
+
+This directory is empty, created for file structure continuity.
+
+### 5. Week 5: Modelling and GIS
+
+* Four modelling scripts focusing on non-linear least squares
+* One GIS script containing GIS practical work
+
+### 6. Week 6: Genomics
+
+* Four scripts: 
+    * practical on allele and genotype frequencies
+    * practical on on genetic drift, mutation and divergence
+    * practical on coalescence theory
+    * practical on population subdivision and demographic inferences
+
+### 7. Week 7: Python II
+
+* Practice scripts on profiling
+* 4 scripts modeling the Lotka-Voltera system:
+    * numerical integration version
+    * numerical integration version with carrying capacity
+    * discrete time version
+    * discrete time steps version with random gaussian fluctuation
+* Practicals on visualsing networks
+* Practice scripts using regular expressions
+* Practice scripts running R scripts from python and accessing command line functions through python
+
+### 8. Week 8: MiniProject
+
+This directory is empty, created for file structure continuity. See MiniProject folder for work done during this week.
+
+### 9. Week 9: HPC
+
+* Main .R script containing all HPC functions on neutral theory and fracals
+* Test .R script, which sources the main script and contains suitable parameters to test the functions.
+* Cluster .R script which contains the code to be run on the cluster
+* A bash script to manage the cluster queue
+* Self-sufficient R script containing the answer to question 30 in as few characters as possible
+
+### 10. C (Week 10)
+
+All scripts from C week.
+
+### 11. MiniProject
+
+Work-in-progress scripts for my MiniProject.
+
+### 12. Assessment
+
+Directory for Course Director to push assessment results.**********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 10 weekly directories: C(Week10), Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9
+
+The Week4 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK4...
+
+Found the following directories: 
+
+Found the following files: README.md
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+**********************************************************************
+# CMEE Coursework Week 4 Repository
+
+*Author: Lucy Goodyear*  
+*Created: 27/11/19*
+
+This is an empty directory created for file structure continuity.
+
+Week 4 was a week of stats and had no assessed coursework. It was also lowest priority compared to other weeks with no assessed courework due to the quality of the content.
+
+**********************************************************************
+
+Code directory missing!
+Aborting this weeks assessment!
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 100
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

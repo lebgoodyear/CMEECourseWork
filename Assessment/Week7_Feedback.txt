@@ -9,11 +9,11 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 32.83 MiB on disk 
+Your Git repo size this week is about 87.70 MiB on disk 
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: Week6, Week1, Week7, Assessment, Week8, Week5, Week2, Week9, Week4, .git, Week3, MiniProject
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, C(Week10), Week8, Week5, Week2, Week9, Week4, .git, Week3, MiniProject
 
 Found the following files in parent directory: .gitignore, README.md
 
@@ -27,6 +27,8 @@ Printing contents of .gitignore:
 *.tmp 
 *.DS_Store
 Week6/Lectures
+MiniProject/References
+Ecological_Modelling
 SeminarDiary.tex
 *.log
 *-concordance.tex
@@ -42,30 +44,27 @@ Printing contents of README.md:
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 27/11/19*
+*Last updated: 04/02/20*
 
-This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the exact contents and the system requirements to run each script.
+This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the subdirectories, the system requirements to run each script and a description of the contents of each script.
 
-Each week contains a "Code", "Data" and "Results" directory, where:
-
-**Code** contains the scripts/programs.
-
-**Data** is the data needed to run those scripts.
-
-**Results** is where the outpout from those scripts is sent to.
-
-Some weeks also contain a "Sandbox" directory where:
-
-**Sandbox** is a miscellaneous directory containing experimental code and data.
+Note that the **C(Week10)** directory does not have the same nomenclature as the other teaching weeks because it is a non-compulsory course for MRes students.
 
 ## Table of Contents
-1. [Week 1](#Week-1:-UNIX-and-bash-scripting)
-2. [Week 2](#Week-2:-Python-I)
-3. [Week 3](#Week-3:-R)
-6. [Week 6](#Week-6:-Genomics) 
-7. [Week 7](#Week-7:-Python-II)
+1. [Week 1 UNIX and shell scripting](#1.Week-1-UNIX-and-bash-scripting)
+2. [Week 2 Python I](#2.Week-2-Python-I)
+3. [Week 3 R](#3.Week-3-R)
+4. [Week 4 Stats](#4.Week-4-Stats)
+5. [Week 5 Modelling and GIS](#5.Week-5-Modelling-and-GIS)
+6. [Week 6 Genomics](#6.Week-6-Genomics) 
+7. [Week 7 Python II](#7.Week-7-Python-II)
+8. [Week 8 MiniProject](#8.Week-8-MiniProject)
+9. [Week 9 HPC](#9.Week-9-HPC)
+10. [C (Week 10)](#10.C-(Week-10))
+11. [MiniProject](#11.Miniproject)
+12. [Assessment](#12.Assessment)
 
-### Week 1: UNIX and shell scripting
+### 1. Week 1: UNIX and shell scripting
 
 * FASTA exercise called UnixPrac1.txt
 * Simple bash scripts, inlcuding:
@@ -75,7 +74,7 @@ Some weeks also contain a "Sandbox" directory where:
     * Converting tab to csv and csv to txt
 * LaTeX exercises
 
-### Week 2: Python I
+### 2. Week 2: Python I
 
 *  Practice scripts exemplifying:
     * types of objects
@@ -86,7 +85,7 @@ Some weeks also contain a "Sandbox" directory where:
     * control flows
 * Practical programming exercises and extra credit
 
-### Week 3: R
+### 3. Week 3: R
 
 * Practice scripts exemplifying:
     * control flows
@@ -98,7 +97,16 @@ Some weeks also contain a "Sandbox" directory where:
     * plotting using base R, qplot and ggplot
 * practical programming exercises
 
-### Week 6: Genomics
+### 4. Week 4: Stats
+
+This directory is empty, created for file structure continuity.
+
+### 5. Week 5: Modelling and GIS
+
+* Four modelling scripts focusing on non-linear least squares
+* One GIS script containing GIS practical work
+
+### 6. Week 6: Genomics
 
 * Four scripts: 
     * practical on allele and genotype frequencies
@@ -106,7 +114,7 @@ Some weeks also contain a "Sandbox" directory where:
     * practical on coalescence theory
     * practical on population subdivision and demographic inferences
 
-### Week 7: Python II
+### 7. Week 7: Python II
 
 * Practice scripts on profiling
 * 4 scripts modeling the Lotka-Voltera system:
@@ -118,13 +126,34 @@ Some weeks also contain a "Sandbox" directory where:
 * Practice scripts using regular expressions
 * Practice scripts running R scripts from python and accessing command line functions through python
 
+### 8. Week 8: MiniProject
 
-**********************************************************************
+This directory is empty, created for file structure continuity. See MiniProject folder for work done during this week.
+
+### 9. Week 9: HPC
+
+* Main .R script containing all HPC functions on neutral theory and fracals
+* Test .R script, which sources the main script and contains suitable parameters to test the functions.
+* Cluster .R script which contains the code to be run on the cluster
+* A bash script to manage the cluster queue
+* Self-sufficient R script containing the answer to question 30 in as few characters as possible
+
+### 10. C (Week 10)
+
+All scripts from C week.
+
+### 11. MiniProject
+
+Work-in-progress scripts for my MiniProject.
+
+### 12. Assessment
+
+Directory for Course Director to push assessment results.**********************************************************************
 
 ======================================================================
 Looking for the weekly directories...
 
-Found 9 weekly directories: Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9
+Found 10 weekly directories: C(Week10), Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9
 
 The Week7 directory will be assessed 
 
@@ -293,6 +322,16 @@ Inspecting script file TestR.py...
 
 File contents are:
 **********************************************************************
+#!/usr/bin/env python3
+
+"""
+Practice running a .R script in python
+"""
+
+__author__ = 'Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+# imports
 import subprocess
 
 subprocess.Popen("Rscript --verbose TestR.R > ../Results/TestR.Rout 2> ../Results/TestR_errfile.Rout", shell = True).wait()
@@ -304,10 +343,9 @@ TestR.py is a Python script file;
 
 checking for docstrings...
 
-No functions, but no script-level docstring either
-2 pts deducted
+Found no functions, but one docstring for the script, good
 
-Current Points = 98
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -317,7 +355,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.12772s
+Time consumed = 0.12579s
 
 ======================================================================
 Inspecting script file regexs.py...
@@ -529,7 +567,7 @@ checking for docstrings...
 
 Found no functions, but one docstring for the script, good
 
-Current Points = 98
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -560,7 +598,7 @@ Dr Richard Gil
 
 Code ran without errors
 
-Time consumed = 0.88118s
+Time consumed = 1.04456s
 
 ======================================================================
 Inspecting script file LV3.py...
@@ -740,7 +778,7 @@ Found one or more docstrings and functions
 
 Missing docstring, either in one or functions and/or at the script level
 
-Current Points = 97.0
+Current Points = 99.0
 
 Output (only first 500 characters): 
 
@@ -753,7 +791,7 @@ r = 1., a = 0.1, z = 1.5, e = 0.75
 
 Code ran without errors
 
-Time consumed = 0.79276s
+Time consumed = 0.78590s
 
 ======================================================================
 Inspecting script file blackbirds.py...
@@ -778,7 +816,7 @@ __version__ = '0.0.1'
 import re
 
 # Read the file (using a different, more python 3 way, just for fun!)
-with open('../data/blackbirds.txt', 'r') as f:
+with open('../Data/blackbirds.txt', 'r') as f:
     text = f.read()
 
 # replace \t's and \n's with spaces:
@@ -810,19 +848,18 @@ checking for docstrings...
 
 Found no functions, but one docstring for the script, good
 
-Current Points = 97.0
+Current Points = 99.0
 
 Output (only first 500 characters): 
 
 **********************************************************************
+[('Kingdom Animalia ', 'Phylum Chordata ', 'Species Euphagus carolinus '), ('Kingdom Animalia ', 'Phylum Chordata ', 'Species Euphagus cyanocephalus '), ('Kingdom Animalia ', 'Phylum Chordata ', 'Species Turdus boulboul '), ('Kingdom Animalia ', 'Phylum Chordata ', 'Species Agelaius assimilis ')]
 
 **********************************************************************
 
-Encountered error (or warning):
-Traceback (most recent call last):
-  File "blackbirds.py", line 19, in <module>
-    with open('../data/blackbirds.txt', 'r') as f:
-FileNotFoundError: [Errno 2] No such file or directory: '../data/blackbirds.txt'
+Code ran without errors
+
+Time consumed = 0.03395s
 
 ======================================================================
 Inspecting script file Nets.py...
@@ -864,7 +901,7 @@ for i in range(len(links)):
 
 # construct list of unique institutions
 nodes_uniq = sc.unique(nodes['id'])
-# create networkx graph object
+# create networkx graph object with directional edges
 G = nx.DiGraph()
 
 # add institutions as nodes
@@ -923,7 +960,7 @@ checking for docstrings...
 
 Found no functions, but one docstring for the script, good
 
-Current Points = 97.0
+Current Points = 99.0
 
 Output (only first 500 characters): 
 
@@ -944,6 +981,14 @@ Inspecting script file TestR.R...
 
 File contents are:
 **********************************************************************
+###### Simple script that prints one line #######
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
+
 print("Hello, this is R!")
 **********************************************************************
 
@@ -958,7 +1003,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.09757s
+Time consumed = 0.09564s
 
 ======================================================================
 Inspecting script file LV4.py...
@@ -1139,7 +1184,7 @@ Found one or more docstrings and functions
 
 Missing docstring, either in one or functions and/or at the script level
 
-Current Points = 96.5
+Current Points = 98.5
 
 Output (only first 500 characters): 
 
@@ -1153,7 +1198,7 @@ Extinction occurred
 
 Code ran without errors
 
-Time consumed = 0.76454s
+Time consumed = 0.81462s
 
 ======================================================================
 Inspecting script file fmr.R...
@@ -1196,7 +1241,7 @@ Finished in R!
 
 Code ran without errors
 
-Time consumed = 0.17012s
+Time consumed = 0.17823s
 
 ======================================================================
 Inspecting script file Profileme.py...
@@ -1278,7 +1323,7 @@ Found one or more docstrings and functions
 
 Missing docstring, either in one or functions and/or at the script level
 
-Current Points = 95.0
+Current Points = 97.0
 
 Output (only first 500 characters): 
 
@@ -1289,7 +1334,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 6.47878s
+Time consumed = 6.42508s
 
 ======================================================================
 Inspecting script file MyFirstJupyterNb.ipynb...
@@ -1693,23 +1738,23 @@ checking for docstrings...
 No functions, but no script-level docstring either
 2 pts deducted
 
-Current Points = 93.0
+Current Points = 95.0
 
 Output (only first 500 characters): 
 
 **********************************************************************
 Number of files or directories starting with C:
-16567
+16818
 Number of files or directories starting with C or c:
-38061
+39934
 Number of directories starting with C or c:
-4438
+4474
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 5.54680s
+Time consumed = 5.60408s
 
 ======================================================================
 Inspecting script file LV1.py...
@@ -1846,7 +1891,7 @@ Found one or more docstrings and functions
 
 Missing docstring, either in one or functions and/or at the script level
 
-Current Points = 92.5
+Current Points = 94.5
 
 Output (only first 500 characters): 
 
@@ -1856,7 +1901,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.81338s
+Time consumed = 0.82524s
 
 ======================================================================
 Inspecting script file DrawFW.py...
@@ -1956,7 +2001,7 @@ checking for docstrings...
 
 Found one or more docstrings and functions
 
-Current Points = 92.5
+Current Points = 94.5
 
 Output (only first 500 characters): 
 
@@ -1989,8 +2034,8 @@ rm(list = ls())
 # CEFAS			       0	0
 # Nonacademic/CASE                        0
 
-links <- read.csv("../data/QMEE_Net_Mat_edges.csv", header=T, as.is=T)
-nodes <- read.csv("../data/QMEE_Net_Mat_nodes.csv", header=T, row.names = 1)
+links <- read.csv("../Data/QMEE_Net_Mat_edges.csv", header=T, as.is=T)
+nodes <- read.csv("../Data/QMEE_Net_Mat_nodes.csv", header=T, row.names = 1)
 
 #Create graph object
 net <- graph.adjacency(as.matrix(links), mode = "directed", weighted=TRUE, diag=F)
@@ -2052,11 +2097,11 @@ The following object is masked from ‘package:base’:
 
     union
 
-Error in file(file, "rt") : cannot open the connection
-Calls: read.csv -> read.table -> file
+Error in svg("../results/QMEENet.svg", width = 7, height = 7) : 
+  unable to start device 'svg'
 In addition: Warning message:
-In file(file, "rt") :
-  cannot open file '../data/QMEE_Net_Mat_edges.csv': No such file or directory
+In svg("../results/QMEENet.svg", width = 7, height = 7) :
+  cairo error 'error while writing to output stream'
 Execution halted
 
 ======================================================================
@@ -2113,7 +2158,7 @@ checking for docstrings...
 
 Found no functions, but one docstring for the script, good
 
-Current Points = 92.5
+Current Points = 94.5
 
 Output (only first 500 characters): 
 
@@ -2131,7 +2176,7 @@ Success!
 
 Code ran without errors
 
-Time consumed = 0.20257s
+Time consumed = 0.20395s
 
 ======================================================================
 Inspecting script file run_LV.py...
@@ -2184,24 +2229,24 @@ checking for docstrings...
 
 Found no functions, but one docstring for the script, good
 
-Current Points = 92.5
+Current Points = 94.5
 
 Output (only first 500 characters): 
 
 **********************************************************************
 <module 'LV1' from '/home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/LucyGoodyear_LEG19/Week7/Code/LV1.py'> profile:
-         262781 function calls (258164 primitive calls) in 0.414 seconds
+         262781 function calls (258164 primitive calls) in 0.422 seconds
 
    Ordered by: cumulative time
    List reduced from 1402 to 10 due to restriction <10>
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1    0.000    0.000    0.414    0.414 /home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/LucyGoo
+        1    0.000    0.000    0.422    0.422 /home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/LucyGoo
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 1.80348s
+Time consumed = 1.86257s
 
 ======================================================================
 Inspecting script file LV2.py...
@@ -2372,7 +2417,7 @@ Found one or more docstrings and functions
 
 Missing docstring, either in one or functions and/or at the script level
 
-Current Points = 92.0
+Current Points = 94.0
 
 Output (only first 500 characters): 
 
@@ -2387,7 +2432,7 @@ Stabilised predator population density:  11.8601601584
 
 Code ran without errors
 
-Time consumed = 0.80834s
+Time consumed = 0.79819s
 
 ======================================================================
 Inspecting script file Profileme2.py...
@@ -2485,7 +2530,7 @@ Found one or more docstrings and functions
 
 Missing docstring, either in one or functions and/or at the script level
 
-Current Points = 90.0
+Current Points = 92.0
 
 Output (only first 500 characters): 
 
@@ -2496,19 +2541,19 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 3.80422s
+Time consumed = 3.76362s
 
 ======================================================================
 ======================================================================
 Finished running scripts
 
-Ran into 4 errors
+Ran into 3 errors
 
 ======================================================================
 ======================================================================
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 90.0
+Current Points for the Week = 92.0
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

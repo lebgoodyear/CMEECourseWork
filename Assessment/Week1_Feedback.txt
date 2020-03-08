@@ -9,11 +9,11 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 4.17 MiB on disk 
+Your Git repo size this week is about 87.70 MiB on disk 
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: Week1, Assessment, Week2, .git
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, C(Week10), Week8, Week5, Week2, Week9, Week4, .git, Week3, MiniProject
 
 Found the following files in parent directory: .gitignore, README.md
 
@@ -26,7 +26,14 @@ Printing contents of .gitignore:
 *~ 
 *.tmp 
 *.DS_Store
-
+Week6/Lectures
+MiniProject/References
+Ecological_Modelling
+SeminarDiary.tex
+*.log
+*-concordance.tex
+*.gz
+.Rhistory
 **********************************************************************
 
 Found README in parent directory, named: README.md
@@ -37,25 +44,27 @@ Printing contents of README.md:
 
 *Author: Lucy Goodyear*  
 *Created: 10/10/19*  
-*Last updated: 11/10/19*
+*Last updated: 04/02/20*
 
-This repository contains all the coursework for the first term of the CMEE Master's course. 
+This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the subdirectories, the system requirements to run each script and a description of the contents of each script.
 
-Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
-
-**Code** contains the scripts/programs.
-
-**Data** is the data needed to run those scripts.
-
-**Results** is where the outpout from those scripts is sent to.
-
-**Sandbox** is a miscellaneous directory containing experimental code and data.
+Note that the **C(Week10)** directory does not have the same nomenclature as the other teaching weeks because it is a non-compulsory course for MRes students.
 
 ## Table of Contents
-1. [Week 1](#Week-1:-UNIX-and-bash-scripting)
-2. [Week2](#Week-2:-Python)
+1. [Week 1 UNIX and shell scripting](#1.Week-1-UNIX-and-bash-scripting)
+2. [Week 2 Python I](#2.Week-2-Python-I)
+3. [Week 3 R](#3.Week-3-R)
+4. [Week 4 Stats](#4.Week-4-Stats)
+5. [Week 5 Modelling and GIS](#5.Week-5-Modelling-and-GIS)
+6. [Week 6 Genomics](#6.Week-6-Genomics) 
+7. [Week 7 Python II](#7.Week-7-Python-II)
+8. [Week 8 MiniProject](#8.Week-8-MiniProject)
+9. [Week 9 HPC](#9.Week-9-HPC)
+10. [C (Week 10)](#10.C-(Week-10))
+11. [MiniProject](#11.Miniproject)
+12. [Assessment](#12.Assessment)
 
-### Week 1: UNIX and shell scripting
+### 1. Week 1: UNIX and shell scripting
 
 * FASTA exercise called UnixPrac1.txt
 * Simple bash scripts, inlcuding:
@@ -65,18 +74,189 @@ Each week contains a "Code", "Data", "Results" and "Sandbox" directory, where:
     * Converting tab to csv and csv to txt
 * LaTeX exercises
 
-### Week 2: Python**********************************************************************
+### 2. Week 2: Python I
+
+*  Practice scripts exemplifying:
+    * types of objects
+    * basic functions
+    * loops
+    * list comprehensions
+    * sys.argv
+    * control flows
+* Practical programming exercises and extra credit
+
+### 3. Week 3: R
+
+* Practice scripts exemplifying:
+    * control flows
+    * breaks
+    * vectorisation
+    * preallocation
+    * debugging
+    * data wrangling
+    * plotting using base R, qplot and ggplot
+* practical programming exercises
+
+### 4. Week 4: Stats
+
+This directory is empty, created for file structure continuity.
+
+### 5. Week 5: Modelling and GIS
+
+* Four modelling scripts focusing on non-linear least squares
+* One GIS script containing GIS practical work
+
+### 6. Week 6: Genomics
+
+* Four scripts: 
+    * practical on allele and genotype frequencies
+    * practical on on genetic drift, mutation and divergence
+    * practical on coalescence theory
+    * practical on population subdivision and demographic inferences
+
+### 7. Week 7: Python II
+
+* Practice scripts on profiling
+* 4 scripts modeling the Lotka-Voltera system:
+    * numerical integration version
+    * numerical integration version with carrying capacity
+    * discrete time version
+    * discrete time steps version with random gaussian fluctuation
+* Practicals on visualsing networks
+* Practice scripts using regular expressions
+* Practice scripts running R scripts from python and accessing command line functions through python
+
+### 8. Week 8: MiniProject
+
+This directory is empty, created for file structure continuity. See MiniProject folder for work done during this week.
+
+### 9. Week 9: HPC
+
+* Main .R script containing all HPC functions on neutral theory and fracals
+* Test .R script, which sources the main script and contains suitable parameters to test the functions.
+* Cluster .R script which contains the code to be run on the cluster
+* A bash script to manage the cluster queue
+* Self-sufficient R script containing the answer to question 30 in as few characters as possible
+
+### 10. C (Week 10)
+
+All scripts from C week.
+
+### 11. MiniProject
+
+Work-in-progress scripts for my MiniProject.
+
+### 12. Assessment
+
+Directory for Course Director to push assessment results.**********************************************************************
 
 ======================================================================
 Looking for the weekly directories...
 
-Found 2 weekly directories: Week1, Week2
+Found 10 weekly directories: C(Week10), Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9
 
 The Week1 directory will be assessed 
 
 ======================================================================
 ======================================================================
 PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing C(WEEK10)...
+
+Found the following directories: Code
+
+Found the following files: README.md, C_Week_Notes.md
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+**********************************************************************
+# CMEE Coursework C Week Repository
+
+*Author: Lucy Goodyear*  
+*Created: 05/12/19*
+
+This repository contains all the CMEE coursework from Week 10 on C.
+
+This is not a compulsory course for MRes so is not included with the other weeks.
+
+**Code** contains the scripts/programs.
+
+The **TreeLib** directory within **Code** contains the initial header files
+and C script to make a library that contains all the functions needed for 
+generating phylogenetic trees.
+
+C_Week_Notes.md is a markdown file of notes I have made during the lectures.
+
+## Requirements
+
+A compiler for the C programming language.
+
+All code has been created for Mac so there may be a few differences in commands with respect to Linux.
+
+## List of scripts
+1. hello
+2. var1
+3. vars2
+4. ranges
+5. operators
+6. bitwise
+7. dna
+8. pointers
+9. pointers_to_arrays
+10. pointers_ret
+11. composite_data_types
+12. safearray
+13. malloc_calloc
+14. test_tree
+15. countprimes
+16. countprimes (header file)
+17. Rcprimes
+
+
+## Script content
+
+The above C scripts ecover the following C concepts:
+- basic C structure
+- data types
+- variables
+- operators
+- bitwise operations
+- loops and functions
+- pointers
+- using structs
+- safe programming
+- assigning and freeing memory
+- header files
+- script to test files in the TreeLib subdirectory
+- R wrappers
+
+**********************************************************************
+
+Data directory missing!
+
+Results directory missing!
+
+Creating Results directory...
+
+Found 0 code files: 
+
+Found the following extra files: node.c, tree.h, node.h, tree.c
+0.5 pt deducted per extra file
+
+Current Points = 98.0
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 0 errors
 
 ======================================================================
 Assessing WEEK1...
@@ -112,7 +292,7 @@ All code has been created for Mac so there may be a few differences in commands 
 
 
 ## List of scripts
-1. [UnixPrac1](#1.UnixPrac1)
+1. [UnixPrac1](#1.-UnixPrac1)
 2. [boilerplate](#2.-boilerplate)
 3. [tabtocsv](#3.-tabtocsv)
 4. [variables](#4.-variables)
@@ -124,6 +304,7 @@ All code has been created for Mac so there may be a few differences in commands 
 10. [FirstExample](#10.-FirstExample)
 11. [FirstBiblio](#11.-FirstBiblio)
 12. [CompileLaTeX](#12.-CompileLaTeX)
+
 
 ### 1. UnixPrac1
 
@@ -143,35 +324,35 @@ This .sh script assigns values to variables and shows how these values can be re
 
 ### 5. MyExampleScript
 
-This .sh script shows two more ways of assigning variables.
+This .sh script shows two ways of assigning variables, printing both to screen.
 
 ### 6. CountLines
 
-This .sh script counts lines in a given file.
+This .sh script counts lines in a file (provided as a command line argument).
 
 ### 7. ConcatenateTwoFiles
 
-This .sh script combines two files into a third.
+This .sh script combines two files into a third. It requires three arguments: 1) first file (and realtive path) to be merged, 2) second file (and relative path) to be merged and 3) name and relative path of file to be created from merged files
 
 ### 8. tiff2png
 
-This .sh script converts a given .tiff to a .png, saving the png in the **Results** directory.
+This .sh script converts a given .tiff (provided as a command line argument) to a .png, saving the png in the **Results** directory.
 
 ### 9. csvtospace
 
-This .sh script converts given .csv files to .txt files (without changing the original file) and saves the result in the **Results** folder.
+This .sh script converts a given .csv file (provided as a command line argument) to a space delimited .txt file (without changing the original file) and saves the result in the **Results** folder.
 
 ### 10. FirstExample
 
-This .tex file contains my first LaTeX code for a simple document with title, abstract, 2 sections, equations and one pulled bibliography reference using BibTeX.
+This .tex file contains my first LaTeX code for a simple document with title, abstract, 2 sections, equations and one bibliography reference using BibTeX.
 
 ### 11. FirstBiblio
 
-This .bib file contains a BibTeX reference taken from Google Scholar.
+This .bib file contains a BibTeX reference taken from Google Scholar for use in FirstExample.tex.
 
 ### 12. CompileLaTeX
 
-This .sh script compiles LaTeX .tex files with BibTeX and creates a pdf. It also removes all the unnecessary files that are created at the same time.**********************************************************************
+This .sh script compiles a LaTeX .tex file (provided as a command line argument) with BibTeX and creates a pdf. It also removes all the unnecessary files that are created at the same time. If a path, such as ../Results/, is provided as a second command line argument, the resulting pdf will be moved to that directory. Note that this second argument is optional.**********************************************************************
 
 Found following files in results directory: .txt, README.md...
 ideally, Results directory should be empty other than, perhaps, a readme. 
@@ -181,7 +362,7 @@ Found 12 code files: ConcatenateTwoFiles.sh, CompileLatex.sh, CountLines.sh, var
 Found the following extra files: gmarbles.png
 0.5 pt deducted per extra file
 
-Current Points = 99.5
+Current Points = 97.5
 
 ======================================================================
 Testing script/code files...
@@ -192,7 +373,21 @@ Inspecting script file ConcatenateTwoFiles.sh...
 File contents are:
 **********************************************************************
 #!/bin/bash
-# Merges two given files into a third file
+# Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+# Script: ConcatenateTwoFiles.sh
+# Desc: Merges two given files into a third file
+# Arguments: 1) First file (and relative path) to be merged
+#            2) Second file (and relative path) to be merged
+#            3) Name and relative path of file to be created
+#               from merged files
+# Date: Oct 2019
+
+# check a csv file has been provided as a command line argument
+if ["$1" == ""] || ["$2" == ""] || ["$3" == ""] 
+then
+    echo "Please provide two files to merge and the name of the third file to be created"
+    exit
+fi
 
 # First file is copied into 3rd file
 cat $1 > $3
@@ -200,20 +395,22 @@ cat $1 > $3
 cat $2 >> $3
 # Print contents of 3rd file
 echo "Merged File is"
-cat $3**********************************************************************
+cat $3
+
+# exit**********************************************************************
 
 Testing ConcatenateTwoFiles.sh...
 
 Output (only first 500 characters): 
 
 **********************************************************************
-Merged File is
+Please provide two files to merge and the name of the third file to be created
 
 **********************************************************************
 
-Encountered error (or warning):
-ConcatenateTwoFiles.sh: line 5: $3: ambiguous redirect
-ConcatenateTwoFiles.sh: line 7: $3: ambiguous redirect
+Code ran without errors
+
+Time consumed = 0.00612s
 
 ======================================================================
 Inspecting script file CompileLatex.sh...
@@ -221,14 +418,36 @@ Inspecting script file CompileLatex.sh...
 File contents are:
 **********************************************************************
 #!/bin/bash
+# Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+# Script: CompileLatex.sh
+# Desc: Compiles a .tex file, producing a pdf
+# Arguments: 1) .tex file 2) (optional) path for directory
+# into which the resulting pdf will be moved
+# Date: Oct 2019
+
+# check .tex file has been provided as a command line argument
+if [ "$1" == "" ] 
+then
+    echo "Please provide a .tex file to compile"
+    exit
+fi
+
+# compile .tex files
+echo "Compiling..."
+
 pdflatex $1.tex
 pdflatex $1.tex
 bibtex $1
 pdflatex $1.tex
 pdflatex $1.tex
 open $1.pdf
+
+# if path is provided as second argument,
+# such as ../Results/, the resulting pdf
+# will be moved to that directory
 mv $1.pdf $2$1.pdf 
-## Cleanup
+
+# cleanup
 rm *~
 rm *.aux
 rm *.dvi
@@ -239,45 +458,24 @@ rm *.snm
 rm *.toc
 rm *.bbl
 rm *.blg
-rm *.fls**********************************************************************
+rm *.fls
+
+echo "Done"
+
+# exit**********************************************************************
 
 Testing CompileLatex.sh...
 
 Output (only first 500 characters): 
 
 **********************************************************************
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-(/usr/share/texlive/texmf-dist/tex/latex/tools/.tex
-LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
-File ignored)
-*
-! Emergency stop.
-<*> .tex
-        
-!  ==> Fatal error occurred, no output PDF file produced!
-Transcript written on .log.
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (pre
+Please provide a .tex file to compile
+
 **********************************************************************
 
-Encountered error (or warning):
-bibtex: Need exactly one file argument.
-Try `bibtex --help' for more information.
-Couldn't get a file descriptor referring to the console
-mv: cannot stat '.pdf': No such file or directory
-rm: cannot remove '*~': No such file or directory
-rm: cannot remove '*.aux': No such file or directory
-rm: cannot remove '*.dvi': No such file or directory
-rm: cannot remove '*.log': No such file or directory
-rm: cannot remove '*.nav': No such file or directory
-rm: cannot remove '*.out': No such file or directory
-rm: cannot remove '*.snm': No such file or directory
-rm: cannot remove '*.toc': No such file or directory
-rm: cannot remove '*.bbl': No such file or directory
-rm: cannot remove '*.blg': No such file or directory
-rm: cannot remove '*.fls': No such file or directory
+Code ran without errors
+
+Time consumed = 0.00506s
 
 ======================================================================
 Inspecting script file CountLines.sh...
@@ -285,23 +483,37 @@ Inspecting script file CountLines.sh...
 File contents are:
 **********************************************************************
 #!/bin/bash
-# Counts the lines in a given file
+# Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+# Script: CountLines.sh
+# Desc: Counts the lines in a given file
+# Arguments: 1) The file (and relative path) to count lines of
+# Date: Oct 2019
+
+# check a file has been provided as a command line argument
+if [ "$1" == "" ] 
+then
+    echo "Please provide a file to count the lines of"
+    exit
+fi
+
+# Counts the lines the file provided
 NumLines=`wc -l < $1`
 echo "The file $1 has $NumLines lines"
-echo**********************************************************************
+
+# exit**********************************************************************
 
 Testing CountLines.sh...
 
 Output (only first 500 characters): 
 
 **********************************************************************
-The file  has  lines
-
+Please provide a file to count the lines of
 
 **********************************************************************
 
-Encountered error (or warning):
-CountLines.sh: line 3: $1: ambiguous redirect
+Code ran without errors
+
+Time consumed = 0.00512s
 
 ======================================================================
 Inspecting script file variables.sh...
@@ -309,6 +521,12 @@ Inspecting script file variables.sh...
 File contents are:
 **********************************************************************
 #!/bin/bash
+# Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+# Script: variables.sh
+# Desc: Shows use of variables
+# Arguments: none
+# Date: Oct 2019
+
 # shows the use of variables
 MyVar='some string'
 echo 'The current value of the variable is' $MyVar
@@ -321,7 +539,9 @@ echo 'Enter two numbers separated by space(s)'
 read a b
 echo 'you entered ' $a ' and' $b'. Their sum is:'
 mysum=`expr $a + $b`
-echo $mysum**********************************************************************
+echo $mysum
+
+# exit**********************************************************************
 
 Testing variables.sh...
 
@@ -346,6 +566,18 @@ Inspecting script file tiff2png.sh...
 File contents are:
 **********************************************************************
 #!/bin/bash
+# Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+# Script: tiff2png.sh
+# Desc: Converts a tiff into a png
+# Arguments: tiff to be converted
+# Date: Oct 2019
+
+# check a csv file has been provided as a command line argument
+if [ "$1" == "" ] 
+then
+    echo "Please provide a tiff to convert"
+    exit
+fi
 
 # For loop to convert a tiff into a png
 for f in ../Data/*.tif;
@@ -353,19 +585,23 @@ for f in ../Data/*.tif;
         echo "Converting $f";
         convert "$f"  "$(basename "$f" .tif).png";
         mv $1.png ../Results/$1.png; # Move resulting png into Results directory
-    done**********************************************************************
+        echo "Done"
+    done
+
+# exit**********************************************************************
 
 Testing tiff2png.sh...
 
 Output (only first 500 characters): 
 
 **********************************************************************
-Converting ../Data/gmarbles.tif
+Please provide a tiff to convert
 
 **********************************************************************
 
-Encountered error (or warning):
-mv: cannot stat '.png': No such file or directory
+Code ran without errors
+
+Time consumed = 0.00802s
 
 ======================================================================
 Inspecting script file csvtospace.sh...
@@ -373,12 +609,25 @@ Inspecting script file csvtospace.sh...
 File contents are:
 **********************************************************************
 #!/bin/bash
-# Convert csv into txt file, converting commas into spaces
+# Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+# Script: csvtospace.sh
+# Desc: Convert csv into txt file, converting commas into spaces
+# Arguments: 1) csv file to be converted
+# Date: Oct 2019
 
+# check a csv file has been provided as a command line argument
+if [ "$1" == "" ] 
+then
+    echo "Please provide a csv file to convert"
+    exit
+fi
+
+# convert the csv to a space delimited file
 echo "Creating a space delimited version of $1..."
 cat ../Data/$1.csv | tr -s "," " " >> ../Results/$1.txt # Move resulting txt file into Results directory
 echo "Done"
-exit
+
+# exit
 **********************************************************************
 
 Testing csvtospace.sh...
@@ -386,13 +635,13 @@ Testing csvtospace.sh...
 Output (only first 500 characters): 
 
 **********************************************************************
-Creating a space delimited version of ...
-Done
+Please provide a csv file to convert
 
 **********************************************************************
 
-Encountered error (or warning):
-cat: ../Data/.csv: No such file or directory
+Code ran without errors
+
+Time consumed = 0.00397s
 
 ======================================================================
 Inspecting script file FirstExample.tex...
@@ -401,7 +650,7 @@ File contents are:
 **********************************************************************
 \documentclass[12pt]{article}
 \title{A Simple Document}
-\author{Lucy}
+\author{Lucy Goodyear}
 \date{October 2019}
 
 \begin{document}
@@ -436,17 +685,30 @@ Inspecting script file MyExampleScript.sh...
 File contents are:
 **********************************************************************
 #!/bin/bash
+# Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+# Script: MyExampleScript.sh
+# Desc: Shows two ways of assigning variables
+# Arguments: none
+# Date: Oct 2019
+
+# assign variables
 msg1="Hello"
 msg2=$USER
+echo # empty line for easier readability
+# print variables to screen
 echo "$msg1 $msg2"
+# print variable contents to screen explicitly
 echo "Hello $USER"
-echo**********************************************************************
+echo
+
+# exit**********************************************************************
 
 Testing MyExampleScript.sh...
 
 Output (only first 500 characters): 
 
 **********************************************************************
+
 Hello mhasoba
 Hello mhasoba
 
@@ -455,7 +717,7 @@ Hello mhasoba
 
 Code ran without errors
 
-Time consumed = 0.00312s
+Time consumed = 0.00689s
 
 ======================================================================
 Inspecting script file FirstBiblio.bib...
@@ -480,6 +742,12 @@ Inspecting script file UnixPrac1.txt...
 
 File contents are:
 **********************************************************************
+# Author: Lucy Goodyear lucy.goodyear19@imperial.ac.uk
+# Desc: Conatains a collection of single line commands 
+#       to perform different counts on a set of .fasta 
+#       files containing genetic code.
+# Date: Oct 2019
+
 #1 Count the number of lines in each .fasta file
 find ../Data/ -type f -name "*.fasta" -exec wc -l {} \;
 
@@ -508,25 +776,35 @@ File contents are:
 # Script: tabtocsv.sh
 # Desc: Substitutes the tabs in the files with commas
 # Saves the output into a .csv files
-# Arguments: 1 -> tab delimited files
+# Arguments: 1) tab delimited file to be converted
 # Date: Oct 2019
+
+# check that a tab delimited file to convert has been provided
+if [ "$1" == "" ] 
+then
+    echo "Please provide a tab delimited file"
+    exit
+fi
+
+# convert tab delimited file into comma delimited file
 echo "Creating a comma delimited version of $1 ..."
-cat $1.txt | tr -s "\t" "," >> $1.csv
+cat ../Data/$1.txt | tr -s "\t" "," >> ../Results/$1.csv # Move resulting txt file into Results directory
 echo "Done!"
-exit**********************************************************************
+
+# exit**********************************************************************
 
 Testing tabtocsv.sh...
 
 Output (only first 500 characters): 
 
 **********************************************************************
-Creating a comma delimited version of  ...
-Done!
+Please provide a tab delimited file
 
 **********************************************************************
 
-Encountered error (or warning):
-cat: .txt: No such file or directory
+Code ran without errors
+
+Time consumed = 0.00365s
 
 ======================================================================
 Inspecting script file boilerplate.sh...
@@ -539,7 +817,9 @@ File contents are:
 # Desc: Simple boilerplate for shell scripts
 # Arguments: none
 # Date: Oct 2019
+
 echo -e "\nThis is a shell script! \n"
+
 # exit**********************************************************************
 
 Testing boilerplate.sh...
@@ -555,19 +835,19 @@ This is a shell script!
 
 Code ran without errors
 
-Time consumed = 0.00269s
+Time consumed = 0.00416s
 
 ======================================================================
 ======================================================================
 Finished running scripts
 
-Ran into 7 errors
+Ran into 1 errors
 
 ======================================================================
 ======================================================================
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 99.5
+Current Points for the Week = 97.5
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

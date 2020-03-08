@@ -1,0 +1,2130 @@
+Starting weekly assessment for Lucy, Week5
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 87.70 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, C(Week10), Week8, Week5, Week2, Week9, Week4, .git, Week3, MiniProject
+
+Found the following files in parent directory: .gitignore, README.md
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+**********************************************************************
+*~ 
+*.tmp 
+*.DS_Store
+Week6/Lectures
+MiniProject/References
+Ecological_Modelling
+SeminarDiary.tex
+*.log
+*-concordance.tex
+*.gz
+.Rhistory
+**********************************************************************
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+**********************************************************************
+# CMEE Coursework Repository 2019-2020
+
+*Author: Lucy Goodyear*  
+*Created: 10/10/19*  
+*Last updated: 04/02/20*
+
+This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the subdirectories, the system requirements to run each script and a description of the contents of each script.
+
+Note that the **C(Week10)** directory does not have the same nomenclature as the other teaching weeks because it is a non-compulsory course for MRes students.
+
+## Table of Contents
+1. [Week 1 UNIX and shell scripting](#1.Week-1-UNIX-and-bash-scripting)
+2. [Week 2 Python I](#2.Week-2-Python-I)
+3. [Week 3 R](#3.Week-3-R)
+4. [Week 4 Stats](#4.Week-4-Stats)
+5. [Week 5 Modelling and GIS](#5.Week-5-Modelling-and-GIS)
+6. [Week 6 Genomics](#6.Week-6-Genomics) 
+7. [Week 7 Python II](#7.Week-7-Python-II)
+8. [Week 8 MiniProject](#8.Week-8-MiniProject)
+9. [Week 9 HPC](#9.Week-9-HPC)
+10. [C (Week 10)](#10.C-(Week-10))
+11. [MiniProject](#11.Miniproject)
+12. [Assessment](#12.Assessment)
+
+### 1. Week 1: UNIX and shell scripting
+
+* FASTA exercise called UnixPrac1.txt
+* Simple bash scripts, inlcuding:
+    * Counting lines in a file
+    * Concatenating the contents of two files
+    * Converting tiff to png
+    * Converting tab to csv and csv to txt
+* LaTeX exercises
+
+### 2. Week 2: Python I
+
+*  Practice scripts exemplifying:
+    * types of objects
+    * basic functions
+    * loops
+    * list comprehensions
+    * sys.argv
+    * control flows
+* Practical programming exercises and extra credit
+
+### 3. Week 3: R
+
+* Practice scripts exemplifying:
+    * control flows
+    * breaks
+    * vectorisation
+    * preallocation
+    * debugging
+    * data wrangling
+    * plotting using base R, qplot and ggplot
+* practical programming exercises
+
+### 4. Week 4: Stats
+
+This directory is empty, created for file structure continuity.
+
+### 5. Week 5: Modelling and GIS
+
+* Four modelling scripts focusing on non-linear least squares
+* One GIS script containing GIS practical work
+
+### 6. Week 6: Genomics
+
+* Four scripts: 
+    * practical on allele and genotype frequencies
+    * practical on on genetic drift, mutation and divergence
+    * practical on coalescence theory
+    * practical on population subdivision and demographic inferences
+
+### 7. Week 7: Python II
+
+* Practice scripts on profiling
+* 4 scripts modeling the Lotka-Voltera system:
+    * numerical integration version
+    * numerical integration version with carrying capacity
+    * discrete time version
+    * discrete time steps version with random gaussian fluctuation
+* Practicals on visualsing networks
+* Practice scripts using regular expressions
+* Practice scripts running R scripts from python and accessing command line functions through python
+
+### 8. Week 8: MiniProject
+
+This directory is empty, created for file structure continuity. See MiniProject folder for work done during this week.
+
+### 9. Week 9: HPC
+
+* Main .R script containing all HPC functions on neutral theory and fracals
+* Test .R script, which sources the main script and contains suitable parameters to test the functions.
+* Cluster .R script which contains the code to be run on the cluster
+* A bash script to manage the cluster queue
+* Self-sufficient R script containing the answer to question 30 in as few characters as possible
+
+### 10. C (Week 10)
+
+All scripts from C week.
+
+### 11. MiniProject
+
+Work-in-progress scripts for my MiniProject.
+
+### 12. Assessment
+
+Directory for Course Director to push assessment results.**********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 10 weekly directories: C(Week10), Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9
+
+The Week5 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK5...
+
+Found the following directories: Code, Data, Results
+
+Found the following files: README.md
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+**********************************************************************
+# CMEE Coursework Week 5 Repository
+
+*Author: Lucy Goodyear*  
+*Created: 18/11/19*
+
+This repository contains all the CMEE coursework from Week 5 on modelling and GIS.
+
+**Code** contains the scripts/programs.
+
+**Data** is the data needed to run those scripts.
+
+**Results** is where the outpout from those scripts is sent to.
+
+**Sandbox** is a miscellaneous directory containing experimental code and data.
+
+## Requirements
+
+All code has been written in R version 3.6.1
+
+Packages required:
+- minpack.lm
+- ggplot2
+- repr
+- raster
+- sf
+- viridis
+- units
+- rgeos
+- lwgeom
+
+
+## List of scripts
+1. [NLLS_TraitsScaling](#1.NLLS_TraitsScaling)
+2. [NLLS_Albatross](#2.-NLLS_Albatross)
+3. [NLLS_Fecundity](#3.-NLLS_Fecundity)
+4. [NLLS_PopGrowthRate](#4.-NLLS_PopGrowthRate)
+5. [GIS](#5.-GIS)
+
+
+### 1. NLLS_TraitsScaling
+
+A .R script that fits models to trait data using non-linear least squares. It includes one function containing the power law equation and uses many of R's in-built functions, including AIC and BIC. A power law model, quadratic model and a straight line are fitted to two subsets of the data (subsetted by genus) and these models are then compared. It also contains plots of the data and the fits.
+
+### 2. NLLS_Albatross
+
+A .R script that fits models to albatross chick growth data. It includes two functions, one for the logistic growth equation and one for the Von Bertalanffy model. These models, and a straight line, are fitted to the data and both AIC and BIC are used to compare the three models. It also contains plots of the data and the fits.
+
+### 3. NLLS_Fecundity
+
+A .R script that fits models to data that measures the reponse of Aedes aegypti fecundity to temperature. It includes two functions, one for a quadratic model and the other for the Briere model, which are then, along with a straight line, fitted to the data. These models are then plotted (with the data) and compared using AIC.
+
+### 4. NLLS_PopGrowthRate
+
+A .R script that fits three models to generated "data" on the number of bacterial cells as a function of time. It contains three functions, each representing the Baranyi, Buchanan and the modified Gompertz growth model respectively, which are then fitted to the data and plotted. It also generates some starting values for the NLLS fittings, derived from the data.
+
+### 5. GIS
+
+A.R script that creates maps from GIS data using different methods. It covers both rastas and vectors and converting between the two.
+
+**********************************************************************
+
+Found following files in results directory: README.md...
+
+Found 5 code files: NLLS_PopGrowthRate.R, NLLS_Fecundity.R, GIS.R, NLLS_Albatross.R, NLLS_TraitsScaling.R
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file NLLS_PopGrowthRate.R...
+
+File contents are:
+**********************************************************************
+########## Model fitting example using Non-Linear Least Squares ############
+######################### Population growth rate ###########################
+
+# fits three models to generated "data" on the number of bacterial cells as a 
+# function of time. It contains three functions, each representing the Baranyi, 
+# Buchanan and the modified Gompertz growth model respectively, which are then 
+# fitted to the data and plotted. It also generates some starting values for the
+# NLLS fittings, derived from the data.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list = ls())
+graphics.off()
+
+# load neccesary packages
+library(repr)
+library(minpack.lm) # for Levenberg-Marquardt nlls fitting
+library(ggplot2)
+
+# generate some "data" on the number of bacterial cells as a function of time
+time <- c(0, 2, 4, 6, 8, 10, 12, 16, 20, 24) # timepoints in hours
+log_cells <- c(3.62, 3.62, 3.63, 4.14, 5.23, 6.27, 7.57, 8.38, 8.70, 8.69) # logged cell counts
+# set seed to ensure you always get the same random sequence if fluctuations occur
+set.seed(1234)
+# put data into a dataframe and add some random error to emulate random sampling errors
+# these errors are assumed to be normal so we can perform NLLS fits
+data <- data.frame(time, log_cells + rnorm(length(time), sd = .1))
+# name dataframe columns
+names(data) <- c("t", "LogN")
+# view data
+head(data)
+
+# note that NLLS often converges better if you linearise the data, which
+# is why the call counts are logged
+
+# plot the data
+ggplot(data, aes(x = t, y = LogN)) +
+  geom_point()
+
+# fit three growth models, all of which are known to fit such population
+# growth data, especially in microbes
+# each of these growth models can be described in terms of:
+# N0: initial cell culture (population) density (number of cells per unit volume)
+# Nmax: maximum culture density (aka "carrying capacity")
+# rmax: maximum growth rate
+# tlag: duration of the lag phase before the population starts 
+#       growing exponentially
+
+# first specify the models
+
+# Baranyi model (Baranyi 1993)
+baranyi_model <- function(t, r_max, N_max, N_0, t_lag){ 
+  return(N_max + log10((-1+exp(r_max*t_lag) + exp(r_max*t))/(exp(r_max*t) - 1 + exp(r_max*t_lag) * 10^(N_max-N_0))))
+}
+
+# Buchanan model - three phase logistic (Buchanan 1997)
+buchanan_model <- function(t, r_max, N_max, N_0, t_lag){
+  return(N_0 + (t >= t_lag) * (t <= (t_lag + (N_max - N_0) * log(10)/r_max)) * r_max * (t - t_lag)/log(10) +
+           (t >= t_lag) * (t > (t_lag + (N_max - N_0) * log(10)/r_max)) * (N_max - N_0))
+}
+
+# Modified gompertz growth model (Zwietering 1990)
+gompertz_model <- function(t, r_max, N_max, N_0, t_lag){ 
+  return(N_0 + (N_max - N_0) * exp(-exp(r_max * exp(1) * (t_lag - t)/((N_max - N_0) * log(10)) + 1)))
+}
+
+# note that the functions have been written in log (to the base 10 but can
+# also be base 2 or natural log) scale because we want to do the fitting in
+# log scale. 
+# the interpretation of the fitted parameters does not change if we take a
+# log of the model's equation.
+
+# generate some starting values for NLLS fitting, derived from the data
+N_0_start <- min(data$LogN)
+N_max_start <- max(data$LogN)
+t_lag_start <- data$t[which.max(diff(diff(data$LogN)))]
+r_max_start <- max(diff(data$LogN))/mean(diff(data$t))
+
+# now fit the models
+fit_baranyi <- nlsLM(LogN ~ baranyi_model(t = t, r_max, N_max, N_0, t_lag), data,
+                     list(t_lag=t_lag_start, r_max=r_max_start, N_0 = N_0_start, N_max = N_max_start))
+
+fit_buchanan <- nlsLM(LogN ~ buchanan_model(t = t, r_max, N_max, N_0, t_lag), data,
+                      list(t_lag=t_lag_start, r_max=r_max_start, N_0 = N_0_start, N_max = N_max_start))
+
+fit_gompertz <- nlsLM(LogN ~ gompertz_model(t = t, r_max, N_max, N_0, t_lag), data,
+                      list(t_lag=t_lag_start, r_max=r_max_start, N_0 = N_0_start, N_max = N_max_start))
+
+# note you may get a warning that one or more of the models generated
+# some NaNs during the fitting procedure for the given data but this is can
+# be ignored in this case (but not always! Sometimes NaNs mean the equation
+# has been written incorrectly or NaNs are generated across the whole range of
+# data, which would mean the model is inappropriate for these data).
+
+# get model summaries
+summary(fit_baranyi)
+summary(fit_buchanan)
+summary(fit_gompertz)
+
+# plot data and fits
+timepoints <- seq(0, 24, 0.1)
+
+baranyi_points <- baranyi_model(t = timepoints, r_max = coef(fit_baranyi)["r_max"], N_max = coef(fit_baranyi)["N_max"], N_0 = coef(fit_baranyi)["N_0"], t_lag = coef(fit_baranyi)["t_lag"])
+
+buchanan_points <- buchanan_model(t = timepoints, r_max = coef(fit_buchanan)["r_max"], N_max = coef(fit_buchanan)["N_max"], N_0 = coef(fit_buchanan)["N_0"], t_lag = coef(fit_buchanan)["t_lag"])
+
+gompertz_points <- gompertz_model(t = timepoints, r_max = coef(fit_gompertz)["r_max"], N_max = coef(fit_gompertz)["N_max"], N_0 = coef(fit_gompertz)["N_0"], t_lag = coef(fit_gompertz)["t_lag"])
+
+# collect time and predicted log(abundance points) for each model
+# into a dataframe
+df1 <- data.frame(timepoints, baranyi_points)
+df1$model <- "Baranyi"
+names(df1) <- c("t", "LogN", "model")
+
+df2 <- data.frame(timepoints, buchanan_points)
+df2$model <- "Buchanan"
+names(df2) <- c("t", "LogN", "model")
+
+df3 <- data.frame(timepoints, gompertz_points)
+df3$model <- "Gompertz"
+names(df3) <- c("t", "LogN", "model")
+
+# combine dataframes into one for use in plotting
+model_frame <- rbind(df1, df2, df3)
+
+ggplot(data, aes(x = t, y = LogN)) +
+  geom_point(size = 3) +
+  geom_line(data = model_frame, aes(x = t, y = LogN, col = model), size = 1) +
+  theme_bw() + # make the background white
+  theme(aspect.ratio=1)+ # make the plot square 
+  labs(x = "Time", y = "log(Abundance)")
+
+
+
+**********************************************************************
+
+Testing NLLS_PopGrowthRate.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+   t     LogN
+1  0 3.499293
+2  2 3.647743
+3  4 3.738444
+4  6 3.905430
+5  8 5.272912
+6 10 6.320606
+
+Formula: LogN ~ baranyi_model(t = t, r_max, N_max, N_0, t_lag)
+
+Parameters:
+      Estimate Std. Error t value Pr(>|t|)    
+t_lag  5.52751    0.34869   15.85 4.00e-06 ***
+r_max  1.41823    0.09356   15.16 5.20e-06 ***
+N_0    3.59209    0.08646   41.55 1.30e-08 ***
+N_max  8.52886    0.08352  102.12 5.94e-11 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 2.13190s
+
+======================================================================
+Inspecting script file NLLS_Fecundity.R...
+
+File contents are:
+**********************************************************************
+########## Model fitting example using Non-Linear Least Squares ############
+####################### Aedes aegypti fecundity ############################
+
+# fits models to data that measures the reponse of Aedes aegypti fecundity 
+# to temperature. It includes two functions, one for a quadratic model and 
+# the other for the Briere model, which are then, along with a straight line, 
+# fitted to the data. These models are then plotted (with the data) and 
+# compared using AIC.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list = ls())
+graphics.off()
+
+# load neccesary packages
+library(repr)
+library(minpack.lm) # for Levenberg-Marquardt nlls fitting
+library(ggplot2)
+
+# use data measuring the response on Aedes aegypti fecundity to temperature
+# load data
+aedes <- read.csv("../Data/aedes_fecund.csv")
+# visualise data
+plot(aedes$T, aedes$EFD, 
+     xlab = "Temperature (C)",
+     ylab = "Eggs/day")
+
+# define TPC models
+# we define our own quadratic function instead of using the in-built one because
+# it makes it easier to choose starting values and also so that we can force the 
+# function to be equal to zero above and below the min and max temp thresholds
+
+# quadratic model
+quad1 <- function(T, T0, Tm, c) {
+  c * (T - T0) * (T - Tm) * as.numeric(T < Tm) * as.numeric(T > T0)
+}
+
+# Briere function is commonly used to model temperature dependence of insect traits
+
+# Briere model
+briere <- function(T, T0, Tm, c) {
+  c * T * (T - T0) * (abs(Tm - T) ^ (1 / 2)) * as.numeric(T < Tm) * as.numeric(T > T0)
+}
+
+# we will also model data with a straight line using lm()
+
+# fit all 3 models using least squares
+
+# first scale the data
+scale <- 20
+
+# fit the models
+aed.lin <- lm(EFD/scale ~ T, data = aedes)
+aed.quad <- nlsLM(EFD/scale ~ quad1(T, T0, Tm, c),
+                  start = list(T0 = 10, Tm = 40, c = 0.01),
+                  data = aedes)
+aed.br <- nlsLM(EFD/scale ~ briere(T, T0, Tm, c), 
+                start = list(T0 = 10, Tm = 40, c = 0.01),
+                data = aedes)
+
+# calculate predictions for each model across a range of temperatures
+temps <- seq(0, 40, length = 30)
+pred.lin <- predict(aed.lin, newdata = list(T = temps)) * scale
+pred.quad <- predict(aed.quad, newdata = list(T = temps)) * scale
+pred.br <- predict(aed.br, newdata = list(T = temps)) * scale
+
+# plot the data with the fits
+ggplot(aedes, aes(x = T,
+                y= EFD,
+                col = "black"),
+       xlim = c(0, 40)) +
+  geom_point(size = (1),
+             colour = "black",
+             shape = (1)) +
+  geom_line(aes(temps, pred.lin, color = "black")) +
+  geom_line(aes(temps, pred.quad, color = "blue")) +
+  geom_line(aes(temps, pred.br, color = "green")) +
+  theme_bw() +
+  labs(y = "Eggs/day",
+       x = "Temperature (C)") +
+  scale_color_discrete(
+    labels = c("Linear", "Quadratic", "Briere")) +
+  theme(legend.position = c(15, 20)) +
+  theme(legend.title = element_blank())
+
+# compare all 3 models
+# first examine residuals
+par(mfrow = c(3, 1), bty = "n")
+plot(aedes$T, resid(aed.lin), main = "LM residuals", xlim = c(0, 40))
+plot(aedes$T, resid(aed.quad), main="Quadratic residuals", xlim=c(0,40))
+plot(aedes$T, resid(aed.br), main="Briere residuals", xlim=c(0,40))
+# the residuals for all 3 models are very similar and exhibit a lot of patterns
+# combining this with the plot above, none of the models are particularly appropriate
+# to describe this data
+
+# compare the 3 models by calculating adjusted Sums of Squared Errors (SSEs)
+n <- length(aedes$T)
+list(lin = signif(sum(resid(aed.lin) ^ 2)/(n - 2 * 2), 3),
+     quad= signif(sum(resid(aed.quad) ^ 2)/(n - 2 * 3), 3),
+     br= signif(sum(resid(aed.br) ^ 2)/(n - 2 * 3), 3))
+# all three SSEs are closer to 0.1 than 0, implying none are particularly good models
+# the qudratic model has the lowest SSE so is the best fit of the three models
+
+# compare using AIC
+AIC(aed.lin)
+AIC(aed.quad)
+AIC(aed.lin)
+# calculate delta(AIC)
+AIC(aed.lin) - AIC(aed.br)
+AIC(aed.quad) - AIC(aed.lin)
+# we can see the linear and the Briere models have a delta(AIC) << 2 so are 
+# indistinguishable in terms of best fit for the data
+# delta(AIC) for the quadratic and linear (or Briere given the closeness 
+# of the models) models is > |2|, again providing evidence that the 
+# quadratic model is the best fit
+
+
+
+**********************************************************************
+
+Testing NLLS_Fecundity.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+$lin
+[1] 0.0707
+
+$quad
+[1] 0.0622
+
+$br
+[1] 0.0725
+
+[1] 7.35751
+[1] 3.125742
+[1] 7.35751
+[1] -0.3665936
+[1] -4.231768
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 1.79880s
+
+======================================================================
+Inspecting script file GIS.R...
+
+File contents are:
+**********************************************************************
+##############################################################
+##################### Using GIS data in R ####################
+##############################################################
+
+# Creates maps from GIS data using different methods. Covers
+# both rastas and vectors and converting between the two.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list=ls())
+graphics.off()
+
+# load packages
+library(raster) # core raster GIS data package
+library(sf) # core vector GIS data package
+library(viridis) # colour scheme
+library(units) # automatically converts units
+library(rgeos) # extends vector data functionality
+library(lwgeom) # extends vector data functionality
+
+
+########################### VECTORS ##################################
+
+
+# create population density map for British Isles
+# first create data frame with population densities
+pop_dens <- data.frame(n_km2 = c(260, 67, 151, 4500, 133),
+                       country = c('England', 'Scotland', 'Wales', 
+                                   'London', 'Northern Ireland'))
+print(pop_dens)
+
+# create coordinates for each country
+# this is a list of sets of coordinates forming the edge of the polygon
+# note that they have to *close* (have the same coordinates at either end)
+scotland <- rbind(c(-5, 58.6), # rbind creates matrix by combining vectors as rows
+                  c(-3, 58.6), 
+                  c(-4, 57.6),
+                  c(-1.5, 57.6), 
+                  c(-2, 55.8), 
+                  c(-3, 55), 
+                  c(-5, 55), 
+                  c(-6, 56), 
+                  c(-5, 58.6))
+
+england <- rbind(c(-2,55.8),
+                 c(0.5, 52.8), 
+                 c(1.6, 52.8), 
+                 c(0.7, 50.7), 
+                 c(-5.7,50), 
+                 c(-2.7, 51.5),
+                 c(-3, 53.4),
+                 c(-3, 55), 
+                 c(-2,55.8))
+
+wales <- rbind(c(-2.5, 51.3),
+               c(-5.3,51.8), 
+               c(-4.5, 53.4),
+               c(-2.8, 53.4),  
+               c(-2.5, 51.3))
+
+ireland <- rbind(c(-10,51.5), 
+                 c(-10, 54.2), 
+                 c(-7.5, 55.3),
+                 c(-5.9, 55.3), 
+                 c(-5.9, 52.2), 
+                 c(-10,51.5))
+
+# convert these coordinates into feature geometries
+# these are simple coordinate sets with no projection information
+# the command 'st' creates a simple feature from a numeric vector, matrix or list
+scotland <- st_polygon(list(scotland))
+england <- st_polygon(list(england))
+wales <- st_polygon(list(wales))
+ireland <- st_polygon(list(ireland))
+
+# combine geometries into a simple feature column
+# crs retrieves, sets or replaces a coordinate reference system
+# crs = 4326 is a shortcut for the WGS84 gepgraphic coordinate system
+# it is a unique numeric code in the EPSG database of spatial coordinate systems
+# and acts as a shortcut for the often complicated sets of parameters and 
+# transformations associated with a particular projection (these sets are called proj4 strings)
+uk_eire <- st_sfc(wales, england, scotland, ireland, crs = 4326)
+plot(uk_eire, asp = 1)
+
+# create point locations for capital cities
+uk_eire_capitals <- data.frame(long = c(-0.1, -3.2, -3.2, -6.0, -6.25),
+                               lat = c(51.5, 51.5, 55.8, 54.6, 53.50),
+                               name = c('London', 'Cardiff', 'Edinburgh', 'Belfast', 'Dublin'))
+# st_as_sf converts a foreign object to a sf object,
+# where an sf object is a simple feature collection (dataframe-like and contains simple feature list columns)
+uk_eire_capitals <- st_as_sf(uk_eire_capitals, coords=c('long', 'lat'), crs = 4326)
+
+# use a buffer operation to create a polygon for London
+# (defined as anywhere within a quarter of a degree from St Pauls Cathedral)
+# since units of geographic coordinate systems are angles of longitude and latitude, not
+# constant units of distance, this is a daft thing to do because the physical length of a degree (longitude) 
+# decreases nearer the poles so the data will be distorted
+st_pauls <- st_point(x = c(-0.098056, 51.513611))
+london <- st_buffer(st_pauls, 0.25)
+
+# use difference operation to remove London from England polygon so we can set
+# different population densities
+# note here the order is important
+england_no_london <- st_difference(england, london)
+
+# count the points and show the number of rings within the polygon features
+lengths(scotland)
+lengths(england_no_london)
+
+# correct England-Wales border
+wales <- st_difference(wales, england)
+
+# use intersection operation to spearate Northern Ireland and Ireland
+# a rough polygon that includes Northern Ireland and surrounding sea
+# note the alternative way of providing coordinates
+ni_area <- st_polygon(list(cbind(x=c(-8.1, -6, -5, -6, -8.1), y=c(54.4, 56, 55, 54, 54.4))))
+
+northern_ireland <- st_intersection(ireland, ni_area)
+eire <- st_difference(ireland, ni_area)
+
+# combine the final geometries into simple feature column
+uk_eire <- st_sfc(wales, england_no_london, scotland, london, northern_ireland, eire, crs = 4326)
+plot(uk_eire, asp = 1)
+plot(uk_eire_capitals, add=T)
+
+# make UK into a single feature
+uk_country <- st_union(uk_eire[-6]) # list index 6 is Eire, which we are removing
+# compare six polygon features with one multipolygon feature with commands:
+print(uk_eire)
+print(uk_country)
+
+# plot on the same plotting matrix
+# par uses graphical commands to set the global state of a plotting matrix
+par(mfrow=c(1,2), # create a 1 by 2 plotting matrix to be filled by row
+    mar=c(3,3,1,1)) # specifies number of lines of margin on all 4 sides of plot
+plot(uk_eire, asp = 1, col = rainbow(6))
+plot(st_geometry(uk_eire_capitals), add=T)
+plot(uk_country, asp = 1, col = 'lightblue')
+
+# use sf object type: add a simple feature column
+uk_eire <- st_sf(name=c('Wales', 'England','Scotland', 'London', 
+                        'Northern Ireland', 'Eire'),
+                 geometry = uk_eire)
+plot(uk_eire, asp = 1)
+
+# since an sf object is an extended dataframe, we can add attributes by adding fields directly
+uk_eire$capital <- c('London', 'Edinburgh', 'Cardiff', NA, 'Belfast', 'Dublin')
+
+# use merge to combine dataframes, using by.x and by.y to indicate which columns to match
+uk_eire <- merge(uk_eire, pop_dens, by.x='name', by.y='country', all.x=TRUE)
+# all.x = TRUE or Eire will be dropped since we have no pop dens data for it
+print(uk_eire)
+
+# we can also find spatial attributes of geometries
+# e.g. find out the centroids of features
+# note sf package warnings because there is actually not a good way to calculate
+# a true centroid for geographic coordinates
+uk_eire_centroids <- st_centroid(uk_eire)
+st_coordinates(uk_eire_centroids)
+
+# we can also find the length and area of a feature
+# note that sf package gives us back accurate distances and areas using metres, not degrees
+# this is because it notes that we have specified geographic coordinate system
+uk_eire$area <- st_area(uk_eire)
+
+# the length of a polygon is the perimeter length
+# note that this includes the length of internal holes
+uk_eire$length <- st_length(uk_eire)
+print(uk_eire)
+
+# note sf package often creates data with explicit units, using the units package
+# but you can change units "manually"
+uk_eire$area <- set_units(uk_eire$area, 'km^2')
+uk_eire$length <- set_units(uk_eire$length, 'km')
+# note that this won't let you make a silly error like turning a length into weight
+# e.g. uk_eire$are <- set_units(uk_eire$area, 'kg')
+
+# or you can simply convert the 'units' version to simple numbers
+uk_eire$length <- as.numeric(uk_eire$length)
+print(uk_eire)
+
+# sf can also give the closest distance between geomtries
+# note this might be zero if two features are touching
+st_distance(uk_eire)
+st_distance(uk_eire_centroids)
+# again sf is noting that have a geographic coordinate system
+# and internally calculating distances in metres
+
+# the default for plotting an sf object is to plot a map for every attribute
+# the column to be shown is picked using square brackets
+# now show a map of population density
+plot(uk_eire['n_km2'], asp = 1)
+
+# note you can plot geometries without any labelling or colours by using the 
+# st_geometry function to temporarily strip off attributes
+
+# change the scale on the plot
+# use can either use the 'logz' argument
+plot(uk_eire['n_km2'], asp = 1, logz = TRUE)
+# or log the actual data
+uk_eire$log_n_km2 <- log10(uk_eire$n_km2)
+plot(uk_eire['log_n_km2'], asp = 1)
+
+# reproject UK and Eire map onto a local projected coordinate system
+# we can do this using the shortcut codes in the EPSG database of spatial coordinate systems
+# good choice: British National Grid
+uk_eire_BNG <- st_transform(uk_eire, 27700)
+# the bounding box of the data shows the change in units
+st_bbox(uk_eire)
+st_bbox(uk_eire_BNG)
+# bad choice: UTM50N (local Borneo) projection
+uk_eire_UTM50N <- st_transform(uk_eire, 32650)
+# plot the results
+par(mfrow = c(1, 3), mar = c(3, 3, 1, 1))
+plot(st_geometry(uk_eire), asp = 1, axes = TRUE, main = 'WGS 84')
+plot(st_geometry(uk_eire_BNG), axes = TRUE, main = 'OSGB 1936 / BNG')
+plot(st_geometry(uk_eire_UTM50N), axes = TRUE, main = 'UTM 50N')
+
+# fix St Pauls distortion issue
+# first let's see the issue in numbers
+# set up some points separated by 1 degree latitude and longitude from St Pauls
+st_pauls <- st_sfc(st_pauls, crs = 4326)
+one_deg_west_pt <- st_sfc(st_pauls - c(1, 0), crs = 4326) # near Goring
+one_deg_north_pt <- st_sfc(st_pauls + c(0, 1), crs = 4326) # near Peterborough
+# calculate distance between St Pauls and each point
+st_distance(st_pauls, one_deg_west_pt)
+st_distance(st_pauls, one_deg_north_pt)
+# notes that the great circle distance (accounting for curvature of the earth) between London
+# and Goring is about 17m longer than the distance between the same coordinates projected 
+# onto the British National Grid (BNG)
+st_distance(st_transform(st_pauls, 27700), # transforms coordinates of a simple feature
+            st_transform(one_deg_west_pt, 27700))
+# to fix the issues transform London to the BNG projection
+london_BNG <- st_buffer(st_transform(st_pauls, 27700), 25000)
+# simultaneously transform England and remove London
+england_no_london_BNG <- st_difference(st_transform(st_sfc(england, crs = 4326), 27700), london_BNG)
+
+# add this to a new, more accruate map
+# first transform all other features to BNG projection
+others_BNG <- st_transform(st_sfc(eire, northern_ireland, scotland, wales, crs = 4326), 27700)
+# combine updated features
+new_map <- c(others_BNG, london_BNG, england_no_london_BNG)
+# plot new map
+par(mar=c(3,3,1,1))
+plot(new_map, main = '25km radius London', axes = T)
+
+
+###################### RASTERS ################################
+
+
+# Rasters are another major type of spatial data and consist of
+# a regular grid in sapce, defined by a coordinate system, an origin
+# point, a resolution and a number of rows and columns (effectively
+# holding a matrix of data). A raster holds values in a regular grid.
+
+# note the raster package doesn't support ESPG codes as number so
+# they need to be formatted as a text string
+
+# build a simple raster dataset from scratch by setting
+# projection, bounds,resolution and finally associating data with it
+
+# create an empty raster object covering UK and Eire
+uk_raster_WGS84 <- raster(xmn = -11, 
+                          xmx = 2, 
+                          ymn = 49.5, 
+                          ymx = 59,
+                          res = 0.5,
+                          crs = "+init=EPSG:4326")
+
+# check whether raster object has associated values (answer is false)
+hasValues(uk_raster_WGS84)
+
+# add data to raster
+# add sequential numbers from 1 to number of cells
+
+values(uk_raster_WGS84) <- seq(length(uk_raster_WGS84))
+
+# create a basic map of this with country borders overlaid
+
+plot(uk_raster_WGS84)
+plot(st_geometry(uk_eire),
+     add = T,
+     border = 'black', # colour of country borders
+     lwd = 2, # line width of country borders
+     col = '#FFFFFF44') # this colour code gives 
+                        # a transparent grey fill for the polygon
+
+### changing the resolution of a raster
+
+# think about what the data is and what it means to aggregate or
+# disaggregate the values
+# exmaples of when to change resolution:
+# - need different data sources to have same resolution for an analysis
+# - the data is more detailed than you need or can analyse
+
+# define a simple 4 x 4 square raster
+m <- matrix(c(1, 1, 3, 3,
+              1, 2, 4, 3,
+              5, 5, 7, 8,
+              6, 6, 7, 7),
+            ncol = 4,
+            byrow = T)
+
+square <- raster(m)
+
+## aggregating rasters
+
+# choose aggregation factor (how many cells to group)
+# e.g. factor of 2 will aggregate blocks of 2 x 2 cells
+
+# then assign a value to these blocks, for example, the mean, maximum or mode
+# note it is harder conceptually understand the assigning of values 
+# to represent categories, e.g. Forest(2) or Moorland(3) - what would this actually mean?
+
+# average values
+square_agg_mean <- aggregate(square, fact = 2, fun = mean)
+values(square_agg_mean)
+
+# maximum values
+square_agg_max <- aggregate(square, fact = 2, fun = max)
+values(square_agg_max)
+
+# modal values for categories
+square_agg_modal <- aggregate(square, fact = 2, fun = modal)
+values(square_agg_modal)
+# note for cells with no mode, you can choose 'first' or 'last'
+# to specify which value gets chosen but there is no actual mode
+
+## disaggregating rasters
+# the factor here is the square root of the number of cells to create from each existing cell
+# assign a value to the blocks either by
+# - copying parent cell value into each of the new cells
+# - interpolate between values to provide a smoother gradient 
+# (note interpolation does not make sense for cateogrical variables)
+
+# disaggregate by copying parents values
+square_disagg <- disaggregate(square, fact = 2)
+# disaggregate by interpolation
+square_disagg_interp <- disaggregate(square, fact = 2, method = 'bilinear')
+
+# note origin or alignments are not changed at all when changing resolution
+# to change these (e.g. if you need to match datasets with different origins and/or 
+# alignments), use the more complex 'resample' function
+# this is bascailly a simpler case of reprojecting a raster
+
+### reprojecting a raster
+
+# a series of raster cell values in one projection are represented by
+# inserted representative values into a set of cells on a different projection
+
+# note that we can use vector grids to represent two raster grids in order
+# to overplot them
+
+# make two simple feature columns containing points in the
+# lower left and top right of the two grids
+uk_pts_WGS84 <- st_sfc(st_point(c(-11, 49.5)),
+                       st_point(c(2, 59)),
+                       crs = 4326)
+uk_pts_BNG <- st_sfc(st_point(c(-2e5, 0)),
+                     st_point(c(7e5, 1e6)),
+                     crs = 27700)
+
+# use st_make_grid command to quickly create a polygon grid with the
+# right cell size
+uk_grid_WGS84 <- st_make_grid(uk_pts_WGS84, cellsize = 0.5)
+uk_grid_BNG <- st_make_grid(uk_pts_BNG, cellsize = 1e5)
+
+# reporject BNG grid into WGS84
+uk_grid_BNG_as_WGS84 <- st_transform(uk_grid_BNG, 4326)
+
+# plot the features
+plot(uk_grid_WGS84, 
+     asp = 1, 
+     border = 'grey',
+     xlim = c(-13, 4))
+plot(st_geometry(uk_eire), 
+     add=T,
+     border = 'darkgreen',
+     lwd = 2)
+plot(uk_grid_BNG_as_WGS84,
+     border = 'red',
+     add = T)
+
+# use the projectRaster function to either interpolate a representative
+# value from the source data (bilinear method) or pick the cell value 
+# from the nearest neighbour to the cell centre (ngb method)
+
+# first create target raster to use as a template for the projected data
+uk_raster_BNG <- raster(xmn = -200000, xmx = 700000,
+                        ymn = 0, ymx = 1000000,
+                        res = 100000,
+                        crs = '+init=EPSG:27700')
+uk_raster_BNG_interp <- projectRaster(uk_raster_WGS84, 
+                                      uk_raster_BNG, 
+                                      method = 'bilinear')
+uk_raster_BNG_ngb <- projectRaster(uk_raster_WGS84,
+                                   uk_raster_BNG,
+                                   method = 'ngb')
+# compare values in the top row
+round(values(uk_raster_BNG_interp)[1:9], 2)
+values(uk_raster_BNG_ngb)[1:9]
+# note that NA values are due to the centres of cells on the top grid
+# that do not overlie the original grid
+
+# plot the two outputs from the two different projectRaster methods to see 
+# the more abrupt changes when using the nearest neighbour projection
+par(mfrow=c(1,3), mar=c(1,1,2,1))
+plot(uk_raster_BNG_interp, 
+     main='Interpolated', 
+     axes=FALSE, 
+     legend=FALSE)
+plot(uk_raster_BNG_ngb, 
+     main='Nearest Neighbour',
+     axes=FALSE, 
+     legend=FALSE)
+
+
+########## CONVERTING BETWEEN VECTOR AND RASTA DATA TYPES ###########
+
+## Vector to raster
+
+# provide the target raster and the vector data and put it through
+# the 'rasterize' function
+
+# note that vector attributes are chosen to assign cell values in their raster
+# 'rasterize' has an argument that allows you to set rules to decide which
+# value is attributed if a cell has more than one possible value
+
+# rasterize uk_eire_BNG vecotr data onto 20km raster grid
+# create target raster
+uk_20km <- raster(xmn = -200000,
+                  xmx = 650000,
+                  ymn = 0,
+                  ymx = 1000000,
+                  res = 20000,
+                  crs = '+init=EPSG:27700')
+
+# rasterizing polygons
+uk_eire_poly_20km <- rasterize(as(uk_eire_BNG, # convert data from the older spatial type 
+                                  'Spatial'), # to sf because raster predates sf
+                               uk_20km, 
+                               field = 'name')
+
+# rasterizing lines
+# first tell sf the attributes are constant between geometries
+# so it won't warn us that they might not be
+st_agr(uk_eire_BNG) <- 'constant'
+# here we use 'st_cast' to change the polygon data into lines
+uk_eire_BNG_line <- st_cast(uk_eire_BNG, 'LINESTRING')
+uk_eire_line_20km <- rasterize(as(uk_eire_BNG_line, 'Spatial'),
+                               uk_20km,
+                               field = 'name')
+
+# rasterizing points
+# the cast takes two steps for points and the name factor must
+# be converted to numeric
+uk_eire_BNG_point <- st_cast(st_cast(uk_eire_BNG, 'MULTIPOINT'), 'POINT')
+uk_eire_BNG_point$name <- as.numeric(uk_eire_BNG_point$name)
+uk_eire_point_20km <- rasterize(as(uk_eire_BNG_point, 'Spatial'),
+                                uk_20km,
+                                field = 'name')
+
+# plot the different outcomes
+par(mfrow = c(1, 3),
+    mar = c(1, 1, 1, 1))
+
+plot(uk_eire_poly_20km,
+     col = viridis(6, alpha = 0.5),
+     legend = F,
+     axes = F)
+plot(st_geometry(uk_eire_BNG), add = T, border = 'grey')
+
+plot(uk_eire_line_20km,
+     col = viridis(6, alpha = 0.5),
+     legend = F,
+     axes = F)
+plot(st_geometry(uk_eire_BNG), add = T, border = 'grey')
+
+plot(uk_eire_point_20km,
+     col = viridis(6, alpha = 0.5),
+     legend = F,
+     axes = F)
+plot(st_geometry(uk_eire_BNG), add = T, border = 'grey')
+
+## Raster to vector
+# there are two ways to do this using the raster package
+# 1 - view the value as representing the whole cell (polygon)
+# 2 - view the value as representing a point in the centre (point)
+
+# rasterToPolygons returns a polygon for each cell and returns a Spatial object
+poly_from_rast <- rasterToPolygons(uk_eire_poly_20km)
+poly_from_rast <- as(poly_from_rast, 'sf') # turn into sf object
+
+# we can set this to dissolve the boundaries between cells with identical values
+poly_from_rast_dissolve <- rasterToPolygons(uk_eire_poly_20km, dissolve = TRUE)
+poly_from_rast_dissolve <- as(poly_from_rast_dissolve, 'sf')
+
+# rasterToPoints returns a matrix of coordinates and values
+points_from_rast <- rasterToPoints(uk_eire_poly_20km)
+points_from_rast <- st_as_sf(data.frame(points_from_rast), coords = c('x', 'y'))
+
+# plot the outputs
+par(mfrow = c(1, 3), mar = c(1, 1, 1, 1))
+plot(poly_from_rast['layer'], 
+     key.pos = NULL, # supporess key
+     reset = FALSE) # stop plot.sf altering the par() options
+plot(poly_from_rast_dissolve, 
+     key.pos = NULL, 
+     reset = FALSE)
+plot(points_from_rast, 
+     key.pos = NULL, 
+     reset = FALSE)
+
+# note that it is uncommon to have raster data representing linear features
+# (like uk_eire_line_20km)
+
+
+####################### USING DATA IN FILES #############################
+
+## Saving vector data
+
+# use st_read in sf package to read vector data
+# use raster in raster package to read raster data
+
+# the most common vector data file format is the shapefile
+# note that shapefiles save the data as a number of files with different extensions
+
+# save uk_eire data to a shapefile
+st_write(uk_eire, '../Results/uk_eire_WGS84.shp')
+st_write(uk_eire_BNG, '../Results/uk_eire_BNG.shp')
+
+# save uk_eire data to a GeoJSON instead (saves data as a single text file)
+st_write(uk_eire, '../Results/uk_eire_WGS84.geojson')
+# or save to a GeoPackage (stores data in a single SQLite3 database file)
+st_write(uk_eire, '../Results/uk_eire_WGS84.gpkg')
+
+# sf package chooses output file based on file extension but you can 
+# specify a driver directly
+st_write(uk_eire, '../Results/uk_eire_WGS84.json', driver = 'GeoJSON')
+
+## Saving raster data
+
+# GeoTIFF is the most common GIS raster data format
+# GeoTIFF is essentially a TIFF image that contains embedded data describing the origin,
+# resolution and coordinate reference system of the data
+# sometimes a .tfw file (a 'world' file) exists, which contains the same information
+# as the GeoTIFF and should be kept with it
+
+# raster package chooses output file based on file extension but you can 
+# specify a driver directly by using the 'format' argument
+
+# save raster to a GeoTIFF
+writeRaster(uk_raster_BNG_interp, '../Results/uk_raster_BNG_interp.tif')
+
+# save an ASCII format file (but note this format does not contain projection details)
+writeRaster(uk_raster_BNG_ngb, '../Results/uk_raster_BNG-ngb.asc', format = 'ascii')
+
+## Loading vector data
+
+# practice loading use the 1:110m scale Natural Earth data on countries
+# load a vector shapefile
+ne_110 <- st_read('../Data/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp')
+
+# also load some WHO data on 2016 life expectancy
+life_exp <- read.csv(file = "../Data/WHOSIS_000001.csv")
+
+# merge the two datasets so that the ne_110 data frame includes life expectancy
+ne_110_merge <- merge(ne_110, life_exp, 
+                      by.x = 'ISO_A3_EH', 
+                      by.y = 'COUNTRY',
+                      all.x = TRUE)
+
+# set the breaks to determine colour variation across values
+bks <- seq(50, 85, by = 0.25)
+
+# generate plotting area
+par(mfrow = c(2, 1), 
+    mar = c(1, 1, 1, 1))
+
+# plot global GDP
+plot(ne_110['GDP_MD_EST'], 
+     asp = 1, 
+     main = 'Global GDP', 
+     logz = TRUE,
+     key.pos = 4)
+
+# plot life expectancy data
+plot(ne_110_merge['Numeric'],
+     asp = 1,
+     main = 'Global 2016 Life Expectancy (Both sexes)',
+     key.pos = 4,
+     pal = viridis, # sets the colour palette
+     breaks = bks)                  
+
+# loading data from a table
+# read in Southern Ocean example
+so_data <- read.csv('../Data/Southern_Ocean.csv', header = T)
+
+# convert dataframe to sf object
+so_data <- st_as_sf(so_data, coords = c('long', 'lat'), crs = 4326)
+
+## Loading raster data
+
+# load some global topographic data
+etopo_25 <- raster('../Data/etopo_25.tif')
+
+# plot the data
+plot(etopo_25)
+
+# a more useful plot of the same data
+l_col <- terrain.colors(24)
+o_col_pal <- colorRampPalette(c('darkslateblue', 'steelblue', 'paleturquoise'))
+o_col <- o_col_pal(40)
+brks <- seq(-10000, 6000, by = 250)
+plot(etopo_25,
+     axis.args=list(at=seq(-10000, 6000, by = 2000), lab = seq(-10, 6, by = 2)),
+     axes = F,
+     breaks = brks,
+     col = c(o_col, l_col))
+
+## Raster stacks
+
+# raster data can contain multiple layers (called multiple bands) of information 
+# for the cells in the raster grid
+
+# download bioclim data: global maximum temperature at 10 arc minute resolution
+# note this only downloads once and after will just load the local copy
+tmax <- getData('worldclim', 
+                download = T, 
+                path = '../Data',
+                var = 'tmax',
+                res = 10)
+
+# note it is very common for GIS data to be stored in a form that needs scaling
+# by the end user - this is to minimise disk use since integer data is stored more compactly than
+# float data ( 2 bytes per number vs 4 bytes per number)
+# the metadata for a raster data set should include any scale
+# and offset values needed
+
+# for example, here the data has the range -478 to 489 so needs scaling
+# different layers can be accessed using [[?]]
+# aggregated functions (e.g. sum, mean) can also be used to extract information across layers
+
+# scale the data
+tmax <- tmax / 10
+# extract January and July data and the annual maximum by location
+tmax_jan <- tmax[[1]]
+tmax_jul <- tmax[[7]]
+tmax_max <- max(tmax)
+# plot these maps
+par(mfrow = c(3, 1), mar = c(2, 2, 1, 1))
+bks <- seq(-500, 500, length = 101)
+pal <- colorRampPalette(c('lightblue', 'grey', 'firebrick'))
+cols <- pal(100)
+ax.args <- list(at = seq(-500, 500, by = 100))
+plot(tmax_jan, 
+     col = cols, 
+     breaks = bks,
+     axis.args = ax.args,
+     main = 'January maxiumum temperature')
+plot(tmax_jul, 
+     col = cols, 
+     breaks = bks,
+     axis.args = ax.args,
+     main = 'July maxiumum temperature')
+plot(tmax_max, 
+     col = cols, 
+     breaks = bks,
+     axis.args = ax.args,
+     main = 'Annual maxiumum temperature')
+
+
+############## OVERLAYING RASTER AND VECTOR DATA ##############
+
+## Cropping data
+
+# if you only need a subset of the GIS dataset, you can crop the data to make 
+# plotting easier and GIS operations faster
+
+# crop the southern ocean raster data
+so_extent <- extent(-60, -20, -65, -45)
+so_topo <- crop(etopo_25, so_extent)
+
+# crop the Natural Earth country data
+ne_10 <- st_read('../Data/ne_10m_admin_0_countries/ne_10m_admin_0_countries.shp')
+# use the st_crop function to reduce some higher resolution coastline data
+st_agr(ne_10) <- 'constant'
+so_ne_10 <- st_crop(ne_10, so_extent)
+# note that although coorindates are long/lat, st_intersection assumes they are planar
+
+# plot the data
+pal <- colorRampPalette(c('grey30', 'grey50', 'grey70'))
+plot(so_topo, 
+     col = pal(100), 
+     asp = 1,
+     legend = F)
+contour(so_topo, 
+        levels = c(-2000, -4000, -6000), 
+        add = T, 
+        col = 'grey80')
+plot(st_geometry(so_ne_10), 
+     add = T, 
+     col = 'grey90', 
+     border = 'grey40')
+plot(so_data['chlorophyll'], 
+     add = T,
+     logz = T,
+     pch = 20,
+     cex = 2,
+     pal = viridis,
+     border = 'white',
+     reset = F)
+
+.image_scale(log10(so_data$chlorophyll), 
+             col = viridis(18),
+             key.length = 0.8,
+             key.pos = 4,
+             logz = T)
+
+######## SPATIAL JOINS AND RASTER DATA EXTRACTION ###########
+
+### Spatial joining
+
+# merging data spatially is called a spatial join
+# extract Africa from the ne_110 data and keep the columns we want to use
+africa <- subset(ne_110, 
+                 CONTINENT == 'Africa',
+                 select = c('ADMIN', 'POP_EST'))
+# transform to the Robinson projection
+africa <- st_transform(africa, crs = 54030)
+# create a random sample of points
+mosquito_points <- st_sample(africa, 1000)
+
+# create plot
+plot(st_geometry(africa),
+     col = 'khaki')
+plot(mosquito_points,
+     col = 'firebrick',
+     add = T)
+
+# in order to combine the country data with the mosquito data, we need to turn
+# mosquito_points from a sfc geometry column into a full sf dataframe so that it can
+# have attributes and we can add the country name onto the points
+mosquito_points <- st_sf(mosquito_points)
+mosquito_points <- st_join(mosquito_points, africa['ADMIN'])
+
+# plot the combined data
+plot(st_geometry(africa), col = 'khaki')
+plot(mosquito_points['ADMIN'], add = T)
+
+# now aggregate the points within countries to give us a count of the number of points
+# in each country and also convert multiple rows of "POINT" into a single "MULTIPOINT"
+# feature per country
+mosquito_points_agg <-aggregate(mosquito_points, 
+                                by = list(country = mosquito_points$ADMIN),
+                                FUN = length)
+names(mosquito_points_agg)[2] <- 'n_outbreaks'
+
+# combine the area as well
+africa <- st_join(africa, mosquito_points_agg)
+africa$area <- as.numeric(st_area(africa))
+
+# plot the combined data
+par(mfrow = c(1, 2), mar = c(3, 3, 1, 1), mgp=c(2, 1 ,0))
+plot(n_outbreaks ~ POP_EST, 
+     data=africa, 
+     log = 'xy',
+     ylab = 'Number of outbreaks',
+     xlab = 'Population size')
+     plot(n_outbreaks ~ area, 
+          data = africa,
+          log = 'xy',
+          ylab = 'Number of outbreaks',
+          xlab = 'Area (m2)')
+**********************************************************************
+
+Testing GIS.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Loading required package: methods
+Loading required package: sp
+Error in library(sf) : there is no package called ‘sf’
+Execution halted
+
+======================================================================
+Inspecting script file NLLS_Albatross.R...
+
+File contents are:
+**********************************************************************
+########## Model fitting example using Non-Linear Least Squares ############
+######################## Albatross chick growth ############################
+
+# fits models to albatross chick growth data. It includes two functions, one 
+# for the logistic growth equation and one for the Von Bertalanffy model. 
+# These models, and a straight line, are fitted to the data and both AIC and
+# BIC are used to compare the three models. It also contains plots of the 
+# data and the fits.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list = ls())
+graphics.off()
+
+# load neccesary packages
+library(repr)
+library(minpack.lm) # for Levenberg-Marquardt nlls fitting
+library(ggplot2)
+
+# load data
+alb <- read.csv(file = "../Data/albatross_grow.csv")
+# subset data by weight and remove NAs
+alb <- subset(x = alb, !is.na(alb$wt))
+
+# plot data
+ggplot(alb, aes(x = age,
+                y = wt),
+     xlim = c(0, 100)) +
+  geom_point(size = (1),
+             colour = "black",
+             shape = (1)) +
+  labs(x = "age (days)",
+       y = "weight (g)")
+
+# fit three models using NLLS
+
+# Von Bertalanffy model
+# common model for modelling the growth of an individual
+# W(t) = rho(L_inf(1 - e^-Kt) + L_0(e^-Kt)^3
+
+# define c = L_0/L_inf and W_inf = rho(L_inf)^3
+# so equation becomes 
+# W(t) = W_inf(1 - e^(-Kt) + ce^(-Kt))^3
+
+# W_inf is interpreted as mean asymptotic weight and 
+# c is the ratio between initial and final lengths
+
+# we will fit this second equation and compare against classical Logistic growth
+# equation and a straight line
+
+# define R functions for two models
+# classical logistic growth equation
+logistic1 <- function(t, r, K, N0) {
+  N0 * K * exp(r * t)/(K + N0 * (exp(r * t) -1))
+}
+# Von Bertalanffy model
+vonbert.w <- function(t, Winf, c, K) {
+  Winf * (1 - exp(-K * t) + c * exp(-K * t)) ^ 3
+}
+# for the straight line model, we use the lm() function since it is 
+# a linear least squares problem
+
+# first scale the data before fitting to improve stability of estimates
+scale <- 4000
+# fit all3 models to the data
+alb.lin <- lm(wt/scale ~ age, data = alb)
+alb.log <- nlsLM(wt/scale ~ logistic1(age, r, K, N0), 
+                 start = list(K = 1, r = 0.1, N0 = 0.1),
+                 data = alb)
+alb.vb<- nlsLM(wt/scale ~ vonbert.w(age, Winf, c, K),
+               start = list(Winf = 0.75, c = 0.01, K = 0.01),
+               data = alb)
+
+# calculate predictions for each model across a range of ages
+ages <- seq(0, 100, length = 93)
+pred.lin <- predict(alb.lin, newdata = list(age = ages)) * scale
+pred.log <- predict(alb.log, newdata = list(age = ages)) * scale
+pred.vb <- predict(alb.vb, newdata = list(age = ages)) * scale
+
+# plot the data with the fits
+# base plot was replaced by ggplot
+#plot(alb$age, alb$wt,
+#     ylab = "weight (g)",
+#     xlab = "age (days)",
+#     xlim = c(0, 100))
+#lines(ages, pred.lin, col = 2, lwd = 2)
+#lines(ages, pred.log, col = 3, lwd = 2)
+#lines(ages, pred.vb, col = 4, lwd = 2)
+
+#legend("topleft",
+#       legend = c("Linear", "Logisitic", "Von Bert"),
+#       lwd = 2,
+#       lty = 1,
+#       col = 2:4,
+#       cex = 0.75)
+
+ggplot(alb, aes(x = age,
+                y= wt,
+                col = "black"),
+                xlim = c(0, 100)) +
+  geom_point(size = (1),
+             colour = "black",
+             shape = (1)) +
+  geom_line(aes(ages, pred.lin, color = "black")) +
+  geom_line(aes(ages, pred.log, color = "blue")) +
+  geom_line(aes(ages, pred.vb, color = "green")) +
+  theme_bw() +
+  labs(y = "Weight (g)",
+       x = "Age (days)") +
+  scale_color_discrete(
+    labels = c("Linear", "Logisitic", "Von Bert")) +
+  theme(legend.position = c(0.2, 0.8)) +
+  theme(legend.title = element_blank())
+
+# examine the residuals between the models
+par(mfrow = c(3, 1), bty = "n") # this suppresses the box drawn around the plots
+plot(alb$age, resid(alb.lin), main = "LM residuals", xlim = c(0, 100))
+plot(alb$age, resid(alb.log), main="Logisitic residuals", xlim=c(0,100))
+plot(alb$age, resid(alb.vb), main="VB residuals", xlim=c(0,100))
+# the residuals for all 3 models still exhibit some patterns
+# note the data seems to go down near the end of observation period but 
+# none of these models can capture that behaviour
+
+# compare the 3 models by calculating adjusted Sums of Squared Errors (SSEs)
+n <- length(alb$wt)
+list(lin = signif(sum(resid(alb.lin) ^ 2)/(n - 2 * 2), 3),
+     log= signif(sum(resid(alb.log) ^ 2)/(n - 2 * 3), 3),
+     vb= signif(sum(resid(alb.vb) ^ 2)/(n - 2 * 3), 3))
+# The logistic model has the lowest adjusted SSE 
+# so it is the best fit by this measure
+# note it is also a better fit visually
+
+
+### exercise a) use AIC/BIC to perform model selection for albatross data
+
+
+# compare using BIC
+BIC(alb.lin)
+BIC(alb.log) 
+BIC(alb.vb)
+# BIC(alb.log) has the lowest value by much more than 2
+# so therefore the logistic model is the best fit
+
+#compare using AIC
+AIC(alb.lin)
+AIC(alb.log)
+AIC(alb.vb)
+# same conclusions as BIC
+
+**********************************************************************
+
+Testing NLLS_Albatross.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+$lin
+[1] 0.00958
+
+$log
+[1] 0.0056
+
+$vb
+[1] 0.00628
+
+[1] -158.8353
+[1] -206.3154
+[1] -195.6473
+[1] -166.4331
+[1] -216.4458
+[1] -205.7777
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 2.24500s
+
+======================================================================
+Inspecting script file NLLS_TraitsScaling.R...
+
+File contents are:
+**********************************************************************
+########## Model fitting example using Non-Linear Least Squares ############
+
+# fits models to trait data using non-linear least squares. It includes one 
+# function containing the power law equation and uses many of R's in-built 
+# functions, including AIC and BIC. A power law model, quadratic model and 
+# a straight line are fitted to two subsets of the data (subsetted by genus) 
+# and these models are then compared. It also contains plots of the data and 
+# the fits.
+
+# Author: Lucy Goodyear (lucy.goodyear19@imperial.ac.uk)
+# Version: 0.0.1
+
+# clear workspace
+rm(list = ls())
+graphics.off()
+
+# load neccesary packages
+library(repr)
+library(minpack.lm) # for Levenberg-Marquardt nlls fitting
+library(ggplot2)
+
+
+#################### Allometric scaling of traits #########################
+
+
+# create a function for the power law model
+powMod <- function(x, a, b) {
+  return(a * x^b)
+}
+
+# load data
+MyData <- read.csv("../Data/GenomeSize.csv")
+
+# subset the data by Anisoptera and remove NAs
+Data2Fit <- subset(MyData, Suborder == "Anisoptera")
+Data2Fit <- Data2Fit[!is.na(Data2Fit$TotalLength),] # remove NA's
+
+# plot data
+plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
+
+# or use ggplot to plot the data
+ggplot(Data2Fit, aes(x = TotalLength,
+                     y= BodyWeight)) +
+  geom_point(size = (3),
+             colour = "red") +
+  theme_bw() +
+  labs(y = "Body mass (mg)",
+       x = "Total length (mm)")
+
+# fit the model to the data using NLLS
+PowFit <- nlsLM(BodyWeight ~ powMod(TotalLength, a, b), 
+                data = Data2Fit, 
+                start = list(a = .1, b = .1))
+
+# use summary to see the values of the model
+summary(PowFit)
+# not that further statistical inference cannot be done using ANOVA,
+# like for a lm
+
+## visualise the fit
+# generate a vector of body length (x-axis variable) for plotting
+Lengths <- seq(min(Data2Fit$TotalLength), max(Data2Fit$TotalLength), len=200)
+# calculate the predicted line by extracting the coefficent from the
+# model fit
+coef(PowFit)["a"]
+coef(PowFit)["b"]
+# use power law function on lengths and model parameters
+Predic2PlotPow <- powMod(Lengths, coef(PowFit)["a"], coef(PowFit)["b"])
+# plot data and the fitted model line
+plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
+lines(Lengths, Predic2PlotPow, col = 'blue', lwd = 2.5)
+
+# calculate confidence intervals (CI) on the estimated parameters
+# like we would in OLS fitting used for linear models
+confint(PowFit)
+# remember a coefficent's CI should not include 0 for it
+# to be statistically signficant (different from 0)
+
+
+### exercise a) plot the above graph in ggplot and add equation
+
+
+ggplot(Data2Fit, aes(x = TotalLength,
+                     y= BodyWeight)) +
+  geom_point(size = (3),
+             colour = "red") +
+  stat_function(fun = function(Lengths) powMod(Lengths, a = coef(PowFit)["a"], b = coef(PowFit)["b"]),
+                col = 'blue', lwd = 1.5) +
+  theme_bw() +
+  labs(y = "Body mass (mg)",
+       x = "Total length (mm)") +
+  geom_text(aes(x = 45, y = 0.25,
+              label = paste("Mass == (3.94e-6)*Length ^ 2.59")), 
+              parse = TRUE, size = 3, 
+              colour = "blue")
+
+
+### exercise b) play with starting values to see if model fitting can be 
+### "broken" (until NLLS does not converge on a solution)
+
+
+PowFitT <- nlsLM(BodyWeight ~ powMod(TotalLength, a, b), 
+                data = Data2Fit, 
+                start = list(a = -10, b = 10))
+
+summary(PowFitT)
+coef(PowFitT)["a"]
+coef(PowFitT)["b"]
+Lengths <- seq(min(Data2Fit$TotalLength), max(Data2Fit$TotalLength), len=200)
+Predic2PlotPowT <- powMod(Lengths, coef(PowFitT)["a"], coef(PowFitT)["b"])
+
+# plot data and the fitted model line
+ggplot(Data2Fit, aes(x = TotalLength,
+                     y= BodyWeight)) +
+  geom_point(size = (3),
+             colour = "red") +
+  stat_function(fun = function(Lengths) powMod(Lengths, a = coef(PowFitT)["a"], b = coef(PowFitT)["b"]),
+                col = 'blue', lwd = 1.5) +
+  theme_bw() +
+  labs(y = "Body mass (mg)",
+       x = "Total length (mm)") +
+  geom_text(aes(x = 45, y = 0.25,
+                label = paste("Mass == (3.94e-6)*Length ^ 2.59")), 
+            parse = TRUE, size = 3, 
+            colour = "blue")
+
+# infinity produced when a, b > 1000, causing error
+# singular gradient matrix produced when a, b < -1000, causing error
+# can't plot model line for a = -100, b = 100
+# a = -10, b = 10 produces a plot with an exponential asymptote around 85,
+# which doesn't fit the data
+
+
+### exercise c) repeat model fitting for Zygoptera dataset
+
+
+# subset the data by Zygoptera and remove NAs
+Data2FitZ <- subset(MyData, Suborder == "Zygoptera")
+Data2FitZ <- Data2FitZ[!is.na(Data2FitZ$TotalLength),] # remove NA's
+
+# plot data
+plot(Data2FitZ$TotalLength, Data2FitZ$BodyWeight)
+
+# or use ggplot to plot the data
+ggplot(Data2FitZ, aes(x = TotalLength,
+                     y= BodyWeight)) +
+  geom_point(size = (3),
+             colour = "red") +
+  theme_bw() +
+  labs(y = "Body mass (mg)",
+       x = "Total length (mm)")
+
+# fit the model to the data using NLLS
+PowFitZ <- nlsLM(BodyWeight ~ powMod(TotalLength, a, b), 
+                data = Data2FitZ, 
+                start = list(a = .01, b = .01))
+
+# use summary to see the values of the model
+summary(PowFitZ)
+# not that further statistical inference cannot be done using ANOVA,
+# like for a lm
+
+## visualise the fit
+# generate a vector of body length (x-axis variable) for plotting
+LengthsZ <- seq(min(Data2FitZ$TotalLength), max(Data2FitZ$TotalLength), len=200)
+# calculate the predicted line by extracting the coefficent from the
+# model fit
+coef(PowFitZ)["a"]
+coef(PowFitZ)["b"]
+# use power law function on lengths and model parameters
+Predic2PlotPowZ <- powMod(LengthsZ, coef(PowFitZ)["a"], coef(PowFitZ)["b"])
+# plot data and the fitted model line
+plot(Data2FitZ$TotalLength, Data2FitZ$BodyWeight)
+lines(LengthsZ, Predic2PlotPowZ, col = 'blue', lwd = 2.5)
+
+# calculate confidence intervals (CI) on the estimated parameters
+# like we would in OLS fitting used for linear models
+confint(PowFitZ)
+# remember a coefficent's CI should not include 0 for it
+# to be statistically signficant (different from 0)
+
+# c) exercise a) plot the above graph in ggplot and add equation
+ggplot(Data2FitZ, aes(x = TotalLength,
+                     y= BodyWeight)) +
+  geom_point(size = (3),
+             colour = "red") +
+  stat_function(fun = function(LengthsZ) powMod(LengthsZ, a = coef(PowFitZ)["a"], b = coef(PowFitZ)["b"]),
+                col = 'blue', lwd = 1.5) +
+  theme_bw() +
+  labs(y = "Body mass (mg)",
+       x = "Total length (mm)") +
+  geom_text(aes(x = 35, y = 0.03,
+                label = paste("Mass == (6.94e-8)*Length ^ 2.57")), 
+            parse = TRUE, size = 3, 
+            colour = "blue")
+
+# c) exercise b) play with starting values to see if model fitting can be 
+# "broken" (until NLLS does not converge on a solution)
+
+PowFitZT <- nlsLM(BodyWeight ~ powMod(TotalLength, a, b), 
+                data = Data2FitZ, 
+                start = list(a = -10, b = 10))
+
+summary(PowFitZT)
+coef(PowFitZT)["a"]
+coef(PowFitZT)["b"]
+LengthsZT <- seq(min(Data2FitZ$TotalLength), max(Data2FitZ$TotalLength), len=200)
+Predic2PlotPowZT <- powMod(LengthsZT, coef(PowFitZT)["a"], coef(PowFitZT)["b"])
+
+# plot data and the fitted model line
+ggplot(Data2FitZ, aes(x = TotalLength,
+                     y= BodyWeight)) +
+  geom_point(size = (3),
+             colour = "red") +
+  stat_function(fun = function(LengthsZT) powMod(LengthsZT, a = coef(PowFitZT)["a"], b = coef(PowFitZT)["b"]),
+                col = 'blue', lwd = 1.5) +
+  theme_bw() +
+  labs(y = "Body mass (mg)",
+       x = "Total length (mm)") +
+  geom_text(aes(x = 45, y = 0.25,
+                label = paste("Mass == (3.94e-6)*Length ^ 2.59")), 
+            parse = TRUE, size = 3, 
+            colour = "blue")
+
+# a = -10 and b = 10 gives a negative exponential with asymptote at 50,
+# which does not fit data, as does a, b = 100 (although slope is much steeper)
+# a = 1, b = 1 does not fit well, intercept is too high and slope is too shallow
+
+
+### exercise d) use OLS method on bi-logarithamically transformed data
+### and compare parameters with NLLS method
+
+
+# log both side of allometric equation
+# log(y) = log(a) + b.log(x)
+# this equivalent to c = d + bz,
+# where c = log(y), d = log(a), z = log(x) and b is the slope parameter
+
+# perform an ordinary least squares linear regression
+OLS_Fit <- lm(BodyWeight ~ TotalLength, 
+              data = Data2Fit) # use Anisoptera data only
+
+# use summary to see the values of the both models
+summary(OLS_Fit)
+summary(PowFit)
+
+# plot both NLLS and OLS regression lines side by side
+par(mfrow=c(1,2))
+plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
+abline(lm(BodyWeight ~ TotalLength, data = Data2Fit), col = 'blue')
+plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
+lines(Lengths, Predic2PlotPow, col = 'blue', lwd = 2.5)
+
+# we can see just be eye that this fit is not as good as the NLLS model
+# use tests to compare the parameter estimates of the two methods
+
+# we check whether the confidence intervals overlap
+CI_Pow <- c(log(confint(PowFit)[1]), log(confint(PowFit)[2]), confint(PowFit)[3], confint(PowFit)[4])
+CI_OLS <- c(confint(OLS_Fit)[1], confint(OLS_Fit)[2], confint(OLS_Fit)[3], confint(OLS_Fit)[4])
+
+log(coef(PowFit)["a"]) # intercept
+coef(PowFit)["b"] # slope parameter equivalent
+summary(OLS_Fit)$coeff[1] # intercept
+summary(OLS_Fit)$coeff[2] # slope
+
+cat("\nAre the intercepts of one method in the confidence intervals of the other method?",
+    "\nNLLS intercept, CI OLS", 
+    (log(coef(PowFit)["a"]) > confint(OLS_Fit)[1]) & (log(coef(PowFit)["a"]) < confint(OLS_Fit)[2]),
+    "\nOLS intercept, CI NLLS", 
+    (summary(OLS_Fit)$coeff[1] > log(confint(PowFit)[1])) & (summary(OLS_Fit)$coeff[1] < log(confint(PowFit)[2])), 
+    "\nNLLS slope equivalent, CI OLS", 
+    (coef(PowFit)["b"] > confint(OLS_Fit)[3]) & (coef(PowFit)["b"] < confint(OLS_Fit)[4]),
+    "\nOLS slope, CI NLLS",
+    (summary(OLS_Fit)$coeff[2] > confint(PowFit)[3]) & (summary(OLS_Fit)$coeff[2] < confint(PowFit)[4]),
+    "\n")
+
+# We can see that both OLS coefficients are found in the NLLS confidence intervals, showing how NLLS is a more
+# generalised form of OLS
+
+
+### exercise e) investigate allometry between body mass and other linear morphological measurements
+
+
+# first for Anisoptera
+Morph_Data <- Data2Fit[-c(1:6,16)]
+# remove NA in Headlength
+Morph_Data <- Morph_Data[!is.na(Morph_Data$HeadLength),] 
+
+# overview of all potential pairs of scaling relationships
+pairs(Morph_Data)
+# we can see that all pairs have a positive scaling relationship
+
+# run a for loop to do an NLLS model on all the other measurements
+PowFitMM <- list()
+for (i in (2:ncol(Morph_Data))) { # include total length so we can compare to others
+  PowFitM <- nlsLM(BodyWeight ~ powMod(Morph_Data[,i], a, b), 
+                  data = Morph_Data, 
+                  start = list(a = .1, b = .1))
+  RSS <-  1 - ((sum(residuals(PowFitM)^2)) / (sum(Morph_Data[,i]) - mean(Morph_Data[,i]) ^ 2))
+  PowFitMM[[i]] <- list(coef(PowFitM)[1], coef(PowFitM)[2], RSS)
+}
+
+# set up a dataframe with the parameters for each measurement
+Parameters <- data.frame(matrix(unlist(PowFitMM), ncol = 3, byrow = TRUE))
+colnames(Parameters) = c("a", "b", "RSS")
+
+# plot the values of a, b and RSS
+par(mfrow = c(1, 3))
+barplot(Parameters[,1], 
+        names.arg = colnames(Morph_Data)[2:9],
+        main = 'Values of a')
+barplot(Parameters[,2], 
+        names.arg = colnames(Morph_Data)[2:9],
+        main = 'Values of b')
+barplot(Parameters[,3], 
+        names.arg = colnames(Morph_Data)[2:9],
+        main = 'RSS values')
+
+# From the plots above, we can see all measurements are allometric with body mass 
+# (RSS are all close to 1) and the greatest proportionate variation is in the
+# values of a, with thorax length having the greatest value of a, meaning a 
+# small change in thorax length gives a large change in body mass.
+# However the greatest RSS values (only 2e7 between them) are for forewing area and 
+# hindwing area, which suggests these better predict body weight than all of the 
+# other morphological variables included here.
+
+# now do the same for Zygoptera
+Morph_DataZ <- Data2FitZ[-c(1:6,16)]
+# remove NA in ForewingLength
+Morph_DataZ <- Morph_DataZ[!is.na(Morph_DataZ$ForewingLength),] 
+
+# overview of all potential pairs of scaling relationships
+pairs(Morph_DataZ)
+# we can see that all pairs have a positive scaling relationship
+
+# run a for loop to do an NLLS model on all the other measurements
+PowFitMMZ <- list()
+for (i in (2:ncol(Morph_DataZ))) { # include total length so we can compare to others
+  PowFitMZ <- nlsLM(BodyWeight ~ powMod(Morph_DataZ[,i], a, b), 
+                   data = Morph_DataZ, 
+                   start = list(a = .1, b = .1))
+  RSS <-  1 - ((sum(residuals(PowFitMZ)^2)) / (sum(Morph_DataZ[,i]) - mean(Morph_DataZ[,i]) ^ 2))
+  PowFitMMZ[[i]] <- list(coef(PowFitMZ)[1], coef(PowFitMZ)[2], RSS)
+}
+
+# set up a dataframe with the parameters for each measurement
+ParametersZ <- data.frame(matrix(unlist(PowFitMMZ), ncol = 3, byrow = TRUE))
+colnames(ParametersZ) = c("a", "b", "RSS")
+
+# plot the values of a, b and RSS
+par(mfrow = c(1, 3))
+barplot(ParametersZ[,1], 
+        names.arg = colnames(Morph_DataZ)[2:9],
+        main = 'Values of a')
+barplot(ParametersZ[,2], 
+        names.arg = colnames(Morph_DataZ)[2:9],
+        main = 'Values of b')
+barplot(ParametersZ[,3], 
+        names.arg = colnames(Morph_DataZ)[2:9],
+        main = 'RSS values')
+
+# The we see similar results to those for Anisoptera. We can see all measurements are 
+# allometric with body mass (RSS are all close to 1) and again the greatest 
+# proporionate variation is in the values of a, with thorax length having the greatest
+# value of a, meaning a small change in thorax length gives a large change in body mass.
+# However the greatest RSS values (only 1e7 between them) are again for forewing 
+# area and hindwing area, which suggests these better predict body weight than all of the 
+# other morphological variables included here.
+
+
+####################### Comparing Models #################################
+
+
+# investigate whether relationship between body weight and total length is 
+# actually allometric
+
+# first use Anisoptera subset
+# try fitting a quadratic curve — parameters are linear so we can use lm()
+QuaFit <- lm(BodyWeight ~ poly(TotalLength, 2), data = Data2Fit)
+# use predict.lm fucntion to predict new values
+Predic2PlotQua <- predict.lm(QuaFit, data.frame(TotalLength = Lengths))
+
+# plot the two fitted models together
+plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
+lines(Lengths, Predic2PlotPow, col = 'blue', lwd = 2.5)
+lines(Lengths, Predic2PlotQua, col = 'red', lwd = 2.5)
+# the fits are very similar except at the lower end of the data range
+
+# do a formal model comparison to check which model fits the data better
+# first calculate R^2 values for both models
+
+RSS_Pow <- sum(residuals(PowFit)^2) # residual sum of squares
+TSS_Pow <- sum((Data2Fit$BodyWeight - mean(Data2Fit$BodyWeight))^2) # total sum of squares
+RSq_Pow <- 1 - (RSS_Pow/TSS_Pow) # R^2 value
+
+RSS_Qua <- sum(residuals(QuaFit)^2)  # residual sum of squares
+TSS_Qua <- sum((Data2Fit$BodyWeight - mean(Data2Fit$BodyWeight))^2)  # total sum of squares
+RSq_Qua <- 1 - (RSS_Qua/TSS_Qua)  # R^2 value
+
+RSq_Pow
+RSq_Qua
+# this is not actually very useful because there is only a tiny difference
+# R^2 is a therefore a good measure of model fit but can't be used for model selection
+
+# use the Akaike Information Criterion (AIC)
+n <- nrow(Data2Fit) # set the sample size
+pPow <- length(coef(PowFit)) # get number of parameters in power law model
+pQua <- length(coef(QuaFit)) # get number of parameters in quadratic model
+
+AIC_Pow <- n + 2 + n * log((2 * pi) / n) + n * log(RSS_Pow) + 2 * pPow
+AIC_Qua <- n + 2 + n * log((2 * pi) / n) + n * log(RSS_Qua) + 2 * pQua
+AIC_Pow - AIC_Qua
+
+# there is an in-built function to do this in R!
+AIC(PowFit) - AIC(QuaFit)
+
+# A rule of thumb for deciding which model is a better fit is having an AIC value
+# difference > |2|. This is an acceptable cut off for deciding which model is better.
+# So in this example, the power law (allometric model) is a better fit.
+
+
+### exercise a) calculate the BIC and use delta(BIC) to select the better fitting model
+
+
+# the Bayesian Information Criterion also has an in-built function in R
+BIC(PowFit) - BIC(QuaFit)
+# this difference is much greater than |2| so the better fitting model 
+# is still the power law model
+
+
+### exercise b) fit a straight line to the data and compare with
+### the other two models
+
+
+# use our linear model from the previous exercises, 
+# which was a straight line
+BIC(PowFit) - BIC(OLS_Fit)
+BIC(QuaFit) - BIC(OLS_Fit)
+# we can see that both the power law model and the quadratic model 
+# are significantly better than the straight line model (delta(BIC) > |22| for both!)
+
+
+### exercise c) repeat the model comparison for Zygoptera subset
+
+
+# fit a quadratic curve to Zygoptera subset
+QuaFitZ <- lm(BodyWeight ~ poly(TotalLength, 2), data = Data2FitZ)
+# use predict.lm fucntion to predict new values
+Predic2PlotQuaZ <- predict.lm(QuaFitZ, data.frame(TotalLength = LengthsZ))
+
+# plot the two fitted models together
+plot(Data2FitZ$TotalLength, Data2FitZ$BodyWeight)
+lines(LengthsZ, Predic2PlotPowZ, col = 'blue', lwd = 2.5)
+lines(LengthsZ, Predic2PlotQuaZ, col = 'red', lwd = 2.5)
+
+# calculate delta(BIC)
+AIC(PowFitZ) - AIC(QuaFitZ)
+# delta(AIC) is greater than |2| but smaller than delta(AIC) for Anisoptera,
+# suggesting that the power law fit and the quadraric fit are more similar
+# for the Zygoptera
+BIC(PowFitZ) - BIC(QuaFitZ)
+# the same is true for delta(BIC)
+# however, the power law fit is still the best fit
+
+
+### exercise d)
+
+
+# first for Anisoptera
+# run a for loop to calculate the power law model and quadratic model for the other measurements
+Compare <- as.data.frame(matrix(ncol = 2))
+for (i in (2:ncol(Morph_Data))) { # include total length so we can compare to others
+  PowFitM <- nlsLM(BodyWeight ~ powMod(Morph_Data[,i], a, b), 
+                   data = Morph_Data, 
+                   start = list(a = .1, b = .1))
+  QuaFitM <- lm(BodyWeight ~ poly(TotalLength, 2), data = Morph_Data)
+  Temp <- cbind(names(Morph_Data)[i], AIC(PowFitM) - AIC(QuaFitM))
+  Compare <- rbind(Compare, Temp) 
+}
+
+print(Compare)
+# Here we can see that for total length, the power law model is better but
+# for all the other models, the quadratic model is a better fit! Head length
+# has the highest delta(AIC) value, implying this could be the best predictor of
+# body weight but all delta(AIC)s are highly significant
+
+# now do the same for Zygoptera
+# run a for loop to calculate the power law model and quadratic model for the other measurements
+CompareZ <- as.data.frame(matrix(ncol = 2))
+for (i in (2:ncol(Morph_DataZ))) { # include total length so we can compare to others
+  PowFitM <- nlsLM(BodyWeight ~ powMod(Morph_DataZ[,i], a, b), 
+                   data = Morph_DataZ, 
+                   start = list(a = .1, b = .1))
+  QuaFitM <- lm(BodyWeight ~ poly(TotalLength, 2), data = Morph_DataZ)
+  Temp <- cbind(names(Morph_DataZ)[i], AIC(PowFitM) - AIC(QuaFitM))
+  CompareZ <- rbind(CompareZ, Temp) 
+}
+
+print(CompareZ)
+# Here can see that for total length, thorax length, forewing length and
+# hindwing length the power law model is a better fit but for abdomen length,
+# forewing area and hindwing area the quaratic is a better fit. Headlength 
+# |delta(AIC)| < 2 so there is not much difference between the two models.
+# The model with the highest dealta(AIC) is thorax length, implying this is the
+# best predictor of body mass.
+
+
+
+**********************************************************************
+
+Testing NLLS_TraitsScaling.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+Formula: BodyWeight ~ powMod(TotalLength, a, b)
+
+Parameters:
+   Estimate Std. Error t value Pr(>|t|)    
+a 3.941e-06  2.234e-06   1.764    0.083 .  
+b 2.585e+00  1.348e-01  19.174   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.02807 on 58 degrees of freedom
+
+Number of iterations to convergence: 39 
+Achieved convergence tolerance: 1.49e-08
+
+           a 
+3.940685e-06 
+       b 
+2.585048 
+          2.5%        97.5%
+a 1.171935e-06 1.2052
+**********************************************************************
+
+Encountered error (or warning):
+Waiting for profiling to be done...
+Waiting for profiling to be done...
+Waiting for profiling to be done...
+Waiting for profiling to be done...
+Waiting for profiling to be done...
+Waiting for profiling to be done...
+Waiting for profiling to be done...
+Waiting for profiling to be done...
+Waiting for profiling to be done...
+Waiting for profiling to be done...
+Warning message:
+In nls.lm(par = start, fn = FCT, jac = jac, control = control, lower = lower,  :
+  lmdif: info = -1. Number of iterations has reached `maxiter' == 50.
+
+Warning message:
+In nls.lm(par = start, fn = FCT, jac = jac, control = control, lower = lower,  :
+  lmdif: info = -1. Number of iterations has reached `maxiter' == 50.
+
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 2 errors
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 100
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

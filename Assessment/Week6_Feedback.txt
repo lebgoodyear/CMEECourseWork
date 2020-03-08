@@ -1,0 +1,763 @@
+Starting weekly assessment for Lucy, Week6
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 87.70 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, C(Week10), Week8, Week5, Week2, Week9, Week4, .git, Week3, MiniProject
+
+Found the following files in parent directory: .gitignore, README.md
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+**********************************************************************
+*~ 
+*.tmp 
+*.DS_Store
+Week6/Lectures
+MiniProject/References
+Ecological_Modelling
+SeminarDiary.tex
+*.log
+*-concordance.tex
+*.gz
+.Rhistory
+**********************************************************************
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+**********************************************************************
+# CMEE Coursework Repository 2019-2020
+
+*Author: Lucy Goodyear*  
+*Created: 10/10/19*  
+*Last updated: 04/02/20*
+
+This repository contains all the coursework for the first term of the CMEE Master's course. Each of the main directories contains its own readme detailing the subdirectories, the system requirements to run each script and a description of the contents of each script.
+
+Note that the **C(Week10)** directory does not have the same nomenclature as the other teaching weeks because it is a non-compulsory course for MRes students.
+
+## Table of Contents
+1. [Week 1 UNIX and shell scripting](#1.Week-1-UNIX-and-bash-scripting)
+2. [Week 2 Python I](#2.Week-2-Python-I)
+3. [Week 3 R](#3.Week-3-R)
+4. [Week 4 Stats](#4.Week-4-Stats)
+5. [Week 5 Modelling and GIS](#5.Week-5-Modelling-and-GIS)
+6. [Week 6 Genomics](#6.Week-6-Genomics) 
+7. [Week 7 Python II](#7.Week-7-Python-II)
+8. [Week 8 MiniProject](#8.Week-8-MiniProject)
+9. [Week 9 HPC](#9.Week-9-HPC)
+10. [C (Week 10)](#10.C-(Week-10))
+11. [MiniProject](#11.Miniproject)
+12. [Assessment](#12.Assessment)
+
+### 1. Week 1: UNIX and shell scripting
+
+* FASTA exercise called UnixPrac1.txt
+* Simple bash scripts, inlcuding:
+    * Counting lines in a file
+    * Concatenating the contents of two files
+    * Converting tiff to png
+    * Converting tab to csv and csv to txt
+* LaTeX exercises
+
+### 2. Week 2: Python I
+
+*  Practice scripts exemplifying:
+    * types of objects
+    * basic functions
+    * loops
+    * list comprehensions
+    * sys.argv
+    * control flows
+* Practical programming exercises and extra credit
+
+### 3. Week 3: R
+
+* Practice scripts exemplifying:
+    * control flows
+    * breaks
+    * vectorisation
+    * preallocation
+    * debugging
+    * data wrangling
+    * plotting using base R, qplot and ggplot
+* practical programming exercises
+
+### 4. Week 4: Stats
+
+This directory is empty, created for file structure continuity.
+
+### 5. Week 5: Modelling and GIS
+
+* Four modelling scripts focusing on non-linear least squares
+* One GIS script containing GIS practical work
+
+### 6. Week 6: Genomics
+
+* Four scripts: 
+    * practical on allele and genotype frequencies
+    * practical on on genetic drift, mutation and divergence
+    * practical on coalescence theory
+    * practical on population subdivision and demographic inferences
+
+### 7. Week 7: Python II
+
+* Practice scripts on profiling
+* 4 scripts modeling the Lotka-Voltera system:
+    * numerical integration version
+    * numerical integration version with carrying capacity
+    * discrete time version
+    * discrete time steps version with random gaussian fluctuation
+* Practicals on visualsing networks
+* Practice scripts using regular expressions
+* Practice scripts running R scripts from python and accessing command line functions through python
+
+### 8. Week 8: MiniProject
+
+This directory is empty, created for file structure continuity. See MiniProject folder for work done during this week.
+
+### 9. Week 9: HPC
+
+* Main .R script containing all HPC functions on neutral theory and fracals
+* Test .R script, which sources the main script and contains suitable parameters to test the functions.
+* Cluster .R script which contains the code to be run on the cluster
+* A bash script to manage the cluster queue
+* Self-sufficient R script containing the answer to question 30 in as few characters as possible
+
+### 10. C (Week 10)
+
+All scripts from C week.
+
+### 11. MiniProject
+
+Work-in-progress scripts for my MiniProject.
+
+### 12. Assessment
+
+Directory for Course Director to push assessment results.**********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 10 weekly directories: C(Week10), Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9
+
+The Week6 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK6...
+
+Found the following directories: Code, Data, Sandbox, Results
+
+Found the following files: README.md
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+**********************************************************************
+# CMEE Coursework Week 6 Repository
+
+*Author: Lucy Goodyear*  
+*Created: 09/11/19*
+
+This repository contains all the CMEE coursework from Week 6 on genomics.
+
+**Code** contains the scripts/programs.
+
+**Data** is the data needed to run those scripts.
+
+**Results** is where the outpout from those scripts is sent to.
+
+**Sandbox** is a miscellaneous directory containing experimental code and data.
+
+## Requirements
+
+All code has been written in R version 3.6.1
+
+
+## List of scripts
+1. [Alleles](#1.Alleles)
+2. [Coalescence](#2.-Coalescence)
+3. [GeneticDrift](#3.-GeneticDrift)
+4. [PopSubdivision](#4.-PopSubdivision)
+
+### 1. Alleles
+
+A .R script that creates a function, called analyse(x), which conducts analysis on SNPs in a dataset x. It first finds SNP locations, then calculates allele and genotype frquencies, homozygosity, heterozygosity and expected genotype counts and tests for Hardy-Weinstein Equilibrium (HWE). Lastly, the function calculates the inbreeding coefficient for SNPs that deivate from HWE.
+
+### 2. Coalescence
+
+A .R script that estimate the effective population size for two different populations of killer whales, using both Watterson's and Tajima's estimations of theta. It also calculates the site frequency spectrum for the two populations. The script contains functions that calculate Tajima's estimate of theta (pi), locations SNPs (SNPs), Watterson's estimate of theta (theta_W), estimated population using Tajima (Ne_pi), estimated population using Watterson (Ne_W) and the Site Frequency Spectrum (sfs).
+
+### 3. GeneticDrift
+
+A .R script that obtains an estimate of the divergence time between bent-toed and western banded geckos, given datasets of three gecko species and a proposed (but unlabeled) topology. It contains functions that identifies fixed sites for each species (count_fixed), compares the fixed sites between the species pairwise to find diverged sites (compare2) and calculates the genetic divergence pairwise (gen_divs). This data is then used to assign species to branches on the given topology and, given the time divergence between two of the species, the molecular clock is used to calculate an estimate of the rate of subsitution (mu). The desired time divergence is then calculated.
+
+### 4. PopSubdivision
+
+A .R script that assesses whether there has been distance by isolation in a turtle species found at 4 different location using 3 methods:
+1) calculate F_ST pairwise for the 4 different turtle subpopulations
+2) build a tree of all the samples and check for clustering
+3) conduct a Principle Component Analysis
+The script contains one function, calcF_ST, which calculates allele frequencies for each SNP in 2 populations, then calculates H_T and H_S, which are then used to calculate F_ST (method (1)).
+
+
+**********************************************************************
+
+Found following files in results directory: README.md...
+
+Found 4 code files: PopSubdivision.R, GeneticDrift.R, Alleles.R, Coalescence.R
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file PopSubdivision.R...
+
+File contents are:
+**********************************************************************
+########## Practical on population subdivision and demographic inferences ###############
+
+# Assesses whether there has been distance by isolation in a turtle species found at 4 different
+# location using 3 methods:
+# 1) calculate F_ST pairwise for the 4 different turtle subpopulations
+# 2) build a tree of all the samples and check for clustering
+# 3) conduct a Principle Component Analysis
+
+# Script contains one function, calcF_ST, which calculates allele frequencies for each SNP 
+# in 2 populations, then calculates H_T and H_S, which are then used to calculate F_ST
+
+# clear workspace
+rm(ls=(list))
+
+# load data
+turtle_al <- as.matrix(read.csv("../Data/turtle.csv", 
+                          header = F, 
+                          colClasses=rep("numeric"),
+                          stringsAsFactors = F))
+turtle_ge <- as.matrix(read.csv("../Data/turtle.genotypes.csv", 
+                          header = F, 
+                          colClasses=rep("numeric"),
+                          stringsAsFactors = F))
+
+### 1) calculate F_ST between locations using haplotype
+
+calcF_ST <- function(pop1, pop2) {
+  # calculates allele frequencies for each SNP in the 2 populations, then calculates H_T and H_S, 
+  # which are then used to calculate F_ST
+  # note, only works for populations of equal sizes
+  
+  # sum each SNP column and divide by sample size to get allele freqs for the 2 populations
+  # note, MAR argument specifies if we apply the function over rows(1) or columns(2)
+  fA1 <- as.numeric(apply(FUN=sum, X=pop1, MAR=2)/nrow(pop1)) 
+  fA2 <- as.numeric(apply(FUN=sum, X=pop2, MAR=2)/nrow(pop2))
+  # initiate and preallocate empty vector
+  F_ST <- rep(NA, length(fA1))
+  for (i in 1:length(F_ST)) {
+  # calculate H_T for two populations
+  H_T <- fA1[i] * (1 - fA1[i]) + fA2[i] * (1 - fA2[i]) + ((abs(fA1[i] - fA2[i])) ^2 ) / 2
+  # calculate H_S for two populations
+  H_S <- fA1[i] * (1 - fA1[i]) + fA2[i] * (1 - fA2[i]) 
+  # create vector of F_ST containing F_ST for all SNPs
+  F_ST[i] <- (H_T - H_S) / H_T
+  }
+  return(F_ST)
+}
+
+# we are only interested in SNPs with an allele frequency greater than 0.03 for allele 1
+# across whole population (all locations)
+SNPs <- which(apply(FUN = sum, turtle_al, MAR = 2) / nrow(turtle_al) > 0.03)
+
+# print results
+cat("\nAverage F_ST values for pairwise comparisions:",
+    "\nA vs B:", mean(calcF_ST(turtle_al[1:20, SNPs], turtle_al[21:40, SNPs]), na.rm = T),
+    "\nA vs C:", mean(calcF_ST(turtle_al[1:20, SNPs], turtle_al[41:60, SNPs]), na.rm = T),
+    "\nA vs D:", mean(calcF_ST(turtle_al[1:20, SNPs], turtle_al[61:80, SNPs]), na.rm = T),
+    "\nB vs C:", mean(calcF_ST(turtle_al[21:40, SNPs], turtle_al[41:60, SNPs]), na.rm = T),
+    "\nB vs D:", mean(calcF_ST(turtle_al[21:40, SNPs], turtle_al[61:80, SNPs]), na.rm = T),
+    "\nC vs D:", mean(calcF_ST(turtle_al[41:60, SNPs], turtle_al[61:80, SNPs]), na.rm = T),
+    "\n")
+
+# these values vindicate a certain degree of population subdivision, 
+# particularly between A and the others.
+
+# There is no evidence for isolation by distance because A has a similar 
+# degree of subdivision for all other locations. 
+# However there is evidence of admixture. Admixture is the mixing of DNA between
+# previously isolated species. We can see that it is likely that C and D
+# mate together more than, for example, A and C so admixture is likely to
+# have occurred between populations at C and D.
+
+### 2) Another method of doing this would be to build a tree of all the samples
+# and then check for clustering
+# we do this by building a distance matrix and then a tree
+
+# first assign location labels to each row in the genotype dataset
+locations <- rep(c("A","B","C","D"), each=10)
+
+distance <- dist(turtle_ge)
+tree <- hclust(distance)
+plot(tree, labels=locations)
+
+# Evidence of admixture is much easier to see from the tree
+
+### 3) Another method of doing this would be to do a principle component analysis (pca)
+
+locations <- rep(c("A","B","C","D"), each=10)
+cols <- rep(c("blue","red","yellow","green"), each=5)
+
+# create index of genotype frequencies greater than 0.03
+# note, * 2 on denominator because we are counting alleles, not genotypes
+index <- which(apply(FUN=sum, X=turtle_ge, MAR=2)/(nrow(turtle_ge)*2)>0.03)
+
+# perform pca using in-built R function
+pca <- prcomp(turtle_ge[,index], center=T, scale=T)
+
+# print the summary of the pca
+summary(pca)
+
+# plot the results
+plot(pca$x[,1], pca$x[,2], col=cols, pch=1)
+legend("topright", legend=sort(unique(locations)), col=unique(cols), pch=1)
+
+
+  **********************************************************************
+
+Testing PopSubdivision.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error in rm(ls = (list)) : ... must contain names or character strings
+Execution halted
+
+======================================================================
+Inspecting script file GeneticDrift.R...
+
+File contents are:
+**********************************************************************
+####### Practical on genetic drift, mutation and divergence #########
+
+# given three gecko species and a proposed (but unlabeled) topology,
+# obtain an estimate of the divergence time between bent-toed and western banded geckos by 
+# 1) first calculating the genetic divergence between the two species and both species and the
+# leopard gecko to place them on a given topology
+# 2) calculate the rate of substitution (mutation rate) using the molecular clock, given the 
+# time divergence for both species and the leopard gecko and the above calculated genetics divergences
+# 3) calculate the time divergence using the mutation rate and the genetic divergence
+
+# clear workspace
+rm(ls=(list))
+
+# load data
+lg <- read.csv("../Data/leopard_gecko.csv", 
+                  stringsAsFactors = F, 
+                  header = F, 
+                  colClasses = c("character"))
+
+wbg <- read.csv("../Data/western_banded_gecko.csv", 
+                  stringsAsFactors = F, 
+                  header = F, 
+                  colClasses = c("character"))
+
+btg <- read.csv("../Data/bent-toed_gecko.csv", 
+                  stringsAsFactors = F, 
+                  header = F, 
+                  colClasses = c("character"))
+
+
+# identify which positions the the diverged sites, as they are fixed for different alleles in different species
+fixed <- c()
+count_fixed <- function(x) {
+  # function loops over columns in dataset and chooses only those with exactly one repeated value
+  for (i in 1:ncol(x)) {
+    if (length(unique(x[,i])) == 1) { # positions with only one allele
+      fixed <- c(fixed, i)
+    }
+  }  
+  return(fixed)
+}
+
+# compare fixed sites between all 3 species, pairwise
+sites <- c()
+div_sites <- c()
+all_sites <-data.frame(matrix())
+compare2 <- function(x, y) {
+  # function loops over combined dataframe to find sites with different alleles
+  sites <- intersect(count_fixed(x), count_fixed(y)) # only compare non-heterozygous sites in both species
+  all_sites <- rbind(x[,sites], y[,sites]) # combine into one dataframe
+  for (i in 1:ncol(all_sites)) {
+    if (length(unique(all_sites[,i])) == 2) { # locate sites where the two species have different alleles
+      div_sites <- c(div_sites, i)
+    }
+  }
+  return(div_sites)
+}
+
+gen_divs <- function(x, y) {
+  # function compares non-heterozygous sites between species, locates those with differences
+  # and calculates the genetics divergence from the number of these sites
+  sites <- intersect(count_fixed(x), count_fixed(y)) # only compare non-heterozygous sites in both species
+  all_sites <- rbind(x[,sites], y[,sites]) # combine into one dataframe
+  for (i in 1:ncol(all_sites)) {
+    if (length(unique(all_sites[,i])) == 2) { # locate sites where the two species have different alleles
+      div_sites <- c(div_sites, i)
+    }
+  }
+  gen_div <- sum(length(div_sites)/ncol(all_sites)) # calculate genetic divergence
+  return(gen_div)
+}
+
+cat("\n Genetic divergence of leopard gecko and western banded gecko is", gen_divs(lg, wbg),
+    "\n Genetic divergence of leopard gecko and bent-toed gecko is", gen_divs(lg, btg),
+    "\n Genetic divergence of western banded and bent-toed gecko is", gen_divs(wbg, btg))
+
+# we can see that leopard gecko diverged earlier from the other two geckos (30Mya)
+# calculate an estimate of the divergence time between the bent-toed and the western banded gecko
+
+# first calculate rate of substitution, mu, from leopard gecko and bent-toed gecko using molecular 
+# clock: E[dAB] = 2(mu) * tAB
+E_lg_btg <- length(compare2(lg, btg)) # expected number of nucleotide differences separating sequences of the same genes in the two species
+tAB_lg_btg <- 30 # divergence time given
+mu <- E_lg_btg / (2 * tAB_lg_btg)
+
+# calculate tAB for bent-toed gecko and western banded gecko
+tAB_wbg_btg <- length(compare2(wbg, btg)) / (2 * mu)
+
+cat("The estimated divergence time between western banded geckos and bent-toed geckos is",
+    round(tAB_wbg_btg, 2), "million years")
+
+**********************************************************************
+
+Testing GeneticDrift.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error in rm(ls = (list)) : ... must contain names or character strings
+Execution halted
+
+======================================================================
+Inspecting script file Alleles.R...
+
+File contents are:
+**********************************************************************
+############## Practical on Allele and Genotype frequencies ################
+
+# create function, analyse(x), to conduct analysis on SNPs in a dataset x
+
+# first find SNP locations, then calculate allele and genotype frquencies and
+# homozygosity and heterozygosity
+# calculate expected genotype counts and test for Hardy-Weinstein Equilibrium (HWE)
+# finally calculate inbreeding coefficient for SNPs that deivate from HWE
+
+# clear workspace
+rm(ls=(list))
+
+# load packages
+library(plyr)
+
+# load bear csv data
+bears <- read.csv("../Data/bears.csv", 
+                  stringsAsFactors = F, 
+                  header = F, 
+                  colClasses = c("character"))
+
+# function to analyse allele frequencies and compare to HWE
+n_SNPs <- c()
+frequencies <- c()
+samples <- 20
+nonHWE <- c()
+IC <- c()
+analyse <- function(x){
+  # function to:
+  # 1) identify which positions are SNPs
+  # 2) calculate, print and visualise allele frequencies for each SNP
+  # 3) calculate and print genotype frequencies for each SNP
+  # 4) calculate (observed) homozygosity and heterozygosity for each SNP
+  # 5) calculate expected genotype counts for each SNP and test for HWE
+  # 6) calculate, print and visualise inbreeding coefficient for each SNP deviating from HWE
+  
+  
+  # 1) identify which positions are SNPs
+  for (i in 1:ncol(x)) {
+    if (length(unique(x[,i])) == 2) { # assume species is diploid
+      n_SNPs <- c(n_SNPs, i) # collate column numbers for SNPs
+    }
+  }
+  cat("\n Number of SNPs is", length(n_SNPs))
+  # subset the data by SNPs
+  SNPs <- bears[,n_SNPs]
+  dim(SNPs)
+  
+  # 2) calculate, print and visualise allele frequencies
+  for (i in 1:ncol(SNPs)) {
+  alleles <- unique(SNPs[,i])
+  cat("\nSNP", i, ": \n", alleles)
+  # calculate frequency of the second allele (arbitrary choice at this stage)
+  freq <- length(which(SNPs[,i] == alleles[2])) /nrow(SNPs)
+  cat(" \nallele frequency of the second allele: ", freq)
+  # add alleles frequencies to frequency vector
+  frequencies <- c(frequencies, freq)
+  
+  # 3) calculate and print genotype frequencies
+  # set up empty 3-vector (for 2 homozygous genotypes and 1 heterozygous)
+  geno_count <- c(0, 0, 0)
+  # actual genotypes
+  for (j in 1:samples) {
+    index <- c((j*2)-1, (j*2)) # to take rows 1,2 then 3,4 etc.
+    # count instances of allele 2
+    # allele2/allele2 means the length function below = 2, + 1 means the 
+    # genotype index is 3 so allele2/allele2 is the third index in the vector
+    # allele2/allele1 has length 1 for allele 2 so with + 1 is the second index
+    # allele1/allele1 is the first index of the vector
+    genotype <- length(which(SNPs[index, i] == alleles[2])) + 1
+    # increase the counter for the corresponding genotype
+    geno_count[genotype] <- geno_count[genotype] + 1
+  }
+  cat("\ngenotype frequencies: ", geno_count)
+  
+  # 4) calculate and print homozygosity and heterozygosity
+  homo <- (geno_count[1] + geno_count[3]) / samples
+  hetero <- geno_count[2] / samples
+  cat("\nhomozygosity: ", homo)
+  cat("\nheterogosity: ", hetero)
+  
+  # 5) calculate expected genotype counts and test for HWE
+  # calculate expected genotype counts from allele frequencies, under HWE
+  exp_genotype_count <- c( (1-freq)^2, 2*freq*(1-freq)^2, freq^2) * samples
+  # calculate chi^2 statistic
+  chi <- sum((exp_genotype_count - geno_count)^2 / exp_genotype_count)
+  # calculate p-value
+  pv <- 1 - pchisq(chi, df = 1)
+  cat("\np-value for test against HWE: ", pv)
+  # subset only SNPs with p-value < 0.05
+  if (pv < 0.05) {
+    nonHWE <- c(nonHWE, i)
+  } 
+  
+  # 6) calculate print and visualise inbreeding coefficient for each SNP deviating from HWE
+  inbreeding <- (2*freq*(1-freq) - geno_count[2]/samples) / (2*freq*(1-freq))
+  IC <- c(IC, inbreeding)
+  cat("\ninbreeding coefficient:", inbreeding, "\n")
+  }
+  
+  # plot the frequency of second allele at each SNP location
+  plot(frequencies, type = "h")
+  
+  # plot the inbreeding coefficients
+  hist(IC)
+  plot(IC, type="h")
+}
+
+
+**********************************************************************
+
+Testing Alleles.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error in rm(ls = (list)) : ... must contain names or character strings
+Execution halted
+
+======================================================================
+Inspecting script file Coalescence.R...
+
+File contents are:
+**********************************************************************
+############################# Practical on coalescence theory #################################
+
+# Estimate the effective population size for two different populations of killer whales, using both
+# Watterson's and Tajima's estimations of theta. 
+# Calculates the site frequency spectrum for the two populations
+
+# clear workspace
+rm(ls=(list))
+
+# imports
+library(dplyr)
+
+# load data
+kwn <- as.matrix(read.csv("../Data/killer_whale_North.csv", 
+                 header = F, 
+                 colClasses=rep("numeric"),
+                 stringsAsFactors = F))
+kws <- as.matrix(read.csv("../Data/killer_whale_South.csv", 
+                 header = F, 
+                 colClasses=rep("numeric"),
+                 stringsAsFactors = F))
+
+# theta = 4N*mu, where mu is the mutation rate and 2N is the population size
+
+# calculate Tajima's estimate of theta
+
+# Tajima's estimate of theta is the average number of pairwise differences
+# Tajima's estimate of theta = pi = sum[i<j] (d [i,j] / n(n − 1)/  2
+# where n = no of sequences, di,j = number of differences between sequence i and j
+
+pi_tot <- 0
+pi <- function(x) {
+  # calculate the average number of pairwise differences
+  n <- nrow(x)
+  for (i in 1:(n-1)) {
+    for (j in (i+1):n ) {
+      pi_tot <- pi_tot + sum(abs(x[i,]-x[j,]))
+    }
+  }
+  return(pi_tot/((n*(n-1))/2))
+}
+
+# calulate Watterson's estimate
+# theta_W = S / (sum[k=1:n-1](1/k))
+# where S is the number of SNPs and n is the no of sequences
+
+# first locate SNP positions
+sites <- c()
+SNPs <- function(x) {
+  # function loops over columns in dataset and chooses only those with exactly one repeated value
+  for (i in 1:ncol(x)) {
+    if (length(unique(x[,i])) == 2) { # positions with only one allele
+      sites <- c(sites, i)
+    }
+  }  
+  return(sites)
+}
+
+denom <- 0
+theta_W <- function(x) {
+  # calculates an estimate of theta using number of SNPs
+  n <- nrow(x)
+  for (i in 1:(n-1)) {
+    denom <- denom + 1/i
+  }
+  return(length(SNPs(x))/denom)
+}
+
+# calculate estimated population size given mu and using our calculations for theta
+
+# theta = 4N * mu, where 2N  = population size, mu = rate of mutation per site
+# because mu is per site, we need to multiply by the length of the sequnce 
+# (i.e. number of sites we are looking at)
+
+# calculate estimated population using Tajima's estimation of theta
+Ne_pi <- function(x) {
+  # calculates estimated population using Tajima
+  Ne_calc <- (pi(x)) / (2 * mu * (ncol(x)))
+  return(Ne_calc)
+}
+
+# calculate estimated population using Watterson's estimation of theta
+mu <- 1e-8
+Ne_W <- function(x) {
+  # calculates estimated population using Watterson
+  Ne_calc <- (theta_W(x)) / (2 * mu  * (ncol(x)))
+  return(Ne_calc)
+}
+
+cat("\nEstimated population for Northern killer whale using Tajima is", Ne_pi(kwn),
+    "\nEstimated population for Northern killer whale using Watterson is", Ne_W(kwn),
+    "\nEstimated population for Southern killer whale using Tajima is", Ne_pi(kws),
+    "\nEstimated population for Southern killer whale using Watterson is", Ne_W(kws), "\n")
+
+# calculate and plot the (unfolded) site frequency spectrum for each population
+
+# 0 indicates the ancestoral allele and 1 indicates the derived allele
+# calculate frequencies of the derived allele
+
+sites <- as.matrix()
+sfs <- function(x) {
+  # calculates sfs by finding locations of SNPs and the frequencies of "1"
+  # allele at each location
+  
+  # find SNP locations
+  for (i in 1:ncol(x)) {
+    if (length(unique(x[,i])) == 2) { 
+      sites <- cbind(sites, c(x[,i]))
+    }
+  }
+  # find frequencies for "1" allele
+  frequencies <- c()
+  for (j in (1:ncol(sites))) {
+    freq <- as.double(length(which((sites[,j]) == 1)))
+    # add alleles frequencies to frequency vector
+    frequencies <- c(frequencies, freq)
+  }
+  # create sfs
+  freq_spec <- rep(0, (nrow(sites)-1))
+  for (k in (1:length(freq_spec))) {
+    freq_spec[k] <- length(which(frequencies == k))
+  }
+  return(freq_spec/ncol(sites)) # divisions to get proportions rather than counts
+}
+
+# plot results
+barplot(t(cbind(sfs(kws), sfs(kwn))), # t puts corresponding bars from the dataset next to each other
+        beside = T,
+        names.arg = seq(1:19),
+        xlab = "Allele frequency",
+        ylab = "Proportion of allele frequency",
+        legend = c("Southern Killer Whales", "Northern Killer Whales"))
+
+cat("\nThe population with the greatest estimated population has a higher 
+    proportion of singletons")
+  
+  **********************************************************************
+
+Testing Coalescence.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error in rm(ls = (list)) : ... must contain names or character strings
+Execution halted
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 4 errors
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 100
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!
